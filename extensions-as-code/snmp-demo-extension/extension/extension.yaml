@@ -1,6 +1,6 @@
 # These are mandatory fields for any extension
 name: custom:snmp.demo
-version: 1.0.0
+version: 1.1.0
 minDynatraceVersion: "1.231"
 author:
   name: "Perform User"
@@ -42,3 +42,29 @@ snmp:
             value: oid:1.3.6.1.2.1.2.2.1.10
           - key: custom.snmp.interface.out.octets
             value: oid:1.3.6.1.2.1.2.2.1.16
+
+
+# Optional Metric Metadata
+# This can also be edited in the Dynatrace interface 
+metrics:
+  - key: custom.snmp.sys.uptime
+    metadata:
+        unit: Second
+        description: "The uptime of the system"
+        displayName: "System Uptime"
+
+  - key: custom.snmp.interface.in.octets
+    metadata:
+        unit: Byte
+        description: "The number of bytes received on the interface"
+        displayName: "Interface In Octets"
+
+  - key: custom.snmp.interface.out.octets
+    metadata:
+        unit: Byte
+        description: "The number of bytes sent on the interface"
+        displayName: "Interface Out Octets"
+        
+        dimensions:
+          - key: interface.name
+            displayName: "Interface Name"
