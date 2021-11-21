@@ -18,7 +18,7 @@ This machine will serve different functions:
     * In a real scenario this would be a separate server, that can run remote extensions
 * **SNMP Device**
     * A simulator is running on this machine, making it behave like a Palo Alto Firewall network device
-    * In a real scenarion this would be a network applicance in your network
+    * In a real scenarion this would be a network appliance in your network
 * **Prometheus Exporter**
     * There is a prometheus exporter exposing metrics from this machine
     * In a real scenario this would also be a remote machine in your network
