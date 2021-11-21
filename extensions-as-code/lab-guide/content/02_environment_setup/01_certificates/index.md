@@ -3,7 +3,7 @@
 Extensions 2.0 need to be signed with a `developer certificate`.  
 Dynatrace will only accept extensions that were signed with a `trusted certificate.`  
   
-This is a security measure, as this extensions are `automatically deployed to OneAgent and Activegates`, and these servers must trust the issuing certificate, otherwise the extensions are blocked. 
+This is a security measure, as these extensions are `automatically deployed to OneAgent and Activegates`, and these servers must trust the issuing certificate, otherwise the extensions are blocked. 
 
 ## Create and distribute the certificates
 
