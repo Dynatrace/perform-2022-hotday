@@ -1,9 +1,9 @@
 # These are mandatory fields for any extension
 name: custom:snmp.demo
-version: 1.1.0
+version: 1.0.0
 minDynatraceVersion: "1.231"
 author:
-  name: "Perform User"
+  name: "Dynatrace User"
   
 # Here is the definition of our SNMP datasource
 # We will have three metrics, sys.uptime, interface.in.octets and interface.out.octets
@@ -40,8 +40,11 @@ snmp:
         metrics:
           - key: custom.snmp.interface.in.octets
             value: oid:1.3.6.1.2.1.2.2.1.10
+            type: count
+
           - key: custom.snmp.interface.out.octets
             value: oid:1.3.6.1.2.1.2.2.1.16
+            type: count
 
 
 # Optional Metric Metadata
@@ -53,13 +56,13 @@ metrics:
         description: "The uptime of the system"
         displayName: "System Uptime"
 
-  - key: custom.snmp.interface.in.octets
+  - key: custom.snmp.interface.in.octets.count
     metadata:
         unit: Byte
         description: "The number of bytes received on the interface"
         displayName: "Interface In Octets"
 
-  - key: custom.snmp.interface.out.octets
+  - key: custom.snmp.interface.out.octets.count
     metadata:
         unit: Byte
         description: "The number of bytes sent on the interface"
@@ -68,3 +71,105 @@ metrics:
         dimensions:
           - key: interface.name
             displayName: "Interface Name"
+
+
+# Optional topology definitions
+# These allow us to create Dynatrace Entities out of MINT metrics
+# Note that these metrics could have been collected elsewhere
+topology:
+  types:
+
+    # Definition for our SNMP Device
+    - name: custom_snmp:device
+      displayName: Custom SNMP Device
+      rules:
+        - idPattern: "custom_snmp_device_{sys.name}"
+          instanceNamePattern: "SNMP Device {sys.name}"
+
+          sources:
+          - sourceType: Metrics
+            condition: "$prefix(custom.snmp.)"
+
+          attributes:
+            - key: sys_name
+              pattern: '{sys.name}'
+
+    # Definition for our SNMP Device Network Interfaces
+    - name: custom_snmp:interface
+      displayName: Custom SNMP Network Interface
+      rules:
+        - idPattern: "custom_snmp_interface_{interface.name}"
+          instanceNamePattern: "Network Interface {interface.name}@{sys.name}"
+
+          sources:
+          - sourceType: Metrics
+            condition: "$prefix(custom.snmp.interface.)"
+
+          attributes:
+            - key: interface_name
+              pattern: '{interface.name}'
+
+  # We can also define relationships between entities
+  # Here we are saying that a network interface RUNS_ON a device
+  # Note that for this relationship to work, both the Interface and the Device
+  # must be present in the same MINT line (in this case lines that start with "custom.snmp.interface.")
+  relationships:
+    - sources:
+        - sourceType: Metrics
+          condition: "$prefix(custom.snmp.interface.)"
+      typeOfRelation: RUNS_ON
+      fromType: custom_snmp:interface
+      toType: custom_snmp:device
+      
+
+# Optional Entities Screens
+screens:
+  - entityType: custom_snmp:device
+    detailsSettings:
+      staticContent:
+        showAddTag: true
+        showProblems: true
+        showProperties: true
+        showTags: true
+        showGlobalFilter: false
+      layout:
+        autoGenerate: false
+        cards:
+          - key: network-interfaces
+            type: ENTITIES_LIST
+          - key: sys-charts
+            type: CHART_GROUP
+
+    chartsCards:
+      - key: sys-charts
+        displayName: System Charts
+        numberOfVisibleCharts: 2
+
+        charts:
+          - displayName: Uptime
+            metrics:
+              - metricSelector: custom.snmp.sys.uptime
+
+    entitiesListCards:
+      - key: network-interfaces
+        displayName: Network Interfaces
+        entitySelectorTemplate: type(custom_snmp:interface),fromRelationships.runsOn($(entityConditions))
+        displayCharts: false
+        displayIcons: true
+        enableDetailsExpandability: true
+        pageSize: 5
+        numberOfVisibleCharts: 2
+
+        columns:
+          - type: ATTRIBUTE
+            attribute:
+              key: interface_name
+              displayName: Interface
+          
+        charts:
+          - displayName: Bytes In
+            metrics:
+              - metricSelector: custom.snmp.interface.in.octets.count:splitBy()
+          - displayName: Bytes Out
+            metrics:
+              - metricSelector: custom.snmp.interface.out.octets.count:splitBy()
