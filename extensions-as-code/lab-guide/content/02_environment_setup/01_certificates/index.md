@@ -1,31 +1,27 @@
 # Certificates
 
-We will use **Microsoft Visual Studio Code (vscode)** for development.  
-Any other IDE works as well, we recommend an IDE that can:
-
-1. Process `yaml` schemas, to autocomplete and suggest code as we create our extension files
-2. Have an `integrated terminal`, so that we can run commands to generate certificates, build and publish the extension
-
+Extensions 2.0 need to be signed with a `developer certificate`.  
+Dynatrace will only accept extensions that were signed with a `trusted certificate.`  
+  
+This is a security measure, as this extensions are `automatically deployed to OneAgent and Activegates`, and these servers must trust the issuing certificate, otherwise the extensions are blocked. 
 
 ## Create and distribute the certificates
 
 ### Install dt-cli
 
-VSCode is already installed on the machine, open it from the Desktop or the Start Menu
+We will install the [dt-cli](https://github.com/dynatrace-oss/dt-cli) utility to manage our certificates and build our extensions. 
+
+Open VSCode from the Desktop or the Start Menu
 
 1. Click `File` > `Open Folder`, and open the `training` folder on your desktop
-2. Open the terminal with ``ctrl + ` `` or click `View` > `Terminal`
+2. Open the terminal with ``ctrl + ` ``  or click `View` > `Terminal`
 3. Run the command `pip install -U dt-cli`
     * This will install or update the [dt-cli](https://github.com/dynatrace-oss/dt-cli) python library
     * We will use this library to generate certificates and build our extensions
 
 ### Generate certificates
 
-Extensions 2.0 need to be signed with a `developer certificate`.  
-Dynatrace will only accept extensions that were signed with a `trusted certificate.`  
-  
-This is a security measure, as this extensions are `automatically deployed to OneAgent and Activegates`, and these servers must trust the issuing certificate, otherwise the extensions are blocked.  
-
+ 
 1. Create a folder called `certificates` 
     * You can click `New Folder`, which is the second icon next to  `TRAINING` in the left menu in vscode
     * Or run the command `mkdir certificates` in the terminal
