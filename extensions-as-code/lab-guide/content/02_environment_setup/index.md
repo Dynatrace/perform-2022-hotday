@@ -23,6 +23,13 @@ This machine will serve different functions:
     * There is a prometheus exporter exposing metrics from this machine
     * In a real scenario this would also be a remote machine in your network
 
+## Visual Studio Code 
+
+We will use **Microsoft Visual Studio Code (vscode)** for development.  
+Any other IDE works as well, we recommend an IDE that can:
+
+1. Process `yaml` schemas, to autocomplete and suggest code as we create our extension files
+2. Have an `integrated terminal`, so that we can run commands to generate certificates, build and publish the extension
 
 ## Install the OneAgent
 
