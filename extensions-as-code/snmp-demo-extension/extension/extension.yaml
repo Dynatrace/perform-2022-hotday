@@ -64,6 +64,10 @@ metrics:
         description: "The number of bytes received on the interface"
         displayName: "Interface In Octets"
 
+        dimensions:
+          - key: interface.name
+            displayName: "Interface Name"
+
   - key: custom.snmp.interface.out.octets.count
     metadata:
         unit: Byte
