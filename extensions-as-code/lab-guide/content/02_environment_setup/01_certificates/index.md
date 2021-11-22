@@ -19,7 +19,7 @@ Open VSCode from the Desktop or the Start Menu
     * This will install or update the [dt-cli](https://github.com/dynatrace-oss/dt-cli) python library
     * We will use this library to generate certificates and build our extensions
 
-![Update dt-cli](../../resources/01-update-dt-cli.png)
+![Update dt-cli](../../../assets/01-update-dt-cli.png)
 
 ### Generate certificates
 
@@ -38,7 +38,7 @@ Open VSCode from the Desktop or the Start Menu
     * Both `key` files are yours, and should never be distributed, they give ownership to the `.pem` files
     * In a real world scenarion, the `CA` would be a `trusted CA` by your company, and not a self generated `CA` like here, read [more details here](https://www.dynatrace.com/support/help/shortlink/sign-extension). 
 
-![Generate certificates](../../resources/02-generate-certs.png)
+![Generate certificates](../../../assets/02-generate-certs.png)
 
 ### Upload the CA certificate to Dynatrace
 
@@ -51,7 +51,7 @@ Next, we will let the Dynatrace cluster know that this `CA` can be trusted, in y
 5. Upload the `ca.pem` file, that should be under `Desktop > training > certificates > ca.pem`
 6. Select `Save`.
 
-![Upload ca.pem](../../resources/03-upload-ca.png)
+![Upload ca.pem](../../../assets/03-upload-ca.png)
 
 ### Place the CA certificate into the OneAgent and Activegate
 
@@ -62,7 +62,7 @@ We also need to let the OneAgents and Activegates machines know that they can tr
 
 * `C:\ProgramData\dynatrace\remotepluginmodule\agent\conf\certificates`
 
-![AG ca.pem](../../resources/04-ag-certificate.png)
+![AG ca.pem](../../../assets/04-ag-certificate.png)
 
 
 **Copy** the `ca.pem` file to the OneAgent certificates folder:
@@ -71,4 +71,4 @@ We also need to let the OneAgents and Activegates machines know that they can tr
 
 * `C:\ProgramData\dynatrace\oneagent\agent\config\certificates`
 
-![OA ca.pem](../../resources/05-oa-certificate.png)
+![OA ca.pem](../../../assets/05-oa-certificate.png)
