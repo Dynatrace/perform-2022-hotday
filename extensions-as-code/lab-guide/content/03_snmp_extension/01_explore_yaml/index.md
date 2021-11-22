@@ -10,11 +10,17 @@ This will create a folder called `perform-2022-hotday` in the `Desktop/training`
 
 ## Structure
 
-The `extension.yaml` file for this extension has five sessions
+The `extension.yaml` file for this extension has five sessions, which we will explore now.
 
-### Mandatory fields
+* Mandatory properties
+* snmp
+* metrics (Optional)
+* topology (Optional)
+* screens (Optional)
 
-The first lines are the mandatadory fields for any extension, they have metadata that includes:
+### Mandatory properties
+
+The first lines are the mandatadory properties for any extension, they have metadata that includes:
 
 * `name`: must start with `custom:` for custom extensions
 * `version`: Follows [simver](https://simver.org/) format
@@ -25,9 +31,13 @@ The first lines are the mandatadory fields for any extension, they have metadata
 
 ![yaml-01](../../resources/08-yaml-01.png)
 
+Since we have vscode validating our schema, you can delete one of these fields and immediately get an error, stating that you are missing a mandatory property.
+
+![yaml-01-02](../../resources/08-yaml-02.png)
+
 ### SNMP
 
-The SNMP session is comprised of `groups` and `subgroups`.  
+The `snmp` session is comprised of `groups` and `subgroups`.  
 Inside them, we define what are the metrics and the dimensions we want to capture, and how often we want to capture them.
 
 The first group is capturing a system level metric every five minutes.  
@@ -86,7 +96,7 @@ The metadata can also be accessed (and edited) directly in Dynatrace, under `Met
 ![yaml-05](../../resources/12-yaml-05.png)
 
 
-Take a note of the dimensions in the screenshot above. We only declared a single dimension, called `interface.name` in the `extension.yaml`, but we have several more showing, most are automatically added to all SNMP extensions, like `device`,  `device.address` and `device.name`, others have been added because interface metrics are a `subgroup` of system metrics, so it inherited the `sys.name` dimension.  
+Take a note of the dimensions in the screenshot above. We only declared a single dimension, called `interface.name` in the `extension.yaml`, but we have several more showing, most are automatically added to all SNMP extensions, like `device`,  `device.address` and `device.name`.
 
 There are also two special dimensions called `dt.entity.custom_snmp:device` and `dt.entity.custom_snmp:interface` which will be discussed later.  
 
@@ -94,3 +104,70 @@ There are also two special dimensions called `dt.entity.custom_snmp:device` and 
 Another important thing to note about metric metadata, you can declare it for **any** *MINT* metric present in Dynatrace, you are not limited to metrics captured in the same extension.yaml file. So if you are ingesting metrics from some other source, like [telegraf](https://www.dynatrace.com/support/help/shortlink/telegraf) for instance, you can have an `extension.yaml` that only declares metadata about those metrics
 
 ## Topology
+
+Like metrics, `topology` is an optional session but a powerful one. Here we can declare entities and relationships between them. These will be new entities created in Dynatrace, and they open up several interesting capabilities.  
+
+![yaml-06](../../resources/13-yaml-06.png)
+
+A reminder, the Dynatrace architecture is comprised of entities, every metric will be attached to some Dynatrace entity even when none is declared (the `ENVIRONMENT` entity in that case)
+
+You can use our API to get the list of all types, example python code:
+
+```python
+for entity_type in dt.entities.list_types():
+    print(entity_type)
+```
+
+You will see types like HOST, CLOUD_APPLICATION, CUSTOM_DEVICE, AZURE_VM, etc. An average tenant will have over 300 types!
+
+The topology session allow us to define new types, in our case we are creating two types:
+
+* `custom_snmp:device`
+    * This type will be created when we find a metric with the `sys.name` dimension
+    * We are only looking for metrics where the ID starts with `custom.snmp.`
+    * You can see that every metric we collect here will fit that condition
+    * We are adding a single attribute to our new entity, called `sys_name`
+* `custom_snmp:interface`
+    * This type will be created when we find a metric with the `interface.name` dimension
+    * This time we only look for metrics starting with `custom.snmp.interface.`
+
+After we deploy this extension, we can query the Dynatrace API for our newly created types! Example: `/api/v2/entityTypes/custom_snmp:interface` 
+
+![yaml-07](../../resources/14-yaml-07.png)
+
+
+As you can see in the screenshot there is also a session about `fromRelationships`, this was also declared in the `topology` session of our extension. We declared that an interface `RUNS_ON` a device.
+
+![yaml-08](../../resources/15-yaml-08.png)
+
+These entities are now correlated to one another. This is also where the two special dimensions we saw earlier `Custom SNMP Network Interface` and `Custom SNMP Device` come from, they are `entities` dimensions, and there are nice features about them like being able to click their names in a dashboard to drill down to that entity, and also defining custom entity screens. Not to mention everything else that comes with any entity.  
+
+Note that like metrics, these types and relationships can also be created directly in the Dynatrace interface, under `Settings > Topology Model`.
+
+ 
+## Screens
+
+Once you have `entities`, you can also have `screens`. This is a powerful new feature in Dynatrace that allows you to customize what the user sees when they navigate to an entity page (or to the list of entities).  
+
+We have declared a screen for the `custom_snmp:device` entity, we start by declaring what details we want to see and setting a screen layout. The layout will have two sessions, a list of network interfaces and a chart.
+
+![yaml-09](../../resources/16-yaml-09.png)
+
+The layout is pointing to two elements, with IDs `network-interfaces` and `sys-charts`, they are declared right after:
+
+We have a chart for our only metric:
+
+![yaml-10](../../resources/17-yaml-10.png)
+
+And we have our network interface list:
+
+![yaml-11](../../resources/18-yaml-11.png)
+
+When we navigate to one of our network devices, we will see these elements:
+
+![device-screen](../../resources/19-device-screen.png)
+
+You can find links to all our network devices from `https://<tenant _url>/ui/entity/list/custom_snmp:device`
+
+As of `Dynatrace 1.232` screens cannot be created via the UI, only via the `extension.yaml` file.
+
