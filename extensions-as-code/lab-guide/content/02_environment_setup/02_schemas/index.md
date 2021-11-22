@@ -1,4 +1,4 @@
-# Extension Schemas
+## Extension Schemas
 
 There is a script called `download_schemas.py` in the `Desktop\training\scripts` folder.
 

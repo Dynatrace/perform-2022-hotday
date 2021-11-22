@@ -1,7 +1,7 @@
-# Step 1 - Environment Setup
+## Environment Setup
 
 
-## Machine Details
+### Machine Details
 
 We each have a **Windows Virtual Machine** running on **AWS** for our labs.  
 
@@ -23,7 +23,7 @@ This machine will serve different functions:
     * There is a prometheus exporter exposing metrics from this machine
     * In a real scenario this would also be a remote machine in your network
 
-## Visual Studio Code 
+### Visual Studio Code 
 
 We will use **Microsoft Visual Studio Code (vscode)** for development.  
 Any other IDE works as well, we recommend an IDE that can:
@@ -31,7 +31,7 @@ Any other IDE works as well, we recommend an IDE that can:
 1. Process `yaml` schemas, to autocomplete and suggest code as we create our extension files
 2. Have an `integrated terminal`, so that we can run commands to generate certificates, build and publish the extension
 
-## Install the OneAgent
+### Install the OneAgent
 
 1. Open `Firefox` or `Google Chrome`
 2. Navigate to your `Dynatrace Tenant URL` and login
@@ -40,7 +40,7 @@ Any other IDE works as well, we recommend an IDE that can:
 5. Click `Create token` and `Download OneAgent installer`
 6. `Run` the installer with all default options
 
-## Install the Activegate
+### Install the Activegate
 
 1. Open `Firefox` or `Google Chrome`
 2. Navigate to your `Dynatrace Tenant URL` and login

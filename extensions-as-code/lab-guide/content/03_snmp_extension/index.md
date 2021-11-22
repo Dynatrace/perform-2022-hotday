@@ -1,4 +1,4 @@
-# Demo SNMP Extension
+## SNMP Extension
 
 To test our environment and certificates, let's deploy a demo SNMP extension
 
