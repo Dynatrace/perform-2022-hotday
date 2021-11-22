@@ -1,7 +1,7 @@
 # These are mandatory fields for any extension
 name: custom:snmp.demo
 version: 1.0.0
-minDynatraceVersion: "1.231"
+minDynatraceVersion: "1.232"
 author:
   name: "Dynatrace User"
   
@@ -18,11 +18,13 @@ snmp:
       minutes: 5
     dimensions:
       - key: sys.name
-        value: oid:1.3.6.1.2.1.1.5.0
+        value: oid:SNMPv2-MIB::sysName.0
+        # can also use value: oid:1.3.6.1.2.1.1.5.0
     
     metrics:
       - key: custom.snmp.sys.uptime
-        value: oid:1.3.6.1.2.1.1.8.0
+        value: oid:SNMPv2-MIB::sysORLastChange.0
+        # can also use value: oid:1.3.6.1.2.1.1.8.0
       
     # A subgroup for interface metrics
     subgroups:
@@ -35,15 +37,15 @@ snmp:
         dimensions:
             # Note how we don't set the last OID segment (.0, .1, .2 etc), this is a table and we want all interfaces
           - key: interface.name
-            value: oid:1.3.6.1.2.1.2.2.1.2
+            value: oid:IF-MIB::ifDescr
         
         metrics:
           - key: custom.snmp.interface.in.octets
-            value: oid:1.3.6.1.2.1.2.2.1.10
+            value: oid:IF-MIB::ifInOctets
             type: count
 
           - key: custom.snmp.interface.out.octets
-            value: oid:1.3.6.1.2.1.2.2.1.16
+            value: oid:IF-MIB::ifOutOctets
             type: count
 
 
