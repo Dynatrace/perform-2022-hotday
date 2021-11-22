@@ -29,11 +29,11 @@ The first lines are the mandatadory properties for any extension, they have meta
     * The minimum Activegate (or OneAgent) version that is able to run this extension
 * `author`
 
-![yaml-01](../../resources/08-yaml-01.png)
+![yaml-01](../../../assets/08-yaml-01.png)
 
 Since we have vscode validating our schema, you can delete one of these fields and immediately get an error, stating that you are missing a mandatory property.
 
-![yaml-01-02](../../resources/08-yaml-02.png)
+![yaml-01-02](../../../assets/08-yaml-02.png)
 
 ### SNMP
 
@@ -46,7 +46,7 @@ The ID of the metric is `custom.snmp.sys.uptime`, the value is whatever the OID 
 
 We also add one dimension to this metric, called `sys.name`. The value of this dimension is also coming from an OID, `oid:SNMPv2-MIB::sysName.0`
   
-![yaml-02](../../resources/09-yaml-02.png)
+![yaml-02](../../../assets/09-yaml-02.png)
 
 We can test that these values return what we expect, by perfoming an `snmpget` command. The Windows VM has the `net-snmp` package installed, so you can run:
 
@@ -78,14 +78,14 @@ Writing `oid:IF-MIB::ifDesc:1, oid:IF-MIB::ifDesc:2, oid:IF-MIB::ifDesc:3, etc` 
 Our extension makes use of this technique, by setting `table: true` in the subgroup configuration
 
 
-![yaml-03](../../resources/10-yaml-03.png)
+![yaml-03](../../../assets/10-yaml-03.png)
 
 
 ## Metrics
 
 The `metrics` session is optional but it is always a nice addition to any extension, it provides metric metadata like `displayName` and `unit`. These will make your extension easier to use, understand and chart.
 
-![yaml-04](../../resources/11-yaml-04.png)
+![yaml-04](../../../assets/11-yaml-04.png)
 
 In our example, an user would be able to search for the metric `Interface In Octets`, which is much better than `custom.snmp.interface.in.octets.count`.
 
@@ -93,7 +93,7 @@ We have also declared that the unit for this metric is `Byte`, so Dynatrace will
 
 The metadata can also be accessed (and edited) directly in Dynatrace, under `Metrics` in the left menu.
 
-![yaml-05](../../resources/12-yaml-05.png)
+![yaml-05](../../../assets/12-yaml-05.png)
 
 
 Take a note of the dimensions in the screenshot above. We only declared a single dimension, called `interface.name` in the `extension.yaml`, but we have several more showing, most are automatically added to all SNMP extensions, like `device`,  `device.address` and `device.name`.
@@ -107,7 +107,7 @@ Another important thing to note about metric metadata, you can declare it for **
 
 Like metrics, `topology` is an optional session but a powerful one. Here we can declare entities and relationships between them. These will be new entities created in Dynatrace, and they open up several interesting capabilities.  
 
-![yaml-06](../../resources/13-yaml-06.png)
+![yaml-06](../../../assets/13-yaml-06.png)
 
 A reminder, the Dynatrace architecture is comprised of entities, every metric will be attached to some Dynatrace entity even when none is declared (the `ENVIRONMENT` entity in that case)
 
@@ -133,12 +133,12 @@ The topology session allow us to define new types, in our case we are creating t
 
 After we deploy this extension, we can query the Dynatrace API for our newly created types! Example: `/api/v2/entityTypes/custom_snmp:interface` 
 
-![yaml-07](../../resources/14-yaml-07.png)
+![yaml-07](../../../assets/14-yaml-07.png)
 
 
 As you can see in the screenshot there is also a session about `fromRelationships`, this was also declared in the `topology` session of our extension. We declared that an interface `RUNS_ON` a device.
 
-![yaml-08](../../resources/15-yaml-08.png)
+![yaml-08](../../../assets/15-yaml-08.png)
 
 These entities are now correlated to one another. This is also where the two special dimensions we saw earlier `Custom SNMP Network Interface` and `Custom SNMP Device` come from, they are `entities` dimensions, and there are nice features about them like being able to click their names in a dashboard to drill down to that entity, and also defining custom entity screens. Not to mention everything else that comes with any entity.  
 
@@ -151,21 +151,21 @@ Once you have `entities`, you can also have `screens`. This is a powerful new fe
 
 We have declared a screen for the `custom_snmp:device` entity, we start by declaring what details we want to see and setting a screen layout. The layout will have two sessions, a list of network interfaces and a chart.
 
-![yaml-09](../../resources/16-yaml-09.png)
+![yaml-09](../../../assets/16-yaml-09.png)
 
 The layout is pointing to two elements, with IDs `network-interfaces` and `sys-charts`, they are declared right after:
 
 We have a chart for our only metric:
 
-![yaml-10](../../resources/17-yaml-10.png)
+![yaml-10](../../../assets/17-yaml-10.png)
 
 And we have our network interface list:
 
-![yaml-11](../../resources/18-yaml-11.png)
+![yaml-11](../../../assets/18-yaml-11.png)
 
 When we navigate to one of our network devices, we will see these elements:
 
-![device-screen](../../resources/19-device-screen.png)
+![device-screen](../../../assets/19-device-screen.png)
 
 You can find links to all our network devices from `https://<tenant _url>/ui/entity/list/custom_snmp:device`
 

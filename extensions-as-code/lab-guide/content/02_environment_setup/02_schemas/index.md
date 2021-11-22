@@ -42,10 +42,10 @@ Update the `DT_API_URL` and `DT_API_TOKEN` variables, replacing `TENANT` with yo
 1. `cd scripts`
 2. `python download_schemas.py`
 
-![Download schemas](../../resources/06-download-schemas.png)
+![Download schemas](../../../assets/06-download-schemas.png)
 
 This will create a folder called `schemas`, with all of the schema `.json` files inside.  
 
 VSCode is already configured to parse schemas from these files, you can check the configuration by pressing `F1` and clicking `Preferences: Open Settings (JSON)`. This setting only works because the [YAML](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) vscode extension has been installed as well.
 
-![vscode schemas](../../resources/07-vscode-schemas.png)
+![vscode schemas](../../../assets/07-vscode-schemas.png)
