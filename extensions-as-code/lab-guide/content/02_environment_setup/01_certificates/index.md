@@ -1,13 +1,13 @@
-# Certificates
+## Certificates
 
 Extensions 2.0 need to be signed with a `developer certificate`.  
 Dynatrace will only accept extensions that were signed with a `trusted certificate.`  
   
 This is a security measure, as these extensions are `automatically deployed to OneAgent and Activegates`, and these servers must trust the issuing certificate, otherwise the extensions are blocked. 
 
-## Create and distribute the certificates
+### Create and distribute the certificates
 
-### Install dt-cli
+#### Install dt-cli
 
 We will install the [dt-cli](https://github.com/dynatrace-oss/dt-cli) utility to manage our certificates and build our extensions. 
 
@@ -21,7 +21,7 @@ Open VSCode from the Desktop or the Start Menu
 
 ![Update dt-cli](../../../assets/01-update-dt-cli.png)
 
-### Generate certificates
+#### Generate certificates
 
  
 1. Create a folder called `certificates` 
@@ -40,7 +40,7 @@ Open VSCode from the Desktop or the Start Menu
 
 ![Generate certificates](../../../assets/02-generate-certs.png)
 
-### Upload the CA certificate to Dynatrace
+#### Upload the CA certificate to Dynatrace
 
 Next, we will let the Dynatrace cluster know that this `CA` can be trusted, in your browser:
 
@@ -53,7 +53,7 @@ Next, we will let the Dynatrace cluster know that this `CA` can be trusted, in y
 
 ![Upload ca.pem](../../../assets/03-upload-ca.png)
 
-### Place the CA certificate into the OneAgent and Activegate
+#### Place the CA certificate into the OneAgent and Activegate
 
 We also need to let the OneAgents and Activegates machines know that they can trust this `CA`. This needs to be done only once per `CA`.
   

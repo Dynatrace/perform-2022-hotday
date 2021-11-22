@@ -1,5 +1,3 @@
-# Extensions as code lab
-
 ## Introduction
 
 Welcome to the **Extensions as Code lab**.  
