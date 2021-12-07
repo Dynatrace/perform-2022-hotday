@@ -17,7 +17,7 @@ Projects used for this Session
 - [KIAB](https://github.com/keptn-sandbox/keptn-in-a-box)
 - [Jmeter Service](https://github.com/keptn/keptn/tree/master/jmeter-service#workloads)
 
-### What we prepared for you
+### What we have prepared for you today
 
 KIAB (Keptn in a Box)
 
@@ -31,7 +31,7 @@ KIAB (Keptn in a Box)
 | SockShop Application | <ul><li>Cart Service</li><li>CartMongoDB Service</li>|
 | Easytravel Application | <ul><li>backend Service</li><li>frontend Service</li><li>angular service</li><li>www service</li>|
 
-### We can now access our KIAB.
+### How can you access your KIAB instance?
 
 Access your Dynatrace Tenant
 Go to Dashboards
@@ -41,15 +41,14 @@ Select link "🌐 KeptnInABox"
 
 <img src="../../assets/images/autonomous-cloud.png" width="500"/>
 
-Optionally you can also find the ip address to the KIAB homepage by loggining into your EC2 instance.
-
-Run the following from the command prompt.
+Optionally, you can also find the ip address, to the KIAB homepage, by loggining into your EC2 instance.
+Then run the following from the command prompt.
 
 ```bash
 less +F /tmp/install.log
 ```
 
-Get the URL for KIAB.
+Get the URL for KIAB from the log output.
 
 <img src="../../assets/images/KIAB_info.png" width="500"/>
 
@@ -58,6 +57,16 @@ Open a Browser window with the URL.
 Welcome to KIAB.
 
 <img src="../../assets/images/KIAB.png" width="400"/>
+
+### Validate projects in the keptn bridge
+
+Click on the "Bridge" link. This will open the keptn bridge.
+You should see the preloaded projects.
+
+<img src="../../assets/images/bridge01.png" width="400"/>
+
+You may need to run several pipelines to complete the deployments of the applications.
+Don't worry, we will walk you through the process.
 
 ### Run Pipeline
 
