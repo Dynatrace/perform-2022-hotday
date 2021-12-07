@@ -1,4 +1,4 @@
-## Pre-Flight Checklist
+## Preperation
 
 Keptn-in-a-Box is a 🚀 rocket launcher for enabling tutorials or workshops in an easy, fast and ressource efficient way.
 Keptn-In-A-Box is a Bash script that will convert a plain Ubuntu machine in a Single Node Kubernetes Cluster with Keptn installed and configured 
@@ -11,84 +11,13 @@ Projects used for this Session
 - [Keptn](https://keptn.sh/)
 - [Jenkins Service for Keptn](https://github.com/keptn-sandbox/jenkins-service/)
 - [Order Overview](https://github.com/dthotday-performance/overview)
+- [SockShop](https://github.com/keptn/examples)
+- [EasyTravel](https://github.com/Dynatrace/easyTravel-Docker)
 - [Jmeter Plugin](https://github.com/dynatrace-oss/jmeter-dynatrace-plugin)
 - [KIAB](https://github.com/keptn-sandbox/keptn-in-a-box)
 - [Jmeter Service](https://github.com/keptn/keptn/tree/master/jmeter-service#workloads)
 
-Let's begin by creating the necessary credentials.
-
-### Create Credentials
-
-  - [ ] TENANTID=mytenant.sprint.dynatracelabs.com
-  - [ ] PAASTOKEN=myDynatracePaaSToken
-  - [ ] APITOKEN=myDynatraceApiToken
-
-Open a text editor, we will use this as a cheat sheet, for our Credential information.
-
-1. Retrieve your Tenant ID. 
-
-For this exercise, we need the fully qualified name without the trailing /.
-
-**xxxx.sprint.dynatracelabs.com**
-
-_For the TenantID protocol use: https://{your-domain}/e/{your-environment-id} for managed or https://{your-environment-id}.live.dynatrace.com for SaaS__
-
-<img src="../../assets/images/Tenant_id.png" width="500"/>
-
-2. Create a Dynatrace API Token.
-
-Log in to your Dynatrace tenant and go to **Settings > Integration > Dynatrace API**. Then, create a new API token with the following permissions
-
-- [API Authentication](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/basics/dynatrace-api-authentication/)
-	
-Use the following for the API permissions.
-
-<img src="../../assets/images/API_token.png" width="300"/>
-	
-3. Create a Dynatrace PAAS token.
-
-In your Dynatrace tenant, go to **Settings > Integration > Platform as a Service**, and create a new PaaS Token.
-
-- [PaaS Token](https://www.dynatrace.com/support/help/reference/dynatrace-concepts/environment-id/#anchor_paas)
-
-### Run Shell command
-
-💻 Login to your Ubuntu instance
-
-Use the credentials provided to open a ssh client or you can use the provided shell.
-
-```bash
-ssh dtu.training@Your-instance-ip
-```
-
-Next
-
-Run the following command.
-    
-```bash
-sudo bash -c './keptn-in-a-box.sh'
-```
-    
-You will need to provide the **Dynatrace Tenant ID**, **Dynatrace API token**, **Dynatrace PaaS token** and a **Email**.
-For the class, we can use the provided student account for the email.
-
-<img src="../../assets/images/run_script.png" width="500"/>
-
-answer **'y'** if the information is correct.
-
-Press **enter**
-
-Type 
-
-```bash
-less +F /tmp/install.log
-```
-for viewing the output of installation in realtime
-
-Please be patient, this build can take ~13-20 minutes to finish.
-
-
-### What we deployed
+### What we prepared for you
 
 KIAB (Keptn in a Box)
 
@@ -99,6 +28,8 @@ KIAB (Keptn in a Box)
 | Upstream Git | <ul><li>API</li><li>Repositories</li></ul> |
 | CI/CD | <ul><li>Jenkins</li><li>Unleash</li></ul> |
 | Order Application | <ul><li>Frontend Service</li><li>Customer Service</li><li>Catalog Service</li><li>Order Service</li></ul> |
+| SockShop Application | <ul><li>Cart Service</li><li>CartMongoDB Service</li>|
+| Easytravel Application | <ul><li>backend Service</li><li>frontend Service</li><li>angular service</li><li>www service</li>|
 
 ### We can now access our KIAB.
 
@@ -153,22 +84,22 @@ This is a summary of the versions followed by a description of the problem scena
 
 | Service  | Branch/Docker Tag | Description |
 |---|:---:|---|
-| frontend | 1 | Normal behavior |
-| catalog-service | 1 | Normal behavior |
-| customer-service | 1 | Normal behavior |
-| order-service | 1 | Normal behavior |
-| customer-service | 2 | High Response time for /customer/list.html |
-| order-service | 2 | 50% exception for /order/line URL and n+1 back-end calls for /order/form.html |
-| customer-service | 3 | Normal behavior |
-| order-service | 3 | Normal behavior |
+| frontend | 1.0.0 | Normal behavior |
+| catalog-service | 1.0.0 | Normal behavior |
+| customer-service | 1.0.0 | Normal behavior |
+| order-service | 1.0.0 | Normal behavior |
+| customer-service | 2.0.0 | High Response time for /customer/list.html |
+| order-service | 2.0.0 | 50% exception for /order/line URL and n+1 back-end calls for /order/form.html |
+| customer-service | 3.0.0 | Normal behavior |
+| order-service | 3.0.0 | Normal behavior |
 
 ### Problem Scenarios
 
-#### Deploy dtdemos/customer-service:2
+#### Deploy dtdemos/customer-service:2.0.0
 
 <img src="../../assets/images/usecase1.png" width="500"/>
 
-### Deploy dtdemos/order-service:2 
+### Deploy dtdemos/order-service:2.0.0 
 
 Both these scenearios are enabled
 
@@ -215,27 +146,4 @@ Pre-configured items also include:
 1. Automatically Applied Tags
 
 Now that we are more familiar with what we have running, let's continue to the next activity.
-
-### Troubleshooting
-
-If you need to rebuild the environment, follow these steps.
-
-```bash
-cd ~/keptn-in-a-box
-```
-
-This script will reset the Ubuntu instance by removing Kubernetes and the Dynatrace ActiveGate.
-
-```bash
-./resetenv.sh
-```
-
-Now we need to re-initialize the environment.
-
-Run the following commands, then follow the process from above.
-    
-```bash
-cd ~
-sudo bash -c './keptn-in-a-box.sh'
-```
 
