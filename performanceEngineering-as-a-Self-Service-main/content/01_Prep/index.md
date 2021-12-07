@@ -33,6 +33,16 @@ KIAB (Keptn in a Box)
 
 ### We can now access our KIAB.
 
+Access your Dynatrace Tenant
+Go to Dashboards
+open the "☁ Autonomous Cloud Concepts with Keptn" Dashboard.
+
+Select link "🌐 KeptnInABox"
+
+<img src="../../assets/images/autonomous-cloud.png" width="500"/>
+
+Optionally you can also find the ip address to the KIAB homepage by loggining into your EC2 instance.
+
 Run the following from the command prompt.
 
 ```bash
