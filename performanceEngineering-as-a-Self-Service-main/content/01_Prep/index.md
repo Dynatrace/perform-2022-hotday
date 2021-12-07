@@ -68,7 +68,9 @@ You should see the preloaded projects.
 You may need to run several pipelines to complete the deployments of the applications.
 Don't worry, we will walk you through the process.
 
-### Run Pipeline
+Validate each project has each stage deployed.
+
+### Run Pipelines
 
 Click on **"Jenkins"**
 
@@ -87,11 +89,11 @@ After selecting the pipeline click **"build"**
 
 ### Order App Overview
 
-This application was built for demonstations of Dynatrace.  The front-end look like this.
+This application was built for demonstations of Dynatrace.  Here is the frontend.
 
 <img src="../../assets/images/orders.png" width="300"/>
 
-The overall application is made up of four Docker components: a frontend web UI and 3 backend services.  Once monitored by Dynatrace, a multi-tier call flow will be available such as shown below.
+The overall application is made up of four Docker components: a frontend web UI and 3 backend services.  Once monitored by Dynatrace, a multi-tier service flow will be available as shown below.
 
 <img src="../../assets/images/dt-call-flow.png" width="500"/>
 
