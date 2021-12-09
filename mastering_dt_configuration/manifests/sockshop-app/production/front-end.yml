@@ -2,42 +2,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: catalogue
+  name: front-end.stable
   namespace: production
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: catalogue
+      app: front-end.stable
   template:
     metadata:
       annotations:
         sidecar.istio.io/inject: "false"
         dynatrace/instrument: "true"
         pipeline.stage: prod-stable
-        pipeline.build: 3.1.0.0593
+        pipeline.build: 1.4.0.7424
         pipeline.project: sockshop
-        support.contact: "john.doe@sockshop.com"
-        support.channel: "#support-sockshop-services"
+        support.contact: "jane.smith@sockshop.com"
+        support.channel: "#support-sockshop-frontend"
       labels:
-        app: catalogue
+        app: front-end.stable
         stage: prod
         release: stable
-        version: "3.1"
-        tier: "business"
+        version: "1.4"
+        tier: "frontend"
         product: "sockshop"
     spec:
       containers:
-      - name: catalogue
-        image: dynatracesockshop/catalogue:0.5.0
+      - name: front-end
+        image: dynatracesockshop/front-end:0.5.0
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - mountPath: /tmp
-          name: tmp-volume
         livenessProbe:
           httpGet:
-            path: /health
+            path: /
             port: 8080
           initialDelaySeconds: 120
           periodSeconds: 10
@@ -45,29 +42,27 @@ spec:
           timeoutSeconds: 1
         readinessProbe:
           httpGet:
-            path: /health
+            path: /
             port: 8080
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 1
-      volumes:
-        - name: tmp-volume
-          emptyDir:
-            medium: Memory
       nodeSelector:
         beta.kubernetes.io/os: linux
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: catalogue
+  name: front-end
   labels:
-    app: catalogue
+    app: front-end.stable
   namespace: production
 spec:
   ports:
   - name: http
-    port: 80
+    port: 8080
     targetPort: 8080
   selector:
-    app: catalogue
+    app: front-end.stable
+  type: LoadBalancer
