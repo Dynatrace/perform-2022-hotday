@@ -15,16 +15,20 @@ Key Features:
 - Identifies targets via Service discovery or static config 
 
 Components:
-1. Prometheus Server
-- Retrieval
-> Collects metrics from pre-defined exporters
+1. Prometheus 
+  Each cluster has a Prometheus Operator deployed that includes: 
+   * the Prometheus Server
+   * the AlertManager
+   * and some default Kubernetes exporter :
+        * kube state metric
+        * node exporter
+        * cadvisor
 
-- TSDB
-> Storage for collected time series metircs
-
-- HTTP Server
-> Provides a UI to visualize and query metircs in dashboards using Grafana
-
+2. Ingest metrics exposed by one prometheus exporter
+   Let's report metrics from the node exporter and the kube state metric
+   
+  
+   
 2. Alertmanager
 > Manages and raises alerts based on rules defined in Prometheus
 
