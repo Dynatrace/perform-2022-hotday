@@ -2,69 +2,68 @@
 
 In this module we'll learn how to integrate Dynatrace with Prometheus in Kubernetes.
 
-### Step 1: Create the Dockerfile and script
+### Step 1: Ingest metrics exposed by one prometheus exporter
 
-1. Create a directory for the docker artifacts
+Let's report metrics from the node exporter and the kube state metric
+#### a. Node Exporter
+Let's identify the port exposed by the Node Exporter. The node exporter is deployed as a Daemonset by the Prometheus Operator
+Let's describe the Daemonset , to indentify the prometheus port
 
-   ```bash
-   (bastion)$ cd ~
-   (bastion)$ mkdir -p docker/
-   (bastion)$ cd docker/
-   ```
+```
+ DaemonsetID=$(kubectl get ds --output=jsonpath={.items..metadata.name} --selector=app=prometheus-node-exporter)
+ kubectl describe ds $DaemonsetID
+ ```
+To validate the prometheus settings we can test the url of the prometheus exporter.
+We can use port-forward to expose on the bastion host the port of the exporter :
+```
+kubectl port-forward <PODID> PORT:PORT
+```
+Then you can open another terminal and run:
+```
+curl http://localhost:PORT/metrics
+```
 
-2. Create a new file named `Dockerfile` and add the following content:
+To be able to let the Active Gate scrap the prometheus metric from the node exporter, we need to :
+- create a Service attach to the node exporters
+- add the Prometheus Annotation
 
-   ```docker
-   FROM alpine:latest
-   COPY . /app
-   WORKDIR /app
-   RUN apk add --no-cache wget
-   ENTRYPOINT [ "sh" ]
-   CMD ["hello_world.sh"]
-   ```
+In the bastion host, a template file, `serice_nodexporter_template.yaml` is available.
+update the Yaml file by defining the right port.
+Replace the value TO_DEFINE with the port of the node exporter
+Deploy the new Service :
+```
+ kubectl apply -f Hotday_Script/prometheus/serice_nodexporter_template.yaml
+ ```
 
-1. Create a new file named `hello_world.sh` and add the following content:
 
-   ```bash
-   echo "Hello World from a Docker Container."
-   ```
+#### b. Kube State Metrics
+  Similar to the Node exporter update the template file : `prometheus/service_template.yaml`
 
-1. Ensure that the script is an executable:
+Let's describe the deployment of kube state metric:
+```
+ DeploymentID=$(kubectl get deployment --output=jsonpath={.items..metadata.name} --selector=app.kubernetes.io/name=kube-state-metrics)
+ kubectl describe deployment $DeploymentID
+```
 
-   ```bash
-   (bastion)$ chmod +x hello_world.sh
-   ```
+Deploy the new Service :
+```
+ kubectl apply -f Hotday_Script/prometheus/service_template.yaml
+```
 
-### Step 2. Build and Tag a Container Image
+### Step 2 : Ingest metrics exposed by the nginx prometheus exporter
+Similar to the Step 1 , we want to ingest metrics from the nginx ingress controller.
+In the default namespace, nginx ingress controller has been deployed.
+Describe the nginx ingress controller to identify the port exposing the prometheus metrics.
 
-1. Build the container image (`-t` specifies the repository and a tag). The `$USER` variable will tag the image with your username.
+Update the template file, `prometheus/service__nginx_template.yaml` by replacing TO_DEFINE with the right port
 
-   ```bash
-   (bastion)$ docker build -t acl/hello-world:$USER .
-   ```
+Deploy the new Service :
+```
+ kubectl apply -f Hotday_Script/prometheus/service__nginx_template.yaml
+```
 
-1. List all container images on your local machine.
+### Step 3 : Use the metric expression to visualize the new ingested metrics
 
-   ```bash
-   (bastion)$ docker images
-   ```
+### Step 4 : Create a dashboard
 
-1. Set another tag.
-
-   ```bash
-   (bastion)$ docker tag acl/hello-world:$USER acl/hello-world:$USER-stable
-   ```
-
-1. List all container images on your local machine.
-
-   ```bash
-   (bastion)$ docker images
-   ```
-
-### Step 3. Run a Container
-
-1. Run the container based on a container image.
-
-   ```bash
-   (bastion)$ docker run acl/hello-world:$USER-stable
-   ```
+Are we able to get enough statistics related to the behavior of our ingress controller?
