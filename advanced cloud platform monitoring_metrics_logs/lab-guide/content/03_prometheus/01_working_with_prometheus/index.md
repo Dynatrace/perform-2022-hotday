@@ -24,9 +24,9 @@ Components:
         * node exporter
         * cadvisor
 
-2. Ingest metrics exposed by one prometheus exporter
-   Let's report metrics from the node exporter and the kube state metric
-   
+
+
+
   
    
 2. Alertmanager
