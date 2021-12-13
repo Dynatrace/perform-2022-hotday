@@ -1,4 +1,4 @@
-# Installing the OneAgent
+# Hand-on lab #1: Installing the OneAgent
 
 ## Step 1: Connect windows VM via RDP
 
