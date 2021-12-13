@@ -1,4 +1,4 @@
-# Launch easyTravel application
+# Hand-on lab #2: Launch easyTravel application
 
 ## Step 1: Start easyTravel launcher
 
