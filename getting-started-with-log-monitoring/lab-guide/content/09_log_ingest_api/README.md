@@ -25,6 +25,40 @@ Dynatrace log monitoring 2.0 allows external log events through log ingest API. 
 4. Authenticate your API session (click on the lock icon on the right, enter your token and click "Authorize" button, then "Close")
 5. Click on "Try it out" button on the right
 6. Copy the following Json text and replace with the sample in the Request body section
+```
+[
+  {
+    "content": "batch: order processing",
+    "loglevel": "INFO",
+    "status": "INFO",
+    "log.source": "/var/log/batch/orderprocessing.log",
+    "job.name": "order processing",
+    "job.status": "success",
+    "job.duration": "112 minutes",
+    "order.processed": "1888"
+  },
+  {
+    "content": "batch: order processing",
+    "loglevel": "INFO",
+    "status": "INFO",    
+    "log.source": "/var/log/batch/orderprocessing.log",
+    "job.name": "order processing",
+    "job.status": "success",
+    "job.duration": "12 minutes",
+    "order.processed": "1100"
+  },
+  {
+    "content": "batch: order processing",
+    "loglevel": "ERROR",
+    "status": "ERROR",    
+    "log.source": "/var/log/batch/orderprocessing.log",
+    "job.name": "order processing",
+    "job.status": "failed",
+    "job.duration": "1 minutes",
+    "order.processed": "0"
+  }
+]
+``` 
 7. Click on "Execute"
 8. Verify the response return 204 OK
 9. verify log events show up in log viewer
