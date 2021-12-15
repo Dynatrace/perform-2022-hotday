@@ -1,6 +1,6 @@
 # Dynatrace Cloud Automation
 
-Dynatrace Cloud Automation currently offers
+## Dynatrace Cloud Automation currently offers
 
 <details><summary>Service-Level Objectives (SLO)</summary>
 <p>
@@ -46,9 +46,32 @@ Lifecycle orchestration provides a declarative way to define your delivery or op
 Dynatrace Cloud Automation can orchestrate different delivery or operational processes that are part of an application's lifecycle. Cloud Automation also provides an easy, event-based integration point for external tools (such as testing services, notification services, and incident management services) via webhooks. With external tool integration, you can set external tools to send events to Dynatrace, or set Dynatrace Cloud Automation to send events to external tools, which can then execute certain tasks in response.
 </p>
 </details>
-
+<br />
+<br />
 We have already discussed Service Level Objective (SLO's).
 
 Now we will delve into Cloud Automation Quality Gates.
 
-<img src="../../assets/images/CA_Use_Cases.png" width="200"/>
+<img src="../../assets/images/CA_Use_Cases.png" width="400"/>
+<br />
+<br />
+
+### SRE Best practices
+
+<img src="../../assets/images/SRE_best_Practice.png" width="400"/>
+<br />
+<br />
+
+### SLIs drive SLOs which inform SLAs
+
+- Service Level Indicators (SLIs)
+  - Percentage of an imporant metric against a criteria
+  - Example: Service Response Time p95 < 400ms
+- Service Level Objectives (SLOs)
+  - Success-% SLI over a timeframe
+  - Example: p95 < 400ms in 90% of the time over 30 days
+- Service Level Agreements (SLAs)
+  - What happens IF SLO is breached
+  - Example: Paying penalities, loosing customers ...
+- Error Budget
+  - How much more impact can we afford before violating SLO?
