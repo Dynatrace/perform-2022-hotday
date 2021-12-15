@@ -17,7 +17,7 @@ Projects used for this Session
 - [KIAB](https://github.com/keptn-sandbox/keptn-in-a-box)
 - [Jmeter Service](https://github.com/keptn/keptn/tree/master/jmeter-service#workloads)
 
-### What we have prepared for you today
+## What have we prepared for you 
 
 KIAB (Keptn in a Box)
 
@@ -33,11 +33,10 @@ KIAB (Keptn in a Box)
 
 ### How can you access your KIAB instance?
 
-Access your Dynatrace Tenant
-Go to Dashboards
-open the "☁ Autonomous Cloud Concepts with Keptn" Dashboard.
-
-Select link "🌐 KeptnInABox"
+1. Access your Dynatrace Tenant
+2. Go to Dashboards
+3. open the "☁ Autonomous Cloud Concepts with Keptn" Dashboard.
+4. Select link "🌐 KeptnInABox"
 
 <img src="../../assets/images/autonomous-cloud.png" width="500"/>
 
@@ -58,7 +57,8 @@ Welcome to KIAB.
 
 <img src="../../assets/images/KIAB.png" width="400"/>
 
-### Validate projects in the keptn bridge
+
+## Validating the projects in the keptn bridge
 
 Click on the "Bridge" link. This will open the keptn bridge.
 You should see the preloaded projects.
@@ -68,9 +68,14 @@ You should see the preloaded projects.
 You may need to run several pipelines to complete the deployments of the applications.
 Don't worry, we will walk you through the process.
 
-Validate each project has each stage deployed.
+Validate each project stage has been deployed.
 
-### Run Pipelines
+We will also validate each application is avaialble by navigating to the KIAB homepage.
+Then select each application link.
+
+<img src="../../assets/images/applinks.png" width="400"/>
+
+## Run Pipelines
 
 Click on **"Jenkins"**
 
@@ -87,15 +92,23 @@ After selecting the pipeline click **"build"**
 
 <img src="../../assets/images/Lab_1_deploy_order_application_1.png" width="500"/>
 
-### Order App Overview
+The first build will fail, this is normal, becasue the pipeline files are pulled from a github repo.
+Now, you should see "Build with parameters".
+
+<img src="../../assets/images/buildwithparams.png" width="400"/>
+
+We now have different options for each pipeline build.
+Instead of documenting each part here, we will walk through a few scenerios.
+
+## Order App Overview
 
 This application was built for demonstations of Dynatrace.  Here is the frontend.
 
-<img src="../../assets/images/orders.png" width="300"/>
+<img src="../../assets/images/orders.png" width="250"/>
 
 The overall application is made up of four Docker components: a frontend web UI and 3 backend services.  Once monitored by Dynatrace, a multi-tier service flow will be available as shown below.
 
-<img src="../../assets/images/dt-call-flow.png" width="500"/>
+<img src="../../assets/images/dt-call-flow.png" width="400"/>
 
 #### Pre-built Docker Images
 
@@ -118,25 +131,50 @@ This is a summary of the versions followed by a description of the problem scena
 
 #### Deploy dtdemos/customer-service:2.0.0
 
-<img src="../../assets/images/usecase1.png" width="500"/>
+<img src="../../assets/images/usecase1.png" width="300"/>
 
 ### Deploy dtdemos/order-service:2.0.0 
 
 Both these scenearios are enabled
 
-<img src="../../assets/images/usecase2.png" width="500"/>
+<img src="../../assets/images/usecase2.png" width="300"/>
 
 and...
 
-<img src="../../assets/images/usecase3.png" width="500"/>
+<img src="../../assets/images/usecase3.png" width="300"/>
 
-### Examine Dynatrace 
+## Examine Dynatrace 
 
-Now lets look at what we have discovered in Dynatrace.
+Now lets take a look at what we have discovered in Dynatrace.
 
 Open Dynatrace and navigate to **Hosts** in the menu and select the host.
 
-Here we can examine all the proceses automatically discovered by the Dynatrace oneAgent.
+### First, we must ensure the Host is tagged. 
+You should see these tags,
+
+<img src="../../assets/images/hosttags.png" width="400"/>
+
+If you do not see these tags, then we need to run a simple script to add the tags.
+These tags will be added as Environment tags on the host.
+
+Take these steps.
+1. Login to your EC2 instance via ssh
+2. Navigate to "keptn-in-a-box/resources/dynatrace/" directory
+
+    ```bash
+        cd keptn-in-a-box/resources/dynatrace/
+    ```   
+3. run this command.
+
+    ```bash
+        sudo ./hosttag.sh
+    ```
+
+After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
+
+
+
+### Next let's examine all the proceses automatically discovered by the Dynatrace oneAgent.
 
 <img src="../../assets/images/pre_host.png" width="400"/>
 
@@ -148,7 +186,7 @@ Next we can examine the Transactions and Services.
 
 Select **Transactions and Services** from the menu.
 
-<img src="../../assets/images/pre_services.png" width="400"/>
+<img src="../../assets/images/pre_services.png" width="300"/>
 
 You can also change the focus by using the _management zone_ filter.
 
@@ -156,15 +194,20 @@ Finally, we can also see how the KIAB configured Kubernetes cluster monitoring.
 
 Select **Kubernetes** from the menu.
 
-<img src="../../assets/images/pre_kube.png" width="400"/>
+<img src="../../assets/images/pre_kube.png" width="300"/>
 
-Pre-configured items also include:
+### Pre-configured items also include:
 
 1. Dashboards
 1. Request Attributes
 1. Calculated Service Metrics
 1. Management Zones
 1. Automatically Applied Tags
+1. Applications
+1. Problem notification
+1. process and service naming rules
+
+Due to to time constrainsts, we will visit each area as need during our working sessions.
 
 Now that we are more familiar with what we have running, let's continue to the next activity.
 
