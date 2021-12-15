@@ -52,13 +52,13 @@ We have already discussed Service Level Objective (SLO's).
 
 Now we will delve into Cloud Automation Quality Gates.
 
-<img src="../../assets/images/CA_Use_Cases.png" width="400"/>
+<img src="../../assets/images/CA_Use_Cases.png" width="500"/>
 <br />
 <br />
 
 ### SRE Best practices
 
-<img src="../../assets/images/SRE_best_Practice.png" width="400"/>
+<img src="../../assets/images/SRE_best_Practice.png" width="500"/>
 <br />
 <br />
 
@@ -75,3 +75,38 @@ Now we will delve into Cloud Automation Quality Gates.
   - Example: Paying penalities, loosing customers ...
 - Error Budget
   - How much more impact can we afford before violating SLO?
+
+
+### Our mission is to help everyone with their cloud automation journey
+
+<img src="../../assets/images/automation_journey.png" width="500"/>
+
+### Quality Gate (simple example)
+
+<img src="../../assets/images/QG_Example.png" width="500"/>
+
+### Quality Gate Jenkins Example
+
+<img src="../../assets/images/QG_Jenkins_Example.png" width="500"/>
+<br />
+
+## Exercises
+
+### No we will walk through the steps to synchronize a Monitored Service with Quality Gates using tags
+
+First Let's take a look at the Dynatrace project in the Keptn Bridge.
+This project should be empty.
+
+Lucky for us, we don't have to worry about connecting Cloud Automation to the Dynatrace Environment.
+This has already been done, as part of the environment automation.
+
+### Enable a quality gate for a Dynatrace monitored service
+
+In order the synchronize the monitored service, we need to create tags on the service.
+
+These are the tags we will need to create:
+- keptn_managed
+- keptn_service: <service_name>
+- keptn_project: dynatrace
+- keptn_stage: quality_gate
+
