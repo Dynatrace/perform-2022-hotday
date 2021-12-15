@@ -32,6 +32,7 @@ Dynatrace log monitoring 2.0 allows external log events through log ingest API. 
 
 ![RDP](../resources/lab09_03.jpg)
 ![RDP](../resources/lab09_04.jpg)
+![RDP](../resources/lab09_05.jpg)
 
 ## Step 3: Create a custom attribute
 
@@ -41,7 +42,7 @@ Dynatrace log monitoring 2.0 allows external log events through log ingest API. 
 4. Repeat step 3 with "job.name", "job.status", "order.processed"
 5. Save changes
 
-![RDP](../resources/lab09_05.jpg)
+![RDP](../resources/lab09_06.jpg)
 
 ## Step 4: Use custom attribute
 
@@ -51,4 +52,4 @@ Dynatrace log monitoring 2.0 allows external log events through log ingest API. 
 4. Review result table
 5. Ping to dashboard
 
-![RDP](../resources/lab09_06.jpg)
+![RDP](../resources/lab09_07.jpg)
