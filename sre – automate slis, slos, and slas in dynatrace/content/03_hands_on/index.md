@@ -18,6 +18,8 @@
 
 ![](https://user-images.githubusercontent.com/64021753/146395440-61c0ba0a-9049-4a4e-be99-fb67bfef197b.png)
 </br>
-7. Name the SLO or leave it as default for this example. Ensure metrics are filled in under the metric expresion section. We can also remove the management zone component in the 'Entity Selector' section and leave it is ```type("SERVICE")```. </br></br>
-8. Finally, preview the SLO and hit 'Create'
+7. Name the SLO or leave it as default for this example. Ensure metrics are filled in under the metric expresion section. We can also remove the management zone component in the 'Entity Selector' section.</br>
+8. Because we want a specific service, we can use the filter string and use an entityName operator along with the service type to zero in on a single service to evaluation. ```type("SERVICE"),entityName("easyTravel Customer Frontend")```. </br></br>
+9. Verify that only a single entity made it into the preview. 
+10. Finally, preview the SLO and hit 'Create'
 
