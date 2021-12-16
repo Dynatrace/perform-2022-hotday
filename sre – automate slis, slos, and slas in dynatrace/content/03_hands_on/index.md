@@ -12,5 +12,12 @@
 ```
 (100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())
 ```
-</br></br>
-![](../../assets/slo-wizard.png)
+</br>
+
+6. We’ve now entered the Dynatrace configuration wizard. Because we’re making a simple availability SLO, we can just click this button and Dynatrace will autofill the appropriate metrics to look for.</br>
+
+![](https://user-images.githubusercontent.com/64021753/146395440-61c0ba0a-9049-4a4e-be99-fb67bfef197b.png)
+</br>
+7. Name the SLO or leave it as default for this example. Ensure metrics are filled in under the metric expresion section. We can also remove the management zone component in the 'Entity Selector' section and leave it is ```type("SERVICE")```. </br></br>
+8. Finally, preview the SLO and hit 'Create'
+
