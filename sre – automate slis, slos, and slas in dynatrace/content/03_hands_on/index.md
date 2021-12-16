@@ -23,3 +23,4 @@
 9. Verify that only a single entity made it into the preview. 
 10. Finally, preview the SLO and hit 'Create'
 
+![](https://user-images.githubusercontent.com/64021753/146405813-34cc3121-5481-4339-8fa2-be2920d86e32.png)
