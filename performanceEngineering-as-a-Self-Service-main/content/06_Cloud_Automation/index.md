@@ -92,7 +92,7 @@ Now we will delve into Cloud Automation Quality Gates.
 
 ## Exercises
 
-### No we will walk through the steps to synchronize a Monitored Service with Quality Gates using tags
+### Now we will walk through the steps to synchronize a Monitored Service with Quality Gates using tags
 
 First Let's take a look at the Dynatrace project in the Keptn Bridge.
 This project should be empty.
@@ -103,10 +103,43 @@ This has already been done, as part of the environment automation.
 ### Enable a quality gate for a Dynatrace monitored service
 
 In order the synchronize the monitored service, we need to create tags on the service.
+By default these metrics (SLIs) are queried from a Dynatrace-monitored service entity with the tags
 
 These are the tags we will need to create:
 - keptn_managed
+- keptn_deployment: <primary> (optional)
 - keptn_service: <service_name>
 - keptn_project: dynatrace
 - keptn_stage: quality_gate
+
+<img src="../../assets/images/service_tags.png" width="500"/>
+
+If you use Keptn for the deployment of your artifacts using Keptn's Helm Service you will have these four tags automatically set and detected by Dynatrace. If you want to use other tags, you need to overwrite the SLI configuration (see below).
+
+### Now that we have our tags set, we can trigger evaluations on the services.
+
+First, let's check in the Keptn brige.
+If we select the "dynatrace" project, we should see your services.
+
+<img src="../../assets/images/dynatrace_services.png" width="500"/>
+
+### Next, We will utilize the Keptn "Web Service" for the lab.
+
+Go back to the KIAB home page and click the link "WebService" under the Keptn links.
+This will open the following page that will allow us to trigger evaluations.
+
+### Now we just need to change the values to match your tags.
+
+<img src="../../assets/images/keptn_web_service.png" width="500"/>
+
+### Then click "trigger evaluation"
+
+If we did everything correclty, we should see the evaluation performed for the quality-gate.
+
+<img src="../../assets/images/service_qg.png" width="500"/>
+
+Now that we understand how to tag service for evaluations, continue by tagging additional services for evaluation.
+
+Then trigger evaluations for these additional services.
+
 
