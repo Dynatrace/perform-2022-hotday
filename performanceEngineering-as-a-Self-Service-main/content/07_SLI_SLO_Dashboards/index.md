@@ -2,6 +2,10 @@
 
 Based on user feedback we learned that defining custom SLIs via the sli.yaml and then defining SLOs via slo.yaml can be challenging as one has to be familiar with the Dynatrace Metrics v2 API to craft the necessary SLI queries. As dashboards are a prominent feature in Dynatrace to visualize metrics, it was a logical step to leverage dashboards as the basis for Keptn's SLI/SLO configuration.
 
+## Use Cases
+
+<img src="../../assets/images/sli_use_cases.png" width="500"/>
+
 ## SLI/SLO Dashboard Layout and how it generates SLI & SLO definitions
 
 Here is a sample dashboard for our simplenode sample application:
