@@ -64,24 +64,6 @@ We have also configured this in the Jmeter script.
 
 <img src="../../assets/images/lab_4_jmeter_listener.png" width="500"/>
 
-### Change Jmeter Service
-
-Before we can use the backend listener, we need to change the Jmeter service.
-
-Go to your ssh client or use the built in command utility
-
-```bash
-cd ~/keptn-in-a-box/
-```
-
-Now we need to run the following command.
-
-```bash
-./04-set-jmeter.sh
-```
-We should see this output.
-
-<img src="../../assets/images/lab_4_script_output.png" width="500"/>
 
 ### Run Load Test
 
