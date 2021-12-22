@@ -34,6 +34,7 @@ Components:
 
 ![Prometheus Components](../../assets/images/prometheus.png)
 
-### Configure an Exporter
+### Connect the Alert Manager with Dynatrace
+
 ### Define an Alert
 ### Use PromQL

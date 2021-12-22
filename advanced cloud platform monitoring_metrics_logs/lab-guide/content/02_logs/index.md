@@ -46,17 +46,19 @@ curl -X POST -H "Host: activegate.domain.com" "https://<ADDRESS>:9999/e/<SaaS_Te
     "log.source": "/var/log/syslog",
     "dt.entity.host" : "<HOST ID>",
     "dt.entity.process_group_instance": "<PG_ID>"
+    "response":12
   },
   {
     "content": "example log content 2",
     "status" : "info",
     "log.source": "/var/log/syslog",
     "dt.entity.host" : "<HOST ID>",
-    "dt.entity.process_group_instance": "<PG_ID>"
+    "dt.entity.process_group_instance": "<PG_ID>",
+     "response":1
   }
 ]
 ```
-### Dashboard
+### Create a metric out of a logs
 
 
 ### Analyze and Alert
