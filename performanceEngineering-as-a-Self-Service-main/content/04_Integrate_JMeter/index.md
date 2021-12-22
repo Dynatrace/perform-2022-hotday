@@ -1,4 +1,4 @@
-## Integrate Jmeter 
+# Integrate Load Test tools with Dynatrace
 <img src="../../assets/images/jmeter.png" width="100"/>
 
 Previously we discussed the Load Test Request Attributes. Now we will expand on these concepts.
@@ -30,7 +30,9 @@ Request attributes enable you to filter your monitoring data based on defined ta
 
 <img src="../../assets/images/lab_4_load_test_headers.png" width="500"/>
 
-### Integrate Dynatrace with JMeter:
+<hr>
+
+## Integrate Dynatrace with JMeter:
 
 Within JMeter, use the HTTP Header Manager to add custom HTTP request headers. 
 You can use any custom HTTP headers to pass context information. In this example, 
@@ -65,7 +67,7 @@ We have also configured this in the Jmeter script.
 <img src="../../assets/images/lab_4_jmeter_listener.png" width="500"/>
 
 
-### Run Load Test
+## Run Load Test
 
 Now we need to run the **05-jmeter-test-order-application** pipeline in Jenkins.
 
@@ -73,11 +75,13 @@ Click **"build"** to initialize the pipeline. Refresh the page.
 
 Now we can select **"Build with Parameters"**
 
-Change the Deployment URL and click **"build"**
+Verify the Deployment URL and click **"build"**
 
 <img src="../../assets/images/lab_4_buildwparams.png" width="500"/>
 
-### Monitoring the metrics in Dynatrace
+<hr>
+
+## Monitoring the metrics in Dynatrace
 * Create a dashboard
 * For every metric:
     * Add a custom chart
@@ -92,8 +96,4 @@ Further Reading:
 
 ## Summary
 We learned how to integrate load testing with Dynatrace.
-
-## Questions and Answers?
-
-
 
