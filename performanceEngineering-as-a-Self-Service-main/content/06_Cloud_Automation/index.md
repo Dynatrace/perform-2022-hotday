@@ -8,7 +8,7 @@ Service-level objectives (SLOs) enable DevOps teams to accelerate and scale thei
 
 Dynatrace comes with native support for service-level objective (SLO) monitoring according to Site Reliability Engineering (SRE) fundamentals published by Google.
 
-#### SLO overview
+### SLO overview
 You can review the current health status, error budgets, target and warning, along with the timeframe of all your SLOs on the SLOs overview page.
 </p>
 </details>
@@ -33,7 +33,7 @@ Dynatrace offers a built-in release-analysis solution that helps you determine t
 <p>
 Automated release validation and quality gates ensure that high-quality code moves smoothly through the delivery pipeline and doesn't violate error budgets in production.
 
-#### What are quality gates?
+### What are quality gates?
 Quality gates are benchmarks in the software delivery lifecycle that define specific, measurable, and achievable success criteria that a service must meet before it is advanced to the next phase of the software delivery pipeline. Quality gates can validate any service-level objective (SLO), giving you the ability to ensure automated and consistent evaluation of software quality.
 
 Establishing clear, consistent, and effective quality gates that are automatically validated at each phase of the delivery pipeline is essential for improving software quality and speeding up delivery.
@@ -90,7 +90,9 @@ Now we will delve into Cloud Automation Quality Gates.
 <img src="../../assets/images/QG_Jenkins_Example.png" width="500"/>
 <br />
 
-## Exercises
+<hr>
+
+## Exercise
 
 ### Now we will walk through the steps to synchronize a Monitored Service with Quality Gates using tags
 

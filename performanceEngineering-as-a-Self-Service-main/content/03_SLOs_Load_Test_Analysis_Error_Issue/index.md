@@ -1,4 +1,4 @@
-## SLOs and Load Test Analysis Error Issue
+# SLOs and Load Test Analysis Error Issue
 
 In this lab we walk through how to create SLOs in Dynatrace that can be used in your Performance Testing and we will also troubleshoot why a Availability/Error SLO failed.
 
@@ -10,7 +10,7 @@ While an SLI is just a metric, an SLO just a threshold you expect your SLI to be
 
 “The earlier in the lifecycle we ensure SLIs meet their SLOs the better it will to ensure these service levels in production”.
 
-### Configuration
+## Configuration
 
 1.  Kick off Keptn Orders 2 Build
 1.  Create Availability/Error SLOs
@@ -37,7 +37,9 @@ Next, click the **Build** button.
 
 <img src="../../assets/images/lab_3_order_build.png" width="500"/>
 
-### Create Availability/Error SLOs
+<hr>
+
+## Create Availability/Error SLOs
 
 The Dynatrace Software Intelligence Platform delivers all the necessary Service-Level Indicators (SLIs) for defining your Service-Level Objectives (SLOs) and monitors the status and error budgets of those objectives. Whether you want to define an SLO for real user experience or for measuring your service availability, your Dynatrace monitoring environment already comes with the right tools for your Site Reliability Teams. You can get all the facts about the health of you critical business services with respect to Business and Service-Level Objectives (SLO), Service-Level Agreements (SLAs), and end-user experience
 
@@ -85,7 +87,9 @@ Use the follow settings for the **customer** SLO:
 
 When complete,  review the results.
 
-### Run Load Test
+<hr>
+
+## Run Load Test
 
 Open Jenkins.
 
@@ -193,16 +197,11 @@ This will bring us to the **Failure analysis** screen.   We can see all the fail
 
 <img src="../../assets/images/lab_3_analysis_oob_4.png" width="500"/>
 
-### Summary
+<hr>
+
+## Summary
 
 -  We learned how to create SLOs that can be used for your Performance Test Analysis
 -  We learned how to Analyze a detected problem by Dynatraces Davis AI 
 -  We covered the Performance Test Dashboard with Transaction Steps and SLOs and how you can use it for improving of your Performance Test Analysis
 -  We learned how to analyze Performance Test issue within Dynatrace and get to root cause in minutes
-
-### Questions and Answers? 
-
-
-
-
-

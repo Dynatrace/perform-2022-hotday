@@ -1,10 +1,10 @@
-## Load Test Analysis Performance Issue
+# Load Test Analysis Performance Issue
 
 Learn how to use Dynatrace features that support Performance testing for each phase: scripting, analysis, and reporting
 
 <img src="../../assets/images/lab_1_overview.png" width="500"/>
 
-Now that we have our KIAB installed. 
+Now that we have our Lab setup. 
 
 Let's start by viewing a dashboard.
 
@@ -18,7 +18,7 @@ Now you should see your Dashboard.
 
 <img src="../../assets/images/lab_1-acck-details.png" width="500"/>
 
-Next we will create a few configuration items and kick off a load test.
+Next we will need to create a few configuration items and kick off a load test.
 
 ### Configuration
 
@@ -51,7 +51,7 @@ Now we can create the **"evalservice"** tag.
 
 <img src="../../assets/images/lab1_service_tag.png" width="500"/>
 
-Let's also create a tag **"eval"** tag on the service
+Let's also create a tag **"eval"** tag on the same service
 
 ### Create Process Group Naming Rule (if not created)
 
@@ -81,9 +81,9 @@ Click **"Preview"** -> **"create rule"** -> **"save changes"**
 
 ### Architecture Validation - Service Flow
 
-As testers, we typically only test against the service endpoint. As performance engineers we should however understand what happens end-to-end with that request. Which other services does it call? How many round trips to the database does it make? Does service load balancing and failover work correctly? Do the caching layers work well? And do we have any bad architectural patterns such as a data-driven N+1 query problem?
+As testers, we typically only test against the service endpoint. As performance engineers we should however understand what happens end-to-end with each request. What other services does it call? How many round trips to the database does it make? Does service load balancing and failover work correctly? Do the caching layers work well? And do we have any bad architectural patterns such as a data-driven N+1 query problem?
 
-In Dynatrace, we analyze the Service Flow which shows us the full end-to-end flow of every request executed against our service endpoint. You can also apply filters to only focus on a particular test transaction, a specific time frame or compare the flow of failing vs non- failing transactions.
+In Dynatrace, we can analyze the Service Flow which shows us the full end-to-end flow of every request executed against our service endpoint. You can also apply filters to only focus on a particular test transaction, a specific time frame or compare the flow of failing vs non- failing transactions.
 
 Click **"Applications"** from the Main Navigation menu. Then click **My web application**.
 
@@ -112,7 +112,7 @@ Click **"build"** this initial build will fail.
 
 Refresh the page, now we can do a **"Build with Parameters"**
 
-verify the Deployment URL, this should match the IP address for your KIAB environment.
+verify the Deployment URL, this should match the IP address for your lab environment.
 
 You will also notice, this is where we are using the tag "evalservice" for the testing.
 
@@ -169,11 +169,11 @@ Click on **01_deploy_order_application** pipeline
 
 <img src="../../assets/images/Lab_1_deploy_order_application_1.png" width="500"/>
 
-Now we are going to push the **customer** version **2**.
+Now we are going to push the **customer** version **2.0.0**.
 
 Select **"Build with parameters"**
 
-- In the **customerimage** field we need to change the value at the end from 1 to **2**
+- In the **customerimage** field we need to change the value at the end from 1 to **2.0.0**
 - In the DEPLOY_TO field, change the dropdown box to **customer**
 
 Next, click the **"Build"** button.
@@ -288,7 +288,3 @@ In the **"Method hotspots"** screen click on **"Hotspots"** button.   This will 
 -  We learned what a Dynatrace Calculated Service Metric is,  how to use it,  and the importance for improving of your Performance Test Analysis
 -  We covered the Performance Test Dashboard with Transaction Steps and how you can use it for improving of your Performance Test Analysis
 -  We learned how to analyze Performance Test issue within Dynatrace and get to root cause in minutes
-
-### Questions and Answers? 
-
-

@@ -1,9 +1,9 @@
-## Automated Performance Test
+# Automated Performance Testing
 
 We previously discussed SLO's in Dynatrace. Now we will examine, in detail, more about SLO's and 
 how we can use both SLI's and SLO's with our deployment strategies.
 
-### Deployment automation 
+## Deployment automation 
 Deployment automation is about the automated implementation of your application’s build, deploy, test 
 and release process. In general, the automated deployment process is initiated whenever a developer 
 commits code to a software repository inside the version control system (VCS) such as Subversion or Git. 
@@ -17,7 +17,7 @@ passes all stages it is regarded to be of sufficient quality to be released into
 
 - [keptn](https://keptn.sh/)
 
-### What is keptn
+## What is keptn
 
 **Keptn** is an event-based control plane for continuous delivery and automated operations for 
 cloud-native applications.
@@ -26,7 +26,7 @@ cloud-native applications.
 Keptn traces every event and all resulting actions and provides real-time tracing information 
 and a powerful API enabling full visibility of every deployment and operations triggered via Keptn.
 
-## keptn bridge
+## The keptn bridge
 
 You can access the keptn bridge by opening the "Autonomous Cloud Concepts with Keptn" Dashboard in Dynatrace.
 Then simply select the "Keptn Bridge" link.
@@ -159,6 +159,8 @@ applications to a test environment, succeeded by triggering and evaluating the t
 
 <img src="../../assets/images/lab_5_ktap.png" width="500"/>
 
+<hr>
+
 ## Putting it all together.
 
 Let's discuss how we put these concepts into practice.
@@ -276,7 +278,4 @@ Go to Keptn's Bridge and see how Keptn has deployed the service into staging and
 The bridge also gives you access to the links of the deployed service.
 
 <img src="../../assets/images/lab_5_keptnbridgeflow.png" width="500"/>
-
-## Questions and Answers?
-
 

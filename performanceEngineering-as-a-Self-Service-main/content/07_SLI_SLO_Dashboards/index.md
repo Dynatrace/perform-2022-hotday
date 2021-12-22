@@ -82,7 +82,7 @@ First we need to tell keptn what Dashboard to use for the evaluation.
         ```
 <hr>
 
-### Next
+## Next
 
 Go to your Dynatrace tenant and click on "Dashboards".
 
@@ -107,7 +107,7 @@ Create this rule on the management zone.
 
 We need to configure the SLO tiles on the Dashboard.
 
-## SLO configuration stps will go here.....
+## configure SLO Tile steps will go here.....
 
 
 ### Now, we can execute the evaluation
