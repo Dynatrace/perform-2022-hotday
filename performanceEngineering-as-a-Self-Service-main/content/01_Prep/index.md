@@ -33,7 +33,8 @@ Projects used for this Session
 
 <img src="../../assets/images/autonomous-cloud.png" width="500"/>
 
-Optionally, you can also find the ip address, to the lab homepage, by loggining into your EC2 instance.
+Optionally, you can also find the ip address, to the lab homepage, by loggining into your EC2 instance with ssh, 
+from the Environments tab.
 Then run the following from the command prompt.
 
 ```bash
@@ -166,7 +167,7 @@ If you do not see these tags, then we need to run a simple script to add the tag
 These tags will be added as Environment tags on the host.
 
 Take these steps.
-1. Login to your EC2 instance via ssh
+1. Login to your EC2 instance via ssh, from the Environments tab
 2. Navigate to "keptn-in-a-box/resources/dynatrace/" directory
 
     ```bash
