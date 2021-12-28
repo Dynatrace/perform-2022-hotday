@@ -8,9 +8,9 @@ This is done via `Monitoring Configurations`, and once again we can use the UI o
 
 Using the UI, click `Add monitoring configuration` in the extension page.
 
-You will be greeted with a Wizard, hit `Add device`
+You will be greeted with a configuration wizard, hit `Add device`
 
-The settings are:
+The parameters are:
 
 * IP address: `10.0.0.8`
 * Port: `1024`
@@ -33,7 +33,7 @@ Give the configuration a name, and hit `Activate`
 
 ![snmp-config-ag](../../../assets/25-snmp-config-activate.png)
 
-You can have up to 100 SNMP Devices in a single monitoring configurations, and many monitoring configurations.
+You can have up to 100 SNMP Devices in a single monitoring configuration, and many monitoring configurations.
 
 ![snmp-config](../../../assets/26-snmp-config.png)
 
