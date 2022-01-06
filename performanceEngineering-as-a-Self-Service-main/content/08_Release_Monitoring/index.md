@@ -1,4 +1,4 @@
-# Release monitoring
+## Release monitoring
 
 The software product lifecycle of a release requires careful management of release risks. Also, as more and more components and versions are deployed, the frequency of releases in your organization increases, and manually collecting release-relevant data can easily become a bottleneck in your release automation pipeline and automated software lifecycle.
 Dynatrace offers a built-in release-analysis solution that helps you determine the following:
