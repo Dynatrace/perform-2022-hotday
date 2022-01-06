@@ -1,4 +1,4 @@
-# SLOs and Load Test Analysis Error Issue
+## SLOs and Load Test Analysis Error Issue
 
 In this lab we walk through how to create SLOs in Dynatrace that can be used in your Performance Testing and we will also troubleshoot why a Availability/Error SLO failed.
 
@@ -12,7 +12,7 @@ While an SLI is just a metric, an SLO just a threshold you expect your SLI to be
 
 ## Configuration
 
-1.  Kick off Keptn Orders 2 Build
+1.  Kick off Keptn Orders Build
 1.  Create Availability/Error SLOs
 1.  Run Load Test
 1.  Examine Performance Test Dashboard with Transaction Steps & SLOs
@@ -26,11 +26,11 @@ Click on **01_deploy_order_application** pipeline
 
 <img src="../../assets/images/Lab_1_deploy_order_application_1.png" width="500"/>
 
-Now we are going to push the **order** version **2**.
+Now we are going to push the **order** version **2.0.0**.
 
 Select **"Build with parameters"**
 
-- In the **orderimage** field we need to change the value at the end from 1 to **2**
+- In the **orderRelease** dropdown select **2.0.0**
 - In the **DEPLOY_TO field**, change the dropdown box to **order**
 
 Next, click the **Build** button.
