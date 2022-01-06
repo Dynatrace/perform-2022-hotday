@@ -38,3 +38,5 @@ With the facets selection in step 3, toggle the button of "Advanced query" at th
 
 Click on "Table options" button at the top of result section, select "host_name" or "dt.process.name", see the new table column show up. The view will stay. 
 ![RDP](../resources/lab04_05.jpg)
+
+[Next Lab](../05_create_log_metrics/README.md)

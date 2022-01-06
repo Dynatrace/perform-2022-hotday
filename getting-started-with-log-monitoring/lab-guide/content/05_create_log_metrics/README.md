@@ -32,3 +32,4 @@ In this lab, we will create custom metric based on log query result.
 
 ![RDP](../resources/lab05_02.jpg)
 
+[Next Lab](../06_dashboard_with_log_metric_tile/README.md)
