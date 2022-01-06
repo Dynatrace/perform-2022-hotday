@@ -19,4 +19,4 @@ Each participant has a windows VM. You will use your laptop to connect the VM vi
 
  ![RDP](../resources/lab01_02.jpg)
 
- ![Next](../02_launch_easytravel_app/README.md)
+ [Next Lab](../02_launch_easytravel_app/README.md)
