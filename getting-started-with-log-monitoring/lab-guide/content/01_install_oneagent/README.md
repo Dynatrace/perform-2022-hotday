@@ -18,3 +18,5 @@ Each participant has a windows VM. You will use your laptop to connect the VM vi
 4. Once the installation is complete, check your Dynatrace tenant for succesful agent installation. On the left hand navigation panel select `Deployment Status` under the `manage` section.
 
  ![RDP](../resources/lab01_02.jpg)
+
+ ![Next](../02_launch_easytravel_app/README.md)
