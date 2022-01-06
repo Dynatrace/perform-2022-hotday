@@ -24,5 +24,5 @@ it looks like this:
 ![RDP](../resources/lab06_01.jpg)
 
 
-
+[Next Lab](../07_create_log_event/README.md)
 
