@@ -1,4 +1,4 @@
-# Create Metrics from log queries
+# Generic Ingestion and Custom Attributes
 
 Now we've learned how to create log metrics, we can add custom defined attributes for additonal context and dimensions. Dynatrace Log Monitoring gives you the ability to define custom index log data attributes for log data that is ingested.
 
