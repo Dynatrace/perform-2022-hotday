@@ -15,7 +15,9 @@ By default, application logs are not added to log storage until you configure th
 
 ## Step 2: Verity logs are added
 
-Go to left navigation menus, click on "Logs" under "Observe and explore" folder.
+Wait for 2-3 minutues, go to left navigation menus, click on "Logs" under "Observe and explore" folder.
 You should see the logs show up in log viewer
 
 ![RDP](../resources/lab03_02.jpg)
+
+[Next Lab](../04_log_viewer/README.md)

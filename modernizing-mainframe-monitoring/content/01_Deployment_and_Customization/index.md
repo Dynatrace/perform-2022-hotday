@@ -21,7 +21,9 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 - Click on `Download Installer` (Step 2) OR Click on `Copy` and paste the download command into a DOS prompt, press `Enter`
 - Wait for the download to finish (can take a while)
 - Navigate to the folder containing the downloaded file in the DOS prompt (either your User directory or the Downloads folder)
-- `Copy` installation command from the Dynatrace Tenant (Step 3) and install with the default settings
+- `Copy` installation command from the Dynatrace Tenant (Step 3) 
+- Make sure that the name `exe`-File is correct, before you hit `Enter` 
+- Install with the default settings
 - Click on `Show Deployment Status` after the Installation has been successful
 
   ![ActiveGate](../../assets/images/MF_AG_Details.png)
@@ -46,12 +48,14 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 - Submit the zDC JCL in `<userid>.CI.R070300.JCL(ZDCJCL1)`
 - Check in sdsf if the job `AFVDZnnn` is running
 - Browse the job spool to check if the zDC has connected properly to the zRemote
+- If you find these messages in the spool, all should be good:
 
 ```
-ZDC955L Dynatrace connection being processed ZDC-Job/ID:AFVDZ731/Z731                  
-ZDC958L Dynatrace INIT completed, ZDC AgentId received ZDC-Job/ID:AFVDZ731/Z731        
-ZDC993I Opn1RFD:0008  /u/labuser/labusr2/ci/7.3build/log/dt_ZLOCAL1_Z731_50397350.0.log
+ZDC955L Dynatrace connection being processed ZDC-Job/ID:AFVDZ731/Z731           
+ZDC958L Dynatrace INIT completed, ZDC AgentId received ZDC-Job/ID:AFVDZ731/Z731 
+ZDC993I Opn1RFD:0008  /u/labuser/ci/7.3build/log/dt_ZLOCAL1_Z731_67175364.0.log 
 ```
+
 
 ### Step 4: Prepare CICS transaction
 - Submit the CICS JCL in dataset `<userid>.CI.R070300.JCL (Cnnn5301)`

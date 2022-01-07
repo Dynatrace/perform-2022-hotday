@@ -1,4 +1,4 @@
-# Dynatrace Cloud Automation
+## Dynatrace Cloud Automation
 
 ## Dynatrace Cloud Automation currently offers
 

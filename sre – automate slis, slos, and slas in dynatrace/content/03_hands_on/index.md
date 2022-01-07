@@ -5,6 +5,7 @@
 1. First, navigate and log in to your Dynatrace environment provided to you ahead of class. If you’re having issues, please raise your hand or ask an instructor for help. 
 2. Navigate to the SLO page found on your side menu inside Dynatrace.
 3. Click on add new SLO
+
 ![](../../assets/handson1.png)
 
 4. We’ve now entered the Dynatrace configuration wizard. Because we’re making a simple availability SLO, we can just click this button and Dynatrace will autofill the appropriate metrics to look for.
@@ -12,18 +13,20 @@
 ```
 (100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())
 ```
-</br>
+</br></br>
+![](../../assets/slo-wizard.png)
 
 6. We’ve now entered the Dynatrace configuration wizard. Because we’re making a simple availability SLO, we can just click this button and Dynatrace will autofill the appropriate metrics to look for.</br>
 
-![](https://user-images.githubusercontent.com/64021753/146395440-61c0ba0a-9049-4a4e-be99-fb67bfef197b.png)
+![](../../assets/ex1im1.png)
 </br>
+
 7. Name the SLO or leave it as default for this example. Ensure metrics are filled in under the metric expresion section. We can also remove the management zone component in the 'Entity Selector' section.</br>
 8. Because we want a specific service, we can use the filter string and use an entityName operator along with the service type to zero in on a single service to evaluation. ```type("SERVICE"),entityName("easyTravel Customer Frontend")```. </br></br>
 9. Verify that only a single entity made it into the preview. 
 10. Finally, preview the SLO and hit 'Create'
 
-![](https://user-images.githubusercontent.com/64021753/146405813-34cc3121-5481-4339-8fa2-be2920d86e32.png)
+![](../../assets/ex1im2.png)
 
 # Hands on #2 – Create a SLO for a specific service request
 ### Situation: The business and dev teams have recently introduced a new function in the application that calculates travel recommendations for customers visiting the website. The business has determined that they want a separate, and granular SLO to track this single function, instead of the service overall (which is what we just did in the previous hands on). They want to track an SLO with a 15% error budget.
@@ -31,3 +34,93 @@
 In order to do this, we’ll need to: 
 * Create 2 custom metrics for our new request: Total count, and success count
 * Define an SLO with success as the numerator and total count as denominator. 
+
+# Hands on #2 - Create an SLO for a specific service request
+
+### The business and dev teams have recently introduced a new function in the application that calculates travel recrecommendations for customers visiting the website. The business has determined that they want a separate, and granular SLO to track this single function, instead of the service overall (which is what we just did in the previous hands on). They want to track an SLO with a 15% error budget.In order to do this, we’ll need to: 
+### Create 2 custom metrics for our new request: Total count, and success count
+### Define an SLO with success as the numerator and total count as denominator. 
+
+1. Navigate to Services in the left-hand menu. The request we need to build an SLO for is inside our easyTravel Customer Frontend service.
+2. Find and click on easyTravel Customer Frontend. (Tip: You can search for the service in the filter bar)
+3. CLick on View dynamic requests so we can find the function we're looking for.
+4. Scroll down on this new page and identify the /CalculateRecommendations transaction.
+5. Click the analysis button to the right of the transaction, shown in the image below.
+</br></br>
+
+![](../../assets/Ex2Im1.png)
+
+</br></br>
+6. This will navigate you to the multidimensional analysis view. Under 'Configure View', change the Metric dropdown to 'Request count". This counts the <b>total</b> number of requests for this transaction. 
+7. Click on Create metric. Name your metric 'CalculateRecommendationsCount' and click create metric at the bottom of the create metric box.
+</br></br>
+
+![](../../assets/Ex2Im2.png)
+
+</br></br>
+8. For the second metric, change the dropdown to 'Successful request count". Name this metric 'Calculate Recommendations Success Count". Create the metric.
+9. Return to the SLO page by either navigating to a previous tab, or selecting 'Service-Level Objectives' from the left-hand menu. Click 'Add new SLO'.
+10. Name the new SLO. 
+11. To calculate this SLO, we will divide our success metric count by the total metric count. Your metric definition will look something like this (using your own metric IDs in place of the example):
+
+```
+(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())
+```
+
+12. Because we specific scope by selecting a specific service, we do not need to define it under the Entity Selector section. We can keep this field blank.
+13. For our success criteria, we can use a target of 99.75 and a warning of 99.95. 
+14. Evaluate the newly minted SLO and click create.
+
+# Hands-on #3 - Synthetic Monitoring SLO
+
+### You are a SRE tasked with tracking the uptime of your teams' applications and most important workflows from an outside-in view. You should provide an overall perspective as well as availability SLOs for specific applications and application groups.
+
+1. Navigate to the <b>Synthetic</b> page found on your side menu and click 'Create synthetic monitor button'. 
+2. Click 'Create a browser monitor' button.
+3. Type in www.google.com or any generic, easy to access address. Hit 'next'.
+4. Select <b>5min</b> as a frequency and <b>one location</b> (for example, Johannesburg), then click 'Next'.
+5. Review the synthetic test summary, then click 'Create Monitor'.
+6. Navigate back to the synthetic monitors list using the breadcrumb navigation or the side menu. Click the checkbox next to your monitor and select 'Duplicate' in the prompt box below. Enable the duplicated monitor.
+
+![](../../assets/ex3im1.png)
+
+![](../../assets/ex3im2.png)
+
+7. Create one more monitor, this time against a different URL (example: amazon.com). Once complete, you should have 3 monitors.
+
+![](../../assets/ex3im3.png)
+
+8. Select the two browser monitors running against google and click <b>Edit</b>.
+9. Click the 'Add tags to these monitors' checkbox. Add key: Sitetype and value: Search
+
+![](../../assets/ex3im4.png)
+
+10. Navigate to the Service-level Objectives page and add a new SLO. Click the 'Synthetic Availability' button to populate the fields below. 
+11. Remove the "mzName" filter, verify and create the SLO. Pin this to a dashboard to see results in real time. 
+Note: You should see type("SYNTHETIC_TEST") in the entity selector once you remove the management zone filter.
+12. Create a new SLO, following the steps outlined above in #10-11. This time, after removing the management zone filter, add the tag filter for the sitetype:search field we added earlier. Your entity selector should look like the following:
+
+```
+type("SYNTHETIC_TEST"),tag("Sitetype:Search")
+```
+13. Evaluate, create, and pin this new SLO to your dashboard.
+
+# Hands on #4 - Advanced SLO - Application Performance with template
+1. Under <b>'Digital Experience'</b> on the left-hand menu, find <b>'Web'</b> and navigate to the Applications screen.
+2. You will note thje <b>'My web application'</b> application that came out-of-the-box with Dynatrace. Remember this name, we will be using it later.
+3. Navigate to the <b>'Service-level Objective'</b> screen and create a new SLO.
+4. Select User Experience and provide a name for the SLO (in our example: EasyTravel UX)
+
+![](../../assets/ex4im1.png)
+
+5. Enter a filter under <b>Entity Selector</b>, using the below example. Note: We used the application name from step #2.
+
+```
+type(“APPLICATION”)entityName(“My web application”)
+```
+6. Preview the selection, verifying we see at least one application.
+7. Add a success criteria with a target of 99.98 and a warning of 99.99. 
+
+![](../../assets/ex4im2.png)
+
+8. Review the configuration and verify the values shown make sense. Our status will likely be under the target. That is okay. Create the SLO.

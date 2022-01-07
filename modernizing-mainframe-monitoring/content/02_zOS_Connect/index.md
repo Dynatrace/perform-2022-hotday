@@ -1,93 +1,51 @@
-## Metrics, Charts and Dashboards
+## Hands-on: z/OS Connect
 
-In this module you will learn how to to define Custom metrics, Charts and Dashboards.
+In this module you will learn how to to define a z/OS Connect Service using IBM z/OS Explorer.
 
-The goal is to create this sample Dashboard:
+The goal is to create a z/OS Connect Service and monitor it with the Dynatrace OneAgent for z/OS Java.
 
-   ![Sample](../../assets/images/IBM_zSeries_Dashboard.png)
 
-### Step 1: Create Dashboard
-- Open the Dynatrace tenant provided to you
-- Go to `Dashboards` and click on `Create Dashboard`
-- Provide Dashboard name `IBM zSeries Performance` and type `Create
-- This will bring you to an empty Dashboard
+### Step 1: Establish Connection to z/OS Connect Server
+- Open z/OS Explorer by double clicking the `zosxplorer` icon on the Desktop
 
-   ![Dashboard](../../assets/images/Dashboard.png)
+![z/OS Explorer](../../assets/images/zosexplorer.png)
 
-### Step 2: Create "Host Health" Chart
-- Drag & drop `Host health` tile into your Dashboard 
-- Keep all defaults
-- Click `Done`
+- Click on `Add` next to the `Credentials` pane
 
-### Step 3: Create "CICS Service" Chart
-- Go to your CICS service (`Transactions and Services -> HVDACnnn`)
-- Click on the three `...` right to the name of the CICS Service
-- Select `Pin to Dashboard`, select the `IBM zSeries Performance` Dashboard and `Pin`
+![Add Credentials](../../assets/images/Add_Credentials.png)
 
-  ![Pin](../../assets/images/Pin.png)
+- Provide your Credentials and click `OK`
 
-- Keep the defaults and click `Done` for the Services Chart
+![Provide Credentials](../../assets/images/Provide_Credentials.png)
 
-### Step 4: Create "LPAR CPU Utilization" Chart
-- Drag & Drop `Custom Chart` to your Dashboard 
-- You might need to click `Edit` if you are not yet Edit mode
-- Click `Configure Chart`
-- Under `add Metric` select Category `Hosts`
-- Under Metric select `z/OS General CPU Usage`
-- Keep defaults and select `Pin as new tile`
-- Select your Dashboard and `Pin`, then `Open Dashboard`
+- Select `DTVD` and click on `Edit`
 
-### Step 5: Create "LPAR 4HRA MSU" Chart
-- Drag & Drop `Custom Chart` to your Dashboard 
-- You might need to click `Edit` if you are not yet Edit mode
-- Click `Configure Chart`
-- Under `add Metric` select Category `Hosts`
-- Under Metric select `z/OS z/OS Rolling 4 hour MSU average`
-- Keep defaults and select `Pin as new tile`
-- Select your Dashboard and `Pin`, then `Open Dashboard`
+![Edit Connection](../../assets/images/Edit_Connection.png)
 
-### Step 6: Create Analysis Views for different Metrics
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select CPU Time, Sum, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Create metric as "CICS Sum CPU"
+- Provide your own User ID in the `Default User ID` field and click`OK`
 
-  ![SumCPU](../../assets/images/SumCPU.png)
+![Default User](../../assets/images/Change_DefaultUser.png)
 
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select CPU Time, Average, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Create metric as "CICS Avg CPU"
+- Select `ZOSCSRV` entry in the `z/OS Connect EE Servers` pane and choose `Connect`
 
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select Response Time, Maximum, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Create metric as "CICS Max Response Time"
+![Connect](../../assets/images/Connect_ZOSSRV.png)
 
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select Response Time, Average, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Create metric as "CICS Avg Response Time"
+- Select `Use Existing Credentials` and select the `DTVD` credentials you have previously created
 
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select Failure Rate, Average, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Create metric as "CICS Failure Rate"
+![Use Existing Credentials](../../assets/images/Signon_ZOSSRV.png)
+   
+- Provide your Credentials and click `OK`
 
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select Request Count, Count, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Save it as 'CICS Request Count'
+![Provide Credentials](../../assets/images/Signon.png)
+   
+   
+### Step 2: Create Service in IBM z/OS Explorer
+- go ahead with `Suba's` documentation
 
-### Step 7: Open your Dashboard and add Charts
-- Drag and drop a Custom Chart for each Metric created above
-- Select `Configure Custom Chart`
-- Select your metric from the dropdown (should contain CICS)
-- Click `Update Dashboard Tile`
-- Rearrange Tiles as needed
+### Step 3: ...
 
 ### You've arrived
-- You have successfully created a new Dashboard with your key Mainframe components! 
+- You have successfully created a z/OS Connect Service! 
 
 
 
