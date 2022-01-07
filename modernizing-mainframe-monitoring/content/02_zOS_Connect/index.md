@@ -5,7 +5,7 @@ In this module you will learn how to to define a z/OS Connect Service using IBM 
 The goal is to create a z/OS Connect Service and monitor it with the Dynatrace OneAgent for z/OS Java.
 
 
-### Step 1: Create z/OS Connect Service using z/OS Explorer
+### Step 1: Establish Connection to z/OS Connect Server
 - Open z/OS Explorer by double clicking the `zosxplorer` icon on the Desktop
 
 ![z/OS Explorer](../../assets/images/zosexplorer.png)
@@ -30,7 +30,7 @@ The goal is to create a z/OS Connect Service and monitor it with the Dynatrace O
 
 ![Connect](../../assets/images/Connect_ZOSSRV.png)
 
-- Select `Use Existing Credentials` and select the `DTVD` credentials you previosly created
+- Select `Use Existing Credentials` and select the `DTVD` credentials you have previously created
 
 ![Use Existing Credentials](../../assets/images/Signon_ZOSSRV.png)
    
@@ -39,11 +39,10 @@ The goal is to create a z/OS Connect Service and monitor it with the Dynatrace O
 ![Provide Credentials](../../assets/images/Signon.png)
    
    
-### Step 2: Create "Host Health" Chart
-- Drag & drop `Host health` tile into your Dashboard 
-- Keep all defaults
-- Click `Done`
+### Step 2: Create Service in IBM z/OS Explorer
+- go ahead with `Suba's` documentation
 
+### Step 3: ...
 
 ### You've arrived
 - You have successfully created a z/OS Connect Service! 
