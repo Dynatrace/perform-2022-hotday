@@ -1,4 +1,4 @@
-# Introduction
+## Introduction
 
 ## Welcome to Dynatrace HotDay
 

@@ -26,6 +26,6 @@ easyTravel demo app has build-in problem patterns. In this lab, we will turn on 
 it looks like this:
 ![RDP](../resources/lab07_02.jpg)
 
-
+[Next Lab](../09_log_ingest_api/README.md)
 
 

@@ -1,4 +1,4 @@
-### Bonus Round
+## Analysis in Dynatrace
 
 If time permits during our session we have created a few more exercises/topics to cover. 
 

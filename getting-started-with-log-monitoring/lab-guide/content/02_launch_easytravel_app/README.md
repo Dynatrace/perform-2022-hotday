@@ -11,3 +11,4 @@ if the app is launched successfully, it should looks like this:
 ![RDP](../resources/lab02_01.jpg)
 
 
+[Next Lab](../03_add_easytravel_app_log/README.md)

@@ -1,4 +1,4 @@
-# Automated Performance Testing
+## Automated Performance Testing
 
 We previously discussed SLO's in Dynatrace. Now we will examine, in detail, more about SLO's and 
 how we can use both SLI's and SLO's with our deployment strategies.
@@ -278,4 +278,21 @@ Go to Keptn's Bridge and see how Keptn has deployed the service into staging and
 The bridge also gives you access to the links of the deployed service.
 
 <img src="../../assets/images/lab_5_keptnbridgeflow.png" width="500"/>
+
+## Exercise
+
+Now that we have a basic understanding of the control plane, let's run through a quality gate example.
+For this exercise, we will use the SockShop application.
+
+Go to "Jenkins"
+
+We are going to run the "Pipeline 01.2-Sockshop Delivery"
+
+1. Select "Build with Parameters"
+    Now we are going to deploy the "0.12.2" version of the carts application.
+2. Select "0.12.2" for the release.
+3. Select "carts" for "DEPLOY_TO".
+4. Now click the "build" button.
+
+<imagehere>
 

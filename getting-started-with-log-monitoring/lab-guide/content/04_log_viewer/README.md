@@ -12,7 +12,7 @@ Click on "filter" field, select "content", type "credit card" and hit enter. How
 ## Step 2: Filter by facet
 
 1. Remove the content filter from the last step. 
-2. Select "error" under "status facet list. how many records return?
+2. Select "warn" under "status facet list. how many records return?
 
 ![RDP](../resources/lab04_02.jpg)
 
@@ -22,7 +22,7 @@ Click on "filter" field, select "content", type "credit card" and hit enter. How
 
 Facets are generated automatically by Dynatrace for build-in list properties such as "level", "status", "process.name". 
 
-1. with the "error" facet select from the step 2, select another facet such as "apache web server easytravel" in "dt.process.name"
+1. with the "warn" facet select from the step 2, select another facet in "dt.process.name" (e.g "apache web server easytravel")
 
 ![RDP](../resources/lab04_03.jpg)
 
@@ -38,3 +38,5 @@ With the facets selection in step 3, toggle the button of "Advanced query" at th
 
 Click on "Table options" button at the top of result section, select "host_name" or "dt.process.name", see the new table column show up. The view will stay. 
 ![RDP](../resources/lab04_05.jpg)
+
+[Next Lab](../05_create_log_metrics/README.md)

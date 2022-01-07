@@ -1,4 +1,4 @@
-# Integrate Load Test tools with Dynatrace
+## Integrate Load Test tools with Dynatrace
 <img src="../../assets/images/jmeter.png" width="100"/>
 
 Previously we discussed the Load Test Request Attributes. Now we will expand on these concepts.
