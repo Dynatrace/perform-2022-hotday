@@ -11,6 +11,7 @@ The goal is to create a z/OS Connect Service and monitor it with the Dynatrace O
 ![z/OS Explorer](../../assets/images/zosexplorer.png)
 
 - Click on `Add` next to the `Credentials` window
+
 ![Add Credentials](../../assets/images/Add_Credentials.png)
 
 - Provide your Credentials and click `OK`
