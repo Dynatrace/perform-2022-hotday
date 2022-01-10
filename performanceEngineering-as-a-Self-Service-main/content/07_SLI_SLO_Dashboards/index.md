@@ -107,10 +107,32 @@ Create this rule on the management zone.
 
 We need to configure the SLO tiles on the Dashboard.
 
-## configure SLO Tile steps will go here.....
+Let's walk through this as a class.
 
-
-### Now, we can execute the evaluation
+### Execute the evaluation
 
 Go to Jenkins and run the "06-qualitygate-sli-dashboard".
-You should be familiar with how this is done.
+
+Or
+
+We can trigger the evaluation by using the **keptn web service**
+
+<img src="../../assets/images/trigger_cart_eval.png" width="500"/>
+
+Give it a few minutes to see the evaluation performed in the Keptn bridge.
+
+We can see the evaluation for the **SockShop** project.  Note, yours may pass.
+
+<img src="../../assets/images/cart_eval.png" width="500"/>
+
+Drilling into the project, we can navigate to the Cart Service Heatmap. 
+
+This will show all the SLI's from the dashbaord and the overall SLO scores.
+
+<img src="../../assets/images/cart_heatmap.png" width="500"/>
+
+<hr>
+
+### Summary
+
+- How one can setup a dashbaord for SLI/SLO evaluations
