@@ -125,7 +125,7 @@ type(“APPLICATION”)entityName(“My web application”)
 
 8. Review the configuration and verify the values shown make sense. Our status will likely be under the target. That is okay. Create the SLO.
 
-# Hands on #7 - Creating Infrastructure SLOs
+# Hands on #6 - Creating Infrastructure SLOs
 
 ### Large Insurance Company utilizes Dynatrace SLOs to monitor their Infrastructure.  
 ### Objective:
@@ -156,7 +156,7 @@ builtin:host.cpu.usage
 
 ![](../../assets/ex5im4.png)
 
-# Hands on #8 - Creating an SLO Dashboard
+# Hands on #7 - Creating an SLO Dashboard
 
 ### Having a great dashboard can help your organization understand the impact performance can have on the overal health of your application. Incorporating SLOs into those dashboards ties together what we learned with the dashboarding capabilities within Dynatrace.
 
