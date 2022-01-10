@@ -42,6 +42,18 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 
   ![3.4](../../assets/images/34.png)
 
+- Type `<userid>.**.ZDC*` as dataset mask and press `Enter` (<userid> is your personal User ID!)
+
+  ![3.4](../../assets/images/ZDCSYSIN34.png)
+  
+- Type `e` left to the dataset
+
+  ![3.4](../../assets/images/34Edit.png)
+ 
+- Type `e` left to the member `ZDCSYIN1`
+
+  ![3.4](../../assets/images/34EditMember.png)
+  
 - Edit the SYSIN for the zDC parameters - `<userid>.CI.R070300.ZDCSYSIN(ZDCSYIN1)`
 - Provide the IP-Address of your Mainframe ActiveGate and Port 8898 in the DTAGTCMD string
 - Note: the IP-Address is the one of your VM (the one shown in the titlebar of your RDP-Session)
