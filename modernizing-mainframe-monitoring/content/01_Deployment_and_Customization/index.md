@@ -81,6 +81,13 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 
   ![Submit](../../assets/images/SubmitZDC.png)
 
+- Press `F3`
+
+- Type `s.st` in the Command Line
+
+![SDSF](../../assets/images/SDSFInit.png)
+
+
 - Check in sdsf if the job `AFVDZnnn` is running
 - Browse the job spool to check if the zDC has connected properly to the zRemote
 - If you find these messages in the spool, all should be good:
