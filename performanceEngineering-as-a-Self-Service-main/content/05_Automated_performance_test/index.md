@@ -343,8 +343,10 @@ Now Let's trigger the build for cart version **0.12.3** as we have previously do
 
 <hr>
 
-### Outcome
+### Summary
 
-We have just illustrated how one would use quality gates as part of agile development to catch bad code.
-
-This prevents bad code from being deployed and allows the developers to isolate the problem and deploy the fix with an agile approach.
+- Understaning of deployment automation with Keptn
+- illustrated how one would use quality gates as part of agile development to catch bad code.
+- prevents bad code from being deployed to next stage
+- illustrates how you can isolate the bad thing that happened
+- allows the developers to isolate the problem and deploy the fix with an agile approach.
