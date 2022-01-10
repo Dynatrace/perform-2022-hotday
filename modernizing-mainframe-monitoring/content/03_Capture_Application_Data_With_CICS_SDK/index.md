@@ -52,8 +52,8 @@ If RC Not Equal ZERO
 - Check if the Compile & Link ended with RC=0 in all steps 
 - Go to your CICS session or open a new session and logon to CICS with `l HVDACnnn` 
 - Click on Keypad and `Clr`
-- Make a newcopy using `cemt s prog(ADKCOBOL) ne`
-- Your new ADKCOBOL program version is active now
+- Make a newcopy using `cemt s prog(EDUCHAN) ne`
+- Your new EDUCHAN program version is active now
  
 ### Step 2: Define Request Attribute for your Mainframe Data
 
