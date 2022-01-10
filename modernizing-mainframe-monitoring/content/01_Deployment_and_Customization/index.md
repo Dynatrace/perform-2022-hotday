@@ -30,13 +30,17 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 
 ### Step 3: Prepare and start the zDC
 - Double click on the X3270 Session called `Perform` on the Desktop
-- Logon to ISPF with `logon <userid>` using the Userid provided to you 
+- Logon to ISPF with `logon <userid>` using the Userid and Passwordprovided to you 
 
   ![LogonISPF](../../assets/images/Logon_ISPF.png)
 
-- Type `ispf` and navigate to `3.4`
+- Type `ispf`
 
   ![ISPF](../../assets/images/ISPF.png)
+
+- Navigate to `3.4`
+
+  ![3.4](../../assets/images/34.png)
 
 - Edit the SYSIN for the zDC parameters - `<userid>.CI.R070300.ZDCSYSIN(ZDCSYIN1)`
 - Provide the IP-Address of your Mainframe ActiveGate and Port 8898 in the DTAGTCMD string
