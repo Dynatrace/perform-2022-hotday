@@ -71,7 +71,7 @@ ZDC993I Opn1RFD:0008  /u/labuser/ci/7.3build/log/dt_ZLOCAL1_Z731_67175364.0.log
   ![LogonCICS](../../assets/images/Logon_CICS.png)
 
 - Click on Keypad and `Clr Scrn`
-- Make a newcopy using `cemt s prog(ADKCOBOL) ne`
+- Make a newcopy using `cemt s prog(EDUCHAN) ne`
  
   ![newcopy](../../assets/images/newcopy.png)
 
