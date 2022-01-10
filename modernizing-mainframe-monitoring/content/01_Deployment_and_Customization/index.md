@@ -61,11 +61,13 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
   ![ZDCSYSIN](../../assets/images/ZDCSYSIN.png)
 
 - Keep all other parameters as they are 
-- Type `save` in the Command line
+- Type `exit` in the Command line or just press the `F3` function key (this will save the file and exit from the edit session)
 
   ![Save](../../assets/images/SaveZDCSYSIN.png)
  
 - Submit the zDC JCL in `<userid>.CI.R070300.JCL(ZDCJCL1)`
+
+  ![Save](../../assets/images/SaveZDCSYSIN.png)
 
 - Check in sdsf if the job `AFVDZnnn` is running
 - Browse the job spool to check if the zDC has connected properly to the zRemote
