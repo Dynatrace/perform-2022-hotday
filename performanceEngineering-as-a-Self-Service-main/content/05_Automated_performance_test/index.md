@@ -279,6 +279,8 @@ The bridge also gives you access to the links of the deployed service.
 
 <img src="../../assets/images/lab_5_keptnbridgeflow.png" width="500"/>
 
+<hr>
+
 ## Exercise
 
 Now that we have a basic understanding of the control plane, let's run through a quality gate example.
@@ -294,5 +296,55 @@ We are going to run the "Pipeline 01.2-Sockshop Delivery"
 3. Select "carts" for "DEPLOY_TO".
 4. Now click the "build" button.
 
+The **0.12.2** build will deploy an image that will create high response times.
+
 <imagehere>
 
+Next, let's check the deployment in the Keptn Bridge.
+
+We should see the deployment to **dev**, however, with the longer than normal response times.
+The Quality Gate evaluation should fail.
+
+We can see the evaluation failed the SLO evaluation.
+
+<img src="../../assets/images/carts_failure.png" width="400"/>
+
+The control plane prevents the bad deployment from being deployed to staging. 
+
+Keptn quality gates provide you a declarative way to define quality criteria of your service. Therefore, Keptn will collect, evaluate, and score those quality criteria to decide if a new release is allowed to be promoted to the next stage or if it has to be held back.
+
+We can examine the effects by navigating back to the lab home page. then select the **Delivery pipeline overview** for the Sockshop app.
+
+<img src="../../assets/images/pipeline_overview.png" width="500"/>
+
+Here we will see the bad build deployed to Dev with 1000 MS response time.
+
+<img src="../../assets/images/bad_pipeline.png" width="400"/>
+
+Now, we can go into Dynatrace to find the root cause.
+
+There may be enough data for Dynatrace to present a problem card.
+
+<img src="../../assets/images/cart_problem.png" width="400"/>
+
+Drilling into the Response time problem, we can click on the "ItemsController"
+
+The click the "addToCart" under "Requests contributing to this problem".
+
+Now we can clearly see the response time degridation introduced by the bad build.
+
+<img src="../../assets/images/cart_problem_detail.png" width="400"/>
+
+The Dynatrace AI (@Davis) also understand the deployment and illustatrates the event integration with Dynatrace.
+
+<img src="../../assets/images/cart_problem_deployment.png" width="400"/>
+
+Now Let's trigger the build for cart version **0.12.3** as we have previously done for the **0.12.2** build.
+
+<hr>
+
+### Outcome
+
+We have just illustrated how one would use quality gates as part of agile development to catch bad code.
+
+This prevents bad code from being deployed and allows the developers to isolate the problem and deploy the fix with an agile approach.
