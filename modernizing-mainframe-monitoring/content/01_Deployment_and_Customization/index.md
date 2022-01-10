@@ -67,8 +67,6 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 
 - Press `F3` and `F3` to get to the Main screen
 
-  ![Main](../../assets/images/SubmitZDC.png)
-
 - Type `<userid>.**.JCL` as dataset mask and press `Enter` (`<userid>` is your personal User ID!)
 
   ![3.4](../../assets/images/EditZDC.png)
