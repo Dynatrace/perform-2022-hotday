@@ -42,7 +42,7 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 
   ![3.4](../../assets/images/34.png)
 
-- Type `<userid>.**.ZDC*` as dataset mask and press `Enter` (<userid> is your personal User ID!)
+- Type `<userid>.**.ZDC*` as dataset mask and press `Enter` (`<userid>` is your personal User ID!)
 
   ![3.4](../../assets/images/ZDCSYSIN34.png)
   
