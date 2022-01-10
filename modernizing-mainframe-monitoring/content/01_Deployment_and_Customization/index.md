@@ -50,7 +50,7 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 
   ![3.4](../../assets/images/34Edit.png)
  
-- Type `e` left to the member `ZDCSYIN1`
+- Type `e` left to the member `ZDCSYIN1` to `edit` the member
 
   ![3.4](../../assets/images/34EditMember.png)
   
@@ -64,10 +64,24 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 - Type `exit` in the Command line or just press the `F3` function key (this will save the file and exit from the edit session)
 
   ![Save](../../assets/images/SaveZDCSYSIN.png)
+
+- Press `F3` and `F3` to get to the Main screen
+
+  ![Main](../../assets/images/SubmitZDC.png)
+
+- Type `<userid>.**.JCL` as dataset mask and press `Enter` (`<userid>` is your personal User ID!)
+
+  ![3.4](../../assets/images/EditZDC.png)
  
+- Type `b` left to the dataset `<userid>.CI.R070300.JCL` to `browse` the dataset
+
+  ![Browse](../../assets/images/BrowseZDC.png)
+
+- Press `F8` to page down
+  
 - Submit the zDC JCL in `<userid>.CI.R070300.JCL(ZDCJCL1)`
 
-  ![Save](../../assets/images/SaveZDCSYSIN.png)
+  ![Submit](../../assets/images/SubmitZDC.png)
 
 - Check in sdsf if the job `AFVDZnnn` is running
 - Browse the job spool to check if the zDC has connected properly to the zRemote
