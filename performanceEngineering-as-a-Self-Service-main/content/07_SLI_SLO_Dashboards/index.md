@@ -55,6 +55,12 @@ First we need to tell keptn what Dashboard to use for the evaluation.
 
 ### Environment setup steps:
 1. open ssh
+1. change to the root user
+    1. execute
+        ```bash
+            #: sudo su - 
+        ```
+        Use the password from your lab environments page.    
 1. validate the environment variables
     1. execute   
         ```bash
@@ -75,11 +81,16 @@ First we need to tell keptn what Dashboard to use for the evaluation.
         ```    
 
 1. Next, navigate to this directory, ~/keptn-in-a-box/resources/dynatrace/scripts
+    1. execute
+        ```bash
+            #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
+        ```
 1. Run the script setdbenv.sh
     1. execute
         ```bash
-            #: ./setdbenv.sh 
+            #: ./setdbenv.sh <domain>
         ```
+        You can find your domain by navigating to the lab home page.
 <hr>
 
 ## Next
@@ -88,7 +99,19 @@ Go to your Dynatrace tenant and click on "Dashboards".
 
 The Dashbaord we are looking for is labeled "KQG;project=sockshop;stage=staging;service=carts"
 
-Some of the tiles may be blank.
+1. Toggle on **"Show all tenant dashboards"**
+1. Clone the dashbaord
+1. Select the cloned dashboard
+1. rename the dashboard
+    1. click edit
+    1. click the "pencil" icon for the dashbaord header
+    1. remove "-clone" from the header then click the "check-mark"
+
+Now if you navigate back to dashbaords, you should see this dashbaord with the student id as the owner.
+
+<img src="../../assets/images/dash_list.png" width="500"/>
+
+select the dashbaord.
 
 <img src="../../assets/images/sli_kqg_db.png" width="500"/>
 
@@ -103,13 +126,26 @@ Create this rule on the management zone.
 
 <img src="../../assets/images/mz_rule.png" width="500"/>
 
-### Next
+### Next, create the SLO
 
 We need to configure the SLO tiles on the Dashboard.
 
-Let's walk through this as a class.
+1. make sure you have selected the "keptn: sockshop staging" management zone.
+1. Go to **"Service-level objectives"**
+1. Create the SLO type **"Service-level availability"**
+1. set timeframe to **"Last 30 minutes"**
+1. use **"mzName("Keptn: sockshop staging"),type("SERVICE")"** as the entity selector
+1. Now navigate back to the dashboard
+1. Click edit
+1. Select the SLO tile
+1. pick the SLO you just created from the drop down
+1. click **"Done"**
 
-### Execute the evaluation
+Now you should data in the SLO tile.
+
+<img src="../../assets/images/slo_tile.png" width="300"/>
+
+### Next, Execute the evaluation
 
 Go to Jenkins and run the "06-qualitygate-sli-dashboard".
 
@@ -121,7 +157,7 @@ We can trigger the evaluation by using the **keptn web service**
 
 Give it a few minutes to see the evaluation performed in the Keptn bridge.
 
-We can see the evaluation for the **SockShop** project.  Note, yours may pass.
+We can see the evaluation for the **SockShop** project.
 
 <img src="../../assets/images/cart_eval.png" width="500"/>
 
