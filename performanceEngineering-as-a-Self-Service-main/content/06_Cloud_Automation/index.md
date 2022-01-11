@@ -116,9 +116,21 @@ These are the tags we will need to create:
 
 <img src="../../assets/images/service_tags.png" width="500"/>
 
+<hr>
+
 If you use Keptn for the deployment of your artifacts using Keptn's Helm Service you will have these four tags automatically set and detected by Dynatrace. If you want to use other tags, you need to overwrite the SLI configuration (see below).
 
-### Now that we have our tags set, we can trigger evaluations on the services.
+If we navigate to a service, we simply need to add the tag **"keptn_managed"**, as the other tags should have been added.
+
+Next, we need to clone and edit a dashbaord.
+
+Look for the **"KQG;project=dynatrace;stage=quality-gate;service=www"** and clone this dashbaorad.
+
+Now we will need to adjust the dashbaord for the service we are targetting.
+
+<hr>
+
+### Now that we have our tags and dashbaord set, we can trigger evaluations on the services.
 
 First, let's check in the Keptn brige.
 If we select the "dynatrace" project, we should see your services.
