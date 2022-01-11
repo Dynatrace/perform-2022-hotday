@@ -91,7 +91,7 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 
   ![SDSF](../../assets/images/SDSFPrefix.png)
 
-- Browse your zDC's job spool to check if it has connected properly to the zRemote (your zDC is the one containing your three didgit ID, e.g. 731)
+- Browse your zDC's job spool with command `s` (select) to check, if it has connected to the zRemote (your zDC is the one containing your three didgit ID, e.g. 731)
 
   ![Spool](../../assets/images/ZDCSpool.png)
 
