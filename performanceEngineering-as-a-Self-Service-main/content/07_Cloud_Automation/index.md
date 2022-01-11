@@ -94,7 +94,7 @@ Now we will delve into Cloud Automation Quality Gates.
 
 ## Exercise
 
-### Now we will walk through the steps to synchronize a Monitored Service with Quality Gates using tags
+Let's walk through the steps to synchronize a Monitored Service with Quality Gates using tags
 
 First Let's take a look at the Dynatrace project in the Keptn Bridge.
 This project should be empty.
@@ -128,18 +128,20 @@ Look for the **"KQG;project=dynatrace;stage=quality-gate;service=www"** and clon
 
 Now we will need to adjust the dashbaord for the service we are targetting.
 
+For simplicity sake, we will walk through this together.
+
 <hr>
 
 ### Now that we have our tags and dashbaord set, we can trigger evaluations on the services.
 
 First, let's check in the Keptn brige.
-If we select the "dynatrace" project, we should see your services.
+If we select the "dynatrace" project, we should see the service you tagged.
 
-<img src="../../assets/images/dynatrace_services.png" width="500"/>
+<img src="../../assets/images/dynatrace_services.png" width="300"/>
 
 ### Next, We will utilize the Keptn "Web Service" for the lab.
 
-Go back to the KIAB home page and click the link "WebService" under the Keptn links.
+Go back to the KIAB home page and click the link **"WebService"** under the Keptn links.
 This will open the following page that will allow us to trigger evaluations.
 
 ### Now we just need to change the values to match your tags.
@@ -152,7 +154,7 @@ If we did everything correclty, we should see the evaluation performed for the q
 
 <img src="../../assets/images/service_qg.png" width="500"/>
 
-Now that we understand how to tag service for evaluations, continue by tagging additional services for evaluation.
+Now that we understand how to tag a service for evaluations, continue by tagging additional services for evaluation.
 
 Then trigger evaluations for these additional services.
 
