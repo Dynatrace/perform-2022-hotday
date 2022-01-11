@@ -137,7 +137,7 @@ kubectl edit cm fluentd-conf
 ```
 To utilize our new log stream pipeline we need to delete the fluentd pods
 ```
-kubectl delete pods -n dynatrace -l app=fluentd-pipeline
+kubectl delete pods -n nondynatrace -l app=fluentd-pipeline
 ```
 We need to look at the produced logs of our log stream pipeline on the pod collecting the logs of the Nginx ingress
 We need to select the fluentd pod running to the same node as Nginx ingress controller
