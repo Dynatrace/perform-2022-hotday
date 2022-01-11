@@ -132,5 +132,18 @@ ZDC993I Opn1RFD:0008  /u/labuser/ci/7.3build/log/dt_ZLOCAL1_Z731_67175364.0.log
 
    ![Conf](../../assets/images/conf.png)
 
+### Step 5: Prepare CICS Program `EDUCHAN`
+- Open a new X3270 session by double clicking the `Perform` icon and logon to CICS with `l HVDACnnn` (`nnn` is your theree digit ID)
+- Click on Keypad and `Clr`
+- Type `cemt s prog(EDUCHAN)` (this will display the current length and use count, after starting the CICS region it should all be zero)
+
+  ![CEMT](../../assets/images/firstcemt.png)
+
+- Make a `newcopy` of the EDUCHAN program version by adding `ne` after `cemt s prog(EDUCHAN)` (the length should change because the program has been loaded)
+
+  ![newcopy](../../assets/images/firstnewcopy.png)
+
+- Your `EDUCHAN` program version is active now
+
 ### You've arrived
 - You have successfully deployed and configured Dynatrace for z/OS! 
