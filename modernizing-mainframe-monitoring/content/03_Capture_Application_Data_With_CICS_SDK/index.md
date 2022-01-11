@@ -88,8 +88,8 @@ Make sure, that the Request Attribute is defined appropriately with the correct 
 - Go to your Dynatrace Tenant
 - You will see the recent EDUCHAN PurePaths again as Requests under the CICS service (`Transactions and Services -> HVDACnnn -> View PurePaths`)
 - Please check only the PurePaths for the latest transactions (because only these contain our SDK code and the Request Attribute)
-- Differently to the Deployment Hands-On, you will see the input strings as Request Attribute `InputString`
-- In addition we are now getting an exception in Dynatrace, if InputString is `***`
+- You will now see the input strings as Request Attribute `InputString`
+- In addition we are getting an exception in Dynatrace, if InputString is `***`
 - Make sure, that you have used at least one value of `***` for the input string
 
 
