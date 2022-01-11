@@ -206,6 +206,8 @@ Next, Let's add the host to the Management Zone.
 
 We will do this by adding a host rule, using the the host tag.
 
+<hr>
+
 ## Run Load Test
 
 Login to Jenkins
@@ -226,6 +228,8 @@ We need to verify the Deployment URL
 <img src="../../assets/images/lab_1_simple_test.png" width="300"/>
 
 Click **"Build"**
+
+<hr>
 
 ### Examine Performance Test Dashboard with Transaction Steps
 
@@ -278,6 +282,8 @@ Within the current screen click on **View method hotspots** button which will dr
 In the **"Method hotspots"** screen click on **"Hotspots"** button.   This will change the view to the **Top hotspots**.  Click expand in the method call tree and you can see the method that is calling the top hotpot in the code. 
 
 <img src="../../assets/images/lab_1_response_time_hotspots_3.png" width="500"/>
+
+<hr>
 
 ### Summary
 

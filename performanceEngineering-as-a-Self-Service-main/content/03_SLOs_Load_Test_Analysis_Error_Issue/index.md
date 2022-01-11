@@ -47,7 +47,7 @@ Click "**SLOs**" from the Main Navigation menu.
 
 Then Select the "**Add new SLO**" Button.
 
-<img src="../../assets/images/lab_3_slo_1.png" width="500"/>
+<img src="../../assets/images/slo_1.png" width="500"/>
 
 This will bring up the **Add new SLO** wizard screen.
 
@@ -55,25 +55,33 @@ Click on the **Service-level availability** button.
 
 In the **Name this service-level availability SLO** section use this name:  **Availability - Order_Staging**
 
-Click **Next** at the button right of the screen.
+<img src="../../assets/images/slo_2.png" width="500"/>
 
-<img src="../../assets/images/lab_3_slo_2.png" width="500"/>
-
-This brings us to the **Define a filter** screen.   
+Now we need to **Define a filter** by expanding the define a filter section.   
 
 Copy and paste the below text into the **filter** section:
 
 **mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("order")**
 
-Then click the **Verify Button**, and after verified, click the **Next** button.
+or
 
-<img src="../../assets/images/lab_3_slo_3.png" width="500"/>
+**mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("catalog")**
 
-In the next screen change the Timeframe section to **-30m** and then click the **Next** button, and then the **Save** button.
+Then click the **Preview** button.
 
-<img src="../../assets/images/lab_3_slo_4.png" width="500"/>
+<img src="../../assets/images/slo_4.png" width="500"/>
 
-After the **Availability - Order_Staging** has been created lets create two more SLOs for the **customer** and **catalog** services.
+Change the Timeframe section to **-30m** and then click the **Preview** button.
+
+Now we need to select evaluation, if the SLO was setup properly, we should see data in the Graph.
+
+<img src="../../assets/images/slo_5.png" width="500"/>
+
+The final step is to click on the **Create** button.
+
+<hr>
+
+After the **Availability SLO** has been created lets create two more SLOs for the **customer** and **catalog** services.
 
 Use the follow settings for the **catalog** SLO: 
 
@@ -91,6 +99,8 @@ When complete,  review the results.
 
 ## Run Load Test
 
+Now we will run more load test to see the outcome for the SLO's
+
 Open Jenkins.
 
 Click on **04-performancetest-qualitygate** pipeline
@@ -99,15 +109,13 @@ Click on **04-performancetest-qualitygate** pipeline
 
 Select **"Build with parameters"**
 
-We only need to update the **DeployomentURI** section.   
-
-Copy your Order Application URL and paste into the **DeployomentURI** section.   
-
-**Make sure to remove the last / if present when you copied it**
+We only need to validate the **DeployomentURI** section.   
 
 When done click the **Build** button which will start the Performance Test.
 
 <img src="../../assets/images/lab_3_jenkins_run_load_test_2.png" width="500"/>
+
+<hr>
 
 ### Examine Performance Test Dashboard with Transaction Steps & SLOs
 
@@ -116,10 +124,24 @@ We have provided a **Performance Test Dashboard with Transaction Steps & SLOs** 
 Click **"Dashboards"** from the Main Navigation menu.
 
 Then select the **Performance Test Dashboard with Transaction Steps & SLOs** dashboard.
+We will need to edit the dashboard to use the SLO's we created in the previous steps.
 
-We can see the SLO for the **Order** service is not being met.  In the next section we will show you why!
+We should have these SLO's in our list.
+
+<img src="../../assets/images/slo_list.png" width="500"/>
+
+Click **Edit**
+
+Select the SLO tile, then change the "select a SLO" from the drop down box. Select the appropriate SLO.
+You will do this for each SLO tile.
+
+<img src="../../assets/images/dashboard_slo_edit.png" width="500"/>
+
+Now we can see if the SLO for the **Order** service is being met or not.  In the next section we will show you why!
 
 <img src="../../assets/images/lab_3_performance_test_dashboard_with_transaction_steps_slos_1.png" width="500"/>
+
+<hr>
 
 ### Load Test Availability/Error Analysis
 
