@@ -112,7 +112,7 @@ ZDC993I Opn1RFD:0008  /u/labuser/ci/7.3build/log/dt_ZLOCAL1_Z731_67175364.0.log
   ![SDSF](../../assets/images/sdsf.png)
 
 - Double click on the X3270 Session called `Perform` on the Desktop again to open a second session
-- Logon to CICS with `l HVDACnnn` 
+- Logon to CICS with `l HVDACnnn` (`nnn` is again your three digit ID)
 
   ![LogonCICS](../../assets/images/Logon_CICS.png)
 
@@ -125,7 +125,7 @@ ZDC993I Opn1RFD:0008  /u/labuser/ci/7.3build/log/dt_ZLOCAL1_Z731_67175364.0.log
 
   ![DTAX](../../assets/images/DTAX.png)
 
-- CICS agent should be `Enabled` and `Agent ID` should contain a value
+- CICS agent should be `Enabled`, `Agent ID` should contain a value and `zDC Name` should contain `Znnn` (`nnn` is your three digit ID)
 
 ### Step 5: Define the CICS transaction in Dynatrace
 - Open your Dynatrace Tenant
