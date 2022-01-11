@@ -123,9 +123,27 @@ The plugin will have specific propeties to define :
  ```
 Remove the match using the stdout plugin and replace it with dynatrace plugin ( code above)
 
+Run the load test scripts to get logs generated and let fluentd collect the new logs 
+
 ### Log viewer
+All the ingested logs from the dynatrace Operator and from fluentd will be available in the Log viewer.
+Click on the left menu Observe and Explore/Logs
+![Log viewer_view](../../assets/images/dt_fluentd_logviewer.png)
 
 #### Filter the logs to see our logs
+To create a metric out of a log stream requires to create the right log filter.
+Look a the log properties of fluentd, and create the filter that will only show logs related to our application.
+![Log viewer_filter](../../assets/images/dt_fluentd_log_detail.png)
 
 #### Create a metric out of our logs
+Create a metric exposing the label `responsetime` time ingested by dynatrace
+![Log viewer_create_metric](../../assets/images/dt_fluentd_log_detail.png)
 
+#### Create traffic to generate new logs
+
+THe metric only exists from the moment new log stream has been ingested by dynatrace.
+Let's run the load test script to have new logs ingested by dynatrace.
+```
+/hotday_script/load/generateTraffic.sh
+```
+Once the metric exist go to the Data explorer and create a new Graph with your metric.
