@@ -71,7 +71,7 @@ In order to do this, we’ll need to:
 13. For our success criteria, we can use a target of 99.75 and a warning of 99.95. 
 14. Evaluate the newly minted SLO and click create.
 
-# Hands-on #3 - Synthetic Monitoring SLO
+# Hands-on #4 - Synthetic Monitoring SLO
 
 ### You are a SRE tasked with tracking the uptime of your teams' applications and most important workflows from an outside-in view. You should provide an overall perspective as well as availability SLOs for specific applications and application groups.
 
@@ -105,7 +105,7 @@ type("SYNTHETIC_TEST"),tag("Sitetype:Search")
 ```
 13. Evaluate, create, and pin this new SLO to your dashboard.
 
-# Hands on #4 - Advanced SLO - Application Performance with template
+# Hands on #5 - Advanced SLO - Application Performance with template
 1. Under <b>'Digital Experience'</b> on the left-hand menu, find <b>'Web'</b> and navigate to the Applications screen.
 2. You will note thje <b>'My web application'</b> application that came out-of-the-box with Dynatrace. Remember this name, we will be using it later.
 3. Navigate to the <b>'Service-level Objective'</b> screen and create a new SLO.
@@ -124,3 +124,65 @@ type(“APPLICATION”)entityName(“My web application”)
 ![](../../assets/ex4im2.png)
 
 8. Review the configuration and verify the values shown make sense. Our status will likely be under the target. That is okay. Create the SLO.
+
+# Hands on #6 - Creating Infrastructure SLOs
+
+### Large Insurance Company utilizes Dynatrace SLOs to monitor their Infrastructure.  
+### Objective:
+### Monitor Infrastructure components focusing on utilization and error rates as opposed to response time to ensure infrastructure is meeting predefined performance.
+
+1. There is no template for infrastructure SLOs, so we’ll need to use what we learned in previous exercises to define the metrics we want to use as part of our SLO definition.
+2. For this example, we’ll use host CPU usage.
+
+![](../../assets/ex5im1.png)
+
+3. We will use the metric for cpu utilization that comes out of the box with Dynatrace. 
+
+```
+builtin:host.cpu.usage
+```
+
+4. For the entity selector, remove everything and replace it with type("HOST"). Note: You could specify a specific entity via the entityName or entityId fields, but since our environment only has a specific host, this is fine.
+5. Because we want to ensure utilization is at a certain level, we will set the target and warning at 60%-70%, respectively. This ensures that we will be notified anytime our utilization drops by a significant amount from our expected threshold.
+6. Evaluate the SLO, make sure the data matches your expecations and then hit create.
+
+![](../../assets/ex5im2.png)
+
+7. We can pin this newly created SLO to a dashboard along with any other metrics that would make sense to monitor. PaaS utilization, process CPU, host memory, etc., are all built-in (to Dynatrace) examples that would fit.
+
+![](../../assets/ex5im3.png)
+
+8. Example below of a finalized infrastructure SLO dashboard.
+
+![](../../assets/ex5im4.png)
+
+# Hands on #7 - Creating an SLO Dashboard
+
+### Having a great dashboard can help your organization understand the impact performance can have on the overal health of your application. Incorporating SLOs into those dashboards ties together what we learned with the dashboarding capabilities within Dynatrace.
+
+1. In general, the steps to create a dashboard are relatively straightforward. 
+   -  Create a dashboard
+   - Put multiple tiles side-by-side. In our case, we want to put SLO tiles side-by-side for the sale SLO but with different time configurations.
+   - Put headers / markup above.
+2. First, let's create a new dashboard. Navigate to the Dashboard page and select 'Create Dashboard'. Give the dashboard a name and submit.
+
+![](../../assets/ex8im1.png)
+
+3. We can now add SLOs directly to the dashboard from the SLO page. Navigate there and select an SLO to add to the dashboard. We've created a few by now, so select whichever one you want. 
+4. On the right-side of each SLO is an overflow menu represented by a series of dots. Select this icon for the SLO you want to add, then use the sub-menu to Pin to Dashobard. Select the dashboard we created earlier and submit.
+
+![](../../assets/ex8im2.png)
+
+5. With the tile added to the dashboard, you can modify properties depending on use-case. Options for SLO tiles are as follows:
+   - Which SLO the tile maps to
+   - Whether to display the legend, the metric names, and the problem indicators
+     - Problem indicators are useful for tying a detected anomaly to an SLO.
+   - Determine the max number of decimals to display
+   - Adding custom filters, such as the enviornment to pull the data from (local or remote), and which timeframe to use for the evaluation period.
+ 6. For this example, you can use the values from the image below, replacing the specific SLO name with the one you selected earlier (you won't need to change this value unless you did so earlier when exploring the options listed above).
+
+![](../../assets/ex8im3.png)
+
+7. Above a series of SLOs, we can add headers from the tile list to the right. Headers help us add clarity and order to the dashboard and give a user contextual information on wheter to look for what. 
+8. Similar to the SLO tiles, once you add this time, you can edit it with the right-hand configuration menu.
+9. To wrap up this excercise, create more rows with more SLOs. You can also create new SLOs using the lessons learned in previous exercises to make a more comprehensive dashboard. 
