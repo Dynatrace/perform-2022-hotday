@@ -28,13 +28,6 @@
 
 ![](../../assets/ex1im2.png)
 
-# Hands on #2 – Create a SLO for a specific service request
-### Situation: The business and dev teams have recently introduced a new function in the application that calculates travel recommendations for customers visiting the website. The business has determined that they want a separate, and granular SLO to track this single function, instead of the service overall (which is what we just did in the previous hands on). They want to track an SLO with a 15% error budget.
-
-In order to do this, we’ll need to: 
-* Create 2 custom metrics for our new request: Total count, and success count
-* Define an SLO with success as the numerator and total count as denominator. 
-
 # Hands on #2 - Create an SLO for a specific service request
 
 ### The business and dev teams have recently introduced a new function in the application that calculates travel recrecommendations for customers visiting the website. The business has determined that they want a separate, and granular SLO to track this single function, instead of the service overall (which is what we just did in the previous hands on). They want to track an SLO with a 15% error budget.In order to do this, we’ll need to: 
