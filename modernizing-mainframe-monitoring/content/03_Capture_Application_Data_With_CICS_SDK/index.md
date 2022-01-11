@@ -49,10 +49,17 @@ If RC Not Equal ZERO
 ```
 
 - Compile EDUCHAN by submitting Compile JCL in `<userid>.JCL(EDUCHANJ)`
-- Check if the Compile & Link ended with RC=0 in all steps 
+- Check in `sdsf` if the Compile & Link ended with RC=0 in all steps 
 - Go to your CICS session or open a new session and logon to CICS with `l HVDACnnn` 
 - Click on Keypad and `Clr`
-- Make a newcopy using `cemt s prog(EDUCHAN) ne`
+- Type `cemt s prog(EDUCHAN)` (this will display the current length and use count)
+
+  ![CEMT](../../assets/images/cemt.png)
+
+- Make a `newcopy` of the new program version by adding `ne` after `cemt s prog(EDUCHAN)` (the length should change because of the added SDK code)
+
+  ![newcopy](../../assets/images/newcopy.png)
+
 - Your new EDUCHAN program version is active now
  
 ### Step 2: Define Request Attribute for your Mainframe Data
