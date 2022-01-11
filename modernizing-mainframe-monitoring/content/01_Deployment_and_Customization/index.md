@@ -83,7 +83,7 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 
 - Press `F3`
 
-- Type `s.st` in the Command Line
+- Type `=s.st` in the Command Line
 
   ![SDSF](../../assets/images/SDSFInit.png)
 
