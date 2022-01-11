@@ -96,7 +96,7 @@ Make sure, that the Request Attribute is defined appropriately with the correct 
 ### Step 5: Define, that a transaction with an exception is treated and marked as "Failure" in Dynatrace  
 - Go to your Dynatrace Tenant
 - Go to your CICS service (`Transactions and Services -> HVDACnnn`)
-- Click on the three `...` right to the name of the CICS Service
+- Click on `Edit` right to the name of the CICS Service
 - Select `Edit`
 
   ![Edit](../../assets/images/Edit.png)
