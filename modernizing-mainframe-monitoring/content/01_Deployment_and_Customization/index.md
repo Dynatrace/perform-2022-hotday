@@ -117,50 +117,20 @@ ZDC993I Opn1RFD:0008  /u/labuser/ci/7.3build/log/dt_ZLOCAL1_Z731_67175364.0.log
   ![LogonCICS](../../assets/images/Logon_CICS.png)
 
 - Click on Keypad and `Clr Scrn`
-- Make a newcopy using `cemt s prog(EDUCHAN) ne`
- 
-  ![newcopy](../../assets/images/newcopy.png)
 
-- Optionally check the status of your CICS Agent using transaction `DTAX` in your CICS 
+- Check the status of your CICS Agent using transaction `DTAX` in your CICS 
 
   ![DTAX](../../assets/images/DTAX.png)
 
 - CICS agent should be `Enabled`, `Agent ID` should contain a value and `zDC Name` should contain `Znnn` (`nnn` is your three digit ID)
 
-### Step 5: Define the CICS transaction in Dynatrace
-- Open your Dynatrace Tenant
-- Navigate to `Settings -> Server Side Service Monitoring -> Deep Monitoring -> CICS, IMS and MQ Monitoring` 
-- In section `Transaction Monitoring` click on `Add CICS transaction Start Id filter` and add transaction `DADC`
-- Do not forget to `Save changes`
-- Check the status of your CICS Agent using transaction `DTAX` in your CICS 
 - Type command `conf` after `Option ===>`  
 
-   ![conf](../../assets/images/conf.png)
+   ![ConfCmd](../../assets/images/confcommand.png)
  
-### Step 6: Trigger the Mainframe transaction 
-- Submit `<userid>.JCL (AFDTRAN)` 
-- This will execute transaction `DADC` 20 times
-- You will see these PurePaths as Requests under the CICS service (`Transactions and Services -> HVDACnnn -> View PurePaths')
-- Go to `sdsf` and type `log` to browse the System Log
-- At the bottom you will see messages like these (check those prefixed with your own CICS region `HVDACnnn`):
-```
-+HVDAC731 Africa                 
-+HVDAC731 COBOL ADKCOB  complete.
-+HVDAC731 Australia              
-+HVDAC731 COBOL ADKCOB  complete.
-+HVDAC731 Australia              
-+HVDAC731 COBOL ADKCOB  complete.
-+HVDAC731 Africa                 
-+HVDAC731 COBOL ADKCOB  complete.
-+HVDAC731 Australia              
-+HVDAC731 COBOL ADKCOB  complete.
-+HVDAC731 Africa                 
-+HVDAC731 COBOL ADKCOB  complete.
-+HVDAC731 America                
-+HVDAC731 COBOL ADKCOB  complete.
-+HVDAC731 Invalid                
-+HVDAC731 COBOL ADKCOB  complete. 
-```
+- this will show you the configured CICS agent settings
+
+   ![Conf](../../assets/images/conf.png)
 
 ### You've arrived
-- You have successfully deployed Dynatrace and have defined and captured the CICS transaction, which will be used in the SDK Hands-On! 
+- You have successfully deployed and configured Dynatrace for z/OS! 
