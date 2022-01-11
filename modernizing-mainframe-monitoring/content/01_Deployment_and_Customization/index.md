@@ -14,15 +14,15 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
   ![Install](../../assets/images/Install_AG.png)
 
 - Select `Windows`
-
-  ![Installer](../../assets/images/Installer.png)
-
 - Check `Route z/OS traffic to Dynatrace` (Step 1)
 - Click on `Download Installer` (Step 2) OR Click on `Copy` and paste the download command into a DOS prompt, press `Enter`
-- Wait for the download to finish (can take a while)
+
+  ![Installer](../../assets/images/Installer.png)
+  
+- Wait for the download to finish (can take a while depending on the bandwidth)
 - Navigate to the folder containing the downloaded file in the DOS prompt (either your User directory or the Downloads folder)
 - `Copy` installation command from the Dynatrace Tenant (Step 3) 
-- Make sure that the name `exe`-File is correct, before you hit `Enter` 
+- Make sure that the name of the `exe`-File is correct, before you hit `Enter` 
 - Install with the default settings
 - Click on `Show Deployment Status` after the Installation has been successful
 
@@ -30,7 +30,7 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 
 ### Step 3: Prepare and start the zDC
 - Double click on the X3270 Session called `Perform` on the Desktop
-- Logon to ISPF with `logon <userid>` using the Userid and Passwordprovided to you 
+- Logon to ISPF with `logon <userid>` using the Userid and Password provided to you 
 
   ![LogonISPF](../../assets/images/Logon_ISPF.png)
 
@@ -85,12 +85,17 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 
 - Type `s.st` in the Command Line
 
-![SDSF](../../assets/images/SDSFInit.png)
+  ![SDSF](../../assets/images/SDSFInit.png)
 
+- Check in sdsf if the job `AFVDZnnn` is running by typing `pre AFVDZ*` in the Command line (this will display all processes starting with `AFVDZ`)
 
-- Check in sdsf if the job `AFVDZnnn` is running
-- Browse the job spool to check if the zDC has connected properly to the zRemote
-- If you find these messages in the spool, all should be good:
+  ![SDSF](../../assets/images/SDSFPrefix.png)
+
+- Browse your zDC's job spool to check if it has connected properly to the zRemote (your zDC is the one containing your three didgit ID, e.g. 731)
+
+  ![Spool](../../assets/images/ZDCSpool.png)
+
+- If you find these messages in the spool, all should be good (just use command `f ZDC955L` to find the relevant messages and page up/down with `F7` and `F8`):
 
 ```
 ZDC955L Dynatrace connection being processed ZDC-Job/ID:AFVDZ731/Z731           
@@ -98,9 +103,8 @@ ZDC958L Dynatrace INIT completed, ZDC AgentId received ZDC-Job/ID:AFVDZ731/Z731
 ZDC993I Opn1RFD:0008  /u/labuser/ci/7.3build/log/dt_ZLOCAL1_Z731_67175364.0.log 
 ```
 
-
-### Step 4: Prepare CICS transaction
-- Submit the CICS JCL in dataset `<userid>.CI.R070300.JCL (Cnnn5301)`
+### Step 4: Prepare CICS Region
+- Submit the CICS JCL in dataset `<userid>.CI.R070300.JCL (Cnnn5301)` (`<userid>` is your personal User ID and `nnn` is your three digit ID!)
 - Check in SDSF, if the job `HVDACnnn` is running
 - You can use command `=s.st` from anywhere in ISPF
 - You may use commands `owner <userid>` and `pre *` to display all jobs running under your userid
