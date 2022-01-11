@@ -128,7 +128,7 @@ ZDC993I Opn1RFD:0008  /u/labuser/ci/7.3build/log/dt_ZLOCAL1_Z731_67175364.0.log
 
    ![ConfCmd](../../assets/images/confcommand.png)
  
-- this will show you the configured CICS agent settings
+- This will show you the configured CICS agent settings
 
    ![Conf](../../assets/images/conf.png)
 
