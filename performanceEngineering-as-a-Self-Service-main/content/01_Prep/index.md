@@ -2,17 +2,17 @@
 
 ## Welcome to Dynatrace HotDay
 
-Today's lab work will cover how performance engineers can leverage Dynatrace thoughtout the CI/CD lifecycle.
+Today we will cover how performance engineers can leverage Dynatrace thoughtout the CI/CD lifecycle.
 
-During this course we will cover:
+During this course you will learn:
 
 1. Load Test setup and Analysis 
-2. Dynatrace SLOs
-3. Integrating Jmeter / Load Test Harness
-4. What is Keptn
-5. Dynatrace Cloud Automation
-6. SLI/SLO Dashboards
-7. Dynatrace Release Monitoring
+1. Dynatrace SLOs
+1. Integrating Jmeter / Load Test Harness
+1. Automated Performance testing
+1. SLI/SLO Dashboards
+1. Dynatrace Cloud Automation
+1. Dynatrace Release Monitoring
 
 Projects used for this Session
 - [Keptn](https://keptn.sh/)

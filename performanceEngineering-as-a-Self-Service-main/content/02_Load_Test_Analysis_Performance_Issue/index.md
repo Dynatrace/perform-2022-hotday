@@ -163,7 +163,7 @@ We have setup the Load Test **Calculated service metrics** for you.   Below is a
 
 [Create Calculated Service Metrics (SLIs) - Step #8 of this Blog](https://www.dynatrace.com/news/blog/guide-to-automated-sre-driven-performance-engineering-analysis/)
 
-### Kick off Keptn Customer 2 Build
+### Kick off Keptn Customer Build
 
 Click on **01_deploy_order_application** pipeline
 
@@ -173,7 +173,7 @@ Now we are going to push the **customer** version **2.0.0**.
 
 Select **"Build with parameters"**
 
-- In the **customerimage** field we need to change the value at the end from 1 to **2.0.0**
+- In the **customerimage** Release field we need to select **2.0.0**
 - In the DEPLOY_TO field, change the dropdown box to **customer**
 
 Next, click the **"Build"** button.
