@@ -36,7 +36,7 @@ Pulls value from the values.yaml
 
 We can examine this release information in Dynatrace. 
 
-
+<hr>
 
 ## Event Ingestion
 
@@ -44,4 +44,97 @@ You can send custom deployment events to Dynatrace APIs that explicitly provide 
 
 For this exercise, we will execute a jenkins pipeline that contains the event ingestion for several processes.
 
-First we need to check the tags on the process_groups.
+First we need to check the tags on the process_groups.  These tags should have been added by utilizing the kubernetes labels.
+
+Go to **"Services"** and select the **"frontend (keptnorders.staging.frontend)"** 
+
+Expand the **"Properties and tags"**, then select the process group.
+
+We will just validate the process group tags are present.
+
+<img src="../../assets/images/process_tags.png" width="500"/>
+
+Now, we can kickoff the **"07-release-for-version"** pipeline in jenkins.
+
+Go to Jenkins and build the **"07-release-for-version"** pipeline. The intial build will fail.
+we need refresh the page and do a "build with parameters"
+
+This pipeline use the Events API to injest the release information. we do this on each process group for the application.
+
+Here is a sample json payload, Note that the processes are matched via tags.  This specific example uses parameters and variables from Jenkins.
+
+<details>
+  <summary>example json:</summary>
+
+```json
+{"eventType": "${eventType}",
+  				"attachRules": {
+    				"tagRule" : [ 
+				    {
+        			   "meTypes" : [ 
+				        "${meType}"
+				      ],
+				      "tags" : [
+				         {
+				          "context": "${context}",
+					      "key" : "${key}",
+                          "value" : "${value}"
+					     },
+				         {
+				          "context": "CONTEXTLESS",
+					      "key" : "keptn_stage",
+                          "value" : "staging"
+					     }					     
+					   ]
+				     }
+				     ] 
+    				},
+  					"deploymentName":"${JOB_NAME} - ${BUILD_NUMBER} ${params.buildenv} (${value})",
+  					"deploymentVersion":"${params.buildVersion}-${BUILD_NUMBER}",
+  					"deploymentProject":"${params.project}",
+  					"remediationAction":"${params.remediationAction}",
+  					"ciBackLink":"${BUILD_URL}",
+  					"source":"${source}",
+  					"customProperties":{
+    					"Jenkins Build Number": "${BUILD_ID}",
+    					"Environment": "${params.buildenv}",
+    					"Job URL": "${JOB_URL}",
+    					"Commits": "${GIT_COMMIT}",
+    					"Git URL": "${GIT_URL}"
+  						}
+					}
+```
+
+</details>
+
+<hr>
+
+## Releases in Dynatrace
+
+Go to Dynatrace and select **"Releases"**
+
+Now, we can see the release version for our keptnorders.staging containers.
+
+<img src="../../assets/images/release_info.png" width="500"/>
+
+We also have the ability to examine the deployment events. 
+
+<img src="../../assets/images/release_events.png" width="500"/>
+
+Finally, we can click on the deployed component and examine details about the component and deployments all in one place.
+
+<img src="../../assets/images/release_details.png" width="500"/>
+
+We will skip the Issue-tracking integration at this time.  Just note, that you can integrate your issue-tracking system with Dynatrace.
+
+Dynatrace currently supports integration with
+
+- Jira on-premises
+- Jira cloud
+- GitHub
+- GitLab
+- ServiceNow
+
+Execute the **"07-release-for-version"** pipeline again to see how the release versions are again updated.
+
+

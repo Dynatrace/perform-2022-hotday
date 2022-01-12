@@ -53,6 +53,10 @@ Now we can create the **"evalservice"** tag.
 
 Let's also create a tag **"eval"** tag on the same service
 
+Next, we need to also tag the production frontend with the tag **"peval"**
+
+<hr>
+
 ### Create Process Group Naming Rule (if not created)
 
 Hopefully the naming rule has been created by the API call.  We need to validate that this has occurred.
@@ -78,6 +82,8 @@ You can cut and paste these items.
 * Conditions: **keptn_deployment (Environment)**
 
 Click **"Preview"** -> **"create rule"** -> **"save changes"**
+
+<hr>
 
 ### Architecture Validation - Service Flow
 
@@ -119,6 +125,8 @@ You will also notice, this is where we are using the tag "evalservice" for the t
 <img src="../../assets/images/lab_1_simple_test.png" width="500"/>
 
 Click **"Build"**
+
+<hr>
 
 ### Describe Dynatrace Load Test Request Attribute
 
