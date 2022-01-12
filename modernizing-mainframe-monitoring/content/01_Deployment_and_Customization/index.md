@@ -61,13 +61,11 @@ Note: the IP-Address is the one of your VM (shown in the titlebar of your RDP-Se
   ![ZDCSYSIN](../../assets/images/ZDCSYSIN.png)
   
 10. Keep all other parameters as they are 
-
 11. Type `exit` in the Command line or just press the `F3` function key (this will save the file and exit from the edit session)
 
   ![Save](../../assets/images/SaveZDCSYSIN.png)
 
 12. Press `F3` and `F3` to get to the Main screen
-
 13. Type `<userid>.**.JCL` as dataset mask and press `Enter` (`<userid>` is your personal User ID!)
 
   ![3.4](../../assets/images/EditZDC.png)
@@ -77,13 +75,11 @@ Note: the IP-Address is the one of your VM (shown in the titlebar of your RDP-Se
   ![Browse](../../assets/images/BrowseZDC.png)
 
 15. Press `F8` to page down
-  
 16. Submit the zDC JCL in `<userid>.CI.R070300.JCL(ZDCJCL1)`
 
   ![Submit](../../assets/images/SubmitZDC.png)
 
 17. Press `F3`
-
 18. Type `=s.st` in the Command Line
 
   ![SDSF](../../assets/images/SDSFInit.png)
@@ -105,8 +101,8 @@ ZDC993I Opn1RFD:0008  /u/labuser/ci/7.3build/log/dt_ZLOCAL1_Z731_67175364.0.log
 ```
 
 ### Step 4: Prepare CICS Region
-1. Submit the CICS JCL in dataset `<userid>.CI.R070300.JCL (Cnnn5301)` (`<userid>` is your personal User ID and `nnn` is your three digit ID!)
 
+1. Submit the CICS JCL in dataset `<userid>.CI.R070300.JCL (Cnnn5301)` (`<userid>` is your personal User ID and `nnn` is your three digit ID!)
 2. Check in SDSF, if the job `HVDACnnn` is running
 You can use command `=s.st` from anywhere in ISPF
 You may use commands `owner <userid>` and `pre *` to display all jobs running under your userid
@@ -114,19 +110,16 @@ You may use commands `owner <userid>` and `pre *` to display all jobs running un
   ![SDSF](../../assets/images/sdsf.png)
 
 3. Double click on the X3270 Session called `Perform` on the Desktop again to open a second session
-
 4. Logon to CICS with `l HVDACnnn` (`nnn` is again your three digit ID)
 
   ![LogonCICS](../../assets/images/Logon_CICS.png)
 
 5. Click on Keypad and `Clr Scrn`
-
 6. Check the status of your CICS Agent using transaction `DTAX` in your CICS 
 
   ![DTAX](../../assets/images/DTAX.png)
 
 7. CICS agent should be `Enabled`, `Agent ID` should contain a value and `zDC Name` should contain `Znnn` (`nnn` is your three digit ID)
-
 8. Type command `conf` after `Option ===>`  
 
    ![ConfCmd](../../assets/images/confcommand.png)
@@ -137,7 +130,6 @@ You may use commands `owner <userid>` and `pre *` to display all jobs running un
 
 ### Step 5: Prepare CICS Program `EDUCHAN`
 1. Open a new X3270 session by double clicking the `Perform` icon and logon to CICS with `l HVDACnnn` (`nnn` is your theree digit ID)
-
 2. Click on Keypad and `Clr`
 
 3. Type `cemt s prog(EDUCHAN)` (this will display the current length and use count, after starting the CICS region it should all be zero)
