@@ -91,13 +91,19 @@ Note: This connection ID should match with your `<zosconnect_cicsIpicConnection>
 
 ![CreateServiceInterface](../../assets/images/CreateServiceInterface.png)
 
-
 10.	Type in Service name `EDUnnnRequest` for Request service definition and click `OK`
+
+![EDU731Request](../../assets/images/EDU731Request.png)
 
 11.	Rename the Channel and Container fields by double-clicking on each entry
 Channel -> `EDUCHANNEL`
 Container1 -> `INPUTDATA`
 For Container1, select `CHAR in the datatype field`
+
+![Channel](../../assets/images/INPUTDATA.png)
+
+![Request](../../assets/images/SIRequest.png)
+
 
 12.	Save Service Interface `EDUnnnRequest`
 
