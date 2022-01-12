@@ -4,7 +4,7 @@ Learn how to use Dynatrace features that support Performance testing for each ph
 
 <img src="../../assets/images/lab_1_overview.png" width="500"/>
 
-Now that we have our KIAB installed. 
+Now that we have our Lab setup. 
 
 Let's start by viewing a dashboard.
 
@@ -18,7 +18,7 @@ Now you should see your Dashboard.
 
 <img src="../../assets/images/lab_1-acck-details.png" width="500"/>
 
-Next we will create a few configuration items and kick off a load test.
+Next we will need to create a few configuration items and kick off a load test.
 
 ### Configuration
 
@@ -51,6 +51,12 @@ Now we can create the **"evalservice"** tag.
 
 <img src="../../assets/images/lab1_service_tag.png" width="500"/>
 
+Let's also create a tag **"eval"** tag on the same service
+
+Next, we need to also tag the production frontend with the tag **"peval"**
+
+<hr>
+
 ### Create Process Group Naming Rule (if not created)
 
 Hopefully the naming rule has been created by the API call.  We need to validate that this has occurred.
@@ -77,11 +83,13 @@ You can cut and paste these items.
 
 Click **"Preview"** -> **"create rule"** -> **"save changes"**
 
+<hr>
+
 ### Architecture Validation - Service Flow
 
-As testers, we typically only test against the service endpoint. As performance engineers we should however understand what happens end-to-end with that request. Which other services does it call? How many round trips to the database does it make? Does service load balancing and failover work correctly? Do the caching layers work well? And do we have any bad architectural patterns such as a data-driven N+1 query problem?
+As testers, we typically only test against the service endpoint. As performance engineers we should however understand what happens end-to-end with each request. What other services does it call? How many round trips to the database does it make? Does service load balancing and failover work correctly? Do the caching layers work well? And do we have any bad architectural patterns such as a data-driven N+1 query problem?
 
-In Dynatrace, we analyze the Service Flow which shows us the full end-to-end flow of every request executed against our service endpoint. You can also apply filters to only focus on a particular test transaction, a specific time frame or compare the flow of failing vs non- failing transactions.
+In Dynatrace, we can analyze the Service Flow which shows us the full end-to-end flow of every request executed against our service endpoint. You can also apply filters to only focus on a particular test transaction, a specific time frame or compare the flow of failing vs non- failing transactions.
 
 Click **"Applications"** from the Main Navigation menu. Then click **My web application**.
 
@@ -93,7 +101,7 @@ This will bring up the **My web application** Performance Overview.  In the Dyna
 
 This will bring up the **Service flow** for the **My web application**.  View results.
 
-<img src="../../assets/images/lab_1_application_service_flow_3.png" width="500"/>
+<img src="../../assets/images/lab_1_application_service_flow_3.png" width="300"/>
 
 ### Kick off our first load test
 
@@ -102,17 +110,23 @@ Login to Jenkins
 * username = keptn
 * password = keptn
 
-<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="500"/>
+<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="200"/>
 
 We are going to run the **03-simpletest-qualitygate pipeline**.
+
 Click **"build"** this initial build will fail.
+
 Refresh the page, now we can do a **"Build with Parameters"**
 
-We need to change the Deployment URL
+verify the Deployment URL, this should match the IP address for your lab environment.
+
+You will also notice, this is where we are using the tag "evalservice" for the testing.
 
 <img src="../../assets/images/lab_1_simple_test.png" width="500"/>
 
-Click **Build**
+Click **"Build"**
+
+<hr>
 
 ### Describe Dynatrace Load Test Request Attribute
 
@@ -157,20 +171,20 @@ We have setup the Load Test **Calculated service metrics** for you.   Below is a
 
 [Create Calculated Service Metrics (SLIs) - Step #8 of this Blog](https://www.dynatrace.com/news/blog/guide-to-automated-sre-driven-performance-engineering-analysis/)
 
-### Kick off Keptn Customer 2 Build
+### Kick off Keptn Customer Build
 
 Click on **01_deploy_order_application** pipeline
 
 <img src="../../assets/images/Lab_1_deploy_order_application_1.png" width="500"/>
 
-Now we are going to push the **customer** version **2**.
+Now we are going to push the **customer** version **2.0.0**.
 
 Select **"Build with parameters"**
 
-- In the **customerimage** field we need to change the value at the end from 1 to **2**
+- In the **customerimage** Release field we need to select **2.0.0**
 - In the DEPLOY_TO field, change the dropdown box to **customer**
 
-Next, click the **Build** button.
+Next, click the **"Build"** button.
 
 <img src="../../assets/images/lab_1_customer_build.png" width="500"/>
 
@@ -190,11 +204,17 @@ Click **Keptn: keptnorders staging** management zone and add a new rule with
 - In the text box use: **keptnorders.staging**
 - Select **apply to underlying hosts of matching process groups** check box.
     
-<img src="../../assets/images/lab_1_management_zone.png" width="500"/>
+<img src="../../assets/images/lab_1_management_zone.png" width="300"/>
 
 Click the **preview** button to verify.
 
-Save the zone. Click **create rule** button. Then **Save changes** button.
+Save the zone. Click **"create rule"** button. Then **Save changes** button.
+
+Next, Let's add the host to the Management Zone.
+
+We will do this by adding a host rule, using the the host tag.
+
+<hr>
 
 ## Run Load Test
 
@@ -203,17 +223,21 @@ Login to Jenkins
 * username = keptn
 * password = keptn
 
-<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="500"/>
+<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="300"/>
 
 We are going to run the **03-simpletest-qualitygate pipeline**.
+
 Click **"build"** this initial build will fail.
+
 Refresh the page, now we can do a **"Build with Parameters"**
 
-We need to change the Deployment URL
+We need to verify the Deployment URL
 
-<img src="../../assets/images/lab_1_simple_test.png" width="500"/>
+<img src="../../assets/images/lab_1_simple_test.png" width="300"/>
 
-Click **Build**
+Click **"Build"**
+
+<hr>
 
 ### Examine Performance Test Dashboard with Transaction Steps
 
@@ -221,9 +245,9 @@ We have provided a **Performance Test Dashboard with Transaction Steps** in your
 
 Click **"Dashboards"** from the Main Navigation menu.
 
-Then Select the **Performance Test Dashboard with Transaction Steps** Dashboard.
+Then Select the **"Performance Test Dashboard with Transaction Steps"** Dashboard.
 
-<img src="../../assets/images/lab_1_performance_test_dashboard_with_transaction_steps.png" width="500"/>
+<img src="../../assets/images/lab_1_performance_test_dashboard_with_transaction_steps.png" width="300"/>
 
 ### Load Test Performance Analysis
 
@@ -235,11 +259,11 @@ If a Dynatrace Problem has generated a Problem during your Performance Test that
 
 You can also analyze the data using custom Dashboards as well as out of the box workflows. Your approach should be based on the type of performance analysis you want to do (for example, crashes, resource and performance hotspots, or scalability issues). 
 
-Following is an overview of using our **Performance Test Dashboard with Transaction Steps**.
+Following is an overview of using our **"Performance Test Dashboard with Transaction Steps"**.
 
-Open the **Performance Test Dashboard with Transaction Steps** dashboard.  
+Open the **"Performance Test Dashboard with Transaction Steps"** dashboard.  
 
-Then click on the **Transactions** link under **Transaction** links section on the left side of the dashboard.
+Then click on the **"Transactions"** link under **"Transaction"** links section on the left side of the dashboard.
 
 <img src="../../assets/images/lab_1_performance_test_dashboard_with_transaction_steps_1.png" width="500"/>
 
@@ -247,13 +271,13 @@ This will bring us to **Multidimensional analysis** that is showing response tim
 
 For Developers to understand how to avoid future performance issues and proactively optimize performance, you must be able to analyze real-time data and understand code performance bottlenecks.
 
-We are going to focus on the **customer** step name transaction.
+We are going to focus on the **"customer"** step name transaction.
 
 <img src="../../assets/images/lab_1_peformance_analysis_1.png" width="500"/>
 
-Click on the ... at the end of the table for **customer** step name transaction which will bring up the **Analyze** menu. 
+Click on the ... at the end of the table for **"customer"** step name transaction which will bring up the **"Analyze"** menu. 
 
-Click  **Response time hotspots** from the Analyze menu.
+Click  **"Response time hotspots"** from the Analyze menu.
 
 <img src="../../assets/images/lab_1_response_time_hotspots_1.png" width="200" height="300"/>
 
@@ -263,9 +287,11 @@ Within the current screen click on **View method hotspots** button which will dr
 
 <img src="../../assets/images/lab_1_response_time_hotspots_2.png" width="500"/>
 
-In the **Method hotspots** screen click on **Hotspots** button.   This will change the view to the **Top hotspots**.  Click expand in the method call tree and you can see the method that is calling the top hotpot in the code. 
+In the **"Method hotspots"** screen click on **"Hotspots"** button.   This will change the view to the **Top hotspots**.  Click expand in the method call tree and you can see the method that is calling the top hotpot in the code. 
 
 <img src="../../assets/images/lab_1_response_time_hotspots_3.png" width="500"/>
+
+<hr>
 
 ### Summary
 
@@ -276,7 +302,3 @@ In the **Method hotspots** screen click on **Hotspots** button.   This will chan
 -  We learned what a Dynatrace Calculated Service Metric is,  how to use it,  and the importance for improving of your Performance Test Analysis
 -  We covered the Performance Test Dashboard with Transaction Steps and how you can use it for improving of your Performance Test Analysis
 -  We learned how to analyze Performance Test issue within Dynatrace and get to root cause in minutes
-
-### Questions and Answers? 
-
-
