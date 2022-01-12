@@ -1,15 +1,22 @@
-## Preperation
+## Introduction
 
-Keptn-in-a-Box is a 🚀 rocket launcher for enabling tutorials or workshops in an easy, fast and ressource efficient way.
-Keptn-In-A-Box is a Bash script that will convert a plain Ubuntu machine in a Single Node Kubernetes Cluster with Keptn installed and configured 
+## Welcome to Dynatrace HotDay
 
-In a matter of minutes you'll have a fully configured Single Node Kubernetes Cluster for learning Keptn tutorials, trying out new functionalities, building your own pipeline or even delivering Performance-as-a-Self-Service.
+Today we will cover how performance engineers can leverage Dynatrace thoughtout the CI/CD lifecycle.
 
-Keptn-in-a-Box runs on microk8s, which is a simple production-grade upstream certified Kubernetes made for developers and DevOps.
+During this course you will learn:
+
+1. Load Test setup and Analysis 
+1. Dynatrace SLOs
+1. Integrating Jmeter / Load Test Harness
+1. Automated Performance testing
+1. SLI/SLO Dashboards
+1. Dynatrace Cloud Automation
+1. Dynatrace Release Monitoring
 
 Projects used for this Session
 - [Keptn](https://keptn.sh/)
-- [Jenkins Service for Keptn](https://github.com/keptn-sandbox/jenkins-service/)
+- [Jenkins Library for Keptn](https://github.com/keptn-sandbox/keptn-jenkins-library)
 - [Order Overview](https://github.com/dthotday-performance/overview)
 - [SockShop](https://github.com/keptn/examples)
 - [EasyTravel](https://github.com/Dynatrace/easyTravel-Docker)
@@ -17,64 +24,59 @@ Projects used for this Session
 - [KIAB](https://github.com/keptn-sandbox/keptn-in-a-box)
 - [Jmeter Service](https://github.com/keptn/keptn/tree/master/jmeter-service#workloads)
 
-### What we have prepared for you today
+### How can you access your lab instance?
 
-KIAB (Keptn in a Box)
-
-| Componenet | Details |
-| ---------- | ------ |
-| Kubernetes | <ul><li>API</li><li>Cluster</li></ul> |
-| [Keptn](https://keptn.sh/) | <ul><li>API</li><li>Bridge</li></ul> |
-| Upstream Git | <ul><li>API</li><li>Repositories</li></ul> |
-| CI/CD | <ul><li>Jenkins</li><li>Unleash</li></ul> |
-| Order Application | <ul><li>Frontend Service</li><li>Customer Service</li><li>Catalog Service</li><li>Order Service</li></ul> |
-| SockShop Application | <ul><li>Cart Service</li><li>CartMongoDB Service</li>|
-| Easytravel Application | <ul><li>backend Service</li><li>frontend Service</li><li>angular service</li><li>www service</li>|
-
-### How can you access your KIAB instance?
-
-Access your Dynatrace Tenant
-Go to Dashboards
-open the "☁ Autonomous Cloud Concepts with Keptn" Dashboard.
-
-Select link "🌐 KeptnInABox"
+1. Access your Dynatrace Tenant, from the Environments tab
+2. Go to "Dashboards"
+3. open the "☁ Autonomous Cloud Concepts with Keptn" Dashboard.
+4. Select link "🌐 KeptnInABox"
 
 <img src="../../assets/images/autonomous-cloud.png" width="500"/>
 
-Optionally, you can also find the ip address, to the KIAB homepage, by loggining into your EC2 instance.
+Optionally, you can also find the ip address, to the lab homepage, by loggining into your EC2 instance with ssh, 
+from the Environments tab.
 Then run the following from the command prompt.
 
 ```bash
-less +F /tmp/install.log
+#: less +F /tmp/install.log
 ```
 
-Get the URL for KIAB from the log output.
+Get the URL for lab from the log output.
 
 <img src="../../assets/images/KIAB_info.png" width="500"/>
 
-Open a Browser window with the URL.
+Open a Browser window with the URL, Chrome is preferred.
 
 Welcome to KIAB.
 
 <img src="../../assets/images/KIAB.png" width="400"/>
 
-### Validate projects in the keptn bridge
+
+## Validating the projects in the keptn bridge
 
 Click on the "Bridge" link. This will open the keptn bridge.
 You should see the preloaded projects.
 
 <img src="../../assets/images/bridge01.png" width="400"/>
 
+By examining the Bridge, we can determine if we need to trigger a deployment for any of the
+application services.
+
 You may need to run several pipelines to complete the deployments of the applications.
 Don't worry, we will walk you through the process.
 
-Validate each project has each stage deployed.
+Validate each project stage has been deployed.
 
-### Run Pipelines
+Next will also validate each application is avaialble, by navigating to the KIAB homepage.
+Then selecting each application link.
 
-Click on **"Jenkins"**
+<img src="../../assets/images/applinks.png" width="400"/>
 
-Now we will kick off the Pipeline **01-deploy-order-application** to build out the application.
+<hr>
+
+## Runing Jenkins Pipelines
+
+Click on **"Jenkins"** from the lab homepage
 
 Login to Jenkins with the following credentials
 
@@ -83,19 +85,37 @@ Login to Jenkins with the following credentials
 
 <img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="250"/>
 
+First you will just select "Install Suggested Plugins"
+
+<img src="../../assets/images/jenkins-install-plugins.png" width="500"/>
+
+Now we will kick off the Pipeline **01-deploy-order-application** to build out the application.
+
 After selecting the pipeline click **"build"**
 
 <img src="../../assets/images/Lab_1_deploy_order_application_1.png" width="500"/>
 
-### Order App Overview
+The initial build will fail, this is normal, becasue the pipeline files are pulled from a github repo.
+
+Refresh the page, you should then see "Build with parameters".
+
+Initially, the "order" service may fail, in the "DEPLOY_TO" option, we can select order.
+This allows us to deploy only the "order" service.
+
+<img src="../../assets/images/buildwithparams.png" width="400"/>
+
+We now have different options for each pipeline build.
+Instead of documenting each part here, we will walk through a few scenerios.
+
+## Order App Overview
 
 This application was built for demonstations of Dynatrace.  Here is the frontend.
 
-<img src="../../assets/images/orders.png" width="300"/>
+<img src="../../assets/images/orders.png" width="250"/>
 
 The overall application is made up of four Docker components: a frontend web UI and 3 backend services.  Once monitored by Dynatrace, a multi-tier service flow will be available as shown below.
 
-<img src="../../assets/images/dt-call-flow.png" width="500"/>
+<img src="../../assets/images/dt-call-flow.png" width="400"/>
 
 #### Pre-built Docker Images
 
@@ -118,25 +138,50 @@ This is a summary of the versions followed by a description of the problem scena
 
 #### Deploy dtdemos/customer-service:2.0.0
 
-<img src="../../assets/images/usecase1.png" width="500"/>
+<img src="../../assets/images/usecase1.png" width="300"/>
 
 ### Deploy dtdemos/order-service:2.0.0 
 
 Both these scenearios are enabled
 
-<img src="../../assets/images/usecase2.png" width="500"/>
+<img src="../../assets/images/usecase2.png" width="300"/>
 
 and...
 
-<img src="../../assets/images/usecase3.png" width="500"/>
+<img src="../../assets/images/usecase3.png" width="300"/>
 
-### Examine Dynatrace 
+<hr>
 
-Now lets look at what we have discovered in Dynatrace.
+## Examine Dynatrace 
+
+Now lets take a look at what we have discovered in Dynatrace.
 
 Open Dynatrace and navigate to **Hosts** in the menu and select the host.
 
-Here we can examine all the proceses automatically discovered by the Dynatrace oneAgent.
+### First, we must ensure the Host is tagged. 
+You should see these tags,
+
+<img src="../../assets/images/hosttags.png" width="400"/>
+
+If you do not see these tags, then we need to run a simple script to add the tags.
+These tags will be added as Environment tags on the host.
+
+Take these steps.
+1. Login to your EC2 instance via ssh, from the Environments tab
+2. Navigate to "keptn-in-a-box/resources/dynatrace/" directory
+
+    ```bash
+        #: cd keptn-in-a-box/resources/dynatrace/
+    ```   
+3. run this command.
+
+    ```bash
+        #: sudo ./hosttag.sh
+    ```
+
+After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
+
+### Next let's examine all the proceses automatically discovered by the Dynatrace oneAgent.
 
 <img src="../../assets/images/pre_host.png" width="400"/>
 
@@ -148,7 +193,7 @@ Next we can examine the Transactions and Services.
 
 Select **Transactions and Services** from the menu.
 
-<img src="../../assets/images/pre_services.png" width="400"/>
+<img src="../../assets/images/pre_services.png" width="300"/>
 
 You can also change the focus by using the _management zone_ filter.
 
@@ -156,15 +201,29 @@ Finally, we can also see how the KIAB configured Kubernetes cluster monitoring.
 
 Select **Kubernetes** from the menu.
 
-<img src="../../assets/images/pre_kube.png" width="400"/>
+<img src="../../assets/images/pre_kube.png" width="300"/>
 
-Pre-configured items also include:
+### Pre-configured items also include:
 
 1. Dashboards
 1. Request Attributes
 1. Calculated Service Metrics
 1. Management Zones
 1. Automatically Applied Tags
+1. Applications
+1. Problem notification
+1. process and service naming rules
 
-Now that we are more familiar with what we have running, let's continue to the next activity.
+Due to to time constrainsts, we will visit each area as needed during the lab exercises.
 
+<hr>
+
+## Final Setup
+
+Additionally, we may need to deploy additional application services.
+By examining each project in the Bridge, we can determine which application services need to be deployed.
+
+Let's take a little time to do this now.
+
+Each Application deploymnet has it's own pipeline. With the help of an instructor, select the appropriate 
+pipeline and build out the necessary services.

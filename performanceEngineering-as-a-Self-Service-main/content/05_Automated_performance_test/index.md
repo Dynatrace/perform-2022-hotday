@@ -1,9 +1,9 @@
-## Automated Performance Test
+## Automated Performance Testing
 
 We previously discussed SLO's in Dynatrace. Now we will examine, in detail, more about SLO's and 
 how we can use both SLI's and SLO's with our deployment strategies.
 
-### Deployment automation 
+## Deployment automation 
 Deployment automation is about the automated implementation of your application’s build, deploy, test 
 and release process. In general, the automated deployment process is initiated whenever a developer 
 commits code to a software repository inside the version control system (VCS) such as Subversion or Git. 
@@ -17,7 +17,7 @@ passes all stages it is regarded to be of sufficient quality to be released into
 
 - [keptn](https://keptn.sh/)
 
-### What is keptn
+## What is keptn
 
 **Keptn** is an event-based control plane for continuous delivery and automated operations for 
 cloud-native applications.
@@ -26,7 +26,7 @@ cloud-native applications.
 Keptn traces every event and all resulting actions and provides real-time tracing information 
 and a powerful API enabling full visibility of every deployment and operations triggered via Keptn.
 
-## keptn bridge
+## The keptn bridge
 
 You can access the keptn bridge by opening the "Autonomous Cloud Concepts with Keptn" Dashboard in Dynatrace.
 Then simply select the "Keptn Bridge" link.
@@ -75,13 +75,21 @@ An example of an SLI is the response time (also named request latency), which is
  Lets have a quick look at two of these SLIs - one showing a regular built-in Dynatrace service metric the other one is a custom calculated 
  service metric that gives me response time for a particular test name:
  
+<details>
+  <summary>SLI format:</summary>
+
 ```yaml
  rt_svc_p95:       "metricSelector=builtin:service.response.time:merge(0):percentile(95)?entitySelector=tag($SERVICE),type(SERVICE)"
 
  rt_test_homepage: "metricSelector=calc:service.teststepresponsetime:filter(eq(Test Step,homepage)):merge(0):avg?entitySelector=tag($SERVICE),type(SERVICE)"
 ```
 
+</details>
+
 Now let's examine the complete SLI setup.
+
+<details>
+  <summary>SLI example</summary>
 
 ```yaml
 ---
@@ -99,6 +107,10 @@ indicators:
   cpu_time:     "metricSelector=builtin:service.cpu.time:merge(0):sum&entitySelector=tag($SERVICE),type(SERVICE)"
 ```  
 
+</details>
+
+<hr>
+
 ### What is a Service-Level Objective (SLO)?
 A service-level objective is “a target value or range of values for a service level that is measured by an SLI.” 
 (as defined in the Site-Reliability Engineering Book).
@@ -111,6 +123,9 @@ The SLI file we provided contains a good list of individual indicators. What we 
 (Service Level Objective) that indicate what Keptn should do with these SLIs. We have these options after Keptn pulled 
 the value through the SLI Provider a) Just give me the value b) Compare the value with a static threshold c) Compare 
 it with a baseline from previous runs, this is an example.  To see the full SLO, view this in the Keptn Bridge.
+
+<details>
+  <summary>SLO example</summary>
 
 ```yaml
 ---
@@ -150,6 +165,9 @@ it with a baseline from previous runs, this is an example.  To see the full SLO,
               - "<=+50%"   
 ```
 
+</details>
+
+
 ### Continuous Performance Verification
 
 Keptn helps automating your tests by having Keptn triggering the test execution and evaluating the result of 
@@ -158,6 +176,8 @@ take further decisions. You can even expand this use case by letting Keptn deplo
 applications to a test environment, succeeded by triggering and evaluating the tests.
 
 <img src="../../assets/images/lab_5_ktap.png" width="500"/>
+
+<hr>
 
 ## Putting it all together.
 
@@ -180,6 +200,9 @@ KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.
 The KEPTN_BRIDGE is the link to your keptn bridge so that the Library can generate some deep links to the bridge to give you easy access to quality gate results!
 
 Once you have everything configured use it in your Jenkins Pipeline like this
+
+<details>
+  <summary>Jenkins pipeline example</summary>
 
 ```groovy
 @Library('keptn-library')_
@@ -257,6 +280,10 @@ node {
 }
 ```
 
+</details>
+
+<hr>
+
 ### Walk through the Kept Bridge.
 
 Open the Keptn Bridge, Then we can walk through the Keptn Bridge.
@@ -277,6 +304,74 @@ The bridge also gives you access to the links of the deployed service.
 
 <img src="../../assets/images/lab_5_keptnbridgeflow.png" width="500"/>
 
-## Questions and Answers?
+<hr>
 
+## Exercise
 
+Now that we have a basic understanding of the control plane, let's run through a quality gate example.
+For this exercise, we will use the SockShop application.
+
+Go to "Jenkins"
+
+We are going to run the "Pipeline 01.2-Sockshop Delivery"
+
+1. Select "Build with Parameters"
+    Now we are going to deploy the "0.12.2" version of the carts application.
+2. Select "0.12.2" for the release.
+3. Select "carts" for "DEPLOY_TO".
+4. Now click the "build" button.
+
+The **0.12.2** build will deploy an image that will create high response times.
+
+<imagehere>
+
+Next, let's check the deployment in the Keptn Bridge.
+
+We should see the deployment to **dev**, however, with the longer than normal response times.
+The Quality Gate evaluation should fail.
+
+We can see the evaluation failed the SLO evaluation.
+
+<img src="../../assets/images/carts_failure.png" width="400"/>
+
+The control plane prevents the bad deployment from being deployed to staging. 
+
+Keptn quality gates provide you a declarative way to define quality criteria of your service. Therefore, Keptn will collect, evaluate, and score those quality criteria to decide if a new release is allowed to be promoted to the next stage or if it has to be held back.
+
+We can examine the effects by navigating back to the lab home page. then select the **Delivery pipeline overview** for the Sockshop app.
+
+<img src="../../assets/images/pipeline_overview.png" width="500"/>
+
+Here we will see the bad build deployed to Dev with 1000 MS response time.
+
+<img src="../../assets/images/bad_pipeline.png" width="400"/>
+
+Now, we can go into Dynatrace to find the root cause.
+
+There may be enough data for Dynatrace to present a problem card.
+
+<img src="../../assets/images/cart_problem.png" width="400"/>
+
+Drilling into the Response time problem, we can click on the "ItemsController"
+
+The click the "addToCart" under "Requests contributing to this problem".
+
+Now we can clearly see the response time degridation introduced by the bad build.
+
+<img src="../../assets/images/cart_problem_detail.png" width="400"/>
+
+The Dynatrace AI (@Davis) also understand the deployment and illustatrates the event integration with Dynatrace.
+
+<img src="../../assets/images/cart_problem_deployment.png" width="400"/>
+
+Now Let's trigger the build for cart version **0.12.3** as we have previously done for the **0.12.2** build.
+
+<hr>
+
+### Summary
+
+- Understaning of deployment automation with Keptn
+- illustrated how one would use quality gates as part of agile development to catch bad code.
+- prevents bad code from being deployed to next stage
+- illustrates how you can isolate the bad thing that happened
+- allows the developers to isolate the problem and deploy the fix with an agile approach.
