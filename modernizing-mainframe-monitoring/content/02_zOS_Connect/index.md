@@ -89,6 +89,9 @@ Note: This connection ID should match with your `<zosconnect_cicsIpicConnection>
 
 9.	Click on button `Create Service Interface`
 
+![CreateServiceInterface](../../assets/images/CreateServiceInterface.png)
+
+
 10.	Type in Service name `EDUnnnRequest` for Request service definition and click `OK`
 
 11.	Rename the Channel and Container fields by double-clicking on each entry
