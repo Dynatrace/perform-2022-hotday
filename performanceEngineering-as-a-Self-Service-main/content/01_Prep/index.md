@@ -14,7 +14,9 @@ During this course you will learn:
 1. Dynatrace Cloud Automation
 1. Dynatrace Release Monitoring
 
-Projects used for this Session
+<details>
+  <summary>Projects used for this Session</summary>
+
 - [Keptn](https://keptn.sh/)
 - [Jenkins Library for Keptn](https://github.com/keptn-sandbox/keptn-jenkins-library)
 - [Order Overview](https://github.com/dthotday-performance/overview)
@@ -23,6 +25,8 @@ Projects used for this Session
 - [Jmeter Plugin](https://github.com/dynatrace-oss/jmeter-dynatrace-plugin)
 - [KIAB](https://github.com/keptn-sandbox/keptn-in-a-box)
 - [Jmeter Service](https://github.com/keptn/keptn/tree/master/jmeter-service#workloads)
+
+</details>
 
 ### How can you access your lab instance?
 
