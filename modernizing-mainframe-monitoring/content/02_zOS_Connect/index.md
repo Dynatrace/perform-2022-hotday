@@ -104,26 +104,31 @@ For Container1, select `CHAR in the datatype field`
 
 ![Request](../../assets/images/SIRequest.png)
 
+12.	Save Service Interface `EDUnnnRequest` using `File->Save` or `Ctrl-S` or by clicking on the Disk icon of `z/OS Explorer`
 
-12.	Save Service Interface `EDUnnnRequest`
-
-13.	Switch to tab `EDUnnnService` tab and create another service interface for the Response (follow Step 2 above)
+13.	Switch to tab `EDUnnn Service` tab and create another service interface by clicking on button `Create Service Interface`
 
 14.	Create a response service with name `EDUnnnResponse`
 
 15.	In the Service interface editor, create three containers with the following names and types for response service. Use the add icon at the top to add more containers
-Containers
-a.	Container Name: CICSRC; Container Type:  BIT
-b.	Container Name: OUTPUTDATA; Container Type: CHAR
-c.	Container Name: CICSTIME; Container Type: CHAR
 
-16.	Save the `EDUnnnResponse` window
+![Add Container](../../assets/images/AddContainerpng)
+
+a.	Container Name: `CICSRC`     Container Type: `BIT`
+b.	Container Name: `OUTPUTDATA` Container Type: `CHAR`
+c.	Container Name: `CICSTIME`   Container Type: `CHAR`
+
+![Response](../../assets/images/SIResponse.png)
+
+16.	Save Service Interface `EDUnnnResponse` using `File->Save` or `Ctrl-S` or by clicking on the Disk icon of `z/OS Explorer`
 
 17.	Switch to `EDUnnn` Service window
 
 18.	Select your new Request and Response service in the dropdown
 
-19.	Save `EDU737` Service
+![Service](../../assets/images/EDU731Service.png)
+
+19.	Save `EDUnnn` Service using `File->Save` or `Ctrl-S` or by clicking on the Disk icon of `z/OS Explorer`
 
 ### Step 3: Deploy Service in z/OS Connect
 
@@ -132,9 +137,18 @@ To deploy the service, ensure you have a z/OS Connect Host connection establishe
 To deploy the service,
 1.	Right click on your `EDUnnn` project in the Project Explorer pane
 2.	Select `z/OS Connect EE > Deploy Service to z/OS Connect EE Server`
+
+![Deploy](../../assets/images/Deploy.png)
+
 3.	Click `OK` on the Deploy Service pop-up
 
+![Deploy OK](../../assets/images/DeployOK.png)
+
+![Deploy Success](../../assets/images/DeploySuccess.png)
+
 This will deploy an `EDU737.sar` file in this path: /var/zosconnect/v3r0/servers/defaultServer/resources/zosconnect/services in DTVD
+
+Note: Your new service will be available, when z/OS Connect has been refreshed. This will be done by the instructors.
 
 ### You've arrived
 - You have successfully defined and deployed a z/OS Connect Service for program `EDUCHAN`! 
