@@ -6,35 +6,35 @@ The goal is to create a z/OS Connect Service and monitor it with the Dynatrace O
 
 
 ### Step 1: Establish Connection to z/OS Connect Server
-- Open z/OS Explorer by double clicking the `zosxplorer` icon on the Desktop
+1. Open z/OS Explorer by double clicking the `zosxplorer` icon on the Desktop
 
 ![z/OS Explorer](../../assets/images/zosexplorer.png)
 
-- Click on `Add` next to the `Credentials` pane
+2. Click on `Add` next to the `Credentials` pane
 
 ![Add Credentials](../../assets/images/Add_Credentials.png)
 
-- Provide your Credentials and click `OK`
+3. Provide your Credentials and click `OK`
 
 ![Provide Credentials](../../assets/images/Provide_Credentials.png)
 
-- Select `DTVD` and click on `Edit`
+4. Select `DTVD` and click on `Edit`
 
 ![Edit Connection](../../assets/images/Edit_Connection.png)
 
-- Provide your own User ID in the `Default User ID` field and click`OK`
+5. Provide your own User ID in the `Default User ID` field and click`OK`
 
 ![Default User](../../assets/images/Change_DefaultUser.png)
 
-- Select `ZOSCSRV` entry in the `z/OS Connect EE Servers` pane and choose `Connect`
+6. Select `ZOSCSRV` entry in the `z/OS Connect EE Servers` pane and choose `Connect`
 
 ![Connect](../../assets/images/Connect_ZOSSRV.png)
 
-- Select `Use Existing Credentials` and select the `DTVD` credentials you have previously created
+7. Select `Use Existing Credentials` and select the `DTVD` credentials you have previously created
 
 ![Use Existing Credentials](../../assets/images/Signon_ZOSSRV.png)
    
-- Provide your Credentials and click `OK`
+8. Provide your Credentials and click `OK`
 
 ![Provide Credentials](../../assets/images/Signon.png)
    
@@ -118,6 +118,7 @@ c.	Container Name: `CICSTIME`   Container Type: `CHAR`
 
 19.	Save `EDUnnn` Service using `File->Save` or `Ctrl-S` or by clicking on the Disk icon of `z/OS Explorer`
 
+
 ### Step 3: Deploy Service in z/OS Connect
 
 Note: ensure you have a z/OS Connect Host connection established to DTVD using your credentials.
@@ -137,6 +138,7 @@ Note: ensure you have a z/OS Connect Host connection established to DTVD using y
 This will deploy an `EDU737.sar` file in this path: /var/zosconnect/v3r0/servers/defaultServer/resources/zosconnect/services in DTVD
 
 Note: Your new service will be available, when z/OS Connect has been refreshed. This will be done by the instructors.
+
 
 ### You've arrived
 - You have successfully defined and deployed a z/OS Connect Service for program `EDUCHAN`! 
