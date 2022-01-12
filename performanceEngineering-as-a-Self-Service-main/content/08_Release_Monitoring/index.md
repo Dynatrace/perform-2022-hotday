@@ -34,7 +34,7 @@ Pulls value from the values.yaml
 
 <img src="../../assets/images/values_yaml.png" width="500"/>
 
-We can examine this release information in Dynatrace. 
+Now, we can examine this release information in Dynatrace. 
 
 <hr>
 
