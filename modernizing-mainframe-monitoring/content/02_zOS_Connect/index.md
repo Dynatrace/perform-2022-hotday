@@ -54,7 +54,7 @@ Pre-Requisite
 •	EDUCHAN resource is defined and installed in the backend CICS region
 
 To create a Service in IBM Explorer for z/OS, first switch the perspective to z/OS Connect Enterprise Edition
-1.	From the main menu, select `Window > Perspective > Open Perspective > Other`. The Select Perspective wizard opens.
+1.	From the main menu, select `Window > Perspective > Open Perspective > Other`. The Open Perspective wizard opens.
 2.	Select `z/OS Connect Enterprise Edition`
 
 ![Perspective](../../assets/images/perspective.png)
@@ -76,8 +76,12 @@ Create a z/OS Connect EE service project in the z/OS Connect Enterprise Edition 
 
 ![Name](../../assets/images/projectname.png)
 
+![Definition](../../assets/images/Definition.png)
+
 6.	Select `Configuration` tab and enter `Conn7nn` (`Conn7nn` is the unique connection ID of your CICS region, `7nn` is your three digit ID) 
-This connection ID should match with your <zosconnect_cicsIpicConnection> entry in server.xml configuration in z/OS Connect set up. 
+Note: This connection ID should match with your `<zosconnect_cicsIpicConnection>` entry in `server.xml` configuration in z/OS Connect set up. 
+
+![Configuration](../../assets/images/Configuration.png)
 
 7.	Switch to the `Definition` tab to create Service interface definitions
 
