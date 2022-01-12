@@ -40,26 +40,14 @@ The goal is to create a z/OS Connect Service and monitor it with the Dynatrace O
    
    
 ### Step 2: Create Service in IBM z/OS Explorer
-
-Overview
-This document provides step-by-step instructions on how to – 
-•	create a service in IBM Explorer for z/OS 
-•	deploy the service in z/OS Connect instance in mainframe
-•	update server configuration in z/OS Connect
-The IBM sample program, EDUCHAN, is used in the backend CICS region to serve the request received by this service
-
-Pre-Requisite
-•	IBM Explorer for z/OS installed with z/OS Connect Enterprise Edition plugin
-•	A successful connection is established from IBM Explorer for z/OS to z/OS Connect in DTVD.DTWLAB.DYNATRACE.ORG
-•	EDUCHAN resource is defined and installed in the backend CICS region
-
-To create a Service in IBM Explorer for z/OS, first switch the perspective to z/OS Connect Enterprise Edition
+- Switch the perspective to `z/OS Connect Enterprise Edition`
 1.	From the main menu, select `Window > Perspective > Open Perspective > Other`. The Open Perspective wizard opens.
 2.	Select `z/OS Connect Enterprise Edition`
 
 ![Perspective](../../assets/images/perspective.png)
 
-Create a z/OS Connect EE service project in the z/OS Connect Enterprise Edition perspective and define the request and response service interfaces.
+- Create a z/OS Connect EE service project in the z/OS Connect Enterprise Edition perspective and define the request and response service interfaces.
+
 1.	Select `File > New > Project`. The New Project wizard opens
 
 ![New Project](../../assets/images/newproject.png)
@@ -85,7 +73,7 @@ Note: This connection ID should match with your `<zosconnect_cicsIpicConnection>
 
 7.	Switch to the `Definition` tab to create Service interface definitions
 
-8.	Enter `EDUCHAN` in the Program text box (`EDUCHAN` is an IBM sample COBOL CICS Application defined and installed in your CICS region)
+8.	Enter `EDUCHAN` in the Program text box ( `EDUCHAN` is an IBM sample COBOL CICS Application defined and installed in your CICS region)
 
 9.	Click on button `Create Service Interface`
 
@@ -112,7 +100,7 @@ For Container1, select `CHAR in the datatype field`
 
 15.	In the Service interface editor, create three containers with the following names and types for response service. Use the add icon at the top to add more containers
 
-![Add Container](../../assets/images/AddContainerpng)
+![Add Container](../../assets/images/AddContainer.png)
 
 a.	Container Name: `CICSRC`     Container Type: `BIT`
 b.	Container Name: `OUTPUTDATA` Container Type: `CHAR`
@@ -132,10 +120,10 @@ c.	Container Name: `CICSTIME`   Container Type: `CHAR`
 
 ### Step 3: Deploy Service in z/OS Connect
 
-To deploy the service, ensure you have a z/OS Connect Host connection established to DTVD using your credentials
+Note: ensure you have a z/OS Connect Host connection established to DTVD using your credentials.
 
-To deploy the service,
 1.	Right click on your `EDUnnn` project in the Project Explorer pane
+
 2.	Select `z/OS Connect EE > Deploy Service to z/OS Connect EE Server`
 
 ![Deploy](../../assets/images/Deploy.png)
