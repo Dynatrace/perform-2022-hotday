@@ -83,7 +83,7 @@ First we need to tell keptn what Dashboard to use for the evaluation.
 1. Next, navigate to this directory, ~/keptn-in-a-box/resources/dynatrace/scripts
     1. execute
         ```bash
-            #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
+            #: cd /home/dtu_training/keptn-in-a-box/resources/dynatrace/scripts
         ```
 1. Run the script setdbenv.sh
     1. execute

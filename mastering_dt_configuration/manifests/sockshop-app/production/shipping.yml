@@ -2,34 +2,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: queue-master
+  name: shipping
   namespace: production
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: queue-master
+      app: shipping
   template:
     metadata:
       annotations:
         sidecar.istio.io/inject: "false"
         dynatrace/instrument: "true"
         pipeline.stage: prod-stable
-        pipeline.build: 1.0.0.0323
+        pipeline.build: 1.0.2.0113
         pipeline.project: sockshop
-        support.contact: "jimmy.page@sockshop.com"
-        support.channel: "#support-sockshop-middleware"
+        support.contact: "john.doe@sockshop.com"
+        support.channel: "#support-sockshop-services"
       labels:
-        app: queue-master
+        app: shipping
         stage: prod
         release: stable
         version: "1.0"
-        tier: "messaging"
+        tier: "business"
         product: "sockshop"
     spec:
       containers:
-      - name: queue-master
-        image: dynatracesockshop/queue-master:0.5.0
+      - name: shipping
+        image: dynatracesockshop/shipping:0.5.0
         env:
         - name: JAVA_OPTS
           value: -Xms128m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom
@@ -42,14 +42,14 @@ spec:
           httpGet:
             path: /health
             port: 8080
-          initialDelaySeconds: 120
+          initialDelaySeconds: 240
           periodSeconds: 10
           timeoutSeconds: 15
         readinessProbe:
           httpGet:
             path: /health
             port: 8080
-          initialDelaySeconds: 120
+          initialDelaySeconds: 240
           periodSeconds: 10
           timeoutSeconds: 15
       volumes:
@@ -62,9 +62,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: queue-master
+  name: shipping
   labels:
-    app: queue-master
+    app: shipping
   namespace: production
 spec:
   ports:
@@ -72,4 +72,4 @@ spec:
     port: 80
     targetPort: 8080
   selector:
-    app: queue-master
+    app: shipping
