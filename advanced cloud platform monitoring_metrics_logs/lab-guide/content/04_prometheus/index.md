@@ -140,7 +140,7 @@ kubectl apply -f hotday_script/prometheus/service__nginx_template.yaml
 #### Metrics
 All the ingested metrics can be found in "Metrics".
 Open `Metrics`, and search for `kube_pod`
-![Metrics_Prometheus_metrics](../../assets/images/prom_metrics_screen.png)
+![prom_metrics_screen](../../assets/images/prom_metrics_screen.png)
 
 By expending , the desired metric you can see all the available dimensions.
 #### Data explorer
@@ -148,7 +148,7 @@ By expending , the desired metric you can see all the available dimensions.
 ##### Kube proxy
 Let's create a pie chart showing the ditribution of the pod Phases.
 In tha Data explorer search for `kube_pod_status_phase`.
-![Metrics_Prometheus_Pod phase](../../assets/images/dtu_prom_pod_phase.png)
+![dtu_prom_pod_phase](../../assets/images/dtu_prom_pod_phase.png)
 
 Create a pie chart splitting the value by the dimension `phase`
 
@@ -167,7 +167,7 @@ To understand the health of our ingress, it would be useful to be able to split 
 Let's create a graph showing the `http_request_total`
 
 In the Data explorer search for `nginx_ingress_nginx_http_requests_total.count`
-![Metrics_Ingress_controller](../../assets/images/dtu_prom_nginx_http.png)
+![dtu_prom_nginx_http](../../assets/images/dtu_prom_nginx_http.png)
 
 Do you have the right dimension to split the statistic by service name?
 
