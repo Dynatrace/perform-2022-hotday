@@ -53,6 +53,10 @@ Now we can create the **"evalservice"** tag.
 
 Let's also create a tag **"eval"** tag on the same service
 
+Next, we need to also tag the production frontend with the tag **"peval"**
+
+<hr>
+
 ### Create Process Group Naming Rule (if not created)
 
 Hopefully the naming rule has been created by the API call.  We need to validate that this has occurred.
@@ -78,6 +82,8 @@ You can cut and paste these items.
 * Conditions: **keptn_deployment (Environment)**
 
 Click **"Preview"** -> **"create rule"** -> **"save changes"**
+
+<hr>
 
 ### Architecture Validation - Service Flow
 
@@ -119,6 +125,8 @@ You will also notice, this is where we are using the tag "evalservice" for the t
 <img src="../../assets/images/lab_1_simple_test.png" width="500"/>
 
 Click **"Build"**
+
+<hr>
 
 ### Describe Dynatrace Load Test Request Attribute
 
@@ -163,7 +171,7 @@ We have setup the Load Test **Calculated service metrics** for you.   Below is a
 
 [Create Calculated Service Metrics (SLIs) - Step #8 of this Blog](https://www.dynatrace.com/news/blog/guide-to-automated-sre-driven-performance-engineering-analysis/)
 
-### Kick off Keptn Customer 2 Build
+### Kick off Keptn Customer Build
 
 Click on **01_deploy_order_application** pipeline
 
@@ -173,7 +181,7 @@ Now we are going to push the **customer** version **2.0.0**.
 
 Select **"Build with parameters"**
 
-- In the **customerimage** field we need to change the value at the end from 1 to **2.0.0**
+- In the **customerimage** Release field we need to select **2.0.0**
 - In the DEPLOY_TO field, change the dropdown box to **customer**
 
 Next, click the **"Build"** button.
