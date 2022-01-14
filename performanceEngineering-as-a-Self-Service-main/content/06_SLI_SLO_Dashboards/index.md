@@ -51,9 +51,10 @@ Response time (P50);sli=svc_rt_p95;pass=<+10%,<500
 
 Good news, for the lab exercise, we have created a SLI dashboard template.
 
-First we need to tell keptn what Dashboard to use for the evaluation.
+We have also created the secret in keptn to allow the dashbaord integration.
 
-### Environment setup steps:
+<details><summary>Environment setup steps</summary>
+
 1. open ssh
 1. change to the root user
     1. execute
@@ -91,6 +92,8 @@ First we need to tell keptn what Dashboard to use for the evaluation.
             #: ./setdbenv.sh <domain>
         ```
         You can find your domain by navigating to the lab home page.
+</details>
+
 <hr>
 
 ## Next
