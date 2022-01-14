@@ -1,4 +1,4 @@
-## Trace Ingestion
+## Trace Ingestion using Dynatrace API
 
 In the previous section we successfully added context information to these outbound web requests. Unfortunately that doesn't get us insight into what's happening within the application that receives these calls. The server side of these calls is a locally running application written in Golang - unfortunately a version of Golang that's not yet supported by OneAgent.
 
