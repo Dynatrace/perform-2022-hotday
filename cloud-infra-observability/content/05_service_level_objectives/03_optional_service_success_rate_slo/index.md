@@ -16,4 +16,4 @@ type(service),entityName("front-end")
 5. Warning Percent: 97%
 6. Timeframe: -1d
 
-![serviceslo](../../assets/images/serviceslo.png)
+![serviceslo](../../../assets/images/serviceslo.png)

@@ -8,4 +8,4 @@
 5. Threshold: Green: 0, Yellow: 70, Red: 85
 6. Pin to dashboard
 
-![topmemcpu](../../assets/images/topmemcpu.png)
+![topmemcpu](../../../assets/images/topmemcpu.png)

@@ -7,6 +7,6 @@
 4. Unit: Millisecond
 5. Save and return to Metrics Browser to see your changes!
 
-![cronexplorer](../../assets/images/cronexplorer.png)
+![cronexplorer](../../../assets/images/cronexplorer.png)
 
-![cronmetadata](../../assets/images/cronmetadata.png)
+![cronmetadata](../../../assets/images/cronmetadata.png)

@@ -8,9 +8,9 @@
 5. Aggregation: Average
 6. Visualization: Column Graph
 
-![dataexplorer](../../assets/images/dataexplorer.png)
+![dataexplorer](../../../assets/images/dataexplorer.png)
 
 ### Step 2: Which way was easier, browser or explorer?
 1. Why would you use one over the other?
 
-![memchart](../../assets/images/memchart.png)
+![memchart](../../../assets/images/memchart.png)

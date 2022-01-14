@@ -7,7 +7,7 @@
 4. View Raw of metricsapipostmancollection.json
 5. Copy the entire text and paste into Postman - Import
 
-![postman](../../assets/images/postman.png)
+![postman](../../../assets/images/postman.png)
 
 ### Let's get data from the Metric API!
 1. For the CPU and Disk GET requests: Replace {{tenant}} in GET with your Dynatrace Environment

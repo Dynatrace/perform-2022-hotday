@@ -17,4 +17,4 @@ entityId("HOST-ID")
 5. Warning Percent: 99.75%
 6. Timeframe: -1d
 
-![hostslo](../../assets/images/hostslo.png)
+![hostslo](../../../assets/images/hostslo.png)

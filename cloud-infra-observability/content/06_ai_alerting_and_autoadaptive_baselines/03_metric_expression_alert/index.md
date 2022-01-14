@@ -14,4 +14,4 @@
 6. Above threshold for 3 slots during 5 period
 7. Event Severity: Resource
 
-![metricalert](../../assets/images/metricalert.png)
+![metricalert](../../../assets/images/metricalert.png)

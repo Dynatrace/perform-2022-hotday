@@ -7,7 +7,7 @@
 4. Unit: Count
 5. Metric Properties: Toggle on Root Case Relevant
 
-![mongometa](../../assets/images/mongometa.png)
+![mongometa](../../../assets/images/mongometa.png)
 
 ### Metrics Explorer
 1. Search for mongodb_connections
@@ -15,4 +15,4 @@
 3. Aggregation: Count
 4. Pin to dashboard
 
-![mongotile](../../assets/images/mongotile.png)
+![mongotile](../../../assets/images/mongotile.png)

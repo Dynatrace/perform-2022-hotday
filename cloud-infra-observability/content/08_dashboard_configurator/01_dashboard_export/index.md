@@ -7,4 +7,4 @@
 4. This is also available in the Configuration API for managing dashboards at scale
 
 
-![dashboardjson](../../assets/images/dashboardjson.png)
+![dashboardjson](../../../assets/images/dashboardjson.png)

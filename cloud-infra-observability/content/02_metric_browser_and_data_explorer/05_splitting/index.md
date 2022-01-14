@@ -6,9 +6,9 @@
 3. Split by: Kubernetes Namespace
 4. Visualization: Column Graph
 
-![runningpodsexplorer](../../assets/images/runningpodsexplorer.png)
+![runningpodsexplorer](../../../assets/images/runningpodsexplorer.png)
 
 ### Pin to dashboard
 1. Tile Name: Pods running by Namespace
 
-![podsrunningtile](../../assets/images/podsrunningtile.png)
+![podsrunningtile](../../../assets/images/podsrunningtile.png)

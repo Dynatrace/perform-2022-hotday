@@ -5,9 +5,9 @@
 2. Aggregation: Max
 3. Split by: AWS Availablity Zone
 
-![azexplorer](../../assets/images/azexplorer.png)
+![azexplorer](../../../assets/images/azexplorer.png)
 
 ### Pin to dashboard
 1. Tile Name: EC2s running by AWS AZ
 
-![aztile](../../assets/images/aztile.png)
+![aztile](../../../assets/images/aztile.png)

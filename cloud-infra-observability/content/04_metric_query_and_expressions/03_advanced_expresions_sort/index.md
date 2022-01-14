@@ -14,4 +14,4 @@ builtin:host.cpu.usage:splitBy("dt.entity.host"):avg:auto:sort(value(avg,descend
 ```
 
 
-![expressions3](../../assets/images/expressions3.png)
+![expressions3](../../../assets/images/expressions3.png)

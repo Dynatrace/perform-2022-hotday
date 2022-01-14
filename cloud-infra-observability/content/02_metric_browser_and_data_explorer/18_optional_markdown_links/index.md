@@ -8,4 +8,4 @@
 5. What differs when the URLs used on the markdowns are full URLs?
 6. Example: `##[AWS](https://{tenant_URL}/#awses)`
 
-![markdown](../../assets/images/markdown.png)
+![markdown](../../../assets/images/markdown.png)

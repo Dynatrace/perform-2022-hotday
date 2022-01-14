@@ -5,7 +5,7 @@
 2. Aggregation: SUM
 3. Pin to the Infrastructure Overview dashboard
 
-![cloudcostoverview](../../assets/images/cloudcostoverview.png)
+![cloudcostoverview](../../../assets/images/cloudcostoverview.png)
 
 ### Create a line chart, breaking down the response time by provider and team
 1. Metric: cloud.costestimate
@@ -13,4 +13,4 @@
 3. Aggregation: SUM
 4. Pin to the Infrastructure Overview dashboard
 
-![cloudcostbyteam](../../assets/images/cloudcostbyteam.png)
+![cloudcostbyteam](../../../assets/images/cloudcostbyteam.png)

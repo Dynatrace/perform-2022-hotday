@@ -9,9 +9,9 @@
 6. Threshold: Green: Blank, Yellow: 70, Red: 85
 7. Visualization: Line Graph
 
-![thresholdsaxis](../../assets/images/thresholdsaxis.png)
+![thresholdsaxis](../../../assets/images/thresholdsaxis.png)
 
 ### Pin to dashboard
 1. Tile Title: K8s Nodes Memory Used %
 
-![k8snodemem](../../assets/images/k8snodemem.png)
+![k8snodemem](../../../assets/images/k8snodemem.png)
