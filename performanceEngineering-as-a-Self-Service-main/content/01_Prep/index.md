@@ -246,6 +246,18 @@ Use these settings to create the Rule.
 
 <hr>
 
+## Set Dashboard Default Management Zone
+
+Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;service=carts"** dashbaord.
+
+- Click **"Edit"**
+- Select **"Settings"**
+- Pick **"Keptn: sockshop staging"** for the Default Managment zone
+- Click **"Done"**
+- Validate you see data in each tile
+
+<hr>
+
 ## Final Setup
 
 Additionally, we may need to deploy additional application services.
