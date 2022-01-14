@@ -25,7 +25,10 @@ Around line 40 OpenTelemetry is getting configured. What's not correct yet is th
 
 ![access token](../../assets/images/access-token.png)
 
-In order for the modifications to become active you need to shut down the application. Press ``Ctrl-C`` within the terminal window and restart the app using ``mvn spring-boot:run``.
+In order for the modifications to become active you need to shut down the application. Press ``Ctrl-C`` within the terminal window and restart the app
+```bash
+mvn spring-boot:run
+```.
 
 The new service calls named ``http://127.0.0.1:8080/shop/product/vintage-courier-bag.html/ref=c:2`` are now already showing what's going on for the ``quote`` calls.
 
