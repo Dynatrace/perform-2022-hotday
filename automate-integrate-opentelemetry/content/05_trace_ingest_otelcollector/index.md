@@ -16,6 +16,10 @@ In this section, the AWS Lambda function has already been auto-instrumented with
 1. If you select one of the click on the `trace id` to view the full distributed trace across the caller and the callee
 
 ### Quick note on OpenTelemetry Collector configuration
+
+> ***Note***
+> This part is only for your information and it will be demonstrated by the instructor. It does not require you to follow what was shown. And it does not require you to configure any items.
+
 Your tenant is receving a lot of traces as the OpenTelemetry Collector was configured to send the trace data from a single Lambda function to multiple Dynatrace tenants. That is why you are receiving the same trace multiple times. Reference [OpenTelemetry Collector configuration](https://opentelemetry.io/docs/collector/configuration/)
 
 ```yaml
