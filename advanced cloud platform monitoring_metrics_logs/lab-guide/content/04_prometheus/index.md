@@ -22,6 +22,7 @@ The node exporter is deployed as a Daemonset by the Prometheus Operator.
 ```
 kubectl get ds
  ```
+
 ![Prometheus_1](../../assets/images/prom_1.png)
 
 > 2. Copy and replace the name of the Node Exporter DS and run the kubectl command:
@@ -29,6 +30,7 @@ kubectl get ds
 ```
 kubectl get ds {DS NAME} -o jsonpath='{.spec.template.spec.containers[0].ports[].containerPort}{"\n"}'
 ```
+
 ![Prometheus_2](../../assets/images/prom_2.png)
 
 #### Step 2: Validate the prometheus metrics by exposing exporter port to localhost.
@@ -37,6 +39,7 @@ kubectl get ds {DS NAME} -o jsonpath='{.spec.template.spec.containers[0].ports[]
 ```
 Kubectl get pod
 ```
+
 ![Prometheus_4](../../assets/images/prom_4.png)
 
 > 2. Copy the name of one of the prometheus-node-exporter pods, replace the {POD NAME} and {PORT} with the port identified above and run the command:
@@ -44,6 +47,7 @@ Kubectl get pod
 ```
 	kubectl {POD NAME} {PORT}:{PORT}
 ```
+
 ![Prometheus_4.1](../../assets/images/prom_4.1.png)
 
 
@@ -53,8 +57,11 @@ The Metric Url is typically /metrics. In our case it is /metrics.
 ```
 curl http://localhost:PORT/metrics
 ```
+
 ![Prometheus_3](../../assets/images/prom_3.png)
+
 - The result should be a large output of available node exporter metrics:
+
 ![Prometheus_3.3](../../assets/images/prom_3.3.png)
 
 ### Setup ActiveGate to scrape Prometheus-node-exporter Metrics
@@ -90,7 +97,7 @@ metadata:
 
 > 3. Deploy the new Service :
 ```
-kubectl apply -f Hotday_Script/prometheus/serice_nodexporter_template.yaml
+kubectl apply -f hotday_script/prometheus/serice_nodexporter_template.yaml
 ```
 
 
@@ -111,7 +118,7 @@ replace TO_DEFINE with port identified in 1.
 
 > 3. Deploy the new Service :
 ```
-kubectl apply -f Hotday_Script/prometheus/service_template.yaml
+kubectl apply -f hotday_script/prometheus/service_template.yaml
 ```
 
 ### Setup Nginx Exporter for Metric Ingest
@@ -138,25 +145,39 @@ kubectl apply -f hotday_script/prometheus/service__nginx_template.yaml
 ### Visualize Metric in Dynatrace
 
 #### Metrics
-All the ingested metrics can be found in "Metrics".
-Open `Metrics`, and search for `kube_pod`
+- All the ingested metrics can be found in "Metrics"
+> 1. Open `Metrics`, and search for:
+```
+kube_pod
+```
+
 ![prom_metrics_screen](../../assets/images/prom_metrics_screen.png)
 
-By expending , the desired metric you can see all the available dimensions.
 #### Data explorer
+- All available metrics can be dashboarded using the 'Data Explorer'
+> 1. Open 'Data Explorer', and search for:
+```
+kube_pod_status_phase
+```
 
-##### Kube proxy
-Let's create a pie chart showing the ditribution of the pod Phases.
-In tha Data explorer search for `kube_pod_status_phase`.
-![dtu_prom_pod_phase](../../assets/images/dtu_prom_pod_phase.png)
+![Prometheus 5](../../assets/images/prom_5.png)
 
-Create a pie chart splitting the value by the dimension `phase`
+> 2. Select the `kube_pod_status_phase` metric, and add the following `filter by` dimensions:
+```
+pod: frontend-
 
+phase: Running
+```
+
+![Prometheus 6](../../assets/images/prom_6.png)
+
+> 3. Select the visualization `single value`
+
+![Prometheus 7](../../assets/images/prom_7.png)
 
 ##### Nginx ingress controller
-
 The current environment use a Nginx Ingress controller to expose the following services out of the cluster:
-- the active gate ( to be able to utilize the api) though the service `fluentd-activegate` located in the namespace `nondynatrace`
+- the active gate (to be able to utilize the api) though the service `fluentd-activegate` located in the namespace `nondynatrace`
 - the hipster-shop through the service `frontend` located in the namespace `hipster-shop`
 
 To understand the health of our ingress, it would be useful to be able to split any of the statistics by :
@@ -164,10 +185,13 @@ To understand the health of our ingress, it would be useful to be able to split 
 - the name of the ingress
 - the namespace of the ingress
 
-Let's create a graph showing the `http_request_total`
-
+> 1. Create a `data explorer` chart for the following metric:
+```
+nginx_ingress_nginx_http_requests_total.count
+```
 In the Data explorer search for `nginx_ingress_nginx_http_requests_total.count`
-![dtu_prom_nginx_http](../../assets/images/dtu_prom_nginx_http.png)
+
+![Prometheus 8](../../assets/images/prom_8.png)
 
 Do you have the right dimension to split the statistic by service name?
 
