@@ -11,7 +11,7 @@ Using Dynatrace API, you will generate a Token with a wide-spread scope
     ```bash
     git clone <perform repo>
     ``` 
-3. Access automation_programmability_with_Dynatrace_API directory
+3. Access cloud_automation_programmability_with_Dynatrace_API directory
     ```bash
     cd automation_programmability_with_Dynatrace_API
     ```
