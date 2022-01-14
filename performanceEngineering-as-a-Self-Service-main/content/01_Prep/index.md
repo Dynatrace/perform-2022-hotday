@@ -242,7 +242,7 @@ Use these settings to create the Rule.
    <img src="../../assets/images/ss_mz.png" width="300"/>
 
 - Click **"Preview"**
-- Click **"Create rule"
+- Click **"Create rule"**
 
 <hr>
 
