@@ -58,5 +58,5 @@ We can use the function ``quote`` as a template in order to augment the function
 
 In order for these modifications to become active the application needs to get restarted. Press ``Ctrl-C`` within the terminal and enter ``mvn spring-boot:run`` to relaunch it.
 
-## You have arrived!
+### You have arrived!
 We have successfully traced across process boundaries - even if OneAgent is not of assistance.
