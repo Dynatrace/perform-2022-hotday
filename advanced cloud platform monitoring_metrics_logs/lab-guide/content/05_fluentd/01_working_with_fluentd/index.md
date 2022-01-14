@@ -263,7 +263,7 @@ Create a graph with :
 * aggregator : Percentile 90th
 * Split by : service
   
-![Response time graph](../../assets/images/dt_fluentd_metrics.png)
+![fluentd_1_1](../../assets/images/dt_fluentd_metrics.png)
 
 #### Create a Pie raph showing the status code per services
 
@@ -273,4 +273,4 @@ Create a graph with :
 * aggregator : Count
 * Split by : status,service
   
-![Pie chart](../../assets/images/dtu_fluentd_metrics_status.png)
+![fluentd_1_2](../../assets/images/dtu_fluentd_metrics_status.png)
