@@ -2,6 +2,8 @@
 
 Based on user feedback we learned that defining custom SLIs via the sli.yaml and then defining SLOs via slo.yaml can be challenging as one has to be familiar with the Dynatrace Metrics v2 API to craft the necessary SLI queries. As dashboards are a prominent feature in Dynatrace to visualize metrics, it was a logical step to leverage dashboards as the basis for Keptn's SLI/SLO configuration.
 
+<hr>
+
 ## Use Cases
 
 <img src="../../assets/images/sli_use_cases.png" width="500"/>
@@ -118,9 +120,9 @@ select the dashbaord.
 
 <img src="../../assets/images/sli_kqg_db.png" width="500"/>
 
-## Dynatrace Configuration 
+<details><summary>Dynatrace Configuration</summary>
 
-We need to create a rule on the management zone that keptn created.
+If not done previously, We need to create a rule on the management zone that keptn created.
 
 In the Dynatrace UI, navigate to "Settings>Preferences>Management zones"
 Now, locate the "Keptn: sockshop staging" management zone.
@@ -128,6 +130,10 @@ Now, locate the "Keptn: sockshop staging" management zone.
 Create this rule on the management zone.
 
 <img src="../../assets/images/mz_rule.png" width="500"/>
+
+</details>
+
+<hr>
 
 ### Next, create the SLO
 
