@@ -6,12 +6,12 @@
    ![Settings](../../../assets/images/06_open_observability-04alerts1.gif)
 1. Under `Metric` section, select `Span Failure Rate`.
    ![Settings](../../../assets/images/06_open_observability-04alerts2.png)
-1. Under `Static threshold` section, configure the following parameters
+1. Scroll down to the `Static threshold` section, configure the following parameters
    - Alert anomalies with a static threshold of `5` percent (%)
    - Raise alert if ... the threshold for `1` minute slots
    - during any `3` minute period.
    ![Settings](../../../assets/images/06_open_observability-04alerts3.png)
-1. Configure the event description as follows
+1. Scroll down further down to the `Event description` section and configure the event description as follows
    - Title: `Blackbox failures`
    - Severity: `Error`
    ![Settings](../../../assets/images/06_open_observability-04alerts4.png)
