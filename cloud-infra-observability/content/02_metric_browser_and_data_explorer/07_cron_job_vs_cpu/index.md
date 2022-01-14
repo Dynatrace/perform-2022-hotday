@@ -14,4 +14,4 @@ Some of our cron jobs are taking longer than normal and we want to see if it’s
 ### Pin to dashboard
 1. Tile Name: Cron Job Duration vs CPU
 
-![cpuvscron](../../assets/images/cpuvscron.png)
+![cpuvscron](../../../assets/images/cpuvscron.png)

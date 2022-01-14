@@ -10,6 +10,6 @@
 7. Severity: Custom Alert
 
 
-![autobaseline1](../../assets/images/autobaseline1.png)
+![autobaseline1](../../../assets/images/autobaseline1.png)
 
-![autobaseline2](../../assets/images/autobaseline2.png)
+![autobaseline2](../../../assets/images/autobaseline2.png)

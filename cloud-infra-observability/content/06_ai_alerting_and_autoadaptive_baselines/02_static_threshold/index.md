@@ -9,12 +9,12 @@
 6. Raise if above threshold for 1 minute during 3 minute period
 7. Review the Alert Preview
 
-![static1](../../assets/images/static1.png)
+![static1](../../../assets/images/static1.png)
 
 8. Title: Cron Job Slowdown
 9. Severity: Slow down
 
-![static2](../../assets/images/static2.png)
+![static2](../../../assets/images/static2.png)
 
 ### Let's slow it down!
 1. Navigate back to the DTU Terminal for the EasyTravel server
@@ -34,4 +34,4 @@ python3 cronjobduration.py HHMM 10
 
 ### Review the problem ticket
 
-![staticproblem](../../assets/images/staticproblem.png)
+![staticproblem](../../../assets/images/staticproblem.png)

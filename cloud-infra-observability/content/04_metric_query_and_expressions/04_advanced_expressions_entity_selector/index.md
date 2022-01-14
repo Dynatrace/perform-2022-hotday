@@ -11,6 +11,6 @@
 builtin:host.cpu.usage:filter(and(in("dt.entity.host",entitySelector("type(host),state(~"RUNNING~")")))):splitBy("dt.entity.host"):avg:sort(value(avg,descending)):limit(10)
 ```
 
-![expressions4](../../assets/images/expressions4.png)
+![expressions4](../../../assets/images/expressions4.png)
 
 ### What is the output?

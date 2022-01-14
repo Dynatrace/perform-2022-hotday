@@ -7,7 +7,7 @@
 4. Transformation: Last value 
 5. Pin to dashboard
 
-![runningpodstile](../../assets/images/runningpodstile.png)
+![runningpodstile](../../../assets/images/runningpodstile.png)
 
 ### Create Graph Area chart
 1. Metric: builtin:cloud.kubernetes.namespace.workloads
@@ -15,4 +15,4 @@
 3. Aggregation: Average
 5. Pin to dashboard
 
-![workloadtile](../../assets/images/workloadtile.png)
+![workloadtile](../../../assets/images/workloadtile.png)

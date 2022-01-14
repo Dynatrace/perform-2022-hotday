@@ -7,6 +7,6 @@
 4. Add host health tile, problems tile, and headers
 5. Share the dashboard as preset
 
-![dashboardtags](../../assets/images/dashboardtags.png)
+![dashboardtags](../../../assets/images/dashboardtags.png)
 
-![dashboardfilter](../../assets/images/dashboardfilter.png)
+![dashboardfilter](../../../assets/images/dashboardfilter.png)

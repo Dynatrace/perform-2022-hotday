@@ -6,7 +6,7 @@
 3. Split by: Pod Phase
 4. Visualization: Pie
 
-![podexplorer](../../assets/images/podexplorer.png)
+![podexplorer](../../../assets/images/podexplorer.png)
 
 
-![podtile](../../assets/images/podtile.png)
+![podtile](../../../assets/images/podtile.png)

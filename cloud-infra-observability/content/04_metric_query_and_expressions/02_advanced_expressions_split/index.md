@@ -10,6 +10,6 @@ builtin:host.cpu.usage:splitBy("dt.entity.host")
 
 3. Click on Run Query
 
-![expressions2](../../assets/images/expressions2.png)
+![expressions2](../../../assets/images/expressions2.png)
 
 ### What is the output?

@@ -4,4 +4,4 @@
 1. Try to use the Clone and Code options
 2. Metrics: builtin:host.cpu.usage, builtin:host.disk.usedPct, builtin:host.net.nic.trafficIn, builtin:host.net.nic.trafficOut
 
-![k8sinframetrics](../../assets/images/k8sinframetrics.png)
+![k8sinframetrics](../../../assets/images/k8sinframetrics.png)

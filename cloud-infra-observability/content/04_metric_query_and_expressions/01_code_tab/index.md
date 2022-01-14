@@ -6,6 +6,6 @@
 3. Use the metric `builtin:host.cpu.usage`
 4. Run query
 
-![expression1](../../assets/images/expression1.png)
+![expression1](../../../assets/images/expression1.png)
 
 ### What is the output?

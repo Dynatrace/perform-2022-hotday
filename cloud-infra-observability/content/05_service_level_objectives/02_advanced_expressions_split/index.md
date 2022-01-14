@@ -16,4 +16,4 @@ type(cloud_application_namespace),entityName("sockshop-production")
 5. Warning Percent: 99.5%
 6. Timeframe: -1d
 
-![podslo](../../assets/images/podslo.png)
+![podslo](../../../assets/images/podslo.png)
