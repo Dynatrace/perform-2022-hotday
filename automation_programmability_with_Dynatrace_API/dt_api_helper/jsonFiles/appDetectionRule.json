@@ -1,0 +1,8 @@
+{
+    "applicationIdentifier": "appId",
+    "filterConfig": {
+     "applicationMatchTarget": "DOMAIN, URL",
+     "applicationMatchType": "BEGINS_WITH, CONTAINS, ENDS_WITH, EQUALS, MATCHES",
+     "pattern": "pattern"
+    }
+   }
