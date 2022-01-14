@@ -59,5 +59,5 @@ Wait for new Service Calls to come in and verify that the value for the referenc
 
 You can now configure a ``Request Attribute`` that uses this value as its source.
 
-## You have arrived!
+### You have arrived!
 At least for the programming language Java we have explored the basics of producing additional PurePath Spans.

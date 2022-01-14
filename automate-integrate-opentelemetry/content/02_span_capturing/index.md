@@ -34,5 +34,5 @@ Dynatrace by default captures every span. You can prevent capturing the ``query-
 
 ![Span-Capturing](../../assets/images/span-capturing.png)
 
-## You have arrived!
+### You have arrived!
 OneAgent automatically integrates OpenTelemetry Spans into ongoing PurePaths. Additional configuration is possible in order to tweak the results.

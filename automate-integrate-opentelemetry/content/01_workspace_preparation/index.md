@@ -60,5 +60,5 @@ Next we're pre-building the application. Enter ``mvn clean install``. This initi
 
 ![New Terminal 2](../../assets/images/mvn-clean-install.png)
 
-## You have arrived!
+### You have arrived!
 At this stage your development machine is ready to run the applications we are going to use today.
