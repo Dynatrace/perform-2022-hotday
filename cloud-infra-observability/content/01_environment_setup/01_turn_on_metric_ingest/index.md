@@ -5,4 +5,4 @@
 2. Click on Dynatrace OneAgent StatsD, Pipe, HTTP Metric API
 3. Turn on enable Extension Execution Controller on every host and enable local PIPE/HTTP metric API on every host
 
-![metricingest](../../assets/images/metricingest.png)
+![metricingest](../../../assets/images/metricingest.png)
