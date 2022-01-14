@@ -21,6 +21,11 @@ The log ingest API requires a specific format :
 {
 "content": "example log content 1",
 "status" : "error",
+"k8s.pod.name":"$PODNAME",
+"k8s.namespace.uid":"$NAMESPACEID",
+"dt.kubernetes.node.name":"$NODENAME",
+"dt.kubernetes.cluster.id":"$CLUSTERID",
+"dt.kubernetes.node.system_uuid":"$DTNODEID",
 "log.source": "/var/log/syslog",
 "dt.entity.host" : "<HOST ID>",
 "dt.entity.process_group_instance": "<PG_ID>"
@@ -30,6 +35,8 @@ The log ingest API requires a specific format :
 * The property content will have the value of our log.
 * status is optionnal but helps to filter our content
 * log.source is also optional
+* the other labels are there to help dynatrace to index the log stream to the right entity
+
 We can add as many extra properties to attach extra labels related to our log stream.
 Several labels will be used to index the log stream to a given Dynatrace entity.
   
@@ -43,7 +50,7 @@ enable_ruby true
 content ${record["method"]} ${record["request"]} ${record["status"]} ${record["service"]} ${record["bytes_sent"]} ${record["responsetime"]} ${record["service"]}
 </record>
  ```
-<record></record> will help us to re structure our log stream before sending it to dynatrace.
+`<record></record>` will help us to re structure our log stream before sending it to dynatrace.
 
 In the record object you can add as many new labels
  ```
@@ -103,7 +110,7 @@ The regexp excluding empty string is : `/^$/`
 Modify the logstream pipeline by adding the filter that will exclude log stream having an empty service
 
 #### Add the record transformer to your logstream 
-![stdout log stream transformed](../../assets/images/dt_fluentd_record_transformer.png)
+![fluentd_2_1](../../assets/images/dt_fluentd_record_transformer.png)
 
 ### Add the dynatrace output plugin
 
@@ -128,16 +135,16 @@ Run the load test scripts to get logs generated and let fluentd collect the new 
 ### Log viewer
 All the ingested logs from the dynatrace Operator and from fluentd will be available in the Log viewer.
 Click on the left menu Observe and Explore/Logs
-![Log viewer_view](../../assets/images/dt_fluentd_logviewer.png)
+![fluentd_2_2](../../assets/images/dt_fluentd_logviewer.png)
 
 #### Filter the logs to see our logs
 To create a metric out of a log stream requires to create the right log filter.
 Look a the log properties of fluentd, and create the filter that will only show logs related to our application.
-![Log viewer_filter](../../assets/images/dt_fluentd_log_detail.png)
+![fluentd_2_3](../../assets/images/dt_fluentd_log_detail.png)
 
 #### Create a metric out of our logs
 Create a metric exposing the label `responsetime` time ingested by dynatrace
-![Log viewer_create_metric](../../assets/images/dt_fluentd_log_detail.png)
+![fluentd_2_4](../../assets/images/dt_fluentd_log_create_metric.png)
 
 #### Create traffic to generate new logs
 
