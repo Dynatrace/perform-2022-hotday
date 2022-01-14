@@ -2,12 +2,6 @@
 
 Let's start our application deployment:
 
-- Clone the GitHub repo to retrieve our deploy-all files:
-  
-    ```
-    git clone https://github.com/bradking1329/deploy-sockshop.git
-    ```
-
 1. Navigate to the deploy-sockshop directory and creating our sockshop namespace:
 
     ```
