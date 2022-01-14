@@ -170,7 +170,8 @@ You should see these tags,
 If you do not see these tags, then we need to run a simple script to add the tags.
 These tags will be added as Environment tags on the host.
 
-Take these steps.
+<details><summary>Take these steps</summary>
+
 1. Login to your EC2 instance via ssh, from the Environments tab
 2. Navigate to "keptn-in-a-box/resources/dynatrace/" directory
 
@@ -182,6 +183,7 @@ Take these steps.
     ```bash
         #: sudo ./hosttag.sh
     ```
+</details>
 
 After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
 
@@ -219,6 +221,28 @@ Select **Kubernetes** from the menu.
 1. process and service naming rules
 
 Due to to time constrainsts, we will visit each area as needed during the lab exercises.
+
+<hr>
+
+## Adjust Management zone
+Now we need to add host criteria to the "Keptn: sockshop staging" management zone.
+
+Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
+
+Find the **"Keptn: Sockshop staging"** management zone.
+
+We need to add a rule to capture the host and process metrics.
+
+Use these settings to create the Rule.
+
+- Rule Applies to "Hosts"
+- Conditions: Host tags equals [Environment]kiab
+- Select checkbox "Apply to processes running on matching hosts
+
+   <img src="../../assets/images/ss_mz.png" width="300"/>
+
+- Click **"Preview"**
+- Click **"Create rule"
 
 <hr>
 
