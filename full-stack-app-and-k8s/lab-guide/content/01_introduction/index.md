@@ -9,7 +9,7 @@ Our goals are:
 1. **Deploy the Dynatrace Operator**
 2. **Deploy our sample application - Sockshop**
 3. **Demonstrate full stack monitoring with Dynatrace**
-4. **Set up our Kubernetes Integration**
+4. **Analyze our Kubernetes Integration**
 5. **Deploy and annotate Prometheus exporters to pull additional metrics into Dynatrace**
 6. **Create Kubernetes Dashboards to view all of these metrics in a single pane**
 7. **Utilize Log Monitoring v2 for Kubernetes logs and events**

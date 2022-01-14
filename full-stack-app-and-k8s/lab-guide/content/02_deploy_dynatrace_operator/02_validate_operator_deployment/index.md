@@ -19,4 +19,4 @@ To validate the deployment of our Dynatrace Operator and resources we can:
 
    
 
-**Note**: The **Kubernetes metrics** may take a few minutes to populate, as long as you see a cluster in step 3 you can move on.
+**Note**: The **Kubernetes metrics** may take a few minutes to populate, as long as you see a cluster in step 3 you can move on to the next step.
