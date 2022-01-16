@@ -25,7 +25,7 @@ shopizer/sm-shop/src/main/java/com/salesmanager/shop/store/controller/product
 
 ![Product Controller](../../assets/images/shop-product-controller.png)
 
-Select the file `ShopProductController.jav``. Scroll down to `line 100`. The method `calcPrice` is the one that currently produces this additional span.
+Select the file `ShopProductController.jav`. Scroll down to `line 100`. The method `calcPrice` is the one that currently produces this additional span.
 
 ```java
 	public void calcPrice(Model model) {
