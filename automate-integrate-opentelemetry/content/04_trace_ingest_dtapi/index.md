@@ -4,7 +4,7 @@ In the previous section we successfully added context information to these outbo
 
 The application is however already prepared for sending OpenTelemetry Spans to Dynatrace. We just need to configure where to send that data to.
 
-Within Visual Studio Code navigate to ``shopizer/gosrvc/main.go``.
+Within Visual Studio Code navigate to `shopizer/gosrvc/main.go`.
 
 ![golang](../../assets/images/main.go.png)
 
@@ -25,16 +25,16 @@ Around line 40 OpenTelemetry is getting configured. What's not correct yet is th
 
 ![access token](../../assets/images/access-token.png)
 
-In order for the modifications to become active you need to shut down the application. Press ``Ctrl-C`` within the terminal window and restart the app
+In order for the modifications to become active you need to shut down the application. Press `Ctrl-C` within the terminal window and restart the app
 ```bash
 mvn spring-boot:run
-```.
+```
 
-The new service calls named ``http://127.0.0.1:8080/shop/product/vintage-courier-bag.html/ref=c:2`` are now already showing what's going on for the ``quote`` calls.
+The new service calls named `http://127.0.0.1:8080/shop/product/vintage-courier-bag.html/ref=c:2` are now already showing what's going on for the `quote` calls.
 
 ![quote](../../assets/images/quote.png)
 
-What's not covered yet are the ``calc`` calls. Take another look at the file ``main.go`` and scroll down to line 65 where function ``quote`` starts.
+What's not covered yet are the `calc` calls. Take another look at the file `main.go` and scroll down to `line 65` where function `quote` starts.
 
 ```go
 func quote(w http.ResponseWriter, req *http.Request) {
@@ -48,7 +48,7 @@ func quote(w http.ResponseWriter, req *http.Request) {
 }
 ```
 
-Now take a look at the function ``calc``. It handles the incoming ``calc`` requests.
+Now take a look at the function `calc`. It handles the incoming `calc` requests.
 
 ```go
 func calc(w http.ResponseWriter, req *http.Request) {
@@ -57,9 +57,9 @@ func calc(w http.ResponseWriter, req *http.Request) {
 }
 ```
 
-We can use the function ``quote`` as a template in order to augment the function ``calc`` properly with OpenTelemetry code.
+We can use the function `quote` as a template in order to augment the function `calc` properly with OpenTelemetry code.
 
-In order for these modifications to become active the application needs to get restarted. Press ``Ctrl-C`` within the terminal and enter ``mvn spring-boot:run`` to relaunch it.
+In order for these modifications to become active the application needs to get restarted. Press `Ctrl-C` within the terminal and enter `mvn spring-boot:run` to relaunch it.
 
 ### You have arrived!
 We have successfully traced across process boundaries - even if OneAgent is not of assistance.
