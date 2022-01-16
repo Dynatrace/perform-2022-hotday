@@ -11,7 +11,7 @@ In this section, we will explore what Dynatrace is able to capture, when applica
   you can find a section called
   ```
   OpenTelemetry and OpenTracing
-  ```.
+  ```
 - Make sure that the switch ``OpenTelemetry for Java`` is enabled.
 
 ![Enable OpenTelemetry](../../assets/images/enable-opentelemetry.png)
@@ -25,21 +25,21 @@ mvn spring-boot:run
 
 ![spring-boot:run](../../assets/images/spring-boot-run.png)
 
-Open a new browser window and navigate to ``http://<your-development-machine-ip>:8080/``
+Open a new browser window and navigate to `http://<your-development-machine-ip>:8080/`
 
 ![Vintage Handbag Shop](../../assets/images/shop.png)
 
 Feel free to navigate around within that application. In the interest of simplicity we have introduced a load generator that requests the pages that are relevant for todays session automatically.
 
-Switch to the browser window that is logged into your Dynatrace environment. Within the ``Services`` you will notice an entry named
+Switch to the browser window that is logged into your Dynatrace environment. Within the `Services` you will notice an entry named
 ```
 Requests executed in background threads of com.salesmanager.shop.application.ShopApplication
 ```
 You will also notice that it contains only different service calls.
 
-Take a look at a PurePath that is named like this.
+Take a look at a PurePath that is named similar to this.
 ```
-http://52.35.57.74:8080/shop/category/laptop-bags.html/ref=c:3
+http://x.x.x.x:8080/shop/category/laptop-bags.html/ref=c:3
 ```
 Among the well known PurePath nodes (Database Calls, ...) you will notice additional entries with the OpenTelemetry Icon.
 
