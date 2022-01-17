@@ -221,7 +221,7 @@ Click **Keptn: keptnorders staging** management zone and add a new rule with
 | ------ | ------------- | 
 | Rule applies to | `Process groups`  |
 | Condition | `Process Group Name` `begins with` `keptnorders.staging` | 
-| Apply to underlying hosts | - [x]  | 
+| Apply to underlying hosts | `[x]`  | 
     
 <img src="../../assets/images/lab_1_management_zone.png" width="300"/>
 
