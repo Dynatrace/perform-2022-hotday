@@ -220,14 +220,8 @@ Click **Keptn: keptnorders staging** management zone and add a new rule with
 | Field | Value | 
 | ------ | ------------- | 
 | Rule applies to | `Process groups`  |
-| Conditions | `Process Group Name` `begins with` `keptnorders.staging` | 
+| Condition | `Process Group Name` `begins with` `keptnorders.staging` | 
 | Apply to underlying hosts | `[x]` | 
-
-- Rule applies to **Process groups**
-- In the conditions section,  select **Process group** in the dropdown
-- Keep **begins with** in the dropdown 
-- In the text box use: **keptnorders.staging**
-- Select **apply to underlying hosts of matching process groups** check box.
     
 <img src="../../assets/images/lab_1_management_zone.png" width="300"/>
 
