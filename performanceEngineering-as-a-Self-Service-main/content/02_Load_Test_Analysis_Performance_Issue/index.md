@@ -174,7 +174,7 @@ We have setup the Load Test **Calculated service metrics** for you.   Below is a
 <details><summary>Take these steps if you do not see the same metrics as those in the image above</summary>
 
 1. Login to your EC2 instance via ssh, from the Environments tab
-2. Navigate to "keptn-in-a-box/resources/dynatrace/" directory
+2. Navigate to "keptn-in-a-box/resources/dynatrace/scripts" directory
 
     ```bash
         #: cd keptn-in-a-box/resources/dynatrace/scripts
