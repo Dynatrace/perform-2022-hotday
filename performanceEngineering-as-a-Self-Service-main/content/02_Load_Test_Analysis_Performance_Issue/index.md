@@ -93,7 +93,7 @@ As testers, we typically only test against the service endpoint. As performance 
 
 In Dynatrace, we can analyze the Service Flow which shows us the full end-to-end flow of every request executed against our service endpoint. You can also apply filters to only focus on a particular test transaction, a specific time frame or compare the flow of failing vs non- failing transactions.
 
-Click **"Applications"** from the Main Navigation menu. Then click **easytravel-angular.easytravel-staging**.
+Click **"Frontend"** from the Main Navigation menu. Then click **easytravel-angular.easytravel-staging**.
 
 <img src="../../assets/images/lab2_application_service_flow_new_menu.png" width="500"/>
 
