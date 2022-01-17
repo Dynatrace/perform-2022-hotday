@@ -236,7 +236,7 @@ Save the zone. Click **"create rule"** button. Then **Save changes** button.
 Next, Let's add the host to the Management Zone.
 
 We will do this by adding a host rule, using the the host tag.
-<details>
+</details>
 
 <hr>
 
