@@ -1,4 +1,4 @@
-# Generic Ingestion and Custom Attributes
+## Generic Ingestion and Custom Attributes
 
 Now we've learned how to create log metrics, we can add custom defined attributes for additonal context and dimensions. Dynatrace Log Monitoring gives you the ability to define custom index log data attributes for log data that is ingested.
 
@@ -8,21 +8,21 @@ You can also define your own custom log data attributes that suits your particul
 
 You can use them as filters in the log viewer (table options and log record detail attribues), as dimensions while creating log metrics, and as properties while creating log events.
 
-## Step 1: Create Token and Use API to ingest log data
+### Step 1: Create Token and Use API to ingest log data
 
 We will start by generating some custom log data for Dynatrace to ingest using the API. First, we need an API token to authenticate our API call. Navigate within your Dynatrace tenant to settings -> integration -> dynatrace API.
 
 1. Create a new API token named `perform` and allow the v2 token scope of 'ingest logs'. Click Generate token. Copy the token value to a notepad temporarily.
    
-![API Token](../resources/API%20Token.png)
+![API Token](../../assets/images/APIToken.png)
 
 2. Click your profile icon in the top right corner of the UI. Select `Environment API V2` to launch a new tab in your browser. Within the REST UI find the `logs` endpoint. Click to expand the endpoints and select `POST`. 
 
-![logs API](../resources/LogsAPI.png)
+![logs API](../../assets/images/LogsAPI.png)
 
 3. On the right hand side of that row, you'll find a lock icon. Click the lock icon and paste your API token to authenticate. 
 
-![API Auth](../resources/APIAuth.png)
+![API Auth](../../assets/images/APIAuth.png)
 
 4. Close the authentication window and select `Try it out` on the POST endpoint.
 
@@ -59,7 +59,7 @@ We will start by generating some custom log data for Dynatrace to ingest using t
 ```
 6. Click Execute to send the log data to Dynatrace. Response Code should be HTTP 204.
 
-## Step 2: View Results in Log Viewer
+### Step 2: View Results in Log Viewer
 
 1. Navigate back to your Dynatrace UI and choose `logs` on the left hand navigation panel. 
 
@@ -76,8 +76,8 @@ We will start by generating some custom log data for Dynatrace to ingest using t
 
 7. Return to the log viewer and you now should be able to use the new application.id attribute as a filter to view all events by application:
 
-![app.idfilter](../resources/applicationid.png)
+![app.idfilter](../../assets/images/applicationid.png)
 
-## Bonus:
+### Bonus:
 
 1. Build a log metric that measures the occurance of log records where status="error" and split by (dimension) of application.id.
