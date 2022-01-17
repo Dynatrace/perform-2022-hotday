@@ -13,6 +13,7 @@ During this course you will learn:
 1. SLI/SLO Dashboards
 1. Dynatrace Cloud Automation
 1. Dynatrace Release Monitoring
+1. Release Analysis 
 
 <details>
   <summary>Projects used for this Session</summary>
