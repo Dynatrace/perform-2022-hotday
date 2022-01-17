@@ -76,4 +76,4 @@ Notice that the SQL result will have 4 columns, and we are creating metrics that
     * Make sure you Add a monitoring configuration
     * Select your host and Activate it
 
-The end result should look like [this](../../assets/05_wmi_datasources.yaml)
+The end result should look like [this](../../assets/images/05_wmi_datasources.yaml)

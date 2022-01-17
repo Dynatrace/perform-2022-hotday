@@ -40,4 +40,4 @@ metrics:
 ** Make sure you Add a monitoring configuration
 ** Select your host and Activate it
 
-Your end result should look like [this](../../assets/05_wmi_metadata.yaml)
+Your end result should look like [this](../../assets/images/05_wmi_metadata.yaml)

@@ -22,7 +22,7 @@ A chart card is a section of the screen which displays charts. All possible char
 
 Charts cards rely on [metric selectors](https://www.dynatrace.com/support/help/dynatrace-api/environment-api/metric-v2/metric-selector) to correctly display metrics.
 
-![Chart card](../../../assets/05_wmi_chart_cards.png)
+![Chart card](../../../assets/images/05_wmi_chart_cards.png)
 
 Simple chart card example:
 ```yaml
@@ -46,7 +46,7 @@ An entity list is a list of entities that are somehow related to the currently v
 
 Entity lists rely on [entity selectors](https://www.dynatrace.com/support/help/dynatrace-api/environment-api/entity-v2/entity-selector) to correctly list out related entities.
 
-![Entity card](../../../assets/05_wmi_entity_card.png)
+![Entity card](../../../assets/images/05_wmi_entity_card.png)
 
 Simple entity list example:
 ```yaml
@@ -65,7 +65,7 @@ entitiesListCards:
 
 The `propertiesCard` of an entity can also be modified to include additional properties or hide unnecessary ones. Properties are extracted from entity attributes (when type is `ATTRIBUTE`) or through an entity selector (when type is `RELATION`).
 
-![Property card](../../../assets/05_wmi_properties_card.png)
+![Property card](../../../assets/images/05_wmi_properties_card.png)
 
 ### Adding screens section
 
@@ -241,4 +241,4 @@ The network device page will list its own chart cards, properties and metrics wi
 6. Build, package and upload a new version of your extension
 7. Validate your screens are showing up as expected
 
-Your end result should look like [this](../../assets/05_wmi_screens.yaml)
+Your end result should look like [this](../../assets/images/05_wmi_screens.yaml)

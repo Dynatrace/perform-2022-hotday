@@ -5,11 +5,11 @@ The WMI extension will use the OneAgent to collect data about the current Window
 1. Create a folder for your extensions and call it `extensions` using the method described earlier by clicking on the "New folder" icon or typing `mkdir extensions` in C:\Users\dtu_training\Desktop\training
 2. Make another folder called `wmi` inside `extensions` the same way.
 
-![create_folder](../../../assets/wmi_create_folder.png)
+![create_folder](../../../assets/images/wmi_create_folder.png)
 
 3. We know every extension has an extension.yaml file so we create it. Click on the "New file" icon in your "wmi" folder and call it `extension.yaml`
 
-![create_file](../../../assets/wmi_create_file.png)
+![create_file](../../../assets/images/wmi_create_file.png)
 
 4. Add at least the 4 mandatory fields. You may refer to the SNMP example for clues
 

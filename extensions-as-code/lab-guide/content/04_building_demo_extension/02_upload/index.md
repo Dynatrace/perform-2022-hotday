@@ -12,16 +12,16 @@ On the left menu, navigate to `Infrastructure > Extensions`, then:
 * Scroll down and click `Upload custom Extension 2.0`
 * Click select a file, and upload the `custom_snmp.demo-1.0.0.zip` file to Dynatrace
 
-![snmp-upload](../../../assets/20-snmp-upload.png)
+![snmp-upload](../../../assets/images/20-snmp-upload.png)
 
 Here you can also edit metadata about the extension, like giving it a nicer name, a logo and release notes
 
-![snmp-details](../../../assets/21-snmp-details.png)
+![snmp-details](../../../assets/images/21-snmp-details.png)
 
 When you are done, click `Upload extension` at the bottom of the screen. You will be greeted with the extension page:
 
 
-![snmp-details](../../../assets/22-snmp-extension-page.png)
+![snmp-details](../../../assets/images/22-snmp-extension-page.png)
 
 
 ### API / Command Line

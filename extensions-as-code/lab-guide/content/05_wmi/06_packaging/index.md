@@ -6,7 +6,7 @@ Dashboards and alerts must be packaged as part of your `extension.zip` archive a
 
 You can create your dashboard on Dynatrace and exporting it to JSON format by clicking on the ellipses and selecting "Export", then place that JSON file within your zip file and reference it in your yaml file.
 
-![Exporting](../../../assets/05_export_dashboard.png)
+![Exporting](../../../assets/images/05_export_dashboard.png)
 
 You can also bundle alerts in your extension package by simply creating your alert, then exporting it using the Dynatrace API. For example:
 
@@ -33,10 +33,10 @@ alerts:
 ```
 
 ### Tasks
-1. Download the [dashboard.json](../../../assets/dashboard.json) and [alert_cpu.json](../../../assets/alert_cpu.json) files provided with this exercise.
+1. Download the [dashboard.json](../../../assets/images/dashboard.json) and [alert_cpu.json](../../../assets/images/alert_cpu.json) files provided with this exercise.
 2. Place the downloaded files into an `assets` folder and place that folder next to the `extension.yaml`
 
-![assets](../../../assets/05_wmi_packaging.png)
+![assets](../../../assets/images/05_wmi_packaging.png)
 
 3. Add the `dashboards` and `alerts` sections to `extension.yaml`
 4. Package and upload a new version of your extension
@@ -45,27 +45,27 @@ dt ext build --certificate ..\..\certificates\developer.pem --private-key ..\..\
 ```
 
 ### Uploading and configuring your new extension
-![Uploading](../../../assets/05_wmi_uploading_extension.png)
+![Uploading](../../../assets/images/05_wmi_uploading_extension.png)
 
-![New version](../../../assets/05_wmi_versions.png)
+![New version](../../../assets/images/05_wmi_versions.png)
 
-![Adding configuration](../../../assets/05_wmi_monitoring_config.png)
+![Adding configuration](../../../assets/images/05_wmi_monitoring_config.png)
 
-![Adding configuration](../../../assets/05_wmi_finalize_monitoring.png)
+![Adding configuration](../../../assets/images/05_wmi_finalize_monitoring.png)
 
 If you run into issues where data is not displaying or you receive errors, you may check the log viewer for the extension
-![Logs](../../../assets/05_wmi_reading_logs.png)
+![Logs](../../../assets/images/05_wmi_reading_logs.png)
 
-![Troubleshooting](../../../assets/05_wmi_troubleshooting.png)
+![Troubleshooting](../../../assets/images/05_wmi_troubleshooting.png)
 
 ### Verifying your dashboards
 
 Click on Dashboards on the Dynatrace navigation on the left and select `Custom Host Monitoring`
 
-![Dashboard](../../../assets/05_wmi_dashboard.png)
+![Dashboard](../../../assets/images/05_wmi_dashboard.png)
 
 ### Verifying the alert rule was imported
 
 Go to Settings -> Anomaly detection -> Custom event for alerting 
 
-![Alert](../../../assets/05_wmi_alert.png)
+![Alert](../../../assets/images/05_wmi_alert.png)
