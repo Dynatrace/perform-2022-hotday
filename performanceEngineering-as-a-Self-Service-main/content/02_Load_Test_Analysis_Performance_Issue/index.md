@@ -43,7 +43,7 @@ We are going to apply a manual tag for this exercise.
 First we need to create a tag on the service.
 Navigate to **Transactions and services>frontend** 
 
-<img src="../../assets/images/lab1_frontend_service.png" width="500"/>
+<img src="../../assets/images/lab2_frontend_service_new_menu.png" width="500"/>
 
 We are looking for **frontend** with **keptnorders.staging.frontend [direct]**
 
@@ -67,7 +67,7 @@ If the Rule has not been created, then we will need to follow these steps.
 
 Go to **"Settings>Processes and Containers>Process group naming"**
 
-<img src="../../assets/images/lab_1_gettoprocessgroup.png" width="500"/>
+<img src="../../assets/images/lab2_gettoprocessgroup_new_menu.png" width="500"/>
 
 Then select "add new rule"
 
@@ -93,17 +93,17 @@ As testers, we typically only test against the service endpoint. As performance 
 
 In Dynatrace, we can analyze the Service Flow which shows us the full end-to-end flow of every request executed against our service endpoint. You can also apply filters to only focus on a particular test transaction, a specific time frame or compare the flow of failing vs non- failing transactions.
 
-Click **"Applications"** from the Main Navigation menu. Then click **My web application**.
+Click **"Applications"** from the Main Navigation menu. Then click **easytravel-angular.easytravel-staging**.
 
-<img src="../../assets/images/lab_1_application_service_flow_1.png" width="500"/>
+<img src="../../assets/images/lab2_application_service_flow_new_menu.png" width="500"/>
 
-This will bring up the **My web application** Performance Overview.  In the Dynatrace infographic click on the **1 Service** box.   Then under the **Called services** table click on the aqua box called **View service flow**.
+This will bring up the **easytravel-angular.easytravel-staging** Performance Overview.  In the Dynatrace infographic click on the **1 Service** box.   Then under the **Called services** table click on the aqua box called **View service flow**.
 
-<img src="../../assets/images/lab_1_application_service_flow_2.png" width="500"/>
+<img src="../../assets/images/lab2_application_service_flow_2_new_menu.png" width="500"/>
 
-This will bring up the **Service flow** for the **My web application**.  View results.
+This will bring up the **Service flow** for the **easytravel-angular.easytravel-staging**.  View results.
 
-<img src="../../assets/images/lab_1_application_service_flow_3.png" width="300"/>
+<img src="../../assets/images/lab2_application_service_flow_3_new_menu.png" width="300"/>
 
 ### Kick off our first load test
 
