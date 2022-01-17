@@ -174,10 +174,10 @@ These tags will be added as Environment tags on the host.
 <details><summary>Take these steps</summary>
 
 1. Login to your EC2 instance via ssh, from the Environments tab
-2. Navigate to "keptn-in-a-box/resources/dynatrace/" directory
+2. Navigate to "keptn-in-a-box/resources/dynatrace/scripts" directory
 
     ```bash
-        #: cd keptn-in-a-box/resources/dynatrace/
+        #: cd keptn-in-a-box/resources/dynatrace/scripts
     ```   
 3. run this command.
 
