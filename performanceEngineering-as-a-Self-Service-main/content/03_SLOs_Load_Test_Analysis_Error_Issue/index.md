@@ -81,13 +81,13 @@ After the **Availability - Catalog_Staging** has been created lets create two mo
 
 Use the follow settings for the **Order** SLO: 
 
-- SLO Name = **Availability - Order_Staging**
-- Filter   = **mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("order")**
+- SLO Name = `Availability - Order_Staging`
+- Filter   = `mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("order")`
 
 Use the follow settings for the **Customer** SLO:
 
-- SLO Name = **Availability - Customer_Staging**
-- Filter   = **mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("customer")**
+- SLO Name = `Availability - Customer_Staging`
+- Filter   = `mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("customer")`
 
 When complete,  review the results.
 
