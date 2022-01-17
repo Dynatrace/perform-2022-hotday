@@ -53,27 +53,23 @@ This will bring up the **Add new SLO** wizard screen.
 
 Click on the **Service-level availability** button.
 
-In the **Name this service-level availability SLO** section use this name:  **Availability - Order_Staging**
+In the **Name this service-level availability SLO** section use this name:  `Availability - Catalog_Staging`
 
 <img src="../../assets/images/slo_2.png" width="500"/>
 
-Now we need to **Define a filter** by expanding the define a filter section.   
+Now we need to **Define a filter** by expanding the define a filter section. 
+
+Change the Timeframe Filter section to **-30m**
 
 Copy and paste the below text into the **filter** section:
 
-**mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("order")**
-
-or
-
-**mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("catalog")**
+`mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("catalog")`
 
 Then click the **Preview** button.
 
 <img src="../../assets/images/slo_4.png" width="500"/>
 
-Change the Timeframe section to **-30m** and then click the **Preview** button.
-
-Now we need to select evaluation, if the SLO was setup properly, we should see data in the Graph.
+Now we need to select **Evaluate**, if the SLO was setup properly, we should see data in the Graph.
 
 <img src="../../assets/images/slo_5.png" width="500"/>
 
@@ -81,14 +77,14 @@ The final step is to click on the **Create** button.
 
 <hr>
 
-After the **Availability SLO** has been created lets create two more SLOs for the **customer** and **catalog** services.
+After the **Availability - Catalog_Staging** has been created lets create two more SLOs for **Customer** and **Order** services.
 
-Use the follow settings for the **catalog** SLO: 
+Use the follow settings for the **Order** SLO: 
 
-- SLO Name = **Availability - Catalog_Staging**
-- Filter   = **mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("catalog")**
+- SLO Name = **Availability - Order_Staging**
+- Filter   = **mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("order")**
 
-Use the follow settings for the **customer** SLO:
+Use the follow settings for the **Customer** SLO:
 
 - SLO Name = **Availability - Customer_Staging**
 - Filter   = **mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("customer")**
