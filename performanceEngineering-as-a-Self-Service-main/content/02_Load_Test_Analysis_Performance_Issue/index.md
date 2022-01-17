@@ -77,6 +77,8 @@ Now we will create the rule with the following parameters.
 
 You can cut and paste these items.
 
+| Field | Value |
+| ------ | ------------- |
 | Rule Name | `Keptn Processgroup Naming`  |
 | Process group naming format | `{ProcessGroup:Environment:keptn_project}.{ProcessGroup:Environment:keptn_stage}.{ProcessGroup:Environment:keptn_service} [{ProcessGroup:Environment:keptn_deployment}]` |
 | Conditions | `keptn_deployment (Environment)` | 
