@@ -9,8 +9,8 @@ The first lines are the mandatadory properties for any extension, they have meta
     * The minimum Activegate (or OneAgent) version that is able to run this extension
 * `author`
 
-![yaml-01](../../../assets/08-yaml-01.png)
+![yaml-01](../../../assets/images/08-yaml-01.png)
 
 Since we have vscode validating our schema, you can delete one of these fields and immediately get an error, stating that you are missing a mandatory property.
 
-![yaml-01-02](../../../assets/08-yaml-02.png)
+![yaml-01-02](../../../assets/images/08-yaml-02.png)

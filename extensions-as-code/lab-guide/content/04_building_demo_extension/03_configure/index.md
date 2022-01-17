@@ -17,29 +17,29 @@ The parameters are:
 * SNMP version: `v2c`
 * Community string: `network/firewall/paloalto-pa-5000`
 
-![snmp-config-device](../../../assets/23-snmp-config-device.png)
+![snmp-config-device](../../../assets/images/23-snmp-config-device.png)
 
 Hit `Next step`
 
 We only have a single Activegate group, called `default`.  
 In this screen you get to select which Activegates will attempt to run your extension. Note that if you have more than one AG in a group you essentially have `High Availability`. Dynatrace will attempt to find an AG that is able to run the extension for you.
 
-![snmp-config-ag](../../../assets/24-snmp-config-ag.png)
+![snmp-config-ag](../../../assets/images/24-snmp-config-ag.png)
 
 Hit `Next step`
 
 Give the configuration a name, and hit `Activate` 
 
 
-![snmp-config-ag](../../../assets/25-snmp-config-activate.png)
+![snmp-config-ag](../../../assets/images/25-snmp-config-activate.png)
 
 You can have up to 100 SNMP Devices in a single monitoring configuration, and many monitoring configurations.
 
-![snmp-config](../../../assets/26-snmp-config.png)
+![snmp-config](../../../assets/images/26-snmp-config.png)
 
 Clicking the circle next to the monitoring configuration status will bring you to the logs about this configuration. Note that your tenant must have `Log Monitoring V2` enabled to access this feature.
 
-![snmp-config-logs](../../../assets/27-snmp-config-logs.png)
+![snmp-config-logs](../../../assets/images/27-snmp-config-logs.png)
 
 
 ### API
