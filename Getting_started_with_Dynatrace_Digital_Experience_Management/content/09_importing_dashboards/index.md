@@ -15,7 +15,7 @@ This module will guide you through how to deploy a pre-configured dashboard for 
     "configurationVersions": [
       5
     ],
-    "clusterVersion": "1.234.0.20220110-154632"
+    "clusterVersion": "1.234.10.20220117-151706"
   },
   "id": "4a41295e-9334-49f3-9451-2c784ba33c23",
   "dashboardMetadata": {
@@ -23,26 +23,11 @@ This module will guide you through how to deploy a pre-configured dashboard for 
     "shared": false,
     "owner": "tyler.rowe@dynatrace.com",
     "dashboardFilter": {
-      "timeframe": "-7d to now"
-    }
+      "timeframe": "-2h to now"
+    },
+    "popularity": 10
   },
   "tiles": [
-    {
-      "name": "User Sessions Query",
-      "tileType": "DTAQL",
-      "configured": true,
-      "bounds": {
-        "top": 38,
-        "left": 304,
-        "width": 304,
-        "height": 304
-      },
-      "tileFilter": {},
-      "customName": "Slowest Cities",
-      "query": "SELECT TOP(usersession.city, 5) AS \"Slowest Cities\", avg(visuallyCompleteTime) AS \"Average Visually Complete Time (in MS)\" FROM useraction WHERE useraction.name=\"loading of page /easytravel/home\" GROUP BY usersession.city ORDER BY avg(visuallyCompleteTime) DESC",
-      "type": "TABLE",
-      "limit": 50
-    },
     {
       "name": "Generic EasyTravel Tiles",
       "tileType": "HEADER",
@@ -162,22 +147,6 @@ This module will guide you through how to deploy a pre-configured dashboard for 
         "height": 38
       },
       "tileFilter": {}
-    },
-    {
-      "name": "User Sessions Query",
-      "tileType": "DTAQL",
-      "configured": true,
-      "bounds": {
-        "top": 912,
-        "left": 0,
-        "width": 1292,
-        "height": 266
-      },
-      "tileFilter": {},
-      "customName": "EasyTravel Funnel",
-      "query": "SELECT FUNNEL(useraction.name STARTSWITH \"/easytravel/rest/journeys/?match\" AS \"Search\", (useraction.name STARTSWITH \"/easytravel/rest/journeys/1\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/2\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/3\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/4\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/5\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/6\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/7\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/8\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/9\") AS \"Journey Page\", useraction.name=\"/easytravel/rest/login\" as \"Login\", useraction.name=\"/easytravel/rest/validate-creditcard\" AS \"Payment Page\", useraction.stringProperties.booking_message=\"Your journey was booked successfully! Open the summary and print out the ticket's.\" AS \"Successful Booking\") FROM usersession",
-      "type": "FUNNEL",
-      "limit": 50
     },
     {
       "name": "Search",
@@ -681,6 +650,38 @@ This module will guide you through how to deploy a pre-configured dashboard for 
           }
         }
       }
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 38,
+        "left": 304,
+        "width": 304,
+        "height": 304
+      },
+      "tileFilter": {},
+      "customName": "Slowest Cities",
+      "query": "SELECT TOP(usersession.city, 5) AS \"Slowest Cities\", avg(visuallyCompleteTime) AS \"Average Visually Complete Time (in MS)\" FROM useraction WHERE useraction.name=\"home page\" GROUP BY usersession.city ORDER BY avg(visuallyCompleteTime) DESC",
+      "type": "TABLE",
+      "limit": 50
+    },
+    {
+      "name": "User Sessions Query",
+      "tileType": "DTAQL",
+      "configured": true,
+      "bounds": {
+        "top": 912,
+        "left": 0,
+        "width": 1292,
+        "height": 266
+      },
+      "tileFilter": {},
+      "customName": "EasyTravel Funnel",
+      "query": "SELECT FUNNEL(useraction.name STARTSWITH \"/easytravel/rest/journeys/?match\" AS \"Search\", (useraction.name STARTSWITH \"/easytravel/rest/journeys/<journey id>\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/2\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/3\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/4\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/5\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/6\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/7\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/8\" OR useraction.name STARTSWITH \"/easytravel/rest/journeys/9\") AS \"Journey Page\", useraction.name=\"/easytravel/rest/login\" as \"Login\", useraction.name=\"/easytravel/rest/validate-creditcard\" AS \"Payment Page\", useraction.stringProperties.booking_message=\"Your journey was booked successfully! Open the summary and print out the ticket's.\" AS \"Successful Booking\") FROM usersession",
+      "type": "FUNNEL",
+      "limit": 50
     }
   ]
 }
