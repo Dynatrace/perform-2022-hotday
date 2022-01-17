@@ -217,12 +217,11 @@ In Dynatrace on the navigation menu, navigate to **settings --> preferences --
 
 Click **Keptn: keptnorders staging** management zone and add a new rule with configuration as show below.
 
-| Field | Value |  |
-| ------ | ------------- |
-| Rule applies to | `Keptn Processgroup Naming`  |
-| Condition | `{ProcessGroup:Environment:keptn_project}.{ProcessGroup:Environment:keptn_stage}.{ProcessGroup:Environment:keptn_service} [{ProcessGroup:Environment:keptn_deployment}]` |
-| Conditions | `Process Group Name` | `begins with` | `keptnorders.staging` |
-| Apply to underlying hosts | `[x]` |
+| Field | Value |  |  |
+| ------ | ------------- | --------- | ---- |
+| Rule applies to | `Process groups`  |  |  |
+| Conditions | `Process Group Name` | `begins with` | `keptnorders.staging` |  |
+| Apply to underlying hosts | `[x]` |  |  |  |
 
 - Rule applies to **Process groups**
 - In the conditions section,  select **Process group** in the dropdown
