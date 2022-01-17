@@ -171,6 +171,23 @@ We have setup the Load Test **Calculated service metrics** for you.   Below is a
 
 <img src="../../assets/images/lab_1_calculated_service_metrics.png" width="500"/>
 
+<details><summary>Take these steps if you do not see the same metrics as those in the image above</summary>
+
+1. Login to your EC2 instance via ssh, from the Environments tab
+2. Navigate to "keptn-in-a-box/resources/dynatrace/" directory
+
+    ```bash
+        #: cd keptn-in-a-box/resources/dynatrace/scripts
+    ```   
+3. run this command.
+
+    ```bash
+        #: ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project simpleproject
+    ```
+</details>
+
+After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
+
 [Create Calculated Service Metrics (SLIs) - Step #8 of this Blog](https://www.dynatrace.com/news/blog/guide-to-automated-sre-driven-performance-engineering-analysis/)
 
 ### Kick off Keptn Customer Build
