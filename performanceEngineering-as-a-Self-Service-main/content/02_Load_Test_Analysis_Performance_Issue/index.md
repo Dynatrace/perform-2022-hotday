@@ -221,9 +221,13 @@ Click **Keptn: keptnorders staging** management zone and add a new rule with
 | ------ | ------------- | 
 | Rule applies to | `Process groups`  |
 | Condition | `Process Group Name` `begins with` `keptnorders.staging` | 
-| Apply to underlying hosts | `[x]` | 
+| Apply to underlying hosts | - [x]  | 
     
 <img src="../../assets/images/lab_1_management_zone.png" width="300"/>
+
+Click the **preview** button to verify; save the zone.
+
+<details><summary>Delete these steps?</summary>
 
 Click the **preview** button to verify.
 
@@ -232,6 +236,7 @@ Save the zone. Click **"create rule"** button. Then **Save changes** button.
 Next, Let's add the host to the Management Zone.
 
 We will do this by adding a host rule, using the the host tag.
+<details>
 
 <hr>
 
