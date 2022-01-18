@@ -1,6 +1,6 @@
-# Hand-on lab #3: Add easyTravel application log
+## Hand-on lab #3: Add easyTravel application log
 
-## Step 1: Configure log source
+### Step 1: Configure log source
 
 By default, application logs are not added to log storage until you configure the log source setting. 
 
@@ -10,14 +10,12 @@ By default, application logs are not added to log storage until you configure th
 4. Check the checkbox matchs your host name (e.g. dtu-lab)
 5. Click on "Save changes" on the top right corner
 
-![RDP](../resources/lab03_01.jpg)
+![RDP](../../assets/images/lab03_01.jpg)
 
 
-## Step 2: Verity logs are added
+### Step 2: Verity logs are added
 
 Wait for 2-3 minutues, go to left navigation menus, click on "Logs" under "Observe and explore" folder.
 You should see the logs show up in log viewer
 
-![RDP](../resources/lab03_02.jpg)
-
-[Next Lab](../04_log_viewer/README.md)
+![RDP](../../assets/images/lab03_02.jpg)

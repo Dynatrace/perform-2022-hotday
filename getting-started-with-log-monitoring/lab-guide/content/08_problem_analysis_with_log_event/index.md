@@ -1,6 +1,6 @@
-# Hand-on lab #8: Problem analysis with log events
+## Hand-on lab #8: Problem analysis with log events
 
-## Step 1: Analyze log event problem
+### Step 1: Analyze log event problem
 
 1. The last lab step will triger a detected problem with a name "Log event: credit card error"
 2. Go to "Problem" menu under "Observe and explore" section
@@ -11,7 +11,7 @@
 
 
 
-![RDP](../resources/lab08_01.jpg)
-![RDP](../resources/lab08_02.jpg)
+![RDP](../../assets/images/lab08_01.jpg)
+![RDP](../../assets/images/lab08_02.jpg)
 
 

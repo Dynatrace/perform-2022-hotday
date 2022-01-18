@@ -1,6 +1,6 @@
-# Hand-on lab #7: Create a log event
+## Hand-on lab #7: Create a log event
 
-## Step 1: Turn on problem pattern
+### Step 1: Turn on problem pattern
 
 easyTravel demo app has build-in problem patterns. In this lab, we will turn on "CreditCardCheckError500" pattern.
  
@@ -10,9 +10,9 @@ easyTravel demo app has build-in problem patterns. In this lab, we will turn on 
 4. Enable "CreditCardCheckError500" option
 5. Wait for 2-3 minutes (or manually create a booking)
 
-![RDP](../resources/lab07_01.jpg)
+![RDP](../../assets/images/lab07_01.jpg)
 
-## Step 2: Create a log event based on problem pattern
+### Step 2: Create a log event based on problem pattern
 
 1. In log viewer, select "error" facet
 2. Search "credit card" keyword and verify the matching record
@@ -24,8 +24,4 @@ easyTravel demo app has build-in problem patterns. In this lab, we will turn on 
 8. Save
 
 it looks like this:
-![RDP](../resources/lab07_02.jpg)
-
-[Next Lab](../09_log_ingest_api/README.md)
-
-
+![RDP](../../assets/images/lab07_02.jpg)
