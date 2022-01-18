@@ -24,30 +24,30 @@ Open Jenkins.
 
 Click on **01_deploy_order_application** pipeline
 
-<img src="../../assets/images/Lab_1_deploy_order_application_1.png" width="500"/>
+<img src="../../assets/images/Lab_1_deploy_order_application_1.png" width="700"/>
 
 Now we are going to push the **order** version **2.0.0**.
 
-Select **"Build with parameters"**
+Select **Build with parameters**
 
 - In the **orderRelease** dropdown select **2.0.0**
 - In the **DEPLOY_TO field**, change the dropdown box to **order**
 
-Next, click the **Build** button.
+<img src="../../assets/images/lab_3_order_build.png" width="700"/>
 
-<img src="../../assets/images/lab_3_order_build.png" width="500"/>
+Next, click the **Build** button.
 
 <hr>
 
 ## Create Availability/Error SLOs
 
-The Dynatrace Software Intelligence Platform delivers all the necessary Service-Level Indicators (SLIs) for defining your Service-Level Objectives (SLOs) and monitors the status and error budgets of those objectives. Whether you want to define an SLO for real user experience or for measuring your service availability, your Dynatrace monitoring environment already comes with the right tools for your Site Reliability Teams. You can get all the facts about the health of you critical business services with respect to Business and Service-Level Objectives (SLO), Service-Level Agreements (SLAs), and end-user experience
+The Dynatrace Software Intelligence Platform delivers all the necessary Service-Level Indicators (SLIs) for defining your Service-Level Objectives (SLOs) and monitors the status and error budgets of those objectives. Whether you want to define an SLO for real user experience or for measuring your service availability, your Dynatrace monitoring environment already comes with the right tools for your Site Reliability Teams. You can get all the facts about the health of you critical business services with respect to Business and Service-Level Objectives (SLO), Service-Level Agreements (SLAs), and end-user experience.
 
-Click "**SLOs**" from the Main Navigation menu.
+Click **SLOs** from the Main Navigation menu.
 
-Then Select the "**Add new SLO**" Button.
+Then Select the **Add new SLO** Button.
 
-<img src="../../assets/images/slo_1.png" width="500"/>
+<img src="../../assets/images/slo_1.png" width="700"/>
 
 This will bring up the **Add new SLO** wizard screen.
 
@@ -55,39 +55,39 @@ Click on the **Service-level availability** button.
 
 In the **Name this service-level availability SLO** section use this name:  `Availability - Catalog_Staging`
 
-<img src="../../assets/images/slo_2.png" width="500"/>
+<img src="../../assets/images/slo_2.png" width="700"/>
 
 Now we need to **Define a filter** by expanding the define a filter section. 
 
-Change the Timeframe Filter section to **-30m**
+Change the Timeframe Filter section to `-30m`
 
-Copy and paste the below text into the **filter** section:
+Copy and paste the below text into the **Entity selector** section:
 
 `mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("catalog")`
 
 Then click the **Preview** button.
 
-<img src="../../assets/images/slo_4.png" width="500"/>
+<img src="../../assets/images/slo_4.png" width="700"/>
 
-Now we need to select **Evaluate**, if the SLO was setup properly, we should see data in the Graph.
+Now we need to select **Evaluate** - if the SLO was setup properly we should see data in the graph.
 
 <img src="../../assets/images/slo_5.png" width="500"/>
 
-The final step is to click on the **Create** button.
-
-<hr>
+The final step in creating this SLO is to click on the **Create** button.
 
 After the **Availability - Catalog_Staging** has been created lets create two more SLOs for **Customer** and **Order** services.
 
 Use the follow settings for the **Order** SLO: 
 
-- SLO Name = `Availability - Order_Staging`
-- Filter   = `mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("order")`
+- SLO Name        = `Availability - Order_Staging`
+- Timeframe       = `-30m`
+- Entity Selector = `mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("order")`
 
 Use the follow settings for the **Customer** SLO:
 
-- SLO Name = `Availability - Customer_Staging`
-- Filter   = `mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("customer")`
+- SLO Name        = `Availability - Customer_Staging`
+- Timeframe       = `-30m`
+- Entity Selector = `mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("customer")`
 
 When complete,  review the results.
 
