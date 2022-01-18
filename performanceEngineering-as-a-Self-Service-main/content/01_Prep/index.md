@@ -128,6 +128,8 @@ The dt-orders application has pre-built problems programmed within different ver
 
 This is a summary of the versions followed by a description of the problem scenarios.
 
+<details><summary>Problem Scenarios List</summary>
+
 | Service  | Branch/Docker Tag | Description |
 |---|:---:|---|
 | frontend | 1.0.0 | Normal behavior |
@@ -139,7 +141,13 @@ This is a summary of the versions followed by a description of the problem scena
 | customer-service | 3.0.0 | Normal behavior |
 | order-service | 3.0.0 | Normal behavior |
 
-### Problem Scenarios
+</details>
+
+<br>
+
+<details><summary>Problem Scenarios Details</summary>
+
+### Problem Scenarios details
 
 #### Deploy dtdemos/customer-service:2.0.0
 
@@ -154,6 +162,8 @@ Both these scenearios are enabled
 and...
 
 <img src="../../assets/images/usecase3.png" width="500"/>
+
+</details>
 
 <hr>
 
@@ -252,6 +262,33 @@ Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;servic
 - Pick **"Keptn: sockshop staging"** for the Default Managment zone
 - Click **"Done"**
 - Validate you see data in each tile
+
+<hr>
+
+## Check Calculated service metrics
+
+Go to Dynatrace.
+
+Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
+
+You should see 4 calculated service Metrics.  If you do not, follow the instructions.
+
+<details><summary>If you do not see these tags follow these steps</summary>
+
+- Go to your lab environment tab
+- Click open terminal to ssh into your EC2 instance.
+- navigate to 
+
+```bash
+  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
+```
+
+- Run the following command
+```bash
+  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
+```
+
+</details>
 
 <hr>
 
