@@ -181,9 +181,8 @@ You should see these tags,
     ```bash
         #: sudo ./hosttag.sh
     ```
-</details>
-
 After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
+</details>
 
 ### Next let's examine all the proceses automatically discovered by the Dynatrace oneAgent.
 
