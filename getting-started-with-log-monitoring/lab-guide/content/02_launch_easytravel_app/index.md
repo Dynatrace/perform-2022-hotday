@@ -1,6 +1,6 @@
-# Hand-on lab #2: Launch easyTravel application
+## Hand-on lab #2: Launch easyTravel application
 
-## Step 1: Start easyTravel launcher
+### Step 1: Start easyTravel launcher
 
 easyTravel is a demo app with several technologies build-in. The app automatically generate traffics simulating user activities (search, login or order). Application components write logs periodically. We will use the logs for this lab. 
 
@@ -8,7 +8,4 @@ To launch easyTravel app, double click the "easyTravel configuration UI" icon on
 
 if the app is launched successfully, it should looks like this:
 
-![RDP](../resources/lab02_01.jpg)
-
-
-[Next Lab](../03_add_easytravel_app_log/README.md)
+![RDP](../../assets/images/lab02_01.jpg)

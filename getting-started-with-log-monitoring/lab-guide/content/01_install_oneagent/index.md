@@ -1,13 +1,13 @@
-# Hand-on lab #1: Installing the OneAgent
+## Hand-on lab #1: Installing the OneAgent
 
-## Step 1: Connect windows VM via RDP
+### Step 1: Connect windows VM via RDP
 
 Each participant has a windows VM. You will use your laptop to connect the VM via RDP (Remote Desktop). The login information (IP, username, password) can be found at DTU "Environment" tab.
 
-![RDP](../resources/dturdp.jpg)
+![RDP](../../assets/images/dturdp.jpg)
 
 
-## Step 2. Download and Install OneAgent
+### Step 2. Download and Install OneAgent
 
 1. Sign into your provided SaaS tenant. Navigate to `Manage` , select `Deploy Dynatrace` and select `start installation`. 
 
@@ -17,6 +17,4 @@ Each participant has a windows VM. You will use your laptop to connect the VM vi
 
 4. Once the installation is complete, check your Dynatrace tenant for succesful agent installation. On the left hand navigation panel select `Deployment Status` under the `manage` section.
 
- ![RDP](../resources/lab01_02.jpg)
-
- [Next Lab](../02_launch_easytravel_app/README.md)
+ ![RDP](../../assets/images/lab01_02.jpg)

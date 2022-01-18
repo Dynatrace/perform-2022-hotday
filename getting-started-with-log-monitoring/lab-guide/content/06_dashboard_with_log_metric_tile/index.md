@@ -1,6 +1,6 @@
-# Hand-on lab #6: Dashboard with log metric and tile
+## Hand-on lab #6: Dashboard with log metric and tile
 
-## Step 1: log tile
+### Step 1: log tile
 
  
 1. In log viewer, search "hot deals"
@@ -11,7 +11,7 @@
 
 
 
-## Step 2: add log-based metric graph to dashboard
+### Step 2: add log-based metric graph to dashboard
 
 1. In the same dashboard, Click on "Edit" to switch to edit mode
 2. On the Tiles selection on the right,  double click on "Graph"
@@ -21,8 +21,4 @@
 6. Open dashboard to see the new tile
 
 it looks like this:
-![RDP](../resources/lab06_01.jpg)
-
-
-[Next Lab](../07_create_log_event/README.md)
-
+![RDP](../../assets/images/lab06_01.jpg)
