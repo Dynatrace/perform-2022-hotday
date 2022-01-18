@@ -30,125 +30,11 @@ const mgmtZone = require('../jsonFiles/managementZone/mgmtZone.json');
 
 const historyPath = './history.log';
 
-/*--------------------------------------------------
- **                                                  **
- ** Deploys a dashboard based on dashboards/xxx.json **
- **                                                  **
- * -------------------------------------------------- */
-const dashHelper = async (dash, headers) => {
-  let dashboard = dash;
-  const response = await fetch(
-    `${process.env.TENANT}api/config/v1/dashboards`,
-    {
-      method: 'post',
-      body: JSON.stringify(dashboard),
-      headers: headers
-    }
-  );
-  const data = await response.json();
-  if (response.statusText === 'Created') {
-    fs.appendFile(
-      historyPath,
-      `${new Date().toISOString()} Dashboard: "${data.name}" - Dashboard ID: ${
-        data.id
-      }` + os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
-    fs.appendFile(
-      historyPath,
-      `Visit ${process.env.TENANT}ui/dashboards?filters=preset%3Dtrue to see your new dashboards` +
-        os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
-    console.log('Dashboard created');
-  } else {
-    console.log(
-      `Something went wrong: Status - ${response.status}, ${response.statusText}`
-    );
-  }
-};
-
-const deployDashboard = async (headers, ask) => {
-  //first dashboard
-  await dashHelper(appOverview, headers);
-
-  //second dashboard
-  await dashHelper(highLevelOverview, headers);
-
-  //insert any dashboard you want to upload
-
-  await ask();
-};
-
-/*-----------------------------------------------------------
- **                                                           **
- ** Deploys a dashboard based on jsonFiles/synthetic/xxx.json **
- **                                                           **
- * ----------------------------------------------------------- */
-const syntheticHelper = async (synthetic, headers, ask) => {
-  inquirer.prompt(syntheticQuestions).then(async (ans) => {
-    synthetic.name = ans.name;
-    !synthetic.script.events
-      ? (synthetic.script.requests[0].url = ans.URL)
-      : (synthetic.script.events[0].url = ans.URL);
-    synthetic.tags[0].key = ans.tagEnv;
-
-    const response = await fetch(
-      `${process.env.TENANT}api/v1/synthetic/monitors`,
-      {
-        method: 'post',
-        body: JSON.stringify(synthetic),
-        headers: headers
-      }
-    );
-
-    const data = await response.json();
-    if (response.ok) {
-      fs.appendFile(
-        historyPath,
-        `${new Date().toISOString()} Synthetic monitor: "${
-          ans.name
-        }" created. Synthetic ID: ${data.entityId}` + os.EOL,
-        (err) => (err ? console.log(err) : '')
-      );
-      fs.appendFile(
-        historyPath,
-        `Visit ${process.env.TENANT}#monitors to see your monitors` + os.EOL,
-        (err) => (err ? console.log(err) : '')
-      );
-      console.log(
-        `Synthetic monitor: "${ans.name}" created!!!! Its ID: is ${data.entityId}`
-      );
-    } else {
-      console.log(
-        `Something went wrong: Status - ${response.status}, ${response.statusText}`
-      );
-    }
-    ask();
-  });
-};
-
-const deploySynthetics = async (headers, ask) => {
-  inquirer.prompt(synChoices).then((ans) => {
-    switch (ans.monitor) {
-      case 'Homepage (browser)':
-        syntheticHelper(homePage, headers, ask);
-        break;
-      case 'Add to cart (browser clickpath)':
-        syntheticHelper(addToCart, headers, ask);
-        break;
-      case 'Cart API (http)':
-        syntheticHelper(cartsAPI, headers, ask);
-        break;
-    }
-  });
-};
-
-/* ----------------------------------------------------------------
+/*  ---------------------------------------------------------------
  **                                                                  **
  ** Generates Web App based on jsonFiles/webAppConfig.json template  **
  **                                                                  **
- *  ----------------------------------------------------------------  */
+ *  ---------------------------------------------------------------   */
 
 const genWebApp = async (ans, headers, ask) => {
   //build web app based on answers
@@ -191,7 +77,7 @@ const genWebApp = async (ans, headers, ask) => {
   ask();
 };
 
-/* -------------------------------------------------------------------------------
+/*  -------------------------------------------------------------------------------
  **                                                                                 **
  ** Generates App Detection rule based on /jsonFiles/appDetectionRule.json template **
  **                                                                                 **
@@ -267,11 +153,11 @@ const generateAppDetectRule = async (headers, ask) => {
   }
 };
 
-/* ---------------------------------------------------------------------
+/*  ---------------------------------------------------------------------
  **                                                                       **
  ** Generates AutoTag rule based on /jsonFiles/autoTagRules.json template **
  **                                                                       **
- *  --------------------------------------------------------------------  */
+ *  ---------------------------------------------------------------------  */
 
 const generateTagRule = (headers, ask) => {
   inquirer.prompt(tagRuleQuestions).then(async (ans) => {
@@ -310,92 +196,91 @@ const generateTagRule = (headers, ask) => {
   });
 };
 
-/* ------------------------------------------------------------------------------------------
- **                                                                                        **
- ** Generates Conditional naming rule based on /jsonFiles/conditionalNaming json templates **
- **                                                                                        **
- *  --------------------------------------------------------------------------------------  */
+/*  ---------------------------------------------------------
+ **                                                           **
+ ** Deploys a dashboard based on jsonFiles/synthetic/xxx.json **
+ **                                                           **
+ *  ---------------------------------------------------------  */
+const syntheticHelper = async (synthetic, headers, ask) => {
+  inquirer.prompt(syntheticQuestions).then(async (ans) => {
+    synthetic.name = ans.name;
+    !synthetic.script.events
+      ? (synthetic.script.requests[0].url = ans.URL)
+      : (synthetic.script.events[0].url = ans.URL);
+    synthetic.tags[0].key = ans.tagEnv;
 
-const generateConditionalNamingRule = async (headers, ask) => {
-  const responsePG = await fetch(
-    `${process.env.TENANT}api/config/v1/conditionalNaming/processGroup`,
-    {
-      method: 'post',
-      body: JSON.stringify(pgNaming),
-      headers: headers
+    const response = await fetch(
+      `${process.env.TENANT}api/v1/synthetic/monitors`,
+      {
+        method: 'post',
+        body: JSON.stringify(synthetic),
+        headers: headers
+      }
+    );
+
+    const data = await response.json();
+    if (response.ok) {
+      fs.appendFile(
+        historyPath,
+        `${new Date().toISOString()} Synthetic monitor: "${
+          ans.name
+        }" created. Synthetic ID: ${data.entityId}` + os.EOL,
+        (err) => (err ? console.log(err) : '')
+      );
+      fs.appendFile(
+        historyPath,
+        `Visit ${process.env.TENANT}#monitors to see your monitors` + os.EOL,
+        (err) => (err ? console.log(err) : '')
+      );
+      console.log(
+        `Synthetic monitor: "${ans.name}" created!!!! Its ID: is ${data.entityId}`
+      );
+    } else {
+      console.log(
+        `Something went wrong: Status - ${response.status}, ${response.statusText}`
+      );
     }
-  );
-  const dataPG = await responsePG.json();
-  if (responsePG.ok) {
-    fs.appendFile(
-      historyPath,
-      `${new Date().toISOString()} PG naming rule: "${dataPG.name}" created. Rule ID: ${dataPG.id}` + os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
-    fs.appendFile(
-      historyPath,
-      `Visit ${process.env.TENANT}#settings/pgnamingsettings to see your new PG naming rule` +
-        os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
-    console.log(`PG naming rule: "${dataPG.name}" created. Rule ID: ${dataPG.id}`);
-  } else {
-    console.log(
-      `Something went wrong: Status - ${responsePG.status}, ${responsePG.statusText}`
-    );
-  }
-  
-  const responseService = await fetch(
-    `${process.env.TENANT}api/config/v1/conditionalNaming/service`,
-    {
-      method: 'post',
-      body: JSON.stringify(serviceNaming),
-      headers: headers
-    }
-  );
-  const dataService = await responseService.json();
-  if (responseService.ok) {
-    fs.appendFile(
-      historyPath,
-      `${new Date().toISOString()} Service naming rule: "${dataService.name}" created. Rule ID: ${dataService.id}` + os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
-    fs.appendFile(
-      historyPath,
-      `Visit ${process.env.TENANT}#settings/servicenamingsettings to see your new Service naming rule` +
-        os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
-    console.log(`Service naming rule: "${dataService.name}" created. Rule ID: ${dataService.id}`);
-  } else {
-    console.log(
-      `Something went wrong: Status - ${responseService.status}, ${responseService.statusText}`
-    );
-  }
-  ask();
+    ask();
+  });
 };
 
-/* ------------------------------------------------------------------------------------------
+const deploySynthetics = async (headers, ask) => {
+  inquirer.prompt(synChoices).then((ans) => {
+    switch (ans.monitor) {
+      case 'Homepage (browser)':
+        syntheticHelper(homePage, headers, ask);
+        break;
+      case 'Add to cart (browser clickpath)':
+        syntheticHelper(addToCart, headers, ask);
+        break;
+      case 'Cart API (http)':
+        syntheticHelper(cartsAPI, headers, ask);
+        break;
+    }
+  });
+};
+
+/*  --------------------------------------------------------------------------------------
  **                                                                                        **
  ** Generates Conditional naming rule based on /jsonFiles/conditionalNaming json templates **
  **                                                                                        **
  *  --------------------------------------------------------------------------------------  */
 
- const generateManagementZone = async (mzrule, environment, headers) => {
-   console.log('environment:', environment)
-   if (environment === 'Production') {
-     mzrule.name = 'Production';
-     mzrule.rules[0].conditions[0].comparisonInfo.value.value = 'prod';
-     mzrule.rules[1].conditions[0].comparisonInfo.value = 'Production';
-     mzrule.rules[2].conditions[0].comparisonInfo.value.key = 'Production';
-     mzrule.rules[3].conditions[0].comparisonInfo.value.key = 'Production';
-   } else {
-     mzrule.name = 'Dev';
-     mzrule.rules[0].conditions[0].comparisonInfo.value.value = 'dev';
-     mzrule.rules[1].conditions[0].comparisonInfo.value = 'Dev';
-     mzrule.rules[2].conditions[0].comparisonInfo.value.key = 'Dev';
-     mzrule.rules[3].conditions[0].comparisonInfo.value.key = 'Dev';
-   } 
+const generateManagementZone = async (mzrule, environment, headers) => {
+  console.log('environment:', environment);
+  if (environment === 'Production') {
+    mzrule.name = 'Production';
+    mzrule.rules[0].conditions[0].comparisonInfo.value.value = 'prod';
+    mzrule.rules[1].conditions[0].comparisonInfo.value = 'Production';
+    mzrule.rules[2].conditions[0].comparisonInfo.value.key = 'Production';
+    mzrule.rules[3].conditions[0].comparisonInfo.value.key = 'Production';
+  } else {
+    mzrule.name = 'Dev';
+    mzrule.rules[0].conditions[0].comparisonInfo.value.value = 'dev';
+    mzrule.rules[1].conditions[0].comparisonInfo.value = 'Dev';
+    mzrule.rules[2].conditions[0].comparisonInfo.value.key = 'Dev';
+    mzrule.rules[3].conditions[0].comparisonInfo.value.key = 'Dev';
+  }
   const response = await fetch(
     `${process.env.TENANT}api/config/v1/managementZones`,
     {
@@ -408,7 +293,9 @@ const generateConditionalNamingRule = async (headers, ask) => {
   if (response.ok) {
     fs.appendFile(
       historyPath,
-      `${new Date().toISOString()} MZ: "${data.name}" created. Rule ID: ${data.id}` + os.EOL,
+      `${new Date().toISOString()} MZ: "${data.name}" created. Rule ID: ${
+        data.id
+      }` + os.EOL,
       (err) => (err ? console.log(err) : '')
     );
     console.log(`MZ: "${data.name}" created. Rule ID: ${data.id}`);
@@ -431,15 +318,144 @@ const mzRuleHelper = async (headers, ask) => {
   await generateManagementZone(mgmtZone, 'Dev', headers);
 
   await ask();
+};
 
-}
+/*  ------------------------------------------------
+ **                                                  **
+ ** Deploys a dashboard based on dashboards/xxx.json **
+ **                                                  **
+ *  ------------------------------------------------  */
+const dashHelper = async (dash, headers) => {
+  let dashboard = dash;
+  const response = await fetch(
+    `${process.env.TENANT}api/config/v1/dashboards`,
+    {
+      method: 'post',
+      body: JSON.stringify(dashboard),
+      headers: headers
+    }
+  );
+  const data = await response.json();
+  if (response.statusText === 'Created') {
+    fs.appendFile(
+      historyPath,
+      `${new Date().toISOString()} Dashboard: "${data.name}" - Dashboard ID: ${
+        data.id
+      }` + os.EOL,
+      (err) => (err ? console.log(err) : '')
+    );
+    fs.appendFile(
+      historyPath,
+      `Visit ${process.env.TENANT}ui/dashboards?filters=preset%3Dtrue to see your new dashboards` +
+        os.EOL,
+      (err) => (err ? console.log(err) : '')
+    );
+    console.log('Dashboard created');
+  } else {
+    console.log(
+      `Something went wrong: Status - ${response.status}, ${response.statusText}`
+    );
+  }
+};
+
+const deployDashboard = async (headers, ask) => {
+  //first dashboard
+  await dashHelper(appOverview, headers);
+
+  //second dashboard
+  await dashHelper(highLevelOverview, headers);
+
+  //insert any dashboard you want to upload
+
+  await ask();
+};
+
+/* ----------------------------------------------------------------------------------------
+ **                                                                                        **
+ ** Generates Conditional naming rule based on /jsonFiles/conditionalNaming json templates **
+ **                                                                                        **
+ *  --------------------------------------------------------------------------------------  */
+
+const generateConditionalNamingRule = async (headers, ask) => {
+  const responsePG = await fetch(
+    `${process.env.TENANT}api/config/v1/conditionalNaming/processGroup`,
+    {
+      method: 'post',
+      body: JSON.stringify(pgNaming),
+      headers: headers
+    }
+  );
+  const dataPG = await responsePG.json();
+  if (responsePG.ok) {
+    fs.appendFile(
+      historyPath,
+      `${new Date().toISOString()} PG naming rule: "${
+        dataPG.name
+      }" created. Rule ID: ${dataPG.id}` + os.EOL,
+      (err) => (err ? console.log(err) : '')
+    );
+    fs.appendFile(
+      historyPath,
+      `Visit ${process.env.TENANT}#settings/pgnamingsettings to see your new PG naming rule` +
+        os.EOL,
+      (err) => (err ? console.log(err) : '')
+    );
+    console.log(
+      `PG naming rule: "${dataPG.name}" created. Rule ID: ${dataPG.id}`
+    );
+  } else {
+    console.log(
+      `Something went wrong: Status - ${responsePG.status}, ${responsePG.statusText}`
+    );
+  }
+
+  const responseService = await fetch(
+    `${process.env.TENANT}api/config/v1/conditionalNaming/service`,
+    {
+      method: 'post',
+      body: JSON.stringify(serviceNaming),
+      headers: headers
+    }
+  );
+  const dataService = await responseService.json();
+  if (responseService.ok) {
+    fs.appendFile(
+      historyPath,
+      `${new Date().toISOString()} Service naming rule: "${
+        dataService.name
+      }" created. Rule ID: ${dataService.id}` + os.EOL,
+      (err) => (err ? console.log(err) : '')
+    );
+    fs.appendFile(
+      historyPath,
+      `Visit ${process.env.TENANT}#settings/servicenamingsettings to see your new Service naming rule` +
+        os.EOL,
+      (err) => (err ? console.log(err) : '')
+    );
+    console.log(
+      `Service naming rule: "${dataService.name}" created. Rule ID: ${dataService.id}`
+    );
+  } else {
+    console.log(
+      `Something went wrong: Status - ${responseService.status}, ${responseService.statusText}`
+    );
+  }
+  ask();
+};
 
 
-/* -------------------------------------------------------------------
+
+
+
+
+
+//=============================================================================
+
+/*  --------------------------------------------------------------------
  **                                                                     **
- ** Generates TEMPLATE rule based on /jsonFiles/TEMPLATE.json template **
+ ** Generates TEMPLATE rule based on /jsonFiles/TEMPLATE.json template  **
  **                                                                     **
- *  -------------------------------------------------------------------  */
+ *  ------------------------------------------------------------------- */
 const generateTemplate = (headers, ask) => {
   inquirer
     .prompt('INSERT YOUR CREATED QUESTIONS HERE FROM QUESTIONS.JS')
