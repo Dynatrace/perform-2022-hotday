@@ -4,9 +4,7 @@ Learn how to use Dynatrace features that support Performance testing for each ph
 
 <img src="../../assets/images/lab_1_overview.png" width="500"/>
 
-Now that we have our Lab setup. 
-
-Let's start by viewing a dashboard.
+Now that we have our Lab setup let's start by viewing a dashboard.
 
 Click **"Dashboards"** from the Main Navigation menu.
 
@@ -43,7 +41,7 @@ We are going to apply a manual tag for this exercise.
 First we need to create a tag on the service.
 Navigate to **Transactions and services>frontend** 
 
-<img src="../../assets/images/lab2_frontend_service_new_menu.png" width="500"/>
+<img src="../../assets/images/lab2_frontend_service_new_menu.png" width="800"/>
 
 We are looking for **frontend** with **keptnorders.staging.frontend [direct]**
 
@@ -65,25 +63,25 @@ If the rule is present, then we can skip to **Architecture Validation - Service 
 
 If the Rule has not been created, then we will need to follow these steps.
 
-Go to **"Settings>Processes and Containers>Process group naming"**
+Go to **Settings > Processes and Containers > Process group naming**
 
 <img src="../../assets/images/lab2_gettoprocessgroup_new_menu.png" width="500"/>
 
-Then select "add new rule"
+Then select **Add new rule**
 
 Now we will create the rule with the following parameters.
 
 <img src="../../assets/images/lab_1_process_group_name.png" width="500"/>
 
-You can cut and paste these items.
+You can cut and paste these items where applicable.
 
 | Field | Value |
 | ------ | ------------- |
 | Rule Name | `Keptn Processgroup Naming`  |
 | Process group naming format | `{ProcessGroup:Environment:keptn_project}.{ProcessGroup:Environment:keptn_stage}.{ProcessGroup:Environment:keptn_service} [{ProcessGroup:Environment:keptn_deployment}]` |
-| Conditions | `keptn_deployment (Environment)` | 
+| Conditions | `keptn_deployment (Environment)` `exists`| 
 
-Click **"Preview"** -> **"create rule"** -> **"save changes"**
+Click **Preview** -> **create rule** -> **save changes**
 
 <hr>
 
@@ -103,7 +101,7 @@ This will bring up the **easytravel-angular.easytravel-staging** Performance Ove
 
 This will bring up the **Service flow** for the **easytravel-angular.easytravel-staging**.  View results.
 
-<img src="../../assets/images/lab2_application_service_flow_3_new_menu.png" width="300"/>
+<img src="../../assets/images/lab2_application_service_flow_3_new_menu.png" width="500"/>
 
 ### Kick off our first load test
 
@@ -112,13 +110,13 @@ Login to Jenkins
 * username = keptn
 * password = keptn
 
-<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="200"/>
+<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="400"/>
 
 We are going to run the **03-simpletest-qualitygate pipeline**.
 
-Click **"build"** this initial build will fail.
+Click **build** this initial build will fail.
 
-Refresh the page, now we can do a **"Build with Parameters"**
+Refresh the page, now we can do a **Build with Parameters**
 
 verify the Deployment URL, this should match the IP address for your lab environment.
 
@@ -126,7 +124,7 @@ You will also notice, this is where we are using the tag "evalservice" for the t
 
 <img src="../../assets/images/lab_1_simple_test.png" width="500"/>
 
-Click **"Build"**
+Click **Build**
 
 <hr>
 
@@ -157,7 +155,7 @@ We have setup the Load Test **Request attributes** for you.   Below is an exampl
 
 <img src="../../assets/images/lab_1_request_attribute_2.png" width="500"/>
 
-[Tag tests with HTTP headers](https://www.dynatrace.com/support/help/shortlink/load-testing-process#tag-test-requests-and-push-custom-events/)
+[Documentation: Tag tests with HTTP headers](https://www.dynatrace.com/support/help/shortlink/load-testing-process#tag-test-requests-and-push-custom-events/)
   
 ### Describe Calculated Service Metrics for Load Test Steps
 
@@ -188,7 +186,8 @@ We have setup the Load Test **Calculated service metrics** for you.   Below is a
 
 After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
 
-[Create Calculated Service Metrics (SLIs) - Step #8 of this Blog](https://www.dynatrace.com/news/blog/guide-to-automated-sre-driven-performance-engineering-analysis/)
+[Blog: Tutorial: Guide to automated SRE-driven performance engineering](https://www.dynatrace.com/news/blog/guide-to-automated-sre-driven-performance-engineering-analysis/)
+[Documentation: Calculated metrics for services](https://www.dynatrace.com/support/help/shortlink/calculated-service-metric/)
 
 ### Kick off Keptn Customer Build
 
@@ -198,7 +197,7 @@ Click on **01_deploy_order_application** pipeline
 
 Now we are going to push the **customer** version **2.0.0**.
 
-Select **"Build with parameters"**
+Select **Build with parameters**
 
 - In the **customerimage** Release field we need to select **2.0.0**
 - In the DEPLOY_TO field, change the dropdown box to **customer**
@@ -227,17 +226,6 @@ Click **Keptn: keptnorders staging** management zone and add a new rule with
 
 Click the **preview** button to verify; save the zone.
 
-<details><summary>Delete these steps?</summary>
-
-Click the **preview** button to verify.
-
-Save the zone. Click **"create rule"** button. Then **Save changes** button.
-
-Next, Let's add the host to the Management Zone.
-
-We will do this by adding a host rule, using the the host tag.
-</details>
-
 <hr>
 
 ## Run Load Test
@@ -251,15 +239,15 @@ Login to Jenkins
 
 We are going to run the **03-simpletest-qualitygate pipeline**.
 
-Click **"build"** this initial build will fail.
+Click **Build** this initial build will fail.
 
-Refresh the page, now we can do a **"Build with Parameters"**
+Refresh the page, now we can do a **Build with Parameters**
 
 We need to verify the Deployment URL
 
 <img src="../../assets/images/lab_1_simple_test.png" width="300"/>
 
-Click **"Build"**
+Click **Build**
 
 <hr>
 
@@ -267,9 +255,9 @@ Click **"Build"**
 
 We have provided a **Performance Test Dashboard with Transaction Steps** in your environment.   This dashboard provides a complete overview for your Performance Test focusing on SLIs (Latency, Traffic, Errors & Saturation).  Included in this dashboard is the following: Health Status, Transaction Steps Scorecard, Services Overview,  Database Overview,  Process Overview and Hosts Overview.   This dashboard also provides quick analysis links.  
 
-Click **"Dashboards"** from the Main Navigation menu.
+Click **Dashboards** from the Main Navigation menu.
 
-Then Select the **"Performance Test Dashboard with Transaction Steps"** Dashboard.
+Then Select the **Performance Test Dashboard with Transaction Steps** Dashboard.
 
 <img src="../../assets/images/lab_1_performance_test_dashboard_with_transaction_steps.png" width="300"/>
 
@@ -283,11 +271,11 @@ If a Dynatrace Problem has generated a Problem during your Performance Test that
 
 You can also analyze the data using custom Dashboards as well as out of the box workflows. Your approach should be based on the type of performance analysis you want to do (for example, crashes, resource and performance hotspots, or scalability issues). 
 
-Following is an overview of using our **"Performance Test Dashboard with Transaction Steps"**.
+Following is an overview of using our **Performance Test Dashboard with Transaction Steps**.
 
 Open the **"Performance Test Dashboard with Transaction Steps"** dashboard.  
 
-Then click on the **"Transactions"** link under **"Transaction"** links section on the left side of the dashboard.
+Then click on the **Transactions** link under **Transaction** links section on the left side of the dashboard.
 
 <img src="../../assets/images/lab_1_performance_test_dashboard_with_transaction_steps_1.png" width="500"/>
 
@@ -295,7 +283,7 @@ This will bring us to **Multidimensional analysis** that is showing response tim
 
 For Developers to understand how to avoid future performance issues and proactively optimize performance, you must be able to analyze real-time data and understand code performance bottlenecks.
 
-We are going to focus on the **"customer"** step name transaction.
+We are going to focus on the **customer** step name transaction.
 
 <img src="../../assets/images/lab_1_peformance_analysis_1.png" width="500"/>
 
@@ -311,7 +299,7 @@ Within the current screen click on **View method hotspots** button which will dr
 
 <img src="../../assets/images/lab_1_response_time_hotspots_2.png" width="500"/>
 
-In the **"Method hotspots"** screen click on **"Hotspots"** button.   This will change the view to the **Top hotspots**.  Click expand in the method call tree and you can see the method that is calling the top hotpot in the code. 
+In the **Method hotspots** screen click on **Hotspots** button.   This will change the view to the **Top hotspots**.  Click expand in the method call tree and you can see the method that is calling the top hotpot in the code. 
 
 <img src="../../assets/images/lab_1_response_time_hotspots_3.png" width="500"/>
 
