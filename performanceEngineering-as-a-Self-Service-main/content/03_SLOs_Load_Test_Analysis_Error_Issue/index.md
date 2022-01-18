@@ -95,11 +95,9 @@ When complete,  review the results.
 
 ## Run Load Test
 
-Now we will run more load test to see the outcome for the SLO's
+Now we will run one more load test to see the outcome for the SLO's
 
-Open Jenkins.
-
-Click on **04-performancetest-qualitygate** pipeline
+Open Jenkins and click on **04-performancetest-qualitygate** pipeline:
 
 <img src="../../assets/images/lab_3_jenkins_run_load_test_1.png" width="500"/>
 
