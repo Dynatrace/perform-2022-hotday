@@ -54,7 +54,7 @@ Open a Browser window with the URL, Chrome is preferred.
 
 Welcome to KIAB.
 
-<img src="../../assets/images/KIAB.png" width="400"/>
+<img src="../../assets/images/KIAB.png" width="500"/>
 
 
 ## Validating the projects in the keptn bridge
@@ -62,7 +62,7 @@ Welcome to KIAB.
 Click on the "Bridge" link. This will open the keptn bridge.
 You should see the preloaded projects.
 
-<img src="../../assets/images/bridge01.png" width="400"/>
+<img src="../../assets/images/bridge01.png" width="500"/>
 
 By examining the Bridge, we can determine if we need to trigger a deployment for any of the
 application services.
@@ -72,7 +72,7 @@ Don't worry, we will walk you through the process.
 
 Validate each project stage has been deployed.
 
-Next will also validate each application is avaialble, by navigating to the KIAB homepage.
+Next will also validate each application is available, by navigating to the KIAB homepage.
 Then selecting each application link.
 
 <img src="../../assets/images/applinks.png" width="400"/>
@@ -88,7 +88,7 @@ Login to Jenkins with the following credentials
 * username = keptn
 * password = keptn
 
-<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="250"/>
+<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="400"/>
 
 First you will just select "Install Suggested Plugins"
 
@@ -107,7 +107,7 @@ Refresh the page, you should then see "Build with parameters".
 Initially, the "order" service may fail, in the "DEPLOY_TO" option, we can select order.
 This allows us to deploy only the "order" service.
 
-<img src="../../assets/images/buildwithparams.png" width="400"/>
+<img src="../../assets/images/buildwithparams.png" width="500"/>
 
 We now have different options for each pipeline build.
 Instead of documenting each part here, we will walk through a few scenerios.
@@ -116,11 +116,11 @@ Instead of documenting each part here, we will walk through a few scenerios.
 
 This application was built for demonstations of Dynatrace.  Here is the frontend.
 
-<img src="../../assets/images/orders.png" width="250"/>
+<img src="../../assets/images/orders.png" width="400"/>
 
 The overall application is made up of four Docker components: a frontend web UI and 3 backend services.  Once monitored by Dynatrace, a multi-tier service flow will be available as shown below.
 
-<img src="../../assets/images/dt-call-flow.png" width="400"/>
+<img src="../../assets/images/dt-call-flow.png" width="500"/>
 
 #### Pre-built Docker Images
 
@@ -143,17 +143,17 @@ This is a summary of the versions followed by a description of the problem scena
 
 #### Deploy dtdemos/customer-service:2.0.0
 
-<img src="../../assets/images/usecase1.png" width="300"/>
+<img src="../../assets/images/usecase1.png" width="500"/>
 
 ### Deploy dtdemos/order-service:2.0.0 
 
 Both these scenearios are enabled
 
-<img src="../../assets/images/usecase2.png" width="300"/>
+<img src="../../assets/images/usecase2.png" width="500"/>
 
 and...
 
-<img src="../../assets/images/usecase3.png" width="300"/>
+<img src="../../assets/images/usecase3.png" width="500"/>
 
 <hr>
 
@@ -166,12 +166,9 @@ Open Dynatrace and navigate to **Hosts** in the menu and select the host.
 ### First, we must ensure the Host is tagged. 
 You should see these tags,
 
-<img src="../../assets/images/hosttags.png" width="400"/>
+<img src="../../assets/images/hosttags.png" width="500"/>
 
-If you do not see these tags, then we need to run a simple script to add the tags.
-These tags will be added as Environment tags on the host.
-
-<details><summary>Take these steps</summary>
+<details><summary>If you do not see these tags follow these steps</summary>
 
 1. Login to your EC2 instance via ssh, from the Environments tab
 2. Navigate to "keptn-in-a-box/resources/dynatrace/scripts" directory
@@ -184,9 +181,8 @@ These tags will be added as Environment tags on the host.
     ```bash
         #: sudo ./hosttag.sh
     ```
-</details>
-
 After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
+</details>
 
 ### Next let's examine all the proceses automatically discovered by the Dynatrace oneAgent.
 
@@ -194,13 +190,13 @@ After you have run this script, just wait a few minutes, then verify the tags ha
 
 We can also see the processes for the order application.
 
-<img src="../../assets/images/pre_processes.png" width="300"/>
+<img src="../../assets/images/pre_processes.png" width="500"/>
 
 Next we can examine the Transactions and Services.
 
 Select **Transactions and Services** from the menu.
 
-<img src="../../assets/images/pre_services.png" width="300"/>
+<img src="../../assets/images/pre_services.png" width="500"/>
 
 You can also change the focus by using the _management zone_ filter.
 
@@ -208,7 +204,7 @@ Finally, we can also see how the KIAB configured Kubernetes cluster monitoring.
 
 Select **Kubernetes** from the menu.
 
-<img src="../../assets/images/pre_kube.png" width="300"/>
+<img src="../../assets/images/pre_kube.png" width="500"/>
 
 ### Pre-configured items also include:
 
@@ -219,7 +215,7 @@ Select **Kubernetes** from the menu.
 1. Automatically Applied Tags
 1. Applications
 1. Problem notification
-1. process and service naming rules
+1. Process and service naming rules
 
 Due to to time constrainsts, we will visit each area as needed during the lab exercises.
 
@@ -240,7 +236,7 @@ Use these settings to create the Rule.
 - Conditions: Host tags equals [Environment]kiab
 - Select checkbox "Apply to processes running on matching hosts
 
-   <img src="../../assets/images/ss_mz.png" width="300"/>
+   <img src="../../assets/images/ss_mz.png" width="500"/>
 
 - Click **"Preview"**
 - Click **"Create rule"**
