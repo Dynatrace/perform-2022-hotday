@@ -72,7 +72,7 @@ Don't worry, we will walk you through the process.
 
 Validate each project stage has been deployed.
 
-Next will also validate each application is avaialble, by navigating to the KIAB homepage.
+Next will also validate each application is available, by navigating to the KIAB homepage.
 Then selecting each application link.
 
 <img src="../../assets/images/applinks.png" width="400"/>
@@ -143,17 +143,17 @@ This is a summary of the versions followed by a description of the problem scena
 
 #### Deploy dtdemos/customer-service:2.0.0
 
-<img src="../../assets/images/usecase1.png" width="300"/>
+<img src="../../assets/images/usecase1.png" width="600"/>
 
 ### Deploy dtdemos/order-service:2.0.0 
 
 Both these scenearios are enabled
 
-<img src="../../assets/images/usecase2.png" width="300"/>
+<img src="../../assets/images/usecase2.png" width="600"/>
 
 and...
 
-<img src="../../assets/images/usecase3.png" width="300"/>
+<img src="../../assets/images/usecase3.png" width="600"/>
 
 <hr>
 
@@ -168,10 +168,7 @@ You should see these tags,
 
 <img src="../../assets/images/hosttags.png" width="400"/>
 
-If you do not see these tags, then we need to run a simple script to add the tags.
-These tags will be added as Environment tags on the host.
-
-<details><summary>Take these steps</summary>
+<details><summary>If you do not see these tags follow these steps</summary>
 
 1. Login to your EC2 instance via ssh, from the Environments tab
 2. Navigate to "keptn-in-a-box/resources/dynatrace/scripts" directory
@@ -219,7 +216,7 @@ Select **Kubernetes** from the menu.
 1. Automatically Applied Tags
 1. Applications
 1. Problem notification
-1. process and service naming rules
+1. Process and service naming rules
 
 Due to to time constrainsts, we will visit each area as needed during the lab exercises.
 
