@@ -31,4 +31,4 @@ Use your HOT session credentials to login to your tenant.
 7. Finally, preview your changes and make sure services and hosts show up in the preview section. Your final rule should look like the example image below.
 </br></br>
 
-![Example Management Zone](../../assets/simple_management_zone.png)
+![Example Management Zone](../../assets/images/simple_management_zone.png)

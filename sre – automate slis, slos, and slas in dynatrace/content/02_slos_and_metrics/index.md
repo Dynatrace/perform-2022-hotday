@@ -37,5 +37,5 @@ The current normalized evaluation result of the SLO as 0-100%
 ### SLO error budget
 Difference between SLO status and SLO target
 
-![Example of an SLO tile that incorporates each of the defined criteria above](../../assets/SLO_tile.png)
+![Example of an SLO tile that incorporates each of the defined criteria above](../../assets/images/SLO_tile.png)
 
