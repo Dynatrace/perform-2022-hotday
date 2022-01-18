@@ -1,6 +1,6 @@
-# Hands-on 1
+## Hands-on 1
 
-## 1) User action naming
+### 1) User action naming
 1. In the main menu, open group "Applications & Microservices"
 1. Click on "Frontend"
 1. Click on "My web application"
@@ -18,7 +18,7 @@
 11. Scroll down to validate in "Preview your rule"
 1. Click "Save"
 
-## 2) Key user actions
+### 2) Key user actions
 
 1. In the main menu, open group "Applications & Microservices"
 1. Click on "Frontend"
@@ -45,7 +45,7 @@
 1. Click on the tab "Key user actions (2)"
 1. Find the two actions that were defined
 
-## 3) Conversion goal
+### 3) Conversion goal
 
 1. In the main menu, open group "Applications & Microservices"
 1. Click on "Frontend"
@@ -62,7 +62,7 @@
 1. Type "book journey for" in the last field
 1. Click on "Add goal"
 
-## 4) Create dashboard
+### 4) Create dashboard
 1. Start a new dashboard called "Mastering Business Transactions"
 1. In the main menu, open group "Observe and explore"
 1. Click on "Dashboards"

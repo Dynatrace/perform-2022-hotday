@@ -1,6 +1,6 @@
-# Hands-on 2
+## Hands-on 2
 
-## 1) Funnel query
+### 1) Funnel query
 
 1. In the main menu, open group "Digital Experience"
 1. Click on "Query user sessions"
@@ -19,7 +19,7 @@ SELECT FUNNEL(useraction.name='loading of page /easytravel/search' AS 'Search', 
 1. Position the tile just below the first row
 1. Click "Done" to exit the edit mode
 
-## 2) Key request
+### 2) Key request
 
 1. In the main menu, open group "Digital Experience"
 1. Click on "Session segmentation"
