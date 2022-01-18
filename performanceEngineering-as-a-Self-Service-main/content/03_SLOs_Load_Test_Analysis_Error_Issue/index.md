@@ -71,7 +71,7 @@ Then click the **Preview** button.
 
 Now we need to select **Evaluate** - if the SLO was setup properly we should see data in the graph.
 
-<img src="../../assets/images/slo_5.png" width="500"/>
+<img src="../../assets/images/slo_5.png" width="700"/>
 
 The final step in creating this SLO is to click on the **Create** button.
 
@@ -101,13 +101,13 @@ Open Jenkins and click on **04-performancetest-qualitygate** pipeline:
 
 <img src="../../assets/images/lab_3_jenkins_run_load_test_1.png" width="500"/>
 
-Select **"Build with parameters"**
+Select **Build with parameters**
 
 We only need to validate the **DeployomentURI** section.   
 
 When done click the **Build** button which will start the Performance Test.
 
-<img src="../../assets/images/lab_3_jenkins_run_load_test_2.png" width="500"/>
+<img src="../../assets/images/lab_3_jenkins_run_load_test_2.png" width="700"/>
 
 <hr>
 
@@ -115,25 +115,25 @@ When done click the **Build** button which will start the Performance Test.
 
 We have provided a **Performance Test Dashboard with Transaction Steps & SLOs** in your environment.   This dashboard provides a complete overview for your Performance Test focusing on SLIs (Latency, Traffic, Errors & Saturation).  Included in this dashboard is the following: Health Status, SLOs, Transaction Steps Scorecard, Services Overview,  Database Overview,  Process Overview and Hosts Overview.   This dashboard also provides quick analysis links.  
 
-Click **"Dashboards"** from the Main Navigation menu.
+Click **Dashboards** from the Main Navigation menu.
 
 Then select the **Performance Test Dashboard with Transaction Steps & SLOs** dashboard.
 We will need to edit the dashboard to use the SLO's we created in the previous steps.
 
 We should have these SLO's in our list.
 
-<img src="../../assets/images/slo_list.png" width="500"/>
+<img src="../../assets/images/slo_list.png" width="700"/>
 
 Click **Edit**
 
 Select the SLO tile, then change the "select a SLO" from the drop down box. Select the appropriate SLO.
 You will do this for each SLO tile.
 
-<img src="../../assets/images/dashboard_slo_edit.png" width="500"/>
+<img src="../../assets/images/dashboard_slo_edit.png" width="700"/>
 
 Now we can see if the SLO for the **Order** service is being met or not.  In the next section we will show you why!
 
-<img src="../../assets/images/lab_3_performance_test_dashboard_with_transaction_steps_slos_1.png" width="500"/>
+<img src="../../assets/images/lab_3_performance_test_dashboard_with_transaction_steps_slos_1.png" width="700"/>
 
 <hr>
 
@@ -147,21 +147,21 @@ If a Dynatrace Problem has generated a Problem during your Performance Test that
 
 From the Problem card we will focus on the Root cause Dynatrace has provided around the Failure rate increase.   Click on the **Analyze failure rate degradation** button. 
 
-<img src="../../assets/images/lab_3_load_test_problem_1.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_1.png" width="700"/>
 
 This will bring us to the **Failure analysis** screen.  We can see HTTP 500 Errors were generated and by each transaction.  To dig deeper you can drill-down to the Purepaths by clicking on the **Purepaths** icon at the top right of the screen.
 
-<img src="../../assets/images/lab_3_load_test_problem_2.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_2.png" width="700"/>
 
 This will bring us to the failed **Purepaths**.  Click on a **Purepath** to see the trace details Dynatrace has captured around the failure.
 
-<img src="../../assets/images/lab_3_load_test_problem_3.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_3.png" width="700"/>
 
 This will bring us to the Purepath trace details screen. Click on the **second node which is the order service** in the trace tree.  Then click on **Errors** in the table.  Then click on the down arrow under the **Details** of the Exception.
 
 When looking at the Exception details we can see the in **Message** details the exact error message which caused the failure rate for the Performance test.   A good best practice is to copy the Dynatrace URL(s) for the screens you want to share in your analysis back to the Application team.
 
-<img src="../../assets/images/lab_3_load_test_problem_4.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_4.png" width="700"/>
 
 If a Dynatrace Problem wasn't detected you can use out of the box workflows and custom dashboards.    We will walk through using the **Performance Test Dashboard with Transaction Steps & SLOs** but also out of the box options as well.
 
@@ -169,7 +169,7 @@ Open the **Performance Test Dashboard with Transaction Steps & SLOs** dashboard.
 
 Then click on the **Errors** link under **Transaction** on the left side of the dashboard.
 
-<img src="../../assets/images/lab_3_slo_dashboard_1.png" width="500"/>
+<img src="../../assets/images/lab_3_slo_dashboard_1.png" width="700"/>
 
 This will bring us to **Multidimensional analysis** that is showing failed request counts split by the **TSN** request attribute.   Note,  you can also create your own **Multidimensional analysis** views and save them by going to the Diagnostic tools-->Top web requests configure desired settings.
 
@@ -177,21 +177,21 @@ In the table provides the details for the failed Transaction Steps.  On the far 
 
 Click on **Details of failures**.
 
-<img src="../../assets/images/lab_3_slo_dashboard_2.png" width="500"/>
+<img src="../../assets/images/lab_3_slo_dashboard_2.png" width="700"/>
 
 This will bring us to the **Failure analysis** screen.  We can see HTTP 500 Errors were generated and also see exactly which transactions were impacted.  To dig deeper you can drill-down to the Purepaths by click on the **Purepaths** icon at the top right of the screen.
 
-<img src="../../assets/images/lab_3_load_test_problem_2.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_2.png" width="700"/>
 
 This will bring us to the failed **Purepaths**.  Click on a **Purepath** to see the trace details Dynatrace has captured around the failure.
 
-<img src="../../assets/images/lab_3_load_test_problem_3.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_3.png" width="700"/>
 
 This will bring us to the Purepath trace details screen.    Click on the **second node which is the order service** in the trace tree.   Then click on **Errors** in the table.   Then click on the down arrow under the **Details** of the Exception.
 
 When looking at the Exception details we can see the in **Message** details that has the exact error message which caused the failure rate for the Performance test.   A good best practice is to copy the Dynatrace URL(s) of the screens you want to share with your analysis back to the Application team.
 
-<img src="../../assets/images/lab_3_load_test_problem_4.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_4.png" width="700"/>
 
 Last, we will cover troubleshooting via an out of the box workflow for a key service that has been impacted during the Performance Test.  
 
@@ -199,19 +199,19 @@ Click "**Transactions and services**" from the Main Navigation menu.
 
 Then click on the **Order** service in the **Services** screen.
 
-<img src="../../assets/images/lab_3_analysis_oob_1.png" width="500"/>
+<img src="../../assets/images/lab_3_analysis_oob_1.png" width="700"/>
 
 This will bring up the **Order** Service overview screen.   Under Dynamic web requests section (charts) click the **Failure rate** section.
 
-<img src="../../assets/images/lab_3_analysis_oob_2.png" width="500"/>
+<img src="../../assets/images/lab_3_analysis_oob_2.png" width="700"/>
 
 This will bring up the **Order** Service **Failure rate** screen.   Click the **View details of failures** button.
 
-<img src="../../assets/images/lab_3_analysis_oob_3.png" width="500"/>
+<img src="../../assets/images/lab_3_analysis_oob_3.png" width="700"/>
 
 This will bring us to the **Failure analysis** screen.   We can see all the failures, which transactions were impacted and Reason for failed requests including the Stack Trace Exception message.  To dig deeper you can drill-down to the Purepaths by click on the **Purepaths** icon at the top right of the screen.
 
-<img src="../../assets/images/lab_3_analysis_oob_4.png" width="500"/>
+<img src="../../assets/images/lab_3_analysis_oob_4.png" width="700"/>
 
 <hr>
 
