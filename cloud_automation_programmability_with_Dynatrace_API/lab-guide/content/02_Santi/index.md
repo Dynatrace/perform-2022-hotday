@@ -1,6 +1,6 @@
 ## Dynatrace API kit
 
-Dynatrace API is a very powerful tool and can achieve so much outside of Dynatrace UI. We can use it for configuration, deployment, dashboards, metric ingestion, events, etc. Today's session we will help you understand the structure of some of the APIs and how can they be used. Some of them that will be covered include:
+Dynatrace API is a very powerful tool and can help us achieve so much more outside of Dynatrace UI. We can use it for configuration, deployment, dashboards, metric ingestion, events, etc. In today's session we will help you understand the structure of some of the APIs and how can they be used. Some of these topics will be covered on in this HOT Session, which include:
 
 1. Web Application API
 2. App detection rules API
