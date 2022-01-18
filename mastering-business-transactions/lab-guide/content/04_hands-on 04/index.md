@@ -1,6 +1,6 @@
-# Hands-on 4
+## Hands-on 4
 
-## 1) Create a multi-dimensional analysis view
+### 1) Create a multi-dimensional analysis view
 1. In the main menu, open group "Applications & Microservices"
 1. Click on "Services"
 1. Click on "BookingService"
@@ -10,7 +10,7 @@
 1. Delete the default "Split by dimension" value and type "loyalty" then click the auto-completed value "{RequestAttribute:Loyalty Status}"
 1. Click the checkmark at the end of the field
 
-## 2) Create metric 
+### 2) Create metric 
 
 1. Click on "Create metric..."
 1. Type "Revenue by Loyalty Status" on the "Metric name"
@@ -18,7 +18,7 @@
 1. Click on "Create chart"
 1. Click on "Run query" until the first datapoints appear
 
-## 3) Customize chart
+### 3) Customize chart
 1. Click  "Add Metric" twice, to have 3 metrics (A, B and C)
 1. Type "revenue" in the metric selection and select "Revenue by Loyalty Status" in B and C
 1. Click and select "Dimension" in the "Split by" field in B and C
@@ -29,7 +29,7 @@
 1. Change all to column
 1. Select the colors of your preference for each
 
-## 4) Add chart to dashboard
+### 4) Add chart to dashboard
 
 1. Click on "Pin to dashboard"
 1. Make sure our dashboard is selected
@@ -38,7 +38,7 @@
 1. Click on "Open dashboard"
 1. Position the tile below the funnel
 
-## 5) Custom events for alerting
+### 5) Custom events for alerting
 
 1. Navigate to "Settings"
 1. Click on "Anomaly detection" menu group
