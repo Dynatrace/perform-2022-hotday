@@ -62,7 +62,7 @@ Welcome to KIAB.
 Click on the "Bridge" link. This will open the keptn bridge.
 You should see the preloaded projects.
 
-<img src="../../assets/images/bridge01.png" width="1000"/>
+<img src="../../assets/images/bridge01.png" width="500"/>
 
 By examining the Bridge, we can determine if we need to trigger a deployment for any of the
 application services.
