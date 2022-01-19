@@ -1,10 +1,10 @@
-# Push Email Alerts to Dynatrace
+## Push Email Alerts to Dynatrace
 
-##  [Overview](https://github.com/geoteo/dt-push-email-alerts)
+###  [Overview](https://github.com/geoteo/dt-push-email-alerts)
 
 In the next few steps we will walk through the process of coding a simple python script in under 100 lines of code that scrapes a Gmail inbox for email alerts that we want pushed into Dynatrace.
 
-## [dt-push-email-alerts](https://github.com/geoteo/dt-push-email-alerts)
+### [dt-push-email-alerts](https://github.com/geoteo/dt-push-email-alerts)
 
 1. Paste the following command into your terminal to clone the repo containing everything you need to get started.
 
@@ -151,7 +151,7 @@ In the next few steps we will walk through the process of coding a simple python
 
 12. Automate it by using a cronjob to run the script at a frequency of your choosing. (optional)
 
-## FAQ
+### FAQ
 
 **Q: How do I install `pip` (package-management system) for Python?**
 
