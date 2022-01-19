@@ -32,7 +32,7 @@ With the facets selection in step 3, toggle the button of "Advanced query" at th
 
 ![RDP](../../assets/images/lab04_04.jpg)
 
-(optional) Feel free to modify your query with some new keyword (e.g. keyword="Unknown user name or bad password"), find out which log file match this query, can you find the user names? can you find out where the log attempt was from? (e.g. IP address) 
+(optional) Feel free to modify your query with some new keyword (e.g. keyword="Unknown user name or bad password"), find out which log file match this query, can you find the user names? can you find out where the log attempt was from? (e.g. public IP address) 
 
 ### Step 5: Table option
 
