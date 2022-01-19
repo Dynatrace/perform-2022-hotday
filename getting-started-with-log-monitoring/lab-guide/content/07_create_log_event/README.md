@@ -14,17 +14,21 @@ easyTravel demo app has build-in problem patterns. In this lab, we will turn on 
 
 ## Step 2: Create a log event based on problem pattern
 
-1. In log viewer, select "error" facet
+1. In log viewer, select "error" facet from loglevel section
 2. Search "credit card" keyword and verify the matching record
-3. Toggle the "Advanced query" button on the top, copy the query (e.g. status="error" AND content="credit card") to a notepad
-4. Go to settings (managed->settings), under "Log Monitoring", select "Log events"
-5. Enter "Booking Error" in the summary field, copy your query from step 2.3
-6. Enter a tile "Log event: credit card error", in the description field, enter "easyTravel problem pattern enabled"
-7. Select "Error" as event type
-8. Save
+3. Select "com.dynatrace.easytravel.business.backend.jar easytravel (x\*)" in "dt.process.name" facet section
+4. Toggle the "Advanced query" button on the top, copy the query (e.g. loglevel="error" AND content="credit card" AND dt.process.name="com.dynatrace.easytravel.business.backend.jar easytravel (x\*)") to a notepad
+5. Go to settings (managed->settings), under "Log Monitoring", select "Log events"
+6. Enter "Booking Error" in the summary field, copy your query from step 2.4
+7. Enter a tile "Log event: credit card error", in the description field, enter "easyTravel problem pattern enabled"
+8. Select "Error" as event type
+9. Save
+10. Wait 2-3 minutes, you should see a new problem is detected
 
 it looks like this:
 ![RDP](../resources/lab07_02.jpg)
+
+![RDP](../resources/lab07_03.jpg)
 
 [Next Lab](../09_log_ingest_api/README.md)
 
