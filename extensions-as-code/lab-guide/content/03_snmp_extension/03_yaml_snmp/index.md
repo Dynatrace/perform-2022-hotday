@@ -9,7 +9,7 @@ The ID of the metric is `custom.snmp.sys.uptime`, the value is whatever the OID 
 
 We also add one dimension to this metric, called `sys.name`. The value of this dimension is also coming from an OID, `oid:SNMPv2-MIB::sysName.0`
   
-![yaml-02](../../../assets/09-yaml-02.png)
+![yaml-02](../../../assets/images/09-yaml-02.png)
 
 We can test that these values return what we expect, by perfoming an `snmpget` command. The Windows VM has the `net-snmp` package installed, so you can run:
 
@@ -41,4 +41,4 @@ Writing `oid:IF-MIB::ifDesc:1, oid:IF-MIB::ifDesc:2, oid:IF-MIB::ifDesc:3, etc` 
 Our extension makes use of this technique, by setting `table: true` in the subgroup configuration
 
 
-![yaml-03](../../../assets/10-yaml-03.png)
+![yaml-03](../../../assets/images/10-yaml-03.png)

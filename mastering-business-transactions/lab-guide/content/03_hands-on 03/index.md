@@ -1,10 +1,10 @@
-# Hands-on 3
+## Hands-on 3
 
 1. Navigate to "Settings"
 1. Click on "Server-side service monitoring" menu group
 1. Click on "Request attributes"
 
-## 1) Capture "Revenue" request attribute
+### 1) Capture "Revenue" request attribute
 1. Click on "Define a new request attribute"
 1. Type "Revenue" on "Request attribute name"
 1. **Change "Data type" to "Double"**
@@ -30,7 +30,7 @@
 1. Scroll up to the top of the page
 1. Click "Save" at the top of the screen
 
-## 2) Capture "Loyalty Status" request attribute
+### 2) Capture "Loyalty Status" request attribute
 1. Click on "Define a new request attribute"
 1. Type "Loyalty Status" on "Request attribute name"
 1. Leave "Data type" as "Text"
@@ -56,7 +56,7 @@
 1. Scroll up to the top of the page
 1. Click "Save" at the top of the screen
 
-## 3) Validate data collection
+### 3) Validate data collection
 
 1. In the main menu, open group "Applications & Microservices"
 1. Click on "Services"
