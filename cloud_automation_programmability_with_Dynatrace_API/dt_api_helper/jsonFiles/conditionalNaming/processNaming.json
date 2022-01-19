@@ -1,0 +1,21 @@
+{
+    "type": "PROCESS_GROUP",
+    "nameFormat": "{ProcessGroup:KubernetesNamespace}.{ProcessGroup:KubernetesContainerName}",
+    "displayName": "Kubernetes Namespace.Container",
+    "enabled": true,
+    "rules": [
+        {
+          "key": {
+            "attribute": "CLOUD_APPLICATION_NAMESPACE_NAME",
+            "type": "STATIC"
+          },
+          "comparisonInfo": {
+            "type": "STRING",
+            "operator": "EXISTS",
+            "value": null,
+            "negate": false,
+            "caseSensitive": null
+          }
+        }
+      ]
+  }
