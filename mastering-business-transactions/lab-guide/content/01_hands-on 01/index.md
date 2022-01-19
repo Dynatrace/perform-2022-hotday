@@ -63,15 +63,15 @@
 1. Click on "Add goal"
 
 ### 4) Create dashboard
-1. Start a new dashboard called "Mastering Business Transactions"
 1. In the main menu, open group "Observe and explore"
 1. Click on "Dashboards"
 1. Click on "Create dashboard"
-1. In the tile filter, type "key"
-1. Find the "Key user action" tile
-1. Either drag and drop or double-click it
-1. Select application and key user action names
-1. Repeat for the "book now" user action
-1. In the tile filter, type "conversion"
-1. Find the "Conversion goal" tile
-1. Either drag and drop or double-click it
+1. Type "Mastering Business Transactions" as the name
+3. In the tile filter, type "key"
+4. Find the "Key user action" tile
+5. Either drag and drop or double-click it
+6. Select application and key user action names
+7. Repeat for the "book now" user action
+8. In the tile filter, type "conversion"
+9. Find the "Conversion goal" tile
+10. Either drag and drop or double-click it
