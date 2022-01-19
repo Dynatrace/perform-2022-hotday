@@ -12,7 +12,7 @@ Click on "filter" field, select "content", type "credit card" and hit enter. How
 ## Step 2: Filter by facet
 
 1. Remove the content filter from the last step. 
-2. Select "warn" under "status facet list. how many records return?
+2. Select "warn" under "loglevel" facet list. how many records return?
 
 ![RDP](../resources/lab04_02.jpg)
 
@@ -32,11 +32,11 @@ With the facets selection in step 3, toggle the button of "Advanced query" at th
 
 ![RDP](../resources/lab04_04.jpg)
 
-(optional) Feel free to modify your query with some new keyword (e.g. name pipe)
+(optional) Feel free to modify your query with some new keyword (e.g. keyword="Unknown user name or bad password"), find out which log file match this query, can you find the user names? can you find out where the log attempt was from? (e.g. IP address) 
 
 ## Step 5: Table option
 
-Click on "Table options" button at the top of result section, select "host_name" or "dt.process.name", see the new table column show up. The view will stay. 
+Click on "Table options" button at the top of result section, select "host.name" or "dt.process.name", see the new table column show up. The view will stay. 
 ![RDP](../resources/lab04_05.jpg)
 
 [Next Lab](../05_create_log_metrics/README.md)
