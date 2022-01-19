@@ -1,93 +1,139 @@
-## Metrics, Charts and Dashboards
+## Hands-on: z/OS Connect
 
-In this module you will learn how to to define Custom metrics, Charts and Dashboards.
+In this module you will learn how to to define a z/OS Connect Service using IBM z/OS Explorer.
 
-The goal is to create this sample Dashboard:
+The goal is to create a z/OS Connect Service and monitor it with the Dynatrace OneAgent for z/OS Java.
 
-   ![Sample](../../assets/images/IBM_zSeries_Dashboard.png)
 
-### Step 1: Create Dashboard
-- Open the Dynatrace tenant provided to you
-- Go to `Dashboards` and click on `Create Dashboard`
-- Provide Dashboard name `IBM zSeries Performance` and type `Create
-- This will bring you to an empty Dashboard
+### Step 1: Establish Connection to z/OS Connect Server
 
-   ![Dashboard](../../assets/images/Dashboard.png)
+1. Open z/OS Explorer by double clicking the `zosxplorer` icon on the Desktop
 
-### Step 2: Create "Host Health" Chart
-- Drag & drop `Host health` tile into your Dashboard 
-- Keep all defaults
-- Click `Done`
+![z/OS Explorer](../../assets/images/zosexplorer.png)
 
-### Step 3: Create "CICS Service" Chart
-- Go to your CICS service (`Transactions and Services -> HVDACnnn`)
-- Click on the three `...` right to the name of the CICS Service
-- Select `Pin to Dashboard`, select the `IBM zSeries Performance` Dashboard and `Pin`
+2. Click on `Add` next to the `Credentials` pane
 
-  ![Pin](../../assets/images/Pin.png)
+![Add Credentials](../../assets/images/Add_Credentials.png)
 
-- Keep the defaults and click `Done` for the Services Chart
+3. Provide your Credentials and click `OK`
 
-### Step 4: Create "LPAR CPU Utilization" Chart
-- Drag & Drop `Custom Chart` to your Dashboard 
-- You might need to click `Edit` if you are not yet Edit mode
-- Click `Configure Chart`
-- Under `add Metric` select Category `Hosts`
-- Under Metric select `z/OS General CPU Usage`
-- Keep defaults and select `Pin as new tile`
-- Select your Dashboard and `Pin`, then `Open Dashboard`
+![Provide Credentials](../../assets/images/Provide_Credentials.png)
 
-### Step 5: Create "LPAR 4HRA MSU" Chart
-- Drag & Drop `Custom Chart` to your Dashboard 
-- You might need to click `Edit` if you are not yet Edit mode
-- Click `Configure Chart`
-- Under `add Metric` select Category `Hosts`
-- Under Metric select `z/OS z/OS Rolling 4 hour MSU average`
-- Keep defaults and select `Pin as new tile`
-- Select your Dashboard and `Pin`, then `Open Dashboard`
+4. Select `DTVD` and click on `Edit`
 
-### Step 6: Create Analysis Views for different Metrics
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select CPU Time, Sum, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Create metric as "CICS Sum CPU"
+![Edit Connection](../../assets/images/Edit_Connection.png)
 
-  ![SumCPU](../../assets/images/SumCPU.png)
+5. Provide your own User ID in the `Default User ID` field and click`OK`
 
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select CPU Time, Average, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Create metric as "CICS Avg CPU"
+![Default User](../../assets/images/Change_DefaultUser.png)
 
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select Response Time, Maximum, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Create metric as "CICS Max Response Time"
+6. Select `ZOSCSRV` entry in the `z/OS Connect EE Servers` pane and choose `Connect`
 
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select Response Time, Average, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Create metric as "CICS Avg Response Time"
+![Connect](../../assets/images/Connect_ZOSSRV.png)
 
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select Failure Rate, Average, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Create metric as "CICS Failure Rate"
+7. Select `Use Existing Credentials` and select the `DTVD` credentials you have previously created
 
-- ===> Go to `Diagnostic tools` and and click on `Create analysis view`
-- Select Request Count, Count, Split Services, Filter by CICS Service
-- Click `Save metric`
-- Save it as 'CICS Request Count'
+![Use Existing Credentials](../../assets/images/Signon_ZOSSRV.png)
+   
+8. Provide your Credentials and click `OK`
 
-### Step 7: Open your Dashboard and add Charts
-- Drag and drop a Custom Chart for each Metric created above
-- Select `Configure Custom Chart`
-- Select your metric from the dropdown (should contain CICS)
-- Click `Update Dashboard Tile`
-- Rearrange Tiles as needed
+![Provide Credentials](../../assets/images/Signon.png)
+   
+   
+### Step 2: Create Service in IBM z/OS Explorer
+
+- Switch the perspective to `z/OS Connect Enterprise Edition`
+1.	From the main menu, select `Window > Perspective > Open Perspective > Other`. The Open Perspective wizard opens.
+2.	Select `z/OS Connect Enterprise Edition`
+
+![Perspective](../../assets/images/perspective.png)
+
+- Create a z/OS Connect EE service project in the z/OS Connect Enterprise Edition perspective and define the request and response service interfaces.
+
+1.	Select `File > New > Project`. The New Project wizard opens
+
+![New Project](../../assets/images/newproject.png)
+
+2.	Select `z/OS Connect Enterprise Edition > z/OS Connect EE Service Project` and click `Next`
+
+![Service Project](../../assets/images/serviceproject.png)
+
+3.	Enter project name `EDUnnn` (`nnn` is your three digit ID)
+4.	In the Project type drop-down, select `CICS Channel Service` 
+5.	Optionally type in a description and click `Finish` (a service template is created with errors by default)
+
+![Name](../../assets/images/projectname.png)
+
+![Definition](../../assets/images/Definition.png)
+
+6.	Select `Configuration` tab and enter `Conn7nn` (`Conn7nn` is the unique connection ID of your CICS region, `7nn` is your three digit ID) 
+Note: This connection ID should match with your `<zosconnect_cicsIpicConnection>` entry in `server.xml` configuration in z/OS Connect set up. 
+
+![Configuration](../../assets/images/Configuration.png)
+
+7.	Switch to the `Definition` tab to create Service interface definitions
+8.	Enter `EDUCHAN` in the Program text box ( `EDUCHAN` is an IBM sample COBOL CICS Application defined and installed in your CICS region)
+9.	Click on button `Create Service Interface`
+
+![CreateServiceInterface](../../assets/images/CreateServiceInterface.png)
+
+10.	Type in Service name `EDUnnnRequest` for Request service definition and click `OK`
+
+![EDU731Request](../../assets/images/EDU731Request.png)
+
+11.	Rename the Channel and Container fields by double-clicking on each entry
+Channel -> `EDUCHANNEL`
+Container1 -> `INPUTDATA`
+For Container1, select `CHAR in the datatype field`
+
+![Channel](../../assets/images/INPUTDATA.png)
+
+![Request](../../assets/images/SIRequest.png)
+
+12.	Save Service Interface `EDUnnnRequest` using `File->Save` or `Ctrl-S` or by clicking on the Disk icon of `z/OS Explorer`
+13.	Switch to tab `EDUnnn Service` tab and create another service interface by clicking on button `Create Service Interface`
+14.	Create a response service with name `EDUnnnResponse`
+15.	In the Service interface editor, create three containers with the following names and types for response service. Use the add icon at the top to add more containers
+
+![Add Container](../../assets/images/AddContainer.png)
+
+a.	Container Name: `CICSRC`     Container Type: `BIT`
+b.	Container Name: `OUTPUTDATA` Container Type: `CHAR`
+c.	Container Name: `CICSTIME`   Container Type: `CHAR`
+
+![Response](../../assets/images/SIResponse.png)
+
+16.	Save Service Interface `EDUnnnResponse` using `File->Save` or `Ctrl-S` or by clicking on the Disk icon of `z/OS Explorer`
+17.	Switch to `EDUnnn` Service window
+18.	Select your new Request and Response service in the dropdown
+
+![Service](../../assets/images/EDU731Service.png)
+
+19.	Save `EDUnnn` Service using `File->Save` or `Ctrl-S` or by clicking on the Disk icon of `z/OS Explorer`
+
+
+### Step 3: Deploy Service in z/OS Connect
+
+Note: ensure you have a z/OS Connect Host connection established to DTVD using your credentials.
+
+1.	Right click on your `EDUnnn` project in the Project Explorer pane
+2.	Select `z/OS Connect EE > Deploy Service to z/OS Connect EE Server`
+
+![Deploy](../../assets/images/Deploy.png)
+
+3.	Click `OK` on the Deploy Service pop-up
+
+![Deploy OK](../../assets/images/DeployOK.png)
+
+![Deploy Success](../../assets/images/DeploySuccess.png)
+
+This will deploy an `EDU737.sar` file in this path: /var/zosconnect/v3r0/servers/defaultServer/resources/zosconnect/services in DTVD
+
+Note: Your new service will be available, when z/OS Connect has been refreshed. This will be done by the instructors.
+
 
 ### You've arrived
-- You have successfully created a new Dashboard with your key Mainframe components! 
+- You have successfully defined and deployed a z/OS Connect Service for program `EDUCHAN`! 
 
 
 
