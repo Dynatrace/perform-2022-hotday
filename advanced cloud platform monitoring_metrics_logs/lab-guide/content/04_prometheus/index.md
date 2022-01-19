@@ -45,7 +45,7 @@ Kubectl get pod
 > 2. Copy the name of one of the prometheus-node-exporter pods, replace the {POD NAME} and {PORT} with the port identified above and run the command:
 - This will expose the port to the host to be accessible on localhost.
 ```
-	kubectl {POD NAME} {PORT}:{PORT}
+	kubectl port-forward {POD NAME} {PORT}:{PORT}
 ```
 
 ![Prometheus_4.1](../../assets/images/prom_4.1.png)
@@ -127,7 +127,7 @@ In the default namespace, nginx ingress controller has been deployed.
 
 > 1. Run the describe kubectl command to identify port: 
 ```
-kubectl get deployment nginx-nginx-ingress -o jsonpath='{.spec.template.spec.containers[0].ports[].containerPort}{"\n"}'
+kubectl get deployment nginx-nginx-ingress -o jsonpath='{.spec.template.spec.containers[0].ports[2].containerPort}{"\n"}'
 ```
 
 > 2. Use vim to update the `hotday_script/prometheus/service__nginx_template.yaml` file with the correct port

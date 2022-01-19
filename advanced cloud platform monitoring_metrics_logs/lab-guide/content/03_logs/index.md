@@ -36,14 +36,20 @@ echo -e CLUSTERID=$CLUSTERID '\n' DTNODEID=$DTNODEID '\n' NODENAME=$NODENAME '\n
 ```
 ![Log 2](../../assets/images/log_2.png)
 
-> 3. POST Log to Dynatrac via Log Ingest API
-- Replace {YOUR-ENV-DOMAIN} with your Dynatrace environment Domain
-- Replace {API-TOKEN} with the API token created in Metric HoT
+> 3. Create `ENVDOMAIN` and `APITOKEN` envrionment variables:
+- YOUR-ENV-DOMAIN is Dynatrace environment URL `https://#######.sprint.dynatracelabs.com` (remove the ending backslash)
+- APITOKEN is the token generated in Metric HoT
 ```
-curl -iX POST "{YOUR-ENV-DOMAIN}/api/v2/logs/ingest" -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token {API-TOKEN}" -H "Content-Type: application/json; charset=utf-8" -d '[{"content":"example log content 1","status":"error","log.source":"/var/log/syslog","dt.kubernetes.node.name":"'"$NODENAME"'","dt.kubernetes.node.system_uuid":"'"$DTNODEID"'","dt.kubernetes.cluster.id":"'"$CLUSTERID"'","k8s.namespace.uid":"'"$NAMESPACEID"'","k8s.namespace.name":"'"$NAMESPACENAME"'","k8s.pod.name":"'"$PODNAME"'","k8s.pod.uid":"'"$PODID"'","response":12},{"content":"example log content 2","status":"info","log.source":"/var/log/syslog","dt.kubernetes.node.name":"'"$NODENAME"'","dt.kubernetes.node.system_uuid":"'"$DTNODEID"'","dt.kubernetes.cluster.id":"'"$CLUSTERID"'","k8s.namespace.uid":"'"$NAMESPACEID"'","k8s.namespace.name":"'"$NAMESPACENAME"'","k8s.pod.name":"'"$PODNAME"'","k8s.pod.uid":"'"$PODID"'","response":1}]'
+export ENVDOMAIN={YOUR-ENV-DOMAIN}
+export APITOKEN={APITOKEN}
 ```
 
-> 4. Validate Logs in Dynatrace Environment
+> 4. POST Log to Dynatrac via Log Ingest API
+```
+curl -iX POST "$ENVDOMAIN/api/v2/logs/ingest" -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token $APITOKEN" -H "Content-Type: application/json; charset=utf-8" -d '[{"content":"example log content 1","status":"error","log.source":"/var/log/syslog","dt.kubernetes.node.name":"'"$NODENAME"'","dt.kubernetes.node.system_uuid":"'"$DTNODEID"'","dt.kubernetes.cluster.id":"'"$CLUSTERID"'","k8s.namespace.uid":"'"$NAMESPACEID"'","k8s.namespace.name":"'"$NAMESPACENAME"'","k8s.pod.name":"'"$PODNAME"'","k8s.pod.uid":"'"$PODID"'","response":12},{"content":"example log content 2","status":"info","log.source":"/var/log/syslog","dt.kubernetes.node.name":"'"$NODENAME"'","dt.kubernetes.node.system_uuid":"'"$DTNODEID"'","dt.kubernetes.cluster.id":"'"$CLUSTERID"'","k8s.namespace.uid":"'"$NAMESPACEID"'","k8s.namespace.name":"'"$NAMESPACENAME"'","k8s.pod.name":"'"$PODNAME"'","k8s.pod.uid":"'"$PODID"'","response":1}]'
+```
+
+> 5. Validate Logs in Dynatrace Environment
 - Navigate to Dynatrace Envrionment > Logs (refresh page)
 
 ![Log 3](../../assets/images/log_3.png)
