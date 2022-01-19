@@ -16,7 +16,7 @@
 1. Type "Revenue by Loyalty Status" on the "Metric name"
 1. Click on "Create metric"
 1. Click on "Create chart"
-1. Click on "Run query" until the first datapoints appear
+1. Click on "Run query" until the first datapoints appear (it might take around 5 minutes for it)
 
 ### 3) Customize chart
 1. Click  "Add Metric" twice, to have 3 metrics (A, B and C)
