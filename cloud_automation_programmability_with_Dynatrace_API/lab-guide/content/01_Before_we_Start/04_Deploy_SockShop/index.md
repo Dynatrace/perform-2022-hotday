@@ -3,7 +3,7 @@
 You will deploy SockShop app in EKS
 
 1. Go to SockShop directory 
-    ```bash
+    ```
     cd sockshop/
     ``` 
 
@@ -12,22 +12,22 @@ You will deploy SockShop app in EKS
     ![execMod](../../assets/images/nonexec.png)
     
     then change mod:
-    ```bash
+    ```
     chmod +x deploy-sockshop.sh deploy-loadgen.sh
     ``` 
 
 3. Deploy SockShop 
-    ```bash
+    ```
     ./deploy-sockshop.sh
     ```
 
 4. After it finishes deployment, check front-end and carts External IPs
-    ```bash
+    ```
     kubectl get services -o wide --namespace production
     ```
 
 5. Save front end (port 8080) and carts (port 80) external IPs
-    ```bash
+    ```
     node generateToken.js
     ```
     ![externalIPs](../../assets/images/externalIPs.png)

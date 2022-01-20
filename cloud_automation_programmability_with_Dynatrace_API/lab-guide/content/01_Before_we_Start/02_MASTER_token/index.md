@@ -1,6 +1,6 @@
-## Create MASTER token
+## Create MASTER token (HOT exercise #1)
 
-We will create a MASTER token that will be for token management.
+For this first exercise, we will be creating a MASTER token via Dynatrace UI that will be used for token management.
 
 1. In Dynatrace tenant go to Settings >> Integration >> Dynatrace API
 

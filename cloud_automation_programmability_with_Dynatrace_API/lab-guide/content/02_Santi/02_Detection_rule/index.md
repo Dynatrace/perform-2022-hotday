@@ -4,13 +4,13 @@
 
 2. Go back to terminal and run dt api kit:
 
-    ```bash
+    ```
     node index.js
     ```
 
 3. Choose *Create a app detection rule*
 
-4. ```bash
+4. ```
    Choose an application for the detection rule: Sockshop (Production)
    Do you want to match Domain or URL? URL
    Choose one rule: CONTAINS
@@ -19,7 +19,8 @@
     ```
    
    If you don't have the URL, go to the bastion terminal and run: 
-    ```bash
+
+    ```
     kubectl get services -o wide --namespace production
     ```
     And copy front-end url adding HTTP://your external-ip:8080<br>
@@ -29,6 +30,6 @@
 
 6. Try and build another application for Dev . Just use dev URL:
 
-    ```bash
+    ```
     What does the "URL" should match "CONTAINS"? HTTP://your external-ip:8080
     ```
