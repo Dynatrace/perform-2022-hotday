@@ -14,7 +14,7 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
   ![Install](../../assets/images/Install_AG.png)
 
 2. Select `Windows`
-3. Check `Route z/OS traffic to Dynatrace` (Step 1)
+3. Check `Route z/OS traffic to Dynatrace` (Step 1)!
 4. Click on `Download Installer` (Step 2) OR Click on `Copy` and paste the download command into a DOS prompt, press `Enter`
 
   ![Installer](../../assets/images/Installer.png)
@@ -22,6 +22,7 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 5. Wait for the download to finish (can take a while depending on the bandwidth)
 6. Navigate to the folder containing the downloaded file in the DOS prompt (either your User directory or the Downloads folder)
 7. `Copy` installation command from the Dynatrace Tenant (Step 3) 
+7. Make sure, that the command contains parameter `ENABLE_ZREMOTE=true` after the exe! 
 8. Make sure that the name of the `exe`-File is correct, before you hit `Enter` 
 9. Install with the default settings
 10. Click on `Show Deployment Status` after the Installation has been successful
