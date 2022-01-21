@@ -30,8 +30,18 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
   ![ActiveGate](../../assets/images/MF_AG_Details.png)
 
 ### Step 3: Prepare and start the zDC
+
+Useful hints when using the X3270-Session:
+* Right `<Control>` key submits a command
+* `<Enter>` key moves the cursor to the next input field
+* `<F3>` ... exit
+* `<F7>` ... scroll up
+* `<F8>` ... scroll down
+* `<F10>` ... scroll left
+* `<F11>` ... scroll right
+
 1. Double click on the X3270 Session called `Perform` on the Desktop
-2. Logon to ISPF with `logon <userid>` using the Userid and Password provided to you 
+2. Logon to ISPF with `logon <userid>` + `Right <Control>` (use the Userid and Password provided to you in the Cheat Sheet on the Desktop) 
 
   ![LogonISPF](../../assets/images/Logon_ISPF.png)
 
