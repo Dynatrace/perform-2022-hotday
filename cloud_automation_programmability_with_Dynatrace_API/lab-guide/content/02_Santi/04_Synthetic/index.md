@@ -4,13 +4,13 @@
 
 2. Go back to terminal and run dt api kit:
 
-    ```bash
+    ```
     node index.js
     ```
 
 3. Choose *Deploy Synthetic Monitors*
 
-4. ```bash
+4. ```
    Choose one of the following to deploy: Homepage (browser)
    Give your synthetic script a name: Homepage (Single Page)
    Enter URL (ex. http://xxxx.us-west-2.elb.amazonaws.com:8080/): HTTP://your external-ip:8080

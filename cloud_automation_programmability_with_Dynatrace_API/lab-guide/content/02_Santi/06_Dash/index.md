@@ -4,7 +4,7 @@
 
 2. Go back to terminal and run dt api kit:
 
-    ```bash
+    ```
     node index.js
     ```
 

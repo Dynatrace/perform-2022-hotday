@@ -4,13 +4,13 @@
 
 2. Go back to terminal and run dt api kit:
 
-    ```bash
+    ```
     node index.js
     ```
 
 3. Choose *Create auto-tags*
 
-4. ```bash
+4. ```
    Enter the name of the tag rule: production
    Choose one of the following to be tagged: APPLICATION
    Choose one of the following for the rule: CONTAINS
