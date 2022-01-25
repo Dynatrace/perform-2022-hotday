@@ -29,36 +29,36 @@ During this course you will learn:
 
 </details>
 
-### How can you access your lab instance?
+<hr>
 
-1. Access your Dynatrace Tenant, from the Environments tab
-2. Go to "Dashboards"
-3. open the "☁ Autonomous Cloud Concepts with Keptn" Dashboard.
-4. Select link "🌐 KeptnInABox"
+## Validating your Enviornment 
 
-<img src="../../assets/images/autonomous-cloud.png" width="500"/>
+## Check Calculated service metrics
 
-<details><summary>If the link doesn't work...</summary>
+Go to Dynatrace.
 
-You can also find the ip address to the lab homepage by loggining into your EC2 instance with ssh from the Environments tab.
-  
-Then run the following from the command prompt.
+Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
+
+You should see 4 calculated service Metrics.  If you do not, follow the instructions.
+
+<details><summary>If you do not see these tags follow these steps</summary>
+
+- Go to your lab environment tab
+- Click open terminal to ssh into your EC2 instance.
+- navigate to 
 
 ```bash
-#: less +F /tmp/install.log
+  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
 ```
 
-Get the URL for lab from the log output.
+- Run the following command
+```bash
+  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
+```
 
-<img src="../../assets/images/KIAB_info.png" width="500"/>
-  
 </details>
 
-Welcome to KIAB.
-
-<img src="../../assets/images/KIAB.png" width="500"/>
-
-## Adjust Management zone
+# Adjust Management zone
 Now we need to add host criteria to the "Keptn: sockshop staging" management zone.
 
 Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
@@ -92,42 +92,34 @@ Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;servic
 
 <hr>
 
-## Check Calculated service metrics
+### How can you access your lab instance?
 
-Go to Dynatrace.
+1. Access your Dynatrace Tenant, from the Environments tab
+2. Go to "Dashboards"
+3. open the "☁ Autonomous Cloud Concepts with Keptn" Dashboard.
+4. Select link "🌐 KeptnInABox"
 
-Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
+<img src="../../assets/images/autonomous-cloud.png" width="500"/>
 
-You should see 4 calculated service Metrics.  If you do not, follow the instructions.
+<details><summary>If the link doesn't work...</summary>
 
-<details><summary>If you do not see these tags follow these steps</summary>
-
-- Go to your lab environment tab
-- Click open terminal to ssh into your EC2 instance.
-- navigate to 
+You can also find the ip address to the lab homepage by loggining into your EC2 instance with ssh from the Environments tab.
+  
+Then run the following from the command prompt.
 
 ```bash
-  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
+#: less +F /tmp/install.log
 ```
 
-- Run the following command
-```bash
-  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
-```
+Get the URL for lab from the log output.
 
+<img src="../../assets/images/KIAB_info.png" width="500"/>
+  
 </details>
 
-<hr>
+Welcome to KIAB.
 
-## Final Setup
-
-Additionally, we may need to deploy additional application services.
-By examining each project in the Bridge, we can determine which application services need to be deployed.
-
-Let's take a little time to do this now.
-
-Each Application deploymnet has it's own pipeline. With the help of an instructor, select the appropriate 
-pipeline and build out the necessary services.
+<img src="../../assets/images/KIAB.png" width="500"/>
 
 <hr>
 
@@ -238,6 +230,18 @@ and...
 <img src="../../assets/images/usecase3.png" width="500"/>
 
 </details>
+
+<hr>
+
+## Final Setup
+
+Additionally, we may need to deploy additional application services.
+By examining each project in the Bridge, we can determine which application services need to be deployed.
+
+Let's take a little time to do this now.
+
+Each Application deploymnet has it's own pipeline. With the help of an instructor, select the appropriate 
+pipeline and build out the necessary services.
 
 <hr>
 
