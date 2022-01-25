@@ -73,14 +73,7 @@ By examining the Bridge, we can determine if we need to trigger a deployment for
 application services.
 
 You may need to run several pipelines to complete the deployments of the applications.
-Don't worry, we will walk you through the process.
-
-Validate each project stage has been deployed.
-
-Next will also validate each application is available, by navigating to the KIAB homepage.
-Then selecting each application link.
-
-<img src="../../assets/images/applinks.png" width="400"/>
+Don't worry, we will walk you through the process now.
 
 <hr>
 
@@ -304,3 +297,9 @@ Select **Kubernetes** from the menu.
 1. Process and service naming rules
 
 Due to to time constrainsts, we will visit each area as needed during the lab exercises.
+
+## Final validation of envionrment
+
+Validate each project stage has been properly deployed by navigating to the KIAB homepage then selecting each application overview link (except EasyTravel which will not be part of this lab).
+
+<img src="../../assets/images/applinks.png" width="400"/>
