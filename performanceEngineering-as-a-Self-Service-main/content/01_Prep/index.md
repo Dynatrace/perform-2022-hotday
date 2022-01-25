@@ -101,6 +101,27 @@ application services.
 
 You may need to run several pipelines to complete the deployments of the applications but before we do that we need to adjust our dashboard in Dynatrace which contains the critiera some of these tests are checking against.
 
+### First, we must ensure the Host is tagged. 
+You should see these tags,
+
+<img src="../../assets/images/hosttags.png" width="500"/>
+
+<details><summary>If you do not see these tags follow these steps</summary>
+
+1. Login to your EC2 instance via ssh, from the Environments tab
+2. Navigate to "keptn-in-a-box/resources/dynatrace/scripts" directory
+
+    ```bash
+        #: cd keptn-in-a-box/resources/dynatrace/scripts
+    ```   
+3. run this command.
+
+    ```bash
+        #: sudo ./hosttag.sh
+    ```
+After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
+</details>
+
 ## Adjust Management zone
 We need to add host criteria to the "Keptn: sockshop staging" management zone which will be set as a filter in our dashboard. 
 
