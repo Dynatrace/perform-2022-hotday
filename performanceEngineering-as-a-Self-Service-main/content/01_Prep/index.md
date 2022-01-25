@@ -101,7 +101,7 @@ application services.
 
 You may need to run several pipelines to complete the deployments of the applications but before we do that we need to adjust our dashboard in Dynatrace which contains the critiera some of these tests are checking against.
 
-### First, we must ensure the Host is tagged. 
+## First, we must ensure the Host is tagged. 
 You should see these tags,
 
 <img src="../../assets/images/hosttags.png" width="500"/>
