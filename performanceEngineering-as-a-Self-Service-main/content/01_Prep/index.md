@@ -58,7 +58,7 @@ You should see 4 calculated service Metrics.  If you do not, follow the instruct
 
 </details>
 
-# Adjust Management zone
+## Adjust Management zone
 Now we need to add host criteria to the "Keptn: sockshop staging" management zone.
 
 Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
@@ -78,13 +78,13 @@ Use these settings to create the Rule.
 - Click **"Preview"**
 - Click **"Create rule"**
 
-<hr>
-
-## Set Dashboard Default Management Zone
+## Clone dashboard and set default management zone
 
 Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;service=carts"** dashbaord.
 
+- Click `...` in the top right corner and click `Clone`
 - Click **"Edit"**
+- Remove **"-cloned"** from the title
 - Select **"Settings"**
 - Pick **"Keptn: sockshop staging"** for the Default Managment zone
 - Click **"Done"**
