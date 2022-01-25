@@ -54,8 +54,6 @@ Get the URL for lab from the log output.
   
 </details>
 
-Open a Browser window with the URL, Chrome is preferred.
-
 Welcome to KIAB.
 
 <img src="../../assets/images/KIAB.png" width="500"/>
