@@ -72,10 +72,10 @@ You should see the preloaded projects.
 By examining the Bridge, we can determine if we need to trigger a deployment for any of the
 application services.
 
-You may need to run several pipelines to complete the deployments of the applications but before we do that we need to adjust our dashboard in Dynatrace which contains the critiera some of these tests are checking against:
+You may need to run several pipelines to complete the deployments of the applications but before we do that we need to adjust our dashboard in Dynatrace which contains the critiera some of these tests are checking against.
 
 ## Adjust Management zone
-Now we need to add host criteria to the "Keptn: sockshop staging" management zone.
+We need to add host criteria to the "Keptn: sockshop staging" management zone which will be set as a filter in our dashboard. 
 
 Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
 
@@ -105,6 +105,8 @@ Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;servic
 - Pick **"Keptn: sockshop staging"** for the Default Managment zone
 - Click **"Done"**
 - Validate you see data in each tile
+
+Now we can start running the pipelines in Jenkins that we see failed in the Keptn Bridge...
 
 <hr>
 
