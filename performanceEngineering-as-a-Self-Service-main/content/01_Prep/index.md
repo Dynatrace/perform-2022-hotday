@@ -62,6 +62,33 @@ Welcome to KIAB.
 
 <hr>
 
+## Check Calculated service metrics
+
+Go to Dynatrace.
+
+Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
+
+You should see 4 calculated service Metrics.  If you do not, follow the instructions.
+
+<details><summary>If you do not see these tags follow these steps</summary>
+
+- Go to your lab environment tab
+- Click open terminal to ssh into your EC2 instance.
+- navigate to 
+
+```bash
+  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
+```
+
+- Run the following command
+```bash
+  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
+```
+
+</details>
+
+<hr>
+
 ## Validating the projects in the keptn bridge
 
 Click on the "Bridge" link. This will open the keptn bridge.
@@ -154,33 +181,6 @@ Let's take a little time to do this now.
 
 Each Application deploymnet has it's own pipeline. With the help of an instructor, select the appropriate 
 pipeline and build out the necessary services.
-
-## Check Calculated service metrics
-
-Go to Dynatrace.
-
-Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
-
-You should see 4 calculated service Metrics.  If you do not, follow the instructions.
-
-<details><summary>If you do not see these tags follow these steps</summary>
-
-- Go to your lab environment tab
-- Click open terminal to ssh into your EC2 instance.
-- navigate to 
-
-```bash
-  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
-```
-
-- Run the following command
-```bash
-  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
-```
-
-</details>
-
-<hr>
 
 ## Order App Overview
 
