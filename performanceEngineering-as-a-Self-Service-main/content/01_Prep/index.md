@@ -38,8 +38,10 @@ During this course you will learn:
 
 <img src="../../assets/images/autonomous-cloud.png" width="500"/>
 
-Optionally, you can also find the ip address, to the lab homepage, by loggining into your EC2 instance with ssh, 
-from the Environments tab.
+<details><summary>If the link doesn't work...</summary>
+
+You can also find the ip address to the lab homepage by loggining into your EC2 instance with ssh from the Environments tab.
+  
 Then run the following from the command prompt.
 
 ```bash
@@ -49,6 +51,8 @@ Then run the following from the command prompt.
 Get the URL for lab from the log output.
 
 <img src="../../assets/images/KIAB_info.png" width="500"/>
+  
+</details>
 
 Open a Browser window with the URL, Chrome is preferred.
 
