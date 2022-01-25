@@ -31,67 +31,6 @@ During this course you will learn:
 
 <hr>
 
-## Validating your Enviornment 
-
-## Check Calculated service metrics
-
-Go to Dynatrace.
-
-Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
-
-You should see 4 calculated service Metrics.  If you do not, follow the instructions.
-
-<details><summary>If you do not see these tags follow these steps</summary>
-
-- Go to your lab environment tab
-- Click open terminal to ssh into your EC2 instance.
-- navigate to 
-
-```bash
-  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
-```
-
-- Run the following command
-```bash
-  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
-```
-
-</details>
-
-## Adjust Management zone
-Now we need to add host criteria to the "Keptn: sockshop staging" management zone.
-
-Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
-
-Find the **"Keptn: Sockshop staging"** management zone.
-
-We need to add a rule to capture the host and process metrics.
-
-Use these settings to create the Rule.
-
-- Rule Applies to "Hosts"
-- Conditions: Host tags equals [Environment]kiab
-- Select checkbox "Apply to processes running on matching hosts
-
-   <img src="../../assets/images/ss_mz.png" width="500"/>
-
-- Click **"Preview"**
-- Click **"Create rule"**
-
-## Clone dashboard and set default management zone
-
-Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;service=carts"** dashbaord.
-
-- Click `...` in the top right corner and click `Clone`
-- Click **"Edit"**
-- Remove **"-cloned"** from the title
-- Select **"Settings"**
-- Pick **"Keptn: sockshop staging"** for the Default Managment zone
-- Click **"Done"**
-- Validate you see data in each tile
-
-<hr>
-
 ### How can you access your lab instance?
 
 1. Access your Dynatrace Tenant, from the Environments tab
@@ -178,6 +117,77 @@ This allows us to deploy only the "order" service.
 We now have different options for each pipeline build.
 Instead of documenting each part here, we will walk through a few scenerios.
 
+<hr>
+
+## Validating your Enviornment 
+
+Additionally, we may need to deploy additional application services.
+By examining each project in the Bridge, we can determine which application services need to be deployed.
+
+Let's take a little time to do this now.
+
+Each Application deploymnet has it's own pipeline. With the help of an instructor, select the appropriate 
+pipeline and build out the necessary services.
+
+## Check Calculated service metrics
+
+Go to Dynatrace.
+
+Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
+
+You should see 4 calculated service Metrics.  If you do not, follow the instructions.
+
+<details><summary>If you do not see these tags follow these steps</summary>
+
+- Go to your lab environment tab
+- Click open terminal to ssh into your EC2 instance.
+- navigate to 
+
+```bash
+  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
+```
+
+- Run the following command
+```bash
+  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
+```
+
+</details>
+
+## Adjust Management zone
+Now we need to add host criteria to the "Keptn: sockshop staging" management zone.
+
+Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
+
+Find the **"Keptn: Sockshop staging"** management zone.
+
+We need to add a rule to capture the host and process metrics.
+
+Use these settings to create the Rule.
+
+- Rule Applies to "Hosts"
+- Conditions: Host tags equals [Environment]kiab
+- Select checkbox "Apply to processes running on matching hosts
+
+   <img src="../../assets/images/ss_mz.png" width="500"/>
+
+- Click **"Preview"**
+- Click **"Create rule"**
+
+## Clone dashboard and set default management zone
+
+Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;service=carts"** dashbaord.
+
+- Click `...` in the top right corner and click `Clone`
+- Click **"Edit"**
+- Remove **"-cloned"** from the title
+- Select **"Settings"**
+- Pick **"Keptn: sockshop staging"** for the Default Managment zone
+- Click **"Done"**
+- Validate you see data in each tile
+
+<hr>
+
 ## Order App Overview
 
 This application was built for demonstations of Dynatrace.  Here is the frontend.
@@ -230,18 +240,6 @@ and...
 <img src="../../assets/images/usecase3.png" width="500"/>
 
 </details>
-
-<hr>
-
-## Final Setup
-
-Additionally, we may need to deploy additional application services.
-By examining each project in the Bridge, we can determine which application services need to be deployed.
-
-Let's take a little time to do this now.
-
-Each Application deploymnet has it's own pipeline. With the help of an instructor, select the appropriate 
-pipeline and build out the necessary services.
 
 <hr>
 
