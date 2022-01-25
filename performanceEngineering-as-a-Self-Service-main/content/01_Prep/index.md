@@ -72,8 +72,39 @@ You should see the preloaded projects.
 By examining the Bridge, we can determine if we need to trigger a deployment for any of the
 application services.
 
-You may need to run several pipelines to complete the deployments of the applications.
-Don't worry, we will walk you through the process now.
+You may need to run several pipelines to complete the deployments of the applications but before we do that we need to adjust our dashboard in Dynatrace which contains the critiera some of these tests are checking against:
+
+## Adjust Management zone
+Now we need to add host criteria to the "Keptn: sockshop staging" management zone.
+
+Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
+
+Find the **"Keptn: Sockshop staging"** management zone.
+
+We need to add a rule to capture the host and process metrics.
+
+Use these settings to create the Rule.
+
+- Rule Applies to "Hosts"
+- Conditions: Host tags equals [Environment]kiab
+- Select checkbox "Apply to processes running on matching hosts
+
+   <img src="../../assets/images/ss_mz.png" width="500"/>
+
+- Click **"Preview"**
+- Click **"Create rule"**
+
+## Clone dashboard and set default management zone
+
+Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;service=carts"** dashbaord.
+
+- Click `...` in the top right corner and click `Clone`
+- Click **"Edit"**
+- Remove **"-cloned"** from the title
+- Select **"Settings"**
+- Pick **"Keptn: sockshop staging"** for the Default Managment zone
+- Click **"Done"**
+- Validate you see data in each tile
 
 <hr>
 
@@ -146,38 +177,6 @@ You should see 4 calculated service Metrics.  If you do not, follow the instruct
 ```
 
 </details>
-
-## Adjust Management zone
-Now we need to add host criteria to the "Keptn: sockshop staging" management zone.
-
-Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
-
-Find the **"Keptn: Sockshop staging"** management zone.
-
-We need to add a rule to capture the host and process metrics.
-
-Use these settings to create the Rule.
-
-- Rule Applies to "Hosts"
-- Conditions: Host tags equals [Environment]kiab
-- Select checkbox "Apply to processes running on matching hosts
-
-   <img src="../../assets/images/ss_mz.png" width="500"/>
-
-- Click **"Preview"**
-- Click **"Create rule"**
-
-## Clone dashboard and set default management zone
-
-Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;service=carts"** dashbaord.
-
-- Click `...` in the top right corner and click `Clone`
-- Click **"Edit"**
-- Remove **"-cloned"** from the title
-- Select **"Settings"**
-- Pick **"Keptn: sockshop staging"** for the Default Managment zone
-- Click **"Done"**
-- Validate you see data in each tile
 
 <hr>
 
