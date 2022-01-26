@@ -101,7 +101,7 @@ This will bring up the **easytravel-angular.easytravel-staging** Performance Ove
 
 <img src="../../assets/images/lab2_application_service_flow_2_new_menu.png" width="500"/>
 
-This will bring up the **Service flow** for the **easytravel-angular.easytravel-staging**.  View results.
+This will bring up the **Service flow** for the **frontend.keptnorders-staging**.  View results.
 
 <img src="../../assets/images/lab2_application_service_flow_3_new_menu.png" width="500"/>
 
