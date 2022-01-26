@@ -268,28 +268,7 @@ Now lets take a look at what we have discovered in Dynatrace.
 
 Open Dynatrace and navigate to **Hosts** in the menu and select the host.
 
-### First, we must ensure the Host is tagged. 
-You should see these tags,
-
-<img src="../../assets/images/hosttags.png" width="500"/>
-
-<details><summary>If you do not see these tags follow these steps</summary>
-
-1. Login to your EC2 instance via ssh, from the Environments tab
-2. Navigate to "keptn-in-a-box/resources/dynatrace/scripts" directory
-
-    ```bash
-        #: cd keptn-in-a-box/resources/dynatrace/scripts
-    ```   
-3. run this command.
-
-    ```bash
-        #: sudo ./hosttag.sh
-    ```
-After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
-</details>
-
-### Next let's examine all the proceses automatically discovered by the Dynatrace oneAgent.
+### Let's examine all the proceses automatically discovered by the Dynatrace oneAgent.
 
 <img src="../../assets/images/pre_host.png" width="400"/>
 
