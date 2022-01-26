@@ -62,35 +62,6 @@ Welcome to KIAB.
 
 <hr>
 
-## Check Calculated service metrics
-
-Go to Dynatrace.
-
-Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
-
-You should see 4 calculated service Metrics:
-
-<img src="../../assets/images/lab_1_calculated_service_metrics.png" width="500"/>
-
-<details><summary>If you do not see these tags perform these steps</summary>
-
-- Go to your lab environment tab
-- Click open terminal to ssh into your EC2 instance.
-- navigate to 
-
-```bash
-  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
-```
-
-- Run the following command
-```bash
-  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
-```
-
-</details>
-
-<hr>
-
 ## Validating the projects in the keptn bridge
 
 Click on the "Bridge" link. This will open the keptn bridge.
@@ -143,6 +114,33 @@ Use these settings to create the Rule.
 
 - Click **"Preview"**
 - Click **"Create rule"**
+
+## Check Calculated service metrics
+
+Go to Dynatrace.
+
+Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
+
+You should see 4 calculated service Metrics:
+
+<img src="../../assets/images/lab_1_calculated_service_metrics.png" width="500"/>
+
+<details><summary>If you do not see these tags perform these steps</summary>
+
+- Go to your lab environment tab
+- Click open terminal to ssh into your EC2 instance.
+- navigate to 
+
+```bash
+  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
+```
+
+- Run the following command
+```bash
+  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
+```
+
+</details>
 
 ## Clone dashboard and set default management zone
 
