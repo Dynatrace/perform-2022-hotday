@@ -184,9 +184,8 @@ We have setup the Load Test **Calculated service metrics** for you.   Below is a
     ```
 </details>
 
-After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
-
 [Blog: Tutorial: Guide to automated SRE-driven performance engineering](https://www.dynatrace.com/news/blog/guide-to-automated-sre-driven-performance-engineering-analysis/)
+
 [Documentation: Calculated metrics for services](https://www.dynatrace.com/support/help/shortlink/calculated-service-metric/)
 
 ### Kick off Keptn Customer Build
