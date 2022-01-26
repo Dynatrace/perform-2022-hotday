@@ -74,7 +74,11 @@ application services.
 
 You may need to run several pipelines to complete the deployments of the applications but before we do that we need to adjust our dashboard in Dynatrace which contains the critiera some of these tests are checking against.
 
-## First, we must ensure the Host is tagged. 
+<hr>
+
+## Validate some Enviornment Settings
+
+### Check the Host is tagged. 
 You should see these tags,
 
 <img src="../../assets/images/hosttags.png" width="500"/>
@@ -95,7 +99,7 @@ You should see these tags,
 After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
 </details>
 
-## Adjust Management zone
+### Adjust Management zone
 We need to add host criteria to the "Keptn: sockshop staging" management zone which will be set as a filter in our dashboard. 
 
 Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
@@ -115,7 +119,7 @@ Use these settings to create the Rule.
 - Click **"Preview"**
 - Click **"Create rule"**
 
-## Check Calculated service metrics
+### Check Calculated service metrics
 
 Go to Dynatrace.
 
@@ -142,7 +146,7 @@ You should see 4 calculated service Metrics:
 
 </details>
 
-## Clone dashboard and set default management zone
+### Clone dashboard and set default management zone
 
 Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;service=carts"** dashbaord.
 
