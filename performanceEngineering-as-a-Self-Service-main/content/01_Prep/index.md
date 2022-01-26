@@ -68,9 +68,11 @@ Go to Dynatrace.
 
 Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
 
-You should see 4 calculated service Metrics.  If you do not, follow the instructions.
+You should see 4 calculated service Metrics:
 
-<details><summary>If you do not see these tags follow these steps</summary>
+<img src="../../assets/images/lab_1_calculated_service_metrics.png" width="500"/>
+
+<details><summary>If you do not see these tags perform these steps</summary>
 
 - Go to your lab environment tab
 - Click open terminal to ssh into your EC2 instance.
