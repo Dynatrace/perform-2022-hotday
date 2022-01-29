@@ -14,15 +14,15 @@ We will start by generating some custom log data for Dynatrace to ingest using t
 
 1. Create a new API token named `perform` and allow the v2 token scope of 'ingest logs'. Click Generate token. Copy the token value to a notepad temporarily.
    
-![API Token](../resources/API%20Token.png)
+![API Token](../../assets/images/APIToken.png)
 
 2. Click your profile icon in the top right corner of the UI. Select `Environment API V2` to launch a new tab in your browser. Within the REST UI find the `logs` endpoint. Click to expand the endpoints and select `POST`. 
 
-![logs API](../resources/LogsAPI.png)
+![logs API](../../assets/images/LogsAPI.png)
 
 3. On the right hand side of that row, you'll find a lock icon. Click the lock icon and paste your API token to authenticate. 
 
-![API Auth](../resources/APIAuth.png)
+![API Auth](../../assets/images/APIAuth.png)
 
 4. Close the authentication window and select `Try it out` on the POST endpoint.
 
@@ -76,7 +76,7 @@ We will start by generating some custom log data for Dynatrace to ingest using t
 
 7. Return to the log viewer and you now should be able to use the new application.id attribute as a filter to view all events by application:
 
-![app.idfilter](../resources/applicationid.png)
+![app.idfilter](../../assets/images/applicationid.png)
 
 ## Bonus:
 
