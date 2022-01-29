@@ -2,7 +2,7 @@
 
 Now we've learned how to create log metrics, we can add custom defined attributes for additonal context and dimensions. Dynatrace Log Monitoring gives you the ability to define custom index log data attributes for log data that is ingested.
 
-Dynatrace will automatically detect attributes of ingested log data. These attributes are used in teh log viwer facets to quickly filter the result table data for a specific attribute. 
+Dynatrace will automatically detect attributes of ingested log data. These attributes are used in the log viewer facets to quickly filter the result table data for a specific attribute. 
 
 You can also define your own custom log data attributes that suits your particular log data format. Similarly to the automatically detected log attributes, your custom log attributes are extracted from the log data during ingestion and become availble within Dynatrace.
 
@@ -26,7 +26,7 @@ We will start by generating some custom log data for Dynatrace to ingest using t
 
 4. Close the authentication window and select `Try it out` on the POST endpoint.
 
-5. Remove all text in the example value box. Copy the snippet below and paste the contents within teh Example Value box.
+5. Remove all text in the example value box. Copy the snippet below and paste the contents within the Example Value box.
 
 ```
 [
