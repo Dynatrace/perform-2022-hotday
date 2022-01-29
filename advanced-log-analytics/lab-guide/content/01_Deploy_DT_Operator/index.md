@@ -19,6 +19,7 @@ We've provided an Kubernetes cluster running our easyTravel demo application. We
     ![K8s Deploy](../../assets/images/K8sDeploy.png)
 
 3. Copy the command generated from dynatrace
+   
     ![Opeartor install command](../../assets/images/OperatorCommand.png)
 
 4. Inside of your Dynatrace University environment you'll find a terminal to your bastion host. Execute the copied command on your bastion host to install the Dynatrace Operator.
