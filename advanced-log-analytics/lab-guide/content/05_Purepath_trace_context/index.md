@@ -9,7 +9,7 @@
 3. Use the filter input on the top of the global features list and input `logs`
 4. Enable all matching features (total of 7 switches) - be sure to check page 2.
 
-    ![Enable Log enrichment](../resources/logenrichment.png)
+    ![Enable Log enrichment](../../assets/images/logenrichment.png)
 
 5. Save your changes.
 
@@ -28,7 +28,7 @@
     kubectl get pods -n easytravel -w
     ```
 
-    ![Pods ready](../resources/podsready.png)
+    ![Pods ready](../../assets/images/podsready.png)
 
 ## Use log viewer to find a trace ID
 
@@ -41,7 +41,7 @@
 
 3. Expand one of the log events and scroll to the bottom of the event to find dt.trace_id=xxxxxx
 
-    ![dttraceid](../resources/dttraceid.png)
+    ![dttraceid](../../assets/images/dttraceid.png)
 
 4. Highlight and copy any id value you can find. The exact value copied does not matter, just make sure to only copy the portion between the `=` and `,`
 
@@ -54,10 +54,8 @@
 You should find a single purepath matching the trace id found in logs:
 
 If you're having trouble finding a matching purepath, makes your timeframe in the log viewer and the distributed trace screen matches. You may have to try multiple different IDs to find a match.
-    ![tracepurepath](../resources/dttracesearch.png)
+    ![tracepurepath](../../assets/images/dttracesearch.png)
 
 
 4. Drill into the purepath found by clicking on the name of the request.
 5. Once on the purepath details screen select the root node in the purepath tree. Then choose the `Logs` tab. The purepath should contain the log entry found in the log viewer!
-
-
