@@ -1,0 +1,36 @@
+name: custom:prometheus.demo
+version: 1.0.0
+minDynatraceVersion: "1.227"
+author:
+  name: "Dynatrace User"
+
+prometheus:
+  - group: system
+    interval: 1m
+    dimensions:
+      - key: category
+        value: System
+    subgroups:
+      - subgroup: Logical disks
+        dimensions:
+          - key: volume
+            value: label:volume
+        metrics:
+          - key: custom.prometheus.demo.host.logical.disk.free.bytes
+            value: metric:windows_logical_disk_free_bytes
+            type: gauge
+          - key: custom.prometheus.demo.host.logical.disk.size.bytes
+            value: metric:windows_logical_disk_size_bytes
+            type: gauge
+          - key: custom.prometheus.demo.host.logical.disk.latency.read
+            value: metric:windows_logical_disk_read_latency_seconds_total
+            type: count
+          - key: custom.prometheus.demo.host.logical.disk.latency.write
+            value: metric:windows_logical_disk_read_write_latency_seconds_total
+            type: count
+      - subgroup: CPU
+        featureSet: Processor performance
+        metrics:
+          - key: custom.prometheus.demo.host.cpu.processor
+            value: metric:windows_cpu_processor_performance
+            type: gauge

@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\advanced cloud platform monitoring_metrics_logs",
-    "\\advanced cloud platform monitoring_metrics_logs\\lab-guide"
+    "\\advanced cloud platform monitoring_metrics_logs\\lab-guide",
+    "\\advanced cloud platform monitoring_metrics_logs\\lab-guide\\content",
+    "\\advanced cloud platform monitoring_metrics_logs\\lab-guide\\content\\03_logs",
+    "\\advanced cloud platform monitoring_metrics_logs\\lab-guide\\content\\05_fluentd"
   ],
-  "SelectedNode": "\\advanced cloud platform monitoring_metrics_logs\\lab-guide\\README.md",
   "PreviewInSolutionExplorer": false
 }
