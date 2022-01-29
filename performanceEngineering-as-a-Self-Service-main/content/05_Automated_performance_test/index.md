@@ -75,13 +75,21 @@ An example of an SLI is the response time (also named request latency), which is
  Lets have a quick look at two of these SLIs - one showing a regular built-in Dynatrace service metric the other one is a custom calculated 
  service metric that gives me response time for a particular test name:
  
+<details>
+  <summary>SLI format:</summary>
+
 ```yaml
  rt_svc_p95:       "metricSelector=builtin:service.response.time:merge(0):percentile(95)?entitySelector=tag($SERVICE),type(SERVICE)"
 
  rt_test_homepage: "metricSelector=calc:service.teststepresponsetime:filter(eq(Test Step,homepage)):merge(0):avg?entitySelector=tag($SERVICE),type(SERVICE)"
 ```
 
+</details>
+
 Now let's examine the complete SLI setup.
+
+<details>
+  <summary>SLI example</summary>
 
 ```yaml
 ---
@@ -99,6 +107,10 @@ indicators:
   cpu_time:     "metricSelector=builtin:service.cpu.time:merge(0):sum&entitySelector=tag($SERVICE),type(SERVICE)"
 ```  
 
+</details>
+
+<hr>
+
 ### What is a Service-Level Objective (SLO)?
 A service-level objective is “a target value or range of values for a service level that is measured by an SLI.” 
 (as defined in the Site-Reliability Engineering Book).
@@ -111,6 +123,9 @@ The SLI file we provided contains a good list of individual indicators. What we 
 (Service Level Objective) that indicate what Keptn should do with these SLIs. We have these options after Keptn pulled 
 the value through the SLI Provider a) Just give me the value b) Compare the value with a static threshold c) Compare 
 it with a baseline from previous runs, this is an example.  To see the full SLO, view this in the Keptn Bridge.
+
+<details>
+  <summary>SLO example</summary>
 
 ```yaml
 ---
@@ -150,6 +165,9 @@ it with a baseline from previous runs, this is an example.  To see the full SLO,
               - "<=+50%"   
 ```
 
+</details>
+
+
 ### Continuous Performance Verification
 
 Keptn helps automating your tests by having Keptn triggering the test execution and evaluating the result of 
@@ -182,6 +200,9 @@ KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.
 The KEPTN_BRIDGE is the link to your keptn bridge so that the Library can generate some deep links to the bridge to give you easy access to quality gate results!
 
 Once you have everything configured use it in your Jenkins Pipeline like this
+
+<details>
+  <summary>Jenkins pipeline example</summary>
 
 ```groovy
 @Library('keptn-library')_
@@ -258,6 +279,10 @@ node {
     }
 }
 ```
+
+</details>
+
+<hr>
 
 ### Walk through the Kept Bridge.
 

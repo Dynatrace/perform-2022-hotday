@@ -24,74 +24,70 @@ Open Jenkins.
 
 Click on **01_deploy_order_application** pipeline
 
-<img src="../../assets/images/Lab_1_deploy_order_application_1.png" width="500"/>
+<img src="../../assets/images/Lab_1_deploy_order_application_1.png" width="700"/>
 
 Now we are going to push the **order** version **2.0.0**.
 
-Select **"Build with parameters"**
+Select **Build with parameters**
 
 - In the **orderRelease** dropdown select **2.0.0**
 - In the **DEPLOY_TO field**, change the dropdown box to **order**
 
-Next, click the **Build** button.
+<img src="../../assets/images/lab_3_order_build.png" width="700"/>
 
-<img src="../../assets/images/lab_3_order_build.png" width="500"/>
+Next, click the **Build** button.
 
 <hr>
 
 ## Create Availability/Error SLOs
 
-The Dynatrace Software Intelligence Platform delivers all the necessary Service-Level Indicators (SLIs) for defining your Service-Level Objectives (SLOs) and monitors the status and error budgets of those objectives. Whether you want to define an SLO for real user experience or for measuring your service availability, your Dynatrace monitoring environment already comes with the right tools for your Site Reliability Teams. You can get all the facts about the health of you critical business services with respect to Business and Service-Level Objectives (SLO), Service-Level Agreements (SLAs), and end-user experience
+The Dynatrace Software Intelligence Platform delivers all the necessary Service-Level Indicators (SLIs) for defining your Service-Level Objectives (SLOs) and monitors the status and error budgets of those objectives. Whether you want to define an SLO for real user experience or for measuring your service availability, your Dynatrace monitoring environment already comes with the right tools for your Site Reliability Teams. You can get all the facts about the health of you critical business services with respect to Business and Service-Level Objectives (SLO), Service-Level Agreements (SLAs), and end-user experience.
 
-Click "**SLOs**" from the Main Navigation menu.
+Click **SLOs** from the Main Navigation menu.
 
-Then Select the "**Add new SLO**" Button.
+Then Select the **Add new SLO** Button.
 
-<img src="../../assets/images/slo_1.png" width="500"/>
+<img src="../../assets/images/slo_1.png" width="700"/>
 
 This will bring up the **Add new SLO** wizard screen.
 
 Click on the **Service-level availability** button.
 
-In the **Name this service-level availability SLO** section use this name:  **Availability - Order_Staging**
+In the **Name this service-level availability SLO** section use this name:  `Availability - Catalog_Staging`
 
-<img src="../../assets/images/slo_2.png" width="500"/>
+<img src="../../assets/images/slo_2.png" width="700"/>
 
-Now we need to **Define a filter** by expanding the define a filter section.   
+Now we need to **Define a filter** by expanding the define a filter section. 
 
-Copy and paste the below text into the **filter** section:
+Change the Timeframe Filter section to `-30m`
 
-**mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("order")**
+Copy and paste the below text into the **Entity selector** section:
 
-or
-
-**mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("catalog")**
+`mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("catalog")`
 
 Then click the **Preview** button.
 
-<img src="../../assets/images/slo_4.png" width="500"/>
+<img src="../../assets/images/slo_4.png" width="700"/>
 
-Change the Timeframe section to **-30m** and then click the **Preview** button.
+Now we need to select **Evaluate** - if the SLO was setup properly we should see data in the graph.
 
-Now we need to select evaluation, if the SLO was setup properly, we should see data in the Graph.
+<img src="../../assets/images/slo_5.png" width="700"/>
 
-<img src="../../assets/images/slo_5.png" width="500"/>
+The final step in creating this SLO is to click on the **Create** button.
 
-The final step is to click on the **Create** button.
+After the **Availability - Catalog_Staging** has been created lets create two more SLOs for **Customer** and **Order** services.
 
-<hr>
+Use the follow settings for the **Order** SLO: 
 
-After the **Availability SLO** has been created lets create two more SLOs for the **customer** and **catalog** services.
+- SLO Name        = `Availability - Order_Staging`
+- Timeframe       = `-30m`
+- Entity Selector = `mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("order")`
 
-Use the follow settings for the **catalog** SLO: 
+Use the follow settings for the **Customer** SLO:
 
-- SLO Name = **Availability - Catalog_Staging**
-- Filter   = **mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("catalog")**
-
-Use the follow settings for the **customer** SLO:
-
-- SLO Name = **Availability - Customer_Staging**
-- Filter   = **mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("customer")**
+- SLO Name        = `Availability - Customer_Staging`
+- Timeframe       = `-30m`
+- Entity Selector = `mzName("Keptn: keptnorders staging"),type("SERVICE"),entityName("customer")`
 
 When complete,  review the results.
 
@@ -99,21 +95,19 @@ When complete,  review the results.
 
 ## Run Load Test
 
-Now we will run more load test to see the outcome for the SLO's
+Now we will run one more load test to see the outcome for the SLO's
 
-Open Jenkins.
-
-Click on **04-performancetest-qualitygate** pipeline
+Open Jenkins and click on **04-performancetest-qualitygate** pipeline:
 
 <img src="../../assets/images/lab_3_jenkins_run_load_test_1.png" width="500"/>
 
-Select **"Build with parameters"**
+Select **Build with parameters**
 
 We only need to validate the **DeployomentURI** section.   
 
 When done click the **Build** button which will start the Performance Test.
 
-<img src="../../assets/images/lab_3_jenkins_run_load_test_2.png" width="500"/>
+<img src="../../assets/images/lab_3_jenkins_run_load_test_2.png" width="700"/>
 
 <hr>
 
@@ -121,25 +115,25 @@ When done click the **Build** button which will start the Performance Test.
 
 We have provided a **Performance Test Dashboard with Transaction Steps & SLOs** in your environment.   This dashboard provides a complete overview for your Performance Test focusing on SLIs (Latency, Traffic, Errors & Saturation).  Included in this dashboard is the following: Health Status, SLOs, Transaction Steps Scorecard, Services Overview,  Database Overview,  Process Overview and Hosts Overview.   This dashboard also provides quick analysis links.  
 
-Click **"Dashboards"** from the Main Navigation menu.
+Click **Dashboards** from the Main Navigation menu.
 
 Then select the **Performance Test Dashboard with Transaction Steps & SLOs** dashboard.
 We will need to edit the dashboard to use the SLO's we created in the previous steps.
 
 We should have these SLO's in our list.
 
-<img src="../../assets/images/slo_list.png" width="500"/>
+<img src="../../assets/images/slo_list.png" width="700"/>
 
 Click **Edit**
 
 Select the SLO tile, then change the "select a SLO" from the drop down box. Select the appropriate SLO.
 You will do this for each SLO tile.
 
-<img src="../../assets/images/dashboard_slo_edit.png" width="500"/>
+<img src="../../assets/images/dashboard_slo_edit.png" width="700"/>
 
 Now we can see if the SLO for the **Order** service is being met or not.  In the next section we will show you why!
 
-<img src="../../assets/images/lab_3_performance_test_dashboard_with_transaction_steps_slos_1.png" width="500"/>
+<img src="../../assets/images/lab_3_performance_test_dashboard_with_transaction_steps_slos_1.png" width="700"/>
 
 <hr>
 
@@ -153,21 +147,21 @@ If a Dynatrace Problem has generated a Problem during your Performance Test that
 
 From the Problem card we will focus on the Root cause Dynatrace has provided around the Failure rate increase.   Click on the **Analyze failure rate degradation** button. 
 
-<img src="../../assets/images/lab_3_load_test_problem_1.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_1.png" width="700"/>
 
 This will bring us to the **Failure analysis** screen.  We can see HTTP 500 Errors were generated and by each transaction.  To dig deeper you can drill-down to the Purepaths by clicking on the **Purepaths** icon at the top right of the screen.
 
-<img src="../../assets/images/lab_3_load_test_problem_2.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_2.png" width="700"/>
 
 This will bring us to the failed **Purepaths**.  Click on a **Purepath** to see the trace details Dynatrace has captured around the failure.
 
-<img src="../../assets/images/lab_3_load_test_problem_3.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_3.png" width="700"/>
 
 This will bring us to the Purepath trace details screen. Click on the **second node which is the order service** in the trace tree.  Then click on **Errors** in the table.  Then click on the down arrow under the **Details** of the Exception.
 
 When looking at the Exception details we can see the in **Message** details the exact error message which caused the failure rate for the Performance test.   A good best practice is to copy the Dynatrace URL(s) for the screens you want to share in your analysis back to the Application team.
 
-<img src="../../assets/images/lab_3_load_test_problem_4.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_4.png" width="700"/>
 
 If a Dynatrace Problem wasn't detected you can use out of the box workflows and custom dashboards.    We will walk through using the **Performance Test Dashboard with Transaction Steps & SLOs** but also out of the box options as well.
 
@@ -175,7 +169,7 @@ Open the **Performance Test Dashboard with Transaction Steps & SLOs** dashboard.
 
 Then click on the **Errors** link under **Transaction** on the left side of the dashboard.
 
-<img src="../../assets/images/lab_3_slo_dashboard_1.png" width="500"/>
+<img src="../../assets/images/lab_3_slo_dashboard_1.png" width="700"/>
 
 This will bring us to **Multidimensional analysis** that is showing failed request counts split by the **TSN** request attribute.   Note,  you can also create your own **Multidimensional analysis** views and save them by going to the Diagnostic tools-->Top web requests configure desired settings.
 
@@ -183,21 +177,21 @@ In the table provides the details for the failed Transaction Steps.  On the far 
 
 Click on **Details of failures**.
 
-<img src="../../assets/images/lab_3_slo_dashboard_2.png" width="500"/>
+<img src="../../assets/images/lab_3_slo_dashboard_2.png" width="700"/>
 
 This will bring us to the **Failure analysis** screen.  We can see HTTP 500 Errors were generated and also see exactly which transactions were impacted.  To dig deeper you can drill-down to the Purepaths by click on the **Purepaths** icon at the top right of the screen.
 
-<img src="../../assets/images/lab_3_load_test_problem_2.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_2.png" width="700"/>
 
 This will bring us to the failed **Purepaths**.  Click on a **Purepath** to see the trace details Dynatrace has captured around the failure.
 
-<img src="../../assets/images/lab_3_load_test_problem_3.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_3.png" width="700"/>
 
 This will bring us to the Purepath trace details screen.    Click on the **second node which is the order service** in the trace tree.   Then click on **Errors** in the table.   Then click on the down arrow under the **Details** of the Exception.
 
 When looking at the Exception details we can see the in **Message** details that has the exact error message which caused the failure rate for the Performance test.   A good best practice is to copy the Dynatrace URL(s) of the screens you want to share with your analysis back to the Application team.
 
-<img src="../../assets/images/lab_3_load_test_problem_4.png" width="500"/>
+<img src="../../assets/images/lab_3_load_test_problem_4.png" width="700"/>
 
 Last, we will cover troubleshooting via an out of the box workflow for a key service that has been impacted during the Performance Test.  
 
@@ -205,19 +199,19 @@ Click "**Transactions and services**" from the Main Navigation menu.
 
 Then click on the **Order** service in the **Services** screen.
 
-<img src="../../assets/images/lab_3_analysis_oob_1.png" width="500"/>
+<img src="../../assets/images/lab_3_analysis_oob_1.png" width="700"/>
 
 This will bring up the **Order** Service overview screen.   Under Dynamic web requests section (charts) click the **Failure rate** section.
 
-<img src="../../assets/images/lab_3_analysis_oob_2.png" width="500"/>
+<img src="../../assets/images/lab_3_analysis_oob_2.png" width="700"/>
 
 This will bring up the **Order** Service **Failure rate** screen.   Click the **View details of failures** button.
 
-<img src="../../assets/images/lab_3_analysis_oob_3.png" width="500"/>
+<img src="../../assets/images/lab_3_analysis_oob_3.png" width="700"/>
 
 This will bring us to the **Failure analysis** screen.   We can see all the failures, which transactions were impacted and Reason for failed requests including the Stack Trace Exception message.  To dig deeper you can drill-down to the Purepaths by click on the **Purepaths** icon at the top right of the screen.
 
-<img src="../../assets/images/lab_3_analysis_oob_4.png" width="500"/>
+<img src="../../assets/images/lab_3_analysis_oob_4.png" width="700"/>
 
 <hr>
 

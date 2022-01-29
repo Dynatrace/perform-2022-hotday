@@ -40,6 +40,11 @@ Any other IDE works as well, we recommend an IDE that can:
 5. Click `Create token` and `Download OneAgent installer`
 6. `Run` the installer with all default options
 
+### Enable the EEC (Extensions Execution Controller)
+
+1. In the Dynatrace menu, go to `Settings` and select `Monitoring > Monitored technologies`
+2. In the list of supported technologies, search for the `Dynatrace OneAgent StatsD, Pipe, HTTP Metric API entry`
+3. Turn on `Enable Extension Execution Controller on every host`
 ### Install the Activegate
 
 1. Open `Firefox` or `Google Chrome`

@@ -1,0 +1,59 @@
+name: custom:prometheus.demo
+version: 1.0.0
+minDynatraceVersion: "1.229"
+author:
+  name: "Dynatrace User"
+
+prometheus:
+  - group: system
+    interval: 1m
+    dimensions:
+      - key: category
+        value: System
+    subgroups:
+      - subgroup: Logical disks
+        dimensions:
+          - key: volume
+            value: label:volume
+        metrics:
+          - key: custom.prometheus.demo.host.logical.disk.free.bytes
+            value: metric:windows_logical_disk_free_bytes
+            type: gauge
+          - key: custom.prometheus.demo.host.logical.disk.size.bytes
+            value: metric:windows_logical_disk_size_bytes
+            type: gauge
+  - group: services
+    interval: 1m
+    dimensions:
+      - key: category
+        value: Service
+    subgroups:
+      - subgroup: Services
+        featureSet: Running services
+        dimensions:
+          - key: service_name
+            value: label:display_name
+          - key: process_id
+            value: label:process_id
+            filter: const:$not($eq(0))
+        metrics:
+          - key: custom.prometheus.demo.host.service
+            value: metric:windows_service_info
+            type: gauge
+
+metrics:
+  - key: custom.prometheus.demo.host.logical.disk.free.bytes
+    metadata:
+      displayName: Logical disk free space
+      description: Space available on logical disk
+      unit: Byte
+  - key: custom.prometheus.demo.host.logical.disk.size.bytes
+    metadata:
+      displayName: Logical disk size
+      description: Total size of logical disk
+      unit: Byte
+  - key: custom.prometheus.demo.host.service
+    metadata:
+      displayName: Running service
+      description: Value of 1 indicating service is running
+      unit: Count

@@ -5,7 +5,8 @@ In this section, you will learn to leverage the Metric Browser and Data Explorer
 ![dashboard](../../assets/images/dashboard.png)
 
 ### Exercise Prep
-1. Navigate to the Dynatrace University Terminal and ensure you're connected to the EC2 instance
+1. Navigate to the Dynatrace University Terminal and ensure you're connected to the Easytravel Server
+
 2. Navigate to the Perform-Host-22-Cloud-Infra directory
 
 ```bash
@@ -17,5 +18,10 @@ cd Perform-Hot-22-Cloud-Infra
 ```bash
 python3 cronjobduration.py
 ```
+4. IF Perfrom-Hot-22-Cloud-Infra DOES NOT EXIST
 
-- This will start a script that reports the duration of Cron job executions to the OneAgent. We need this data during this exercise.
+```bash
+git clone https://github.com/JasonOstroski/Perform-Hot-22-Cloud-Infra.git
+```
+
+5. This will start a script that reports the duration of Cron job executions to the OneAgent. We need this data during this exercise.
