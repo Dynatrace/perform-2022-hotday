@@ -210,6 +210,14 @@ Click **Keptn: keptnorders staging** management zone and add a new rule with
 
 Click the **preview** button to verify; save the zone.
 
+### Kick off our first load test
+
+We are going to run the **03-simpletest-qualitygate pipeline** again.
+
+<img src="../../assets/images/lab_1_simple_test.png" width="500"/>
+
+Click **Build**
+
 <hr>
 
 ### Examine Performance Test Dashboard with Transaction Steps
