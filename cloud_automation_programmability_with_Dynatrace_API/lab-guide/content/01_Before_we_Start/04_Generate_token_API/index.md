@@ -25,10 +25,10 @@ Using Dynatrace API, you will generate a Token with a wide-spread scope
     git clone https://github.com/Dynatrace/perform-2022-hotday.git
     ``` 
 
-3. Access cloud_automation_programmability_with_Dynatrace_API/dt-api-kit directory
+3. Access cloud_automation_programmability_with_Dynatrace_API/dt_api_helper directory
 
     ```
-    cd cloud_automation_programmability_with_Dynatrace_API/dt-api-kit
+    cd cloud_automation_programmability_with_Dynatrace_API/dt_api_helper/
     ```
 
 5. Install npm packages:
