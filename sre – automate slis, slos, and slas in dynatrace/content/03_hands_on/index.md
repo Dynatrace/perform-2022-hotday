@@ -146,12 +146,10 @@ calc:service.rt_bookingservice_checkcreditcard
 
 ```
 
-8. Create a second metric that filters based on response time over or equal to our SLA time of 2 seconds.
-
-![](../../assets/images/ex33im3.png)
+8. Create a second metric that filters based on response time less than or equal to our SLA time of 2 seconds.
 
 9. Navigate to the SLO page found on your side menu inside Dynatrace. Second, click on Add new SLO
-10. For our metric expression, we want to divide the total number of requests in breach (>=2s) by the total count of all requests of checkCreditCard. Your expression should look like this: (Note: We multiply the resulting value by 100 to get a percentage that makes sense.)
+10. For our metric expression, we want to divide the total number of requests in breach (<=2s) by the total count of all requests of checkCreditCard. Your expression should look like this: (Note: We multiply the resulting value by 100 to get a percentage that makes sense.)
 
 ```
 (100)*((calc:service.rt_checkcreditcard__2s)/(calc:service.rt_checkcreditcard_count))
