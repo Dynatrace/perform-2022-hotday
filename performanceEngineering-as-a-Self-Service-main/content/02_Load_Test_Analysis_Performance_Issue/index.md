@@ -53,7 +53,30 @@ Let's also create a tag **"eval"** tag on the same service
 
 Next, we need to also tag the production frontend service. Navigate back to the Services screen and select the **Keptn: keptnorders production** managment zone.
 
-Navigate into the **frontend** service and tag with **"peval"**
+Navigate into the **frontend [primary]** service and tag with **"peval"**
+
+### Kick off our first load test
+
+Login to Jenkins
+
+* username = keptn
+* password = keptn
+
+<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="400"/>
+
+We are going to run the **03-simpletest-qualitygate pipeline**.
+
+Click **build** this initial build will fail.
+
+Refresh the page, now we can do a **Build with Parameters**
+
+verify the Deployment URL, this should match the IP address for your lab environment.
+
+You will also notice, this is where we are using the tag "eval" for the testing.
+
+<img src="../../assets/images/lab_1_simple_test.png" width="500"/>
+
+Click **Build**
 
 <hr>
 
@@ -104,29 +127,6 @@ This will bring up the **easytravel-angular.easytravel-staging** Performance Ove
 This will bring up the **Service flow** for the **frontend.keptnorders-staging**.  View results.
 
 <img src="../../assets/images/lab2_application_service_flow_3_new_menu.png" width="500"/>
-
-### Kick off our first load test
-
-Login to Jenkins
-
-* username = keptn
-* password = keptn
-
-<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="400"/>
-
-We are going to run the **03-simpletest-qualitygate pipeline**.
-
-Click **build** this initial build will fail.
-
-Refresh the page, now we can do a **Build with Parameters**
-
-verify the Deployment URL, this should match the IP address for your lab environment.
-
-You will also notice, this is where we are using the tag "evalservice" for the testing.
-
-<img src="../../assets/images/lab_1_simple_test.png" width="500"/>
-
-Click **Build**
 
 <hr>
 
