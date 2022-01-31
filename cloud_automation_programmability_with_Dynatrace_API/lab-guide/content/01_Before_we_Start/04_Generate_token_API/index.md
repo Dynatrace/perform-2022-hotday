@@ -14,7 +14,7 @@ Using Dynatrace API, you will generate a Token with a wide-spread scope
 
 2. Click on Code and copy the URL under the clone HTTPS tab:
 
-    ![gitClone](../../assets/images/gitClone.png)
+    ![gitClone](../../assets/images/gitclone.png)
 
  browser 
 
