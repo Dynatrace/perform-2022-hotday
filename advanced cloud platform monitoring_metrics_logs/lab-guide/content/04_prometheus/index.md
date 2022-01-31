@@ -109,14 +109,25 @@ Similar steps to 'Setup Node Exporter for Metric Ingest'
 kubectl get deployment prometheus-kube-state-metrics -o jsonpath='{.spec.template.spec.containers[0].ports[].containerPort}{"\n"}'
 ```
 
-> 2. Use vim to update the `hotday_script/prometheus/service_template.yaml` file with the correct port
+> 2. Identify the pod name of the kube-state metric pod, replace the {POD NAME} and {PORT} with the port identified above and run the command:
+- This will expose the port to the host to be accessible on localhost.
+```
+	kubectl port-forward {POD NAME} {PORT}:{PORT}
+```
+
+> 3. Verify the metrics are exposed by executing the curl command in the second terminal:
+```
+curl http://localhost:PORT/metrics
+```
+
+> 4. Use vim to update the `hotday_script/prometheus/service_template.yaml` file with the correct port
 ```
 vim hotday_script/prometheus/service_template.yaml
 
 replace TO_DEFINE with port identified in 1.
 ```
 
-> 3. Deploy the new Service :
+> 5. Deploy the new Service :
 ```
 kubectl apply -f hotday_script/prometheus/service_template.yaml
 ```
@@ -129,15 +140,25 @@ In the default namespace, nginx ingress controller has been deployed.
 ```
 kubectl get deployment nginx-nginx-ingress -o jsonpath='{.spec.template.spec.containers[0].ports[2].containerPort}{"\n"}'
 ```
+> 2. Identify the pod name of the nginx-nginx-ingress pod, replace the {POD NAME} and {PORT} with the port identified above and run the command:
+- This will expose the port to the host to be accessible on localhost.
+```
+	kubectl port-forward {POD NAME} {PORT}:{PORT}
+```
 
-> 2. Use vim to update the `hotday_script/prometheus/service__nginx_template.yaml` file with the correct port
+> 3. Verify the metrics are exposed by executing the curl command in the second terminal:
+```
+curl http://localhost:PORT/metrics
+```
+
+> 4. Use vim to update the `hotday_script/prometheus/service__nginx_template.yaml` file with the correct port
 ```
 vim hotday_script/prometheus/service__nginx_template.yaml
 
 replace TO_DEFINE with port identified in 1.
 ```
 
-> 3. Deploy the new Service :
+> 5. Deploy the new Service :
 ```
 kubectl apply -f hotday_script/prometheus/service__nginx_template.yaml
 ```

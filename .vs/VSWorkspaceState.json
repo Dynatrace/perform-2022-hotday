@@ -5,7 +5,9 @@
     "\\advanced cloud platform monitoring_metrics_logs\\lab-guide",
     "\\advanced cloud platform monitoring_metrics_logs\\lab-guide\\content",
     "\\advanced cloud platform monitoring_metrics_logs\\lab-guide\\content\\03_logs",
-    "\\advanced cloud platform monitoring_metrics_logs\\lab-guide\\content\\05_fluentd"
+    "\\advanced cloud platform monitoring_metrics_logs\\lab-guide\\content\\04_prometheus",
+    "\\advanced cloud platform monitoring_metrics_logs\\lab-guide\\content\\05_fluentd",
+    "\\advanced cloud platform monitoring_metrics_logs\\lab-guide\\content\\05_fluentd\\01_working_with_fluentd"
   ],
   "PreviewInSolutionExplorer": false
 }
