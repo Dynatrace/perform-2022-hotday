@@ -92,7 +92,7 @@ type("SYNTHETIC_TEST"),tag("Sitetype:Search")
 11. To calculate this SLO, we will divide our success metric count by the total metric count. Your metric definition will look something like this (using your own metric IDs in place of the example):
 
 ```
-(100)*(builtin:service.errors.server.successCount:splitBy())/(builtin:service.requestCount.server:splitBy())
+((100)*(calc:service.validatecreditcardsuccesscount:sum)/(calc:service.validatecreditcardtotalcount))
 ```
 
 12. Because we specific scope by selecting a specific service, we do not need to define it under the Entity Selector section. We can keep this field blank.
