@@ -1,28 +1,34 @@
-## Generate Token via API (Token Management)
+## Generate Token via API (Token Management) (HOT exercise #2)
 
 Using Dynatrace API, you will generate a Token with a wide-spread scope
-    **NOTE/DISCLAIMER** For training purpose only ...DON'T DO THIS IN REAL ENVIRONMENTS
+<br>
+<br>
+    **NOTE/DISCLAIMER:** 
+    <br>
+    For training purpose only ...DON'T DO THIS IN YOUR ENVIRONMENTS. 
 
-1. Go back to your lab Environment details and either use your preferred SSH client or just click on *Open terminal* to open from the browser 
+1. Go to your browser and visit our Perform 2022 HOT day repo in github: 
 
-    ![bastion](../../assets/images/bastion.png)
+    <a href="https://github.com/Dynatrace/perform-2022-hotday" target="_blank">Perform 2022</a>
+    
 
-2. Clone perform repo by typing in the terminal
+2. Click on Code and copy the URL under the clone HTTPS tab:
+
+    ![gitClone](../../assets/images/gitClone.png)
+
+ browser 
+
+
+2. Go back to your SSH client or Environment terminal in your browser and clone perform repo by typing in the terminal
 
     ```
-    git clone <perform repo>
+    git clone https://github.com/Dynatrace/perform-2022-hotday.git
     ``` 
 
-3. Access cloud_automation_programmability_with_Dynatrace_API directory
+3. Access cloud_automation_programmability_with_Dynatrace_API/dt-api-kit directory
 
     ```
-    cd automation_programmability_with_Dynatrace_API
-    ```
-
-4. Access dt-api-kit directory: 
-
-    ```
-    cd dt-api-kit
+    cd automation_programmability_with_Dynatrace_API/dt-api-kit
     ```
 
 5. Install npm packages:
@@ -58,6 +64,6 @@ Using Dynatrace API, you will generate a Token with a wide-spread scope
     cat .env
     ```
 
-9. Verify that the token you generated via API is showing in your tenant (Settings >> Integration >> Dynatrace API)
+9. Verify that the token you generated via API is showing in your tenant (Settings >> Access Tokens)
 
     ![tokenGenerated](../../assets/images/generatedToken.png)

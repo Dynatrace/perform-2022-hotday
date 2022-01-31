@@ -4,6 +4,8 @@ During this portion of out session, we will deploy our OneAgent operator with ou
 
 1. Go to Environment tab and launch the terminal or copy the information to open an ssh session in your preferred ssh client.
 
+    ![bastion](../../assets/images/bastion.png)
+
 2. While in the Environment tab, click on "View Environment" and use the information to login to your tenant
 
     ![labDetails](../../assets/images/labDetails.png)
