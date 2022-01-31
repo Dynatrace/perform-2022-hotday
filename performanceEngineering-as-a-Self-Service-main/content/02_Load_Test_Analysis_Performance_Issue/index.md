@@ -53,7 +53,7 @@ Let's also create a tag **"eval"** tag on the same service
 
 Next, we need to also tag the production frontend service. Navigate back to the Services screen and select the **Keptn: keptnorders production** managment zone.
 
-Navigate into the **frontend** service and tag with **"peval"**
+Navigate into the **frontend [primary]** service and tag with **"peval"**
 
 <hr>
 
