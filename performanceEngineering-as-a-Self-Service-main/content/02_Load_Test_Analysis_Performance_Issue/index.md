@@ -171,6 +171,8 @@ For Performance Testing you can use Calculated service metrics to track your Per
 
 [Documentation: Calculated metrics for services](https://www.dynatrace.com/support/help/shortlink/calculated-service-metric/)
 
+<hr>
+
 ### Kick off Keptn Customer Build
 
 Click on **01_deploy_order_application** pipeline
