@@ -1,69 +1,77 @@
-## Working with Fluentd
+### What is Fluentd?
 
-In this module we'll learn about Fluentd and how to do the following:
-
-###What is Fluentd?
 An open-source log collector to unify logging layer.
-
 Key Features:
+
 - Stores and structures data in JSON
 - Pluggable Architecture allows for easily extending functionality
 - Built-in Reliability
 
+## Working with Fluentd
 
-Learning these concepts will help your teams transform terabytes of logs into AI-powered answers and additional context for apps and infrastructure, at scale. 
+In this module we'll:
 
+- learn more about Fluentd
+- update Fluentd to output metrics
+- ingest these metrics with Dynatrace
+- improve the log output further to trim away blank lines and format metrics
 
-#### Objective
-The metric exposed by Nginx ingress controller is not providing the right dimensions to understand precisely how the traffic is splitted between the several services of our cluster.
-Let's utilize logs to expose the right dimensions.
+Learning these concepts will help your teams transform terabytes of logs into AI-powered answers and additional context for apps and infrastructure at any scale.
 
-### Adjust the logging format of Nginx
+### The scenario
 
-Nginx produce a standard logging format :
-`
+The metrics exposed by our Nginx ingress controller are not providing the right dimensions to understand precisely how the traffic is split between the several services of our cluster.
+We need to ingest the Nginx logs to see the full picture.
+
+### What we are going to do in the lab
+
+Nginx produces a standard logging format :
+
+```bash
 127.0.0.1 - - [10/Oct/2020:15:10:20 -0600] "HEAD / HTTP/1.1" 200 0 "<https://example.com>" "Mozilla/5.0..."
-`
+```
+
 The logging format of nginx is structure with the help of nginx variables :
-`
+
+``` bash
 $remote_addr - $remote_user [$time_local] "$request" $status $body_bytes_sent "$http_referer" "$http_user_agent"
-`
-THe logging format of Nginx could be adjusted by modifying the nginx configuration file.
-In kubernetes the configuration file is stored in a Config Map.
-In our cluster the nginx config map is called: `nginx-config`
+```
+
+- The logging format of Nginx could be adjusted by modifying the nginx configuration file.
+- In kubernetes the configuration file is stored in a Config Map.
+- In our cluster the nginx config map is called: `nginx-config`
 
 To add extra information in the nginx log files add structure the logs by adding extra metadata :
-* service name
-* namespace of the ingress
-* name of the ingress
-* response time
-* proxy host
-* ...etc
 
-IN the cluster the Nginx has already been configured to produce the logs with our extra metadata :
- ```
+- service name
+- namespace of the ingress
+- name of the ingress
+- response time
+- proxy host
+- ...etc
+
+Nginx has already been configured to produce the logs with our extra metadata :
+
+ ``` bash
 log-format:
 ----
 $remote_addr [$time_local] $request $status $body_bytes_sent $request_time $upstream_addr $upstream_response_time $proxy_host  $upstream_status $resource_name $resource_type $resource_namespace $service
  ```
 
-To validate the configuration let's describe the config map 
+### Check out what is already in place
 
-### Create a log stream pipeline extracting the metadata 
-#### Collect logs from nginx
-To collect logs from files, fluentd has an input plugin `tail`
-Because dynatrace is already ingesting logs in our cluster ( except for the namespace nondynatrace), let's collect logs only from the nginx pods:
- ```
-<source>
-    @type tail
-    path /var/log/containers/*nginx*.log
-    pos_file /var/log/fluentd.pos
-    time_format %Y-%m-%dT%H:%M:%S.%NZ
-    tag nginx
-</source>
- ```
-path /var/log/containers/*nginx*.log will only collect logs from containers having nginx in the pod name
+Open the Fluentd config map:
+
+``` bash
+kubectl edit cm fluentd -n nondynatrace
 ```
+
+Scroll a bit if necessary to find the starting `<source>` entries.
+
+To collect logs from files, fluentd has an input plugin `tail`
+Because dynatrace is already ingesting logs in our cluster ( except for the namespace nondynatrace), the path command limits collection to the nginx pods & stdout will expose the logs in the container log for easy viewing while we work:
+
+``` bash
 <source>
     @type tail
     path /var/log/containers/*nginx*.log
@@ -76,16 +84,23 @@ path /var/log/containers/*nginx*.log will only collect logs from containers havi
 </match>
 ```
 
+`path /var/log/containers/*nginx*.log` will only collect logs from containers having nginx in the pod name.
+
 To visualize the collected logs you can use the fluentd output plugin `Stdout` that will expose the transormed logs in the fluentd container log.
 
-#### Parse the nginx logs
-Once the logs collected, we want to extract the metadata to create new fluentd "keys"
-Fluentd has parser plugins that will help us to extract the data.
-The parser plugin that we will use is `nginx`
-the Nginx parser plugin is able to automatically extract the metadata of the standard logging format.
+### LAB Step 1: Extract log data
+
+With the basic log collector in place we first want to extract the metadata into fluentd "keys".  This lets us use only what we need and provide useful names for the data.
+
+- Fluentd has parser plugins that will help us to extract the data.
+- The parser plugin that we will use is `nginx`.
+- The Nginx parser plugin is able to automatically extract the metadata of the standard logging format.
 
 Because of the customized logging format we will need to use `expression` to explain how to parse our logging format.
-```
+
+We're going to add the following block to our fluentd config.
+
+``` bash
 <parse>
     @type nginx
     key_name log
@@ -96,7 +111,8 @@ Because of the customized logging format we will need to use `expression` to exp
 ```
 
 To be able to extract log from the tail plugin, we need to add the parser within the input plugin `tail`
-```
+
+``` bash
 <source>
     @type tail
     path /var/log/containers/*nginx*.log
@@ -116,33 +132,41 @@ To be able to extract log from the tail plugin, we need to add the parser within
 
 To Generate metrics out of the extracted metadata, we need to define the type of each new Fluentd keys.
 
-the operator `types` allow us to define for each key the type .
+the operator `types` allow us to define for each key the type.
 for example :
-```
+
+``` bash
 types keyname1:type,keyname2:type..
 ```
-The fluentd Data type :
-* string
-* integer
-* float
-* time
-* size 
-* bool
-* ....
+
+The fluentd Data types :
+
+- string
+- integer
+- float
+- time
+- size
+- bool
+- .... etc
 
 From the current log stream pipeline add the `types` operator to define types to the various keys
-```
+
+``` bash
 kubectl get cm -n nondynatrace
 kubectl edit cm fluentd-conf
 ```
+
 To utilize our new log stream pipeline we need to delete the fluentd pods
-```
+
+``` bash
 kubectl delete pods -n nondynatrace -l app=fluentd-pipeline
 ```
+
 We need to look at the produced logs of our log stream pipeline on the pod collecting the logs of the Nginx ingress
 We need to select the fluentd pod running to the same node as Nginx ingress controller
 The following command will list all pods and precise which node is hosting the pod :
-```
+
+``` bash
 kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces
 ```
 

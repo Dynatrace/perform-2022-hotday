@@ -99,26 +99,6 @@ You should see these tags,
 After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
 </details>
 
-### Adjust Management zone
-We need to add host criteria to the "Keptn: sockshop staging" management zone which will be set as a filter in our dashboard. 
-
-Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
-
-Find the **"Keptn: Sockshop staging"** management zone.
-
-We need to add a rule to capture the host and process metrics.
-
-Use these settings to create the Rule.
-
-- Rule Applies to "Hosts"
-- Conditions: Host tags equals [Environment]kiab
-- Select checkbox "Apply to processes running on matching hosts
-
-   <img src="../../assets/images/ss_mz.png" width="500"/>
-
-- Click **"Preview"**
-- Click **"Create rule"**
-
 ### Check Calculated service metrics
 
 Go to Dynatrace.
@@ -141,10 +121,30 @@ You should see 4 calculated service Metrics:
 
 - Run the following command
 ```bash
-  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
+  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project simpleproject
 ```
 
 </details>
+
+### Adjust Management zone
+We need to add host criteria to the "Keptn: sockshop staging" management zone which will be set as a filter in our dashboard. 
+
+Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
+
+Find the **"Keptn: Sockshop staging"** management zone.
+
+We need to add a rule to capture the host and process metrics.
+
+Use these settings to create the Rule.
+
+- Rule Applies to "Hosts"
+- Conditions: Host tags equals [Environment]kiab
+- Select checkbox "Apply to processes running on matching hosts
+
+   <img src="../../assets/images/ss_mz.png" width="500"/>
+
+- Click **"Preview"**
+- Click **"Create rule"**
 
 ### Clone dashboard and set default management zone
 
