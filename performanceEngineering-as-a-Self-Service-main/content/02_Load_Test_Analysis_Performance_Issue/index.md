@@ -252,7 +252,7 @@ Click on the ... at the end of the table for **"customer"** step name transactio
 
 Click  **"Response time hotspots"** from the Analyze menu.
 
-<img src="../../assets/images/lab_1_response_time_hotspots_1.png" width="200" height="800"/>
+<img src="../../assets/images/lab_1_response_time_hotspots_1.png" width="200" height="400"/>
 
 On the Response time analysis page it will display the average response time observed during the analyzed timeframe. On the left side of the infographic, under Distribution, you can see how much time is contributed by calls to other services, calls to databases, and code-level execution. On the right side, under Top findings, we list the biggest hotspots identified by Dynatrace. You can click any of these entries to view further details.
 
