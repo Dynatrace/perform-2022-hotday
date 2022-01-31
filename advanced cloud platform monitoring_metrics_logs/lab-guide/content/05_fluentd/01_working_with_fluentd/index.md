@@ -66,80 +66,44 @@ Open the Fluentd config map:
 kubectl edit cm fluentd -n nondynatrace
 ```
 
-Scroll a bit if necessary to find the starting `<source>` entries.
-
-To collect logs from files, fluentd has an input plugin `tail`
-Because dynatrace is already ingesting logs in our cluster ( except for the namespace nondynatrace), the path command limits collection to the nginx pods & stdout will expose the logs in the container log for easy viewing while we work:
+Scroll a bit if necessary to find the starting `<source>` entries.  See below for key details.
 
 ``` bash
-<source>
-    @type tail
-    path /var/log/containers/*nginx*.log
-    pos_file /var/log/fluentd.pos
-    time_format %Y-%m-%dT%H:%M:%S.%NZ
-    tag nginx
-</source>
-<match nginx>
- @type stdout
-</match>
-```
-
-`path /var/log/containers/*nginx*.log` will only collect logs from containers having nginx in the pod name.
-
-To visualize the collected logs you can use the fluentd output plugin `Stdout` that will expose the transormed logs in the fluentd container log.
-
-### LAB Step 1: Extract log data
-
-With the basic log collector in place we first want to extract the metadata into fluentd "keys".  This lets us use only what we need and provide useful names for the data.
-
-- Fluentd has parser plugins that will help us to extract the data.
-- The parser plugin that we will use is `nginx`.
-- The Nginx parser plugin is able to automatically extract the metadata of the standard logging format.
-
-Because of the customized logging format we will need to use `expression` to explain how to parse our logging format.
-
-We're going to add the following block to our fluentd config.
-
-``` bash
-<parse>
-    @type nginx
-    key_name log
-    reserve_data yes
-    expression  /^(?<logtime>\S+)\s+(?<logtype>\S+)\s+(?<type>\w+)\s+(?<ip>\S+)\s+\[(?<time_local>[^\]]*)\]\s+(?<method>\S+)\s+(?<request>\S+)\s+(?<httpversion>\S*)\s+(?<status>\S*)\s+(?<bytes_sent>\S*)\s+(?<responsetime>\S*)\s+(?<proxy>\S*)\s+(?<upstream_responsetime>\S*)\s+(?<ressourcename>\S*)\s+(?<upstream_status>\S*)\s+(?<ingress_name>\S*)\s+(?<ressource_type>\S*)\s+(?<ressource_namesapce>\S*)\s+(?<service>\w*)/
-    time_format %d/%b/%Y:%H:%M:%S %z
-</parse>
-```
-
-To be able to extract log from the tail plugin, we need to add the parser within the input plugin `tail`
-
-``` bash
-<source>
-    @type tail
-    path /var/log/containers/*nginx*.log
-    pos_file /var/log/fluentd.pos
-    time_format %Y-%m-%dT%H:%M:%S.%NZ
-    tag nginx
-    <parse>
+...
+    <source>
+      @type tail
+      path /var/log/containers/*nginx*.log
+      pos_file /var/log/fluentd.pos
+      time_format %Y-%m-%dT%H:%M:%S.%NZ
+      tag nginx
+      <parse>
         @type nginx
         key_name log
         reserve_data yes
-        expression  /^(?<logtime>\S+)\s+(?<logtype>\S+)\s+(?<type>\w+)\s+(?<ip>\S+)\s+\[(?<time_local>[^\]]*)\]\s+(?<method>\S+)\s+(?<request>\S+)\s+(?<httpversion>\S*)\s+(?<status>\S*)\s+(?<bytes_sent>\S*)\s+(?<responsetime>\S*)\s+(?<proxy>\S*)\s+(?<upstream_responsetime>\S*)\s+(?<ressourcename>\S*)\s+(?<upstream_status>\S*)\s+(?<ingress_name>\S*)\s+(?<ressource_type>\S*)\s+(?<ressource_namesapce>\S*)\s+(?<service>\w*)/
-    </parse>
-    read_from_head true
-    keep_time_key true
-</source>
+        expression  /^(?<ip>\S+)\s+\[(?<time_local>[^\]]*)\]\s+(?<method>\S+)\s+(?<request>\S+)\s+(?<httpversion>\S*)\s+(?<status>\S*)\s+(?<bytes_sent>\S*)\s+(?<responsetime>>
+
+      </parse>
+      read_from_head true
+      keep_time_key true
+    </source>
+
+<match nginx>
+ @type stdout
+</match>
+...
 ```
 
-To Generate metrics out of the extracted metadata, we need to define the type of each new Fluentd keys.
+- `path /var/log/containers/*nginx*.log` will only collect logs from containers having nginx in the pod name. Dynatrace natively ingests other logs on the system so we want to limit fluentd capture to only nginx.
+- `tail` is the fluentd plugin type that will follow the logs and get data.
+- `<parse> @type nginx` tells fluentd to use its nginx parsing engine.
+- `expression` formats the logs into a more readable format for fluentd.
+- `stdout` tells fluentd to send the logs to the container log to make it easy for us to read and see our changes as they occur.
 
-the operator `types` allow us to define for each key the type.
-for example :
+### LAB Step 1: Extract log data
 
-``` bash
-types keyname1:type,keyname2:type..
-```
+With the basic log collector in place we first want to extract the metadata into fluentd `keys`.  This lets us use only what we need and provide useful names for the data.
 
-The fluentd Data types :
+the operator `types` allow us to define for each key the type, like:
 
 - string
 - integer
@@ -149,71 +113,165 @@ The fluentd Data types :
 - bool
 - .... etc
 
-From the current log stream pipeline add the `types` operator to define types to the various keys
+From the current log stream pipeline add the `types` operator to define types to the various keys.
+
+If you closed the fluentd config map after viewing it above, open it with:
 
 ``` bash
-kubectl get cm -n nondynatrace
-kubectl edit cm fluentd-conf
+kubectl edit cm fluentd-conf -n nondynatrace
 ```
 
-To utilize our new log stream pipeline we need to delete the fluentd pods
+Looking at the expression line you can see the first value is `<ip>`.  Checking out our types above, a string makes the most sense.  Add the following to your config after the `expression` line.
+
+``` bash
+    types: ip:string,
+```
+
+---
+**NOTE**
+
+Make sure to space over so that `types` is directly under `expression`.
+
+``` bash
+    expression /^ ......
+    types: ip:string,
+```
+
+---
+
+Take a shot at adding the other types to the document.  Then check your work below:
+
+``` bash
+    types ip:string,time_local:string,method:string,request:string,httpversion:string,status:string,bytes_sent:integer,responsetime:float,proxy:string,upstream_responsetime:integer,resourcename:string,upstream_status:string,ingress_name:string,resource_type:string,resource_namespace:string,service:string
+```
+
+Type :wq *enter* to save and exit.
+
+Use this command to delete the fluentd pods.  This will recreate them with the new configuration.
 
 ``` bash
 kubectl delete pods -n nondynatrace -l app=fluentd-pipeline
 ```
 
-We need to look at the produced logs of our log stream pipeline on the pod collecting the logs of the Nginx ingress
-We need to select the fluentd pod running to the same node as Nginx ingress controller
-The following command will list all pods and precise which node is hosting the pod :
+You should see two pods deletion notices.  You can ensure they restart with:
+
+``` bash
+kubectl get pods -n nondynatrace
+```
+
+You might have to run this more than one time until you see `Running` for all pods.
+
+Since there are two fluentd pods running, we need to pick the one attached to nginx.  This command gives us all of the pods and their nodes:
 
 ``` bash
 kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces
 ```
 
-Once you have the fluentd pod name you can then show the generated logs of this pod with :
-```
-kubectl logs $FLUENTID_PODNAME -n nondynatrace -f
+Find your nginx pod and it's associated node.  Find the fluentd pod with the same node (IP address):
+
+![Prometheus_1](../../assets/images/nginx-to-fluentd.png)
+
+Shows the logs from that pod:
+
+``` bash
+kubectl logs <pod> -n nondynatrace -f
 ```
 
-To see new logs coming in Fluentd , we need to generate traffic,
+---
+PSST.  Hey buddy.... you wanna buy an enormous command to impress your friends?  You can run this single command to find the fluentd pod running in your nginx node and output the logs.
+
+``` bash
+kubectl logs $(kubectl get pods -A -l app=fluentd-pipeline -o wide --field-selector spec.nodeName=$(kubectl get pod -o=custom-columns=NODE:.spec.nodeName --selector=app=nginx-nginx-ingress --no-headers) -o=custom-columns=Name:.metadata.name --no-headers) -n nondynatrace
 ```
+
+You didn't see *anything*...
+---
+
+- the `-f` command will follow the logs until you press *ctrl-c* to quit.
+
+Check that you don't have any errors from fluentd.  If you do, there is usually something wrong with the yaml file.  Check your spacing.
+If you don't see hits coming in, confirm you are generating traffic in another terminal.  **If it stopped**, start it again with:
+
+``` bash
 /hotday_script/load/generateTraffic.sh
 ```
-#### Collect the request time as the logstream time
 
-fluentd parser plugin can also precise which key contains the date with `time_key`
-Let's modify our current fluentd pipeline by adding after the `types` operator : 
+Most of the lines will have the same type of data.  But it's easy to confirm it worked if your *responsetime* fields now have decimals i.e. `"0.027"`.  That means fluentd extracted the responsetime value, changed it to a numeric (integer) format and exported it.
+
+### Lab Step 2: Improve the data quality
+
+Now that we have a nice data stream, we can improve it further.
+
+#### Update the time key
+
+fluentd parser plugin can also extract which key contains the date with `time_key`.
+Reopen the config map with:
+
+```bash
+kubectl edit cm fluentd-conf -n nondynatrace
 ```
-time_key time_local
-time_format %d/%b/%Y:%H:%M:%S %z
+
+Let's modify our current fluentd pipeline by adding a `time_key` and `time_format` line after the `types` operator :
+
+``` bash
+    types: ip:string,time_local:string, ...
+    time_key time_local
+    time_format %d/%b/%Y:%H:%M:%S %z
 ```
+
+As always, make sure the spacing is perfect and the new lines are directly under `types`.
 
 #### Define a Prometheus output plugin
 
 Fluentd has a Prometheus plugin that is able to :
-* create a prometheus exporter on the fluentd agent
-* expose statistics related to the log stream pipeline
-* expose custom metrics
 
-To define the exporter we need to use another `source` :
+- create a prometheus exporter on the fluentd agent
+- expose statistics related to the log stream pipeline
+- expose custom metrics
+
+Add a new `source` entry directly under the ending of the previous `</source>`  :
+
+```bash
+      ...
+      keep_time_key true
+    </source>
+
+    <source>
+      @type prometheus
+      bind 0.0.0.0
+      port 9914
+      metrics_path /metrics
+    </source>
 ```
-<source>
+
+#### About fluentd filters
+
+We'll further improve the data quality by adding a filter to our log output.  This allows us to:
+
+- add labels to the data.
+- define dimensions for our metrics so the data we output to Dynatrace can be sliced and diced.
+- exclude lines from the logs that aren't helpful or blank.
+
+The filter itself is simply added as a new section under the last source:
+
+```bash
+<filter  nginx>
  @type prometheus
- bind 0.0.0.0
- port 9914
- metrics_path /metrics
-</source>
-```
-#### Expose metrics extracted from our Nginx logs
 
+</filter>
+```
+  
 To expose metrics we need to define the metric using `metric`
 A metric requires several properties :
-* name
-* description
-* type : counter, gauge, histogram, summary
-* the key ( optional)
+
+- name
+- description
+- type : counter, gauge, histogram, summary
+- the key ( optional)
+
 for example :
-```
+
+```bash
 <metric>
     name byte_sent
     type gauge
@@ -221,22 +279,21 @@ for example :
     key bytes_sent
 </metric>
 ```
-Exposing metric is good, but we need to right dimensions to be able to visualize properly our traffic  splitted by services, ingress...etc
-The prometheus plugins has the option to create labels for our metric.
-We can either define the label :
-* inside the metric object : for a specific label related to that metric
-* outside the metric object :  for common labels for all the metric defined in our pipeline
-example:
-```
+
+Labels for our metrics can be either:
+
+- *inside* the metric object for a specific label related to that metric
+- *outside* the metric object for common labels for all the metric defined in our pipeline
+
+For example, the labels shown here (pulled from the keys we created earlier) will be applied to metrics that follow.
+
+```bash
 <filter  nginx>
  @type prometheus
  <labels>
    method ${method}
    request ${request}
    status ${status}
-   namespace ${ressource_namesapce}
-   service ${service}
-   ressourcename ${ressourcename}
  </labels>
  <metric>
    name hotday_response_time
@@ -246,18 +303,113 @@ example:
  </metric>
 </filter>
 ```
-Now let's update our fluentd pipeline by exposing :
-* response time
-* byte sent
-* count the logs stream ( number of request/s)
-``` 
-kubectl edit cm fluentd-conf
+
+#### Lab Step 3: Adding a filter, labels, and metrics
+
+Let's build out this framework.  Our goal is to have metrics for response time, bytes sent, status, and total requests.  We want to label them with method, request, status, namespace, service, and resourcename.
+
+To get started, add a `filter` after the last `<source>`.  It should look like:
+
+```bash
+
+</source> (the last one!)
+
+<filter nginx>
+  @type prometheus
+</filter>
+
 ```
 
-To test your update don't forget to :
-* delete the fluentd pods
-* display the logs of the fluentd ingeting the logs of the nginx ingress controller
-* generate some http traffic
+As always, ensure the filter starts on the same column as the source was!
+
+Here is how our first label (method) and first metric (response time) would look in this section:
+
+```bash
+
+<filter nginx>
+  @type prometheus
+  <labels>
+    method ${method}
+  </labels>
+  <metric>
+    name hotday_response_time
+    type gauge
+    desc response time
+    key responsetime
+  </metric>
+</filter>
+```
+
+Take a shot at labels for request, status, namespace, service, and resourcename.  Remember these are based on the keys you created earlier!
+
+Then add metrics for bytes sent, total requests, and status.  Check your work against the completed filter below:
+
+``` bash
+<filter  nginx>
+      @type prometheus
+       <labels>
+         method ${method}
+         request ${request}
+         status ${status}
+         namespace ${ressource_namespace}
+         service ${service}
+         ressourcename ${ressourcename}
+       </labels>
+       <metric>
+         name hotday_response_time
+         type gauge
+         desc responset time
+         key responsetime
+       </metric>
+       <metric>
+         name hotday_byte_sent
+         type gauge
+         desc byte sent
+         key bytes_sent
+       </metric>
+       <metric>
+         name hotday_requests
+         type counter
+         desc The total number of request
+       </metric>
+       <metric>
+         name hotday_status
+         type counter
+         desc status code
+         key status
+       </metric>
+     </filter>
+```
+
+After you finish updates, similar to before, we need to delete the old fluentd pods:
+
+```bash
+kubectl delete pods -n nondynatrace -l app=fluentd-pipeline
+```
+
+Check out the logs from the fluentd pod by finding the correct fluentd pod (the one in same node as nginx) with:
+
+```bash
+kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces
+```
+
+And tailing the logs with:
+
+```bash
+kubectl logs <pod> -n nondynatrace -f
+```
+
+or use the all-in-one command:
+
+```bash
+kubectl logs $(kubectl get pods -A -l app=fluentd-pipeline -o wide --field-selector spec.nodeName=$(kubectl get pod -o=custom-columns=NODE:.spec.nodeName --selector=app=nginx-nginx-ingress --no-headers) -o=custom-columns=Name:.metadata.name --no-headers) -n nondynatrace
+```
+
+If the logs have errors, check your yaml to make sure everything is lined up.  If you don't see traffic, confirm your traffic generator is running and start it again if needed with:
+
+```bash
+/hotday_script/load/generateTraffic.sh
+```
 
 ### Create a service with dynatrace Prometheus annotation to ingest the generated metrics
 
@@ -266,6 +418,7 @@ Update the following file by updating the port of the fluentd exporter :
 `/home/$BASTION_USER/hotday_script/prometheusservice_fluentd_metric.yaml`
 
 once modified create the new service with the following command :
+
 ```
 kubectl apply -f /home/$BASTION_USER/hotday_script/prometheusservice_fluentd_metric.yaml -n nondynatrace
 ```  
