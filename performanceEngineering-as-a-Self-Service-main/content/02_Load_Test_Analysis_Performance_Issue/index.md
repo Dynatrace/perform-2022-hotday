@@ -55,6 +55,29 @@ Next, we need to also tag the production frontend service. Navigate back to the 
 
 Navigate into the **frontend [primary]** service and tag with **"peval"**
 
+### Kick off our first load test
+
+Login to Jenkins
+
+* username = keptn
+* password = keptn
+
+<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="400"/>
+
+We are going to run the **03-simpletest-qualitygate pipeline**.
+
+Click **build** this initial build will fail.
+
+Refresh the page, now we can do a **Build with Parameters**
+
+verify the Deployment URL, this should match the IP address for your lab environment.
+
+You will also notice, this is where we are using the tag "eval" for the testing.
+
+<img src="../../assets/images/lab_1_simple_test.png" width="500"/>
+
+Click **Build**
+
 <hr>
 
 ### Create Process Group Naming Rule (if not created)
