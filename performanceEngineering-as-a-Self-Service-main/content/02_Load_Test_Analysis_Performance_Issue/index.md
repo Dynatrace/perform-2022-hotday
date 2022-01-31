@@ -122,7 +122,7 @@ Refresh the page, now we can do a **Build with Parameters**
 
 verify the Deployment URL, this should match the IP address for your lab environment.
 
-You will also notice, this is where we are using the tag "evalservice" for the testing.
+You will also notice, this is where we are using the tag "eval" for the testing.
 
 <img src="../../assets/images/lab_1_simple_test.png" width="500"/>
 
