@@ -229,29 +229,6 @@ Click the **preview** button to verify; save the zone.
 
 <hr>
 
-## Run Load Test
-
-Login to Jenkins
-
-* username = keptn
-* password = keptn
-
-<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="300"/>
-
-We are going to run the **03-simpletest-qualitygate pipeline**.
-
-Click **Build** this initial build will fail.
-
-Refresh the page, now we can do a **Build with Parameters**
-
-We need to verify the Deployment URL
-
-<img src="../../assets/images/lab_1_simple_test.png" width="300"/>
-
-Click **Build**
-
-<hr>
-
 ### Examine Performance Test Dashboard with Transaction Steps
 
 We have provided a **Performance Test Dashboard with Transaction Steps** in your environment.   This dashboard provides a complete overview for your Performance Test focusing on SLIs (Latency, Traffic, Errors & Saturation).  Included in this dashboard is the following: Health Status, Transaction Steps Scorecard, Services Overview,  Database Overview,  Process Overview and Hosts Overview.   This dashboard also provides quick analysis links.  
