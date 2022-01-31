@@ -28,7 +28,7 @@ Using Dynatrace API, you will generate a Token with a wide-spread scope
 3. Access cloud_automation_programmability_with_Dynatrace_API/dt-api-kit directory
 
     ```
-    cd automation_programmability_with_Dynatrace_API/dt-api-kit
+    cd cloud_automation_programmability_with_Dynatrace_API/dt-api-kit
     ```
 
 5. Install npm packages:
