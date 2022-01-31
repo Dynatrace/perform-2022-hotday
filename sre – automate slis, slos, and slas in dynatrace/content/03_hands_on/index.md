@@ -29,7 +29,41 @@
 
 ![](../../assets/images/ex1im2.png)
 
-### Hands on #2 - Create an SLO for a specific service request
+### Hands-on #2 - Synthetic Monitoring SLO
+
+#### You are a SRE tasked with tracking the uptime of your teams' applications and most important workflows from an outside-in view. You should provide an overall perspective as well as availability SLOs for specific applications and application groups.
+
+1. Navigate to the <b>Synthetic</b> page found on your side menu and click 'Create synthetic monitor button'. 
+2. Click 'Create a browser monitor' button.
+3. Type in www.google.com or any generic, easy to access address. Hit 'next'.
+4. Select <b>5min</b> as a frequency and <b>one location</b> (for example, Johannesburg), then click 'Next'.
+5. Review the synthetic test summary, then click 'Create Monitor'.
+6. Navigate back to the synthetic monitors list using the breadcrumb navigation or the side menu. Click the checkbox next to your monitor and select 'Duplicate' in the prompt box below. Enable the duplicated monitor.
+
+![](../../assets/images/ex3im1.png)
+
+![](../../assets/images/ex3im2.png)
+
+7. Create one more monitor, this time against a different URL (example: amazon.com). Once complete, you should have 3 monitors.
+
+![](../../assets/images/ex3im3.png)
+
+8. Select the two browser monitors running against google and click <b>Edit</b>.
+9. Click the 'Add tags to these monitors' checkbox. Add key: Sitetype and value: Search
+
+![](../../assets/images/ex3im4.png)
+
+10. Navigate to the Service-level Objectives page and add a new SLO. Click the 'Synthetic Availability' button to populate the fields below. 
+11. Remove the "mzName" filter, verify and create the SLO. Pin this to a dashboard to see results in real time. 
+Note: You should see type("SYNTHETIC_TEST") in the entity selector once you remove the management zone filter.
+12. Create a new SLO, following the steps outlined above in #10-11. This time, after removing the management zone filter, add the tag filter for the sitetype:search field we added earlier. Your entity selector should look like the following:
+
+```
+type("SYNTHETIC_TEST"),tag("Sitetype:Search")
+```
+13. Evaluate, create, and pin this new SLO to your dashboard.
+
+### Hands on #3 - Create an SLO for a specific service request
 
 #### The business and dev teams have recently introduced a new function in the application that calculates travel recrecommendations for customers visiting the website. The business has determined that they want a separate, and granular SLO to track this single function, instead of the service overall (which is what we just did in the previous hands on). They want to track an SLO with a 15% error budget.In order to do this, we’ll need to: 
 #### Create 2 custom metrics for our new request: Total count, and success count
@@ -65,7 +99,27 @@
 13. For our success criteria, we can use a target of 99.75 and a warning of 99.95. 
 14. Evaluate the newly minted SLO and click create.
 
-### Hands on #3 - Creating Response Time based SLOs
+### Hands on #4 - Advanced SLO - Application Performance with template
+1. Under <b>'Digital Experience'</b> on the left-hand menu, find <b>'Web'</b> and navigate to the Applications screen.
+2. You will note thje <b>'My web application'</b> application that came out-of-the-box with Dynatrace. Remember this name, we will be using it later.
+3. Navigate to the <b>'Service-level Objective'</b> screen and create a new SLO.
+4. Select User Experience and provide a name for the SLO (in our example: EasyTravel UX)
+
+![](../../assets/images/ex4im1.png)
+
+5. Enter a filter under <b>Entity Selector</b>, using the below example. Note: We used the application name from step #2.
+
+```
+type(“APPLICATION”)entityName(“My web application”)
+```
+6. Preview the selection, verifying we see at least one application.
+7. Add a success criteria with a target of 99.98 and a warning of 99.99. 
+
+![](../../assets/images/ex4im2.png)
+
+8. Review the configuration and verify the values shown make sense. Our status will likely be under the target. That is okay. Create the SLO.
+
+### Hands on #5 - Creating Response Time based SLOs
 
 #### Situation: You are a SRE tasked with defining and tracking a SLO for a backend service that has received a lot of end-user complaints. Specifically, the checkCreditCard request has been taking a long time to return a response. After consulting with business partners and backend owners, the team has agreed on SLIs and error budgets. We want to know how many requests exceed our SLA of being under 2 seconds. The service in question is the BookingService. (com.dynatrace.easyTravel.business.backend.jar.easyTravel(x*))
 
@@ -92,12 +146,10 @@ calc:service.rt_bookingservice_checkcreditcard
 
 ```
 
-8. Create a second metric that filters based on response time over or equal to our SLA time of 2 seconds.
-
-![](../../assets/images/ex33im3.png)
+8. Create a second metric that filters based on response time less than or equal to our SLA time of 2 seconds.
 
 9. Navigate to the SLO page found on your side menu inside Dynatrace. Second, click on Add new SLO
-10. For our metric expression, we want to divide the total number of requests in breach (>=2s) by the total count of all requests of checkCreditCard. Your expression should look like this: (Note: We multiply the resulting value by 100 to get a percentage that makes sense.)
+10. For our metric expression, we want to divide the total number of requests in breach (<=2s) by the total count of all requests of checkCreditCard. Your expression should look like this: (Note: We multiply the resulting value by 100 to get a percentage that makes sense.)
 
 ```
 (100)*((calc:service.rt_checkcreditcard__2s)/(calc:service.rt_checkcreditcard_count))
@@ -107,60 +159,6 @@ calc:service.rt_bookingservice_checkcreditcard
 
 ![](../../assets/images/ex33im4.png)
 
-
-### Hands-on #4 - Synthetic Monitoring SLO
-
-#### You are a SRE tasked with tracking the uptime of your teams' applications and most important workflows from an outside-in view. You should provide an overall perspective as well as availability SLOs for specific applications and application groups.
-
-1. Navigate to the <b>Synthetic</b> page found on your side menu and click 'Create synthetic monitor button'. 
-2. Click 'Create a browser monitor' button.
-3. Type in www.google.com or any generic, easy to access address. Hit 'next'.
-4. Select <b>5min</b> as a frequency and <b>one location</b> (for example, Johannesburg), then click 'Next'.
-5. Review the synthetic test summary, then click 'Create Monitor'.
-6. Navigate back to the synthetic monitors list using the breadcrumb navigation or the side menu. Click the checkbox next to your monitor and select 'Duplicate' in the prompt box below. Enable the duplicated monitor.
-
-![](../../assets/images/ex3im1.png)
-
-![](../../assets/images/ex3im2.png)
-
-7. Create one more monitor, this time against a different URL (example: amazon.com). Once complete, you should have 3 monitors.
-
-![](../../assets/images/ex3im3.png)
-
-8. Select the two browser monitors running against google and click <b>Edit</b>.
-9. Click the 'Add tags to these monitors' checkbox. Add key: Sitetype and value: Search
-
-![](../../assets/images/ex3im4.png)
-
-10. Navigate to the Service-level Objectives page and add a new SLO. Click the 'Synthetic Availability' button to populate the fields below. 
-11. Remove the "mzName" filter, verify and create the SLO. Pin this to a dashboard to see results in real time. 
-Note: You should see type("SYNTHETIC_TEST") in the entity selector once you remove the management zone filter.
-12. Create a new SLO, following the steps outlined above in #10-11. This time, after removing the management zone filter, add the tag filter for the sitetype:search field we added earlier. Your entity selector should look like the following:
-
-```
-type("SYNTHETIC_TEST"),tag("Sitetype:Search")
-```
-13. Evaluate, create, and pin this new SLO to your dashboard.
-
-### Hands on #5 - Advanced SLO - Application Performance with template
-1. Under <b>'Digital Experience'</b> on the left-hand menu, find <b>'Web'</b> and navigate to the Applications screen.
-2. You will note thje <b>'My web application'</b> application that came out-of-the-box with Dynatrace. Remember this name, we will be using it later.
-3. Navigate to the <b>'Service-level Objective'</b> screen and create a new SLO.
-4. Select User Experience and provide a name for the SLO (in our example: EasyTravel UX)
-
-![](../../assets/images/ex4im1.png)
-
-5. Enter a filter under <b>Entity Selector</b>, using the below example. Note: We used the application name from step #2.
-
-```
-type(“APPLICATION”)entityName(“My web application”)
-```
-6. Preview the selection, verifying we see at least one application.
-7. Add a success criteria with a target of 99.98 and a warning of 99.99. 
-
-![](../../assets/images/ex4im2.png)
-
-8. Review the configuration and verify the values shown make sense. Our status will likely be under the target. That is okay. Create the SLO.
 
 ### Hands on #6 - Creating Infrastructure SLOs
 

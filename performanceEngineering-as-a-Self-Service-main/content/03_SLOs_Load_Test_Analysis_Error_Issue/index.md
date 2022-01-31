@@ -99,7 +99,7 @@ Now we will run one more load test to see the outcome for the SLO's
 
 Open Jenkins and click on **04-performancetest-qualitygate** pipeline:
 
-<img src="../../assets/images/lab_3_jenkins_run_load_test_1.png" width="500"/>
+<img src="../../assets/images/lab_3_jenkins_run_load_test_1.png" width="800"/>
 
 Select **Build with parameters**
 

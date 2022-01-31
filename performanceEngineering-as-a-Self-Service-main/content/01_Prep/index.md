@@ -29,6 +29,8 @@ During this course you will learn:
 
 </details>
 
+<hr>
+
 ### How can you access your lab instance?
 
 1. Access your Dynatrace Tenant, from the Environments tab
@@ -38,8 +40,10 @@ During this course you will learn:
 
 <img src="../../assets/images/autonomous-cloud.png" width="500"/>
 
-Optionally, you can also find the ip address, to the lab homepage, by loggining into your EC2 instance with ssh, 
-from the Environments tab.
+<details><summary>If the link doesn't work...</summary>
+
+You can also find the ip address to the lab homepage by loggining into your EC2 instance with ssh from the Environments tab.
+  
 Then run the following from the command prompt.
 
 ```bash
@@ -49,13 +53,14 @@ Then run the following from the command prompt.
 Get the URL for lab from the log output.
 
 <img src="../../assets/images/KIAB_info.png" width="500"/>
-
-Open a Browser window with the URL, Chrome is preferred.
+  
+</details>
 
 Welcome to KIAB.
 
 <img src="../../assets/images/KIAB.png" width="500"/>
 
+<hr>
 
 ## Validating the projects in the keptn bridge
 
@@ -67,15 +72,93 @@ You should see the preloaded projects.
 By examining the Bridge, we can determine if we need to trigger a deployment for any of the
 application services.
 
-You may need to run several pipelines to complete the deployments of the applications.
-Don't worry, we will walk you through the process.
+You may need to run several pipelines to complete the deployments of the applications but before we do that we need to adjust our dashboard in Dynatrace which contains the critiera some of these tests are checking against.
 
-Validate each project stage has been deployed.
+<hr>
 
-Next will also validate each application is available, by navigating to the KIAB homepage.
-Then selecting each application link.
+## Validate some Enviornment Settings
 
-<img src="../../assets/images/applinks.png" width="400"/>
+### Check the Host is tagged. 
+You should see these tags,
+
+<img src="../../assets/images/hosttags.png" width="500"/>
+
+<details><summary>If you do not see these tags follow these steps</summary>
+
+1. Login to your EC2 instance via ssh, from the Environments tab
+2. Navigate to "keptn-in-a-box/resources/dynatrace/scripts" directory
+
+    ```bash
+        #: cd keptn-in-a-box/resources/dynatrace/scripts
+    ```   
+3. run this command.
+
+    ```bash
+        #: sudo ./hosttag.sh
+    ```
+After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
+</details>
+
+### Check Calculated service metrics
+
+Go to Dynatrace.
+
+Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
+
+You should see 4 calculated service Metrics:
+
+<img src="../../assets/images/lab_1_calculated_service_metrics.png" width="500"/>
+
+<details><summary>If you do not see these tags perform these steps</summary>
+
+- Go to your lab environment tab
+- Click open terminal to ssh into your EC2 instance.
+- navigate to 
+
+```bash
+  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
+```
+
+- Run the following command
+```bash
+  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project simpleproject
+```
+
+</details>
+
+### Adjust Management zone
+We need to add host criteria to the "Keptn: sockshop staging" management zone which will be set as a filter in our dashboard. 
+
+Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
+
+Find the **"Keptn: Sockshop staging"** management zone.
+
+We need to add a rule to capture the host and process metrics.
+
+Use these settings to create the Rule.
+
+- Rule Applies to "Hosts"
+- Conditions: Host tags equals [Environment]kiab
+- Select checkbox "Apply to processes running on matching hosts
+
+   <img src="../../assets/images/ss_mz.png" width="500"/>
+
+- Click **"Preview"**
+- Click **"Create rule"**
+
+### Clone dashboard and set default management zone
+
+Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;service=carts"** dashbaord.
+
+- Click `...` in the top right corner and click `Clone`
+- Click **"Edit"**
+- Remove **"-cloned"** from the title
+- Select **"Settings"**
+- Pick **"Keptn: sockshop staging"** for the Default Managment zone
+- Click **"Done"**
+- Validate you see data in each tile
+
+Now we can start running the pipelines in Jenkins that we see failed in the Keptn Bridge...
 
 <hr>
 
@@ -111,6 +194,18 @@ This allows us to deploy only the "order" service.
 
 We now have different options for each pipeline build.
 Instead of documenting each part here, we will walk through a few scenerios.
+
+<hr>
+
+## Validating your Enviornment 
+
+Additionally, we may need to deploy additional application services.
+By examining each project in the Bridge, we can determine which application services need to be deployed.
+
+Let's take a little time to do this now.
+
+Each Application deploymnet has it's own pipeline. With the help of an instructor, select the appropriate 
+pipeline and build out the necessary services.
 
 ## Order App Overview
 
@@ -173,28 +268,7 @@ Now lets take a look at what we have discovered in Dynatrace.
 
 Open Dynatrace and navigate to **Hosts** in the menu and select the host.
 
-### First, we must ensure the Host is tagged. 
-You should see these tags,
-
-<img src="../../assets/images/hosttags.png" width="500"/>
-
-<details><summary>If you do not see these tags follow these steps</summary>
-
-1. Login to your EC2 instance via ssh, from the Environments tab
-2. Navigate to "keptn-in-a-box/resources/dynatrace/scripts" directory
-
-    ```bash
-        #: cd keptn-in-a-box/resources/dynatrace/scripts
-    ```   
-3. run this command.
-
-    ```bash
-        #: sudo ./hosttag.sh
-    ```
-After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
-</details>
-
-### Next let's examine all the proceses automatically discovered by the Dynatrace oneAgent.
+### Let's examine all the proceses automatically discovered by the Dynatrace oneAgent.
 
 <img src="../../assets/images/pre_host.png" width="400"/>
 
@@ -229,75 +303,8 @@ Select **Kubernetes** from the menu.
 
 Due to to time constrainsts, we will visit each area as needed during the lab exercises.
 
-<hr>
+## Final validation of envionrment
 
-## Adjust Management zone
-Now we need to add host criteria to the "Keptn: sockshop staging" management zone.
+Validate each project stage has been properly deployed by navigating to the KIAB homepage then selecting each application overview link (except EasyTravel which will not be part of this lab).
 
-Open Dynatrace and navigate to **"Settings>Preferences>Management zones"**
-
-Find the **"Keptn: Sockshop staging"** management zone.
-
-We need to add a rule to capture the host and process metrics.
-
-Use these settings to create the Rule.
-
-- Rule Applies to "Hosts"
-- Conditions: Host tags equals [Environment]kiab
-- Select checkbox "Apply to processes running on matching hosts
-
-   <img src="../../assets/images/ss_mz.png" width="500"/>
-
-- Click **"Preview"**
-- Click **"Create rule"**
-
-<hr>
-
-## Set Dashboard Default Management Zone
-
-Go to **"Dashboards"** and open the **"KQG;project=sockshop;stage=staging;service=carts"** dashbaord.
-
-- Click **"Edit"**
-- Select **"Settings"**
-- Pick **"Keptn: sockshop staging"** for the Default Managment zone
-- Click **"Done"**
-- Validate you see data in each tile
-
-<hr>
-
-## Check Calculated service metrics
-
-Go to Dynatrace.
-
-Navigate to **"Settings>Server-side service monitoring>Calculated service metrics"**
-
-You should see 4 calculated service Metrics.  If you do not, follow the instructions.
-
-<details><summary>If you do not see these tags follow these steps</summary>
-
-- Go to your lab environment tab
-- Click open terminal to ssh into your EC2 instance.
-- navigate to 
-
-```bash
-  #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
-```
-
-- Run the following command
-```bash
-  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
-```
-
-</details>
-
-<hr>
-
-## Final Setup
-
-Additionally, we may need to deploy additional application services.
-By examining each project in the Bridge, we can determine which application services need to be deployed.
-
-Let's take a little time to do this now.
-
-Each Application deploymnet has it's own pipeline. With the help of an instructor, select the appropriate 
-pipeline and build out the necessary services.
+<img src="../../assets/images/applinks.png" width="400"/>

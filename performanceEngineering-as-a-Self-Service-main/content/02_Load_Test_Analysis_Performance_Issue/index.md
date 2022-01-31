@@ -51,7 +51,32 @@ Now we can create the **"evalservice"** tag.
 
 Let's also create a tag **"eval"** tag on the same service
 
-Next, we need to also tag the production frontend with the tag **"peval"**
+Next, we need to also tag the production frontend service. Navigate back to the Services screen and select the **Keptn: keptnorders production** managment zone.
+
+Navigate into the **frontend [primary]** service and tag with **"peval"**
+
+### Kick off our first load test
+
+Login to Jenkins
+
+* username = keptn
+* password = keptn
+
+<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="400"/>
+
+We are going to run the **03-simpletest-qualitygate pipeline**.
+
+Click **build** this initial build will fail.
+
+Refresh the page, now we can do a **Build with Parameters**
+
+verify the Deployment URL, this should match the IP address for your lab environment.
+
+You will also notice, this is where we are using the tag "eval" for the testing.
+
+<img src="../../assets/images/lab_1_simple_test.png" width="500"/>
+
+Click **Build**
 
 <hr>
 
@@ -91,7 +116,7 @@ As testers, we typically only test against the service endpoint. As performance 
 
 In Dynatrace, we can analyze the Service Flow which shows us the full end-to-end flow of every request executed against our service endpoint. You can also apply filters to only focus on a particular test transaction, a specific time frame or compare the flow of failing vs non- failing transactions.
 
-Click **"Frontend"** from the Main Navigation menu. Then click **easytravel-angular.easytravel-staging**.
+Click **"Frontend"** from the Main Navigation menu. Then click **frontend.keptnorders-staging**.
 
 <img src="../../assets/images/lab2_application_service_flow_new_menu.png" width="500"/>
 
@@ -99,32 +124,9 @@ This will bring up the **easytravel-angular.easytravel-staging** Performance Ove
 
 <img src="../../assets/images/lab2_application_service_flow_2_new_menu.png" width="500"/>
 
-This will bring up the **Service flow** for the **easytravel-angular.easytravel-staging**.  View results.
+This will bring up the **Service flow** for the **frontend.keptnorders-staging**.  View results.
 
 <img src="../../assets/images/lab2_application_service_flow_3_new_menu.png" width="500"/>
-
-### Kick off our first load test
-
-Login to Jenkins
-
-* username = keptn
-* password = keptn
-
-<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="400"/>
-
-We are going to run the **03-simpletest-qualitygate pipeline**.
-
-Click **build** this initial build will fail.
-
-Refresh the page, now we can do a **Build with Parameters**
-
-verify the Deployment URL, this should match the IP address for your lab environment.
-
-You will also notice, this is where we are using the tag "evalservice" for the testing.
-
-<img src="../../assets/images/lab_1_simple_test.png" width="500"/>
-
-Click **Build**
 
 <hr>
 
@@ -165,29 +167,11 @@ For Performance Testing you can use Calculated service metrics to track your Per
 
 <img src="../../assets/images/Lab_1_Transaction_Scorecard.png" width="500"/>
 
-We have setup the Load Test **Calculated service metrics** for you.   Below is an example setup but we will also show you in your environment where they are.  The Calculated service metrics can be configured via **Settings --> Server-side service monitoring --> Calculated service metrics**.
-
-<img src="../../assets/images/lab_1_calculated_service_metrics.png" width="500"/>
-
-<details><summary>Take these steps if you do not see the same metrics as those in the image above</summary>
-
-1. Login to your EC2 instance via ssh, from the Environments tab
-2. Navigate to "keptn-in-a-box/resources/dynatrace/scripts" directory
-
-    ```bash
-        #: cd keptn-in-a-box/resources/dynatrace/scripts
-    ```   
-3. run this command.
-
-    ```bash
-        #: ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project simpleproject
-    ```
-</details>
-
-After you have run this script, just wait a few minutes, then verify the tags have been added to the host.
-
 [Blog: Tutorial: Guide to automated SRE-driven performance engineering](https://www.dynatrace.com/news/blog/guide-to-automated-sre-driven-performance-engineering-analysis/)
+
 [Documentation: Calculated metrics for services](https://www.dynatrace.com/support/help/shortlink/calculated-service-metric/)
+
+<hr>
 
 ### Kick off Keptn Customer Build
 
@@ -228,29 +212,6 @@ Click the **preview** button to verify; save the zone.
 
 <hr>
 
-## Run Load Test
-
-Login to Jenkins
-
-* username = keptn
-* password = keptn
-
-<img src="../../assets/images/Lab_1_Jenkins_Log_In.png" width="300"/>
-
-We are going to run the **03-simpletest-qualitygate pipeline**.
-
-Click **Build** this initial build will fail.
-
-Refresh the page, now we can do a **Build with Parameters**
-
-We need to verify the Deployment URL
-
-<img src="../../assets/images/lab_1_simple_test.png" width="300"/>
-
-Click **Build**
-
-<hr>
-
 ### Examine Performance Test Dashboard with Transaction Steps
 
 We have provided a **Performance Test Dashboard with Transaction Steps** in your environment.   This dashboard provides a complete overview for your Performance Test focusing on SLIs (Latency, Traffic, Errors & Saturation).  Included in this dashboard is the following: Health Status, Transaction Steps Scorecard, Services Overview,  Database Overview,  Process Overview and Hosts Overview.   This dashboard also provides quick analysis links.  
@@ -277,7 +238,7 @@ Open the **"Performance Test Dashboard with Transaction Steps"** dashboard.
 
 Then click on the **Transactions** link under **Transaction** links section on the left side of the dashboard.
 
-<img src="../../assets/images/lab_1_performance_test_dashboard_with_transaction_steps_1.png" width="500"/>
+<img src="../../assets/images/lab_1_performance_test_dashboard_with_transaction_steps_1.png" width="800"/>
 
 This will bring us to **Multidimensional analysis** that is showing response time split by the **TSN** request attribute.   Note,  you can also create your own **Multidimensional analysis** views and save them by going to the Diagnostic tools-->Top web requests configure desired settings.
 
@@ -285,13 +246,13 @@ For Developers to understand how to avoid future performance issues and proactiv
 
 We are going to focus on the **customer** step name transaction.
 
-<img src="../../assets/images/lab_1_peformance_analysis_1.png" width="500"/>
+<img src="../../assets/images/lab_1_peformance_analysis_1.png" width="800"/>
 
 Click on the ... at the end of the table for **"customer"** step name transaction which will bring up the **"Analyze"** menu. 
 
 Click  **"Response time hotspots"** from the Analyze menu.
 
-<img src="../../assets/images/lab_1_response_time_hotspots_1.png" width="200" height="300"/>
+<img src="../../assets/images/lab_1_response_time_hotspots_1.png" width="200" height="400"/>
 
 On the Response time analysis page it will display the average response time observed during the analyzed timeframe. On the left side of the infographic, under Distribution, you can see how much time is contributed by calls to other services, calls to databases, and code-level execution. On the right side, under Top findings, we list the biggest hotspots identified by Dynatrace. You can click any of these entries to view further details.
 
