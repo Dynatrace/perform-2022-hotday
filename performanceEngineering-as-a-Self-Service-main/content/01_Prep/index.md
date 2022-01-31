@@ -121,7 +121,7 @@ You should see 4 calculated service Metrics:
 
 - Run the following command
 ```bash
-  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project keptnorders /home/dtu_training/keptn-in-a-box
+  #: sudo ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project simpleproject
 ```
 
 </details>
