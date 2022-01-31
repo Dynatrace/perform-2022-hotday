@@ -238,7 +238,7 @@ Open the **"Performance Test Dashboard with Transaction Steps"** dashboard.
 
 Then click on the **Transactions** link under **Transaction** links section on the left side of the dashboard.
 
-<img src="../../assets/images/lab_1_performance_test_dashboard_with_transaction_steps_1.png" width="500"/>
+<img src="../../assets/images/lab_1_performance_test_dashboard_with_transaction_steps_1.png" width="800"/>
 
 This will bring us to **Multidimensional analysis** that is showing response time split by the **TSN** request attribute.   Note,  you can also create your own **Multidimensional analysis** views and save them by going to the Diagnostic tools-->Top web requests configure desired settings.
 
@@ -246,13 +246,13 @@ For Developers to understand how to avoid future performance issues and proactiv
 
 We are going to focus on the **customer** step name transaction.
 
-<img src="../../assets/images/lab_1_peformance_analysis_1.png" width="500"/>
+<img src="../../assets/images/lab_1_peformance_analysis_1.png" width="800"/>
 
 Click on the ... at the end of the table for **"customer"** step name transaction which will bring up the **"Analyze"** menu. 
 
 Click  **"Response time hotspots"** from the Analyze menu.
 
-<img src="../../assets/images/lab_1_response_time_hotspots_1.png" width="200" height="300"/>
+<img src="../../assets/images/lab_1_response_time_hotspots_1.png" width="200" height="800"/>
 
 On the Response time analysis page it will display the average response time observed during the analyzed timeframe. On the left side of the infographic, under Distribution, you can see how much time is contributed by calls to other services, calls to databases, and code-level execution. On the right side, under Top findings, we list the biggest hotspots identified by Dynatrace. You can click any of these entries to view further details.
 
