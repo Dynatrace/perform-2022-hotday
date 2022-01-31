@@ -22,3 +22,8 @@ During this portion of out session, we will deploy our OneAgent operator with ou
 4. Once you copy the command on the clipboard, paste it on your terminal cli and press Enter.
 
 5. Let Dynatrace do it's magic!!!!
+
+6. Verify that Dynatrace OneAgent operator has been successfully deployed
+
+    * Check Smartscape
+    * Check Kubernetes dashboard
