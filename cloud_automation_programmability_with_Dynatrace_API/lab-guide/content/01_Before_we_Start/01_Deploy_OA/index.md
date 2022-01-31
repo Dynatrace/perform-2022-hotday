@@ -2,11 +2,13 @@
 
 During this portion of out session, we will deploy our OneAgent operator with our default configuration.
 
-1. *If you are logged in to your own Dynatrace tenant, ensure you logout before STEP 2 or open browser in incognito/private mode so you can login to your HOT environment.*
+1. Go to Environment tab and launch the terminal or copy the information to open an ssh session in your preferred ssh client.
 
-2. Go to Environment tab and use the information to login to your tenant
+2. While in the Environment tab, click on "View Environment" and use the information to login to your tenant
 
     ![labDetails](../../assets/images/labDetails.png)
+
+   *NOTE: If you are logged in to your own Dynatrace tenant, ensure you logout before STEP 2 or open browser in incognito/private mode so you can login to your HOT environment.*
 
 3. Go to Deploy Dynatrace >> Start Installation >> Kubernetes
 
@@ -17,4 +19,6 @@ During this portion of out session, we will deploy our OneAgent operator with ou
 
     ![dtOperator](../../assets/images/dtOperator.png)
 
-4. Let Dynatrace do it's magic!!!!
+4. Once you copy the command on the clipboard, paste it on your terminal cli and press Enter.
+
+5. Let Dynatrace do it's magic!!!!
