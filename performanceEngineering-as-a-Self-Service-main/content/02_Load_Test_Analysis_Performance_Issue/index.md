@@ -167,25 +167,6 @@ For Performance Testing you can use Calculated service metrics to track your Per
 
 <img src="../../assets/images/Lab_1_Transaction_Scorecard.png" width="500"/>
 
-We have setup the Load Test **Calculated service metrics** for you.   Below is an example setup but we will also show you in your environment where they are.  The Calculated service metrics can be configured via **Settings --> Server-side service monitoring --> Calculated service metrics**.
-
-<img src="../../assets/images/lab_1_calculated_service_metrics.png" width="500"/>
-
-<details><summary>Take these steps if you do not see the same metrics as those in the image above</summary>
-
-1. Login to your EC2 instance via ssh, from the Environments tab
-2. Navigate to "keptn-in-a-box/resources/dynatrace/scripts" directory
-
-    ```bash
-        #: cd keptn-in-a-box/resources/dynatrace/scripts
-    ```   
-3. run this command.
-
-    ```bash
-        #: ./createTestStepCalculatedMetrics.sh CONTEXTLESS keptn_project simpleproject
-    ```
-</details>
-
 [Blog: Tutorial: Guide to automated SRE-driven performance engineering](https://www.dynatrace.com/news/blog/guide-to-automated-sre-driven-performance-engineering-analysis/)
 
 [Documentation: Calculated metrics for services](https://www.dynatrace.com/support/help/shortlink/calculated-service-metric/)
