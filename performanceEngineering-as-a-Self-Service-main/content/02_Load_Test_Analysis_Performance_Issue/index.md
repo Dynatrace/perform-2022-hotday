@@ -252,7 +252,7 @@ This will bring us to **Multidimensional analysis** that is showing response tim
 
 For Developers to understand how to avoid future performance issues and proactively optimize performance, you must be able to analyze real-time data and understand code performance bottlenecks.
 
-We are going to focus on the **customer** step name transaction.
+We are going to focus on the **TSN=customer** step name transaction running on the **customer** service.
 
 <img src="../../assets/images/lab_1_peformance_analysis_1.png" width="800"/>
 
