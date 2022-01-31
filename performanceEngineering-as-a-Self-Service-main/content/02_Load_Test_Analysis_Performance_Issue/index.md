@@ -210,7 +210,7 @@ Click **Keptn: keptnorders staging** management zone and add a new rule with
 
 Click the **preview** button to verify; save the zone.
 
-### Kick off our first load test
+### Kick off a load test
 
 We are going to run the **03-simpletest-qualitygate pipeline** again.
 
