@@ -30,10 +30,13 @@ Now we are going to push the **order** version **2.0.0**.
 
 Select **Build with parameters**
 
-- In the **orderRelease** dropdown select **2.0.0**
-- In the **DEPLOY_TO field**, change the dropdown box to **order**
+In the **orderRelease** dropdown select **2.0.0**
 
 <img src="../../assets/images/lab_3_order_build.png" width="700"/>
+
+In the **DEPLOY_TO field**, change the dropdown box to **order**
+
+<img src="../../assets/images/lab_3_build_order.png" width="700"/>
 
 Next, click the **Build** button.
 
