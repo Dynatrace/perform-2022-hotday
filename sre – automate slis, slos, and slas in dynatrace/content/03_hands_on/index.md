@@ -44,7 +44,7 @@
 
 ![](../../assets/images/ex3im2.png)
 
-7. Create one more monitor, this time against a different URL (example: amazon.com). Once complete, you should have 3 monitors.
+7. Create one more monitor, this time against a different URL. We want this monitor to simulate a failure: http://httpstat.us/503. Once complete, you should have 3 monitors.
 
 ![](../../assets/images/ex3im3.png)
 
@@ -63,7 +63,31 @@ type("SYNTHETIC_TEST"),tag("Sitetype:Search")
 ```
 13. Evaluate, create, and pin this new SLO to your dashboard.
 
-### Hands on #3 - Create an SLO for a specific service request
+### Hands on #3 - Create SLO based on test steps from a browser monitor
+
+#### You are investigating an issue with an ecommerce site. To track the current state, you create a test transaction (clickpath) to monitor the process. Based on the transaction you define two an SLO proving the availability for the shopping cart vs. checkout page.
+
+1. Start by creating a browser monitor. Switch to script mode.
+2. **Paste** the [provided script](../../assets/Addtocart.txt) and rename the monitor to 'Amazon Add to Cart'. Add one or two locations and set the frequency to the lowest value to start collecting data ASAP.
+3. **Paste** the [provided script](../../assets/GoToCart.txt) and rename the monitor to 'Amazon Go to Cart'. Use similar locations and frequency settings to the test above.
+4. Lets create the SLO now. Navigate to the SLO wizard. Do not select any presets. Name this SLO Amazon Add to Cart.
+5. Dynatrace does not offer an out of the box availability metric for synthetic events (steps). So, we add the following:
+
+``
+(builtin:synthetic.browser.event.success)/(builtin:synthetic.browser.event.total)*(100):(splitBy())
+``
+
+6. As a filter we use the entityId for the synthetic test step in our add to cart script. For this example, we can use the first step. Example step below (do not use this example, use your own).
+
+``
+SYNTHETIC_TEST_STEP-BD5E4D70B8701DCF
+``
+
+8. Repeat steps 4-6, using the Go to Cart test and an ID of a specific step as described in #6.
+9. Validate your data is coming through.
+
+
+### Hands on #4 - Create an SLO for a specific service request
 
 #### The business and dev teams have recently introduced a new function in the application that calculates travel recrecommendations for customers visiting the website. The business has determined that they want a separate, and granular SLO to track this single function, instead of the service overall (which is what we just did in the previous hands on). They want to track an SLO with a 15% error budget.In order to do this, we’ll need to: 
 #### Create 2 custom metrics for our new request: Total count, and success count
@@ -99,7 +123,7 @@ type("SYNTHETIC_TEST"),tag("Sitetype:Search")
 13. For our success criteria, we can use a target of 99.75 and a warning of 99.95. 
 14. Evaluate the newly minted SLO and click create.
 
-### Hands on #4 - Advanced SLO - Application Performance with template
+### Hands on #5 - Advanced SLO - Application Performance with template
 1. Under <b>'Digital Experience'</b> on the left-hand menu, find <b>'Web'</b> and navigate to the Applications screen.
 2. You will note thje <b>'My web application'</b> application that came out-of-the-box with Dynatrace. Remember this name, we will be using it later.
 3. Navigate to the <b>'Service-level Objective'</b> screen and create a new SLO.
@@ -119,7 +143,7 @@ type(“APPLICATION”)entityName(“My web application”)
 
 8. Review the configuration and verify the values shown make sense. Our status will likely be under the target. That is okay. Create the SLO.
 
-### Hands on #5 - Creating Response Time based SLOs
+### Hands on #6 - Creating Response Time based SLOs
 
 #### Situation: You are a SRE tasked with defining and tracking a SLO for a backend service that has received a lot of end-user complaints. Specifically, the checkCreditCard request has been taking a long time to return a response. After consulting with business partners and backend owners, the team has agreed on SLIs and error budgets. We want to know how many requests exceed our SLA of being under 2 seconds. The service in question is the BookingService. (com.dynatrace.easyTravel.business.backend.jar.easyTravel(x*))
 
@@ -160,7 +184,7 @@ calc:service.rt_bookingservice_checkcreditcard
 ![](../../assets/images/ex33im4.png)
 
 
-### Hands on #6 - Creating Infrastructure SLOs
+### Hands on #7 - Creating Infrastructure SLOs
 
 #### Large Insurance Company utilizes Dynatrace SLOs to monitor their Infrastructure.  
 #### Objective:
@@ -191,7 +215,7 @@ builtin:host.cpu.usage
 
 ![](../../assets/images/ex5im4.png)
 
-### Hands on #7 - Creating an SLO Dashboard
+### Hands on #8 - Creating an SLO Dashboard
 
 #### Having a great dashboard can help your organization understand the impact performance can have on the overal health of your application. Incorporating SLOs into those dashboards ties together what we learned with the dashboarding capabilities within Dynatrace.
 
