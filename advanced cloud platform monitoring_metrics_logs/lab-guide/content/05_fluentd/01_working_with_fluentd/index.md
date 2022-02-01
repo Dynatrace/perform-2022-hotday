@@ -1,4 +1,4 @@
-### What is Fluentd?
+# What is Fluentd?
 
 An open-source log collector to unify logging layer.
 Key Features:
@@ -18,7 +18,7 @@ In this module we'll:
 
 Learning these concepts will help your teams transform terabytes of logs into AI-powered answers and additional context for apps and infrastructure at any scale.
 
-### The scenario
+## The scenario
 
 The metrics exposed by our Nginx ingress controller are not providing the right dimensions to understand precisely how the traffic is split between the several services of our cluster.
 We need to ingest the Nginx logs to see the full picture.
@@ -99,7 +99,7 @@ Scroll a bit if necessary to find the starting `<source>` entries.  See below fo
 - `expression` formats the logs into a more readable format for fluentd.
 - `stdout` tells fluentd to send the logs to the container log to make it easy for us to read and see our changes as they occur.
 
-### LAB Step 1: Extract log data
+## LAB Step 1: Extract log data
 
 With the basic log collector in place we first want to extract the metadata into fluentd `keys`.  This lets us use only what we need and provide useful names for the data.
 
@@ -193,16 +193,16 @@ Check that you don't have any errors from fluentd.  If you do, there is usually 
 If you don't see hits coming in, confirm you are generating traffic in another terminal.  **If it stopped**, start it again with:
 
 ``` bash
-/hotday_script/load/generateTraffic.sh
+~/hotday_script/load/generateTraffic.sh
 ```
 
 Most of the lines will have the same type of data.  But it's easy to confirm it worked if your *responsetime* fields now have decimals i.e. `"0.027"`.  That means fluentd extracted the responsetime value, changed it to a numeric (integer) format and exported it.
 
-### Lab Step 2: Improve the data quality
+## Lab Step 2: Improve the data quality
 
 Now that we have a nice data stream, we can improve it further.
 
-#### Update the time key
+### Update the time key
 
 fluentd parser plugin can also extract which key contains the date with `time_key`.
 Reopen the config map with:
@@ -221,7 +221,7 @@ Let's modify our current fluentd pipeline by adding a `time_key` and `time_forma
 
 As always, make sure the spacing is perfect and the new lines are directly under `types`.
 
-#### Define a Prometheus output plugin
+### Define a Prometheus output plugin
 
 Fluentd has a Prometheus plugin that is able to :
 
@@ -244,7 +244,7 @@ Add a new `source` entry directly under the ending of the previous `</source>`  
     </source>
 ```
 
-#### About fluentd filters
+### About fluentd filters
 
 We'll further improve the data quality by adding a filter to our log output.  This allows us to:
 
@@ -304,7 +304,7 @@ For example, the labels shown here (pulled from the keys we created earlier) wil
 </filter>
 ```
 
-#### Lab Step 3: Adding a filter, labels, and metrics
+## Lab Step 3: Adding a filter, labels, and metrics
 
 Let's build out this framework.  Our goal is to have metrics for response time, bytes sent, status, and total requests.  We want to label them with method, request, status, namespace, service, and resourcename.
 
@@ -342,10 +342,12 @@ Here is how our first label (method) and first metric (response time) would look
 
 Take a shot at labels for request, status, namespace, service, and resourcename.  Remember these are based on the keys you created earlier!
 
-Then add metrics for bytes sent, total requests, and status.  Check your work against the completed filter below:
+Then add metrics for bytes sent, total requests, and status.  The gauge types you would use are either `gauge` or `counter` for these metrics.
+
+No peeking! :)  But check your work against the completed filter below:
 
 ``` bash
-<filter  nginx>
+<filter nginx>
       @type prometheus
        <labels>
          method ${method}
@@ -381,13 +383,13 @@ Then add metrics for bytes sent, total requests, and status.  Check your work ag
      </filter>
 ```
 
-After you finish updates, similar to before, we need to delete the old fluentd pods:
+Just like before, we need to delete the old fluentd pods:
 
 ```bash
 kubectl delete pods -n nondynatrace -l app=fluentd-pipeline
 ```
 
-Check out the logs from the fluentd pod by finding the correct fluentd pod (the one in same node as nginx) with:
+Check out the logs by finding the correct fluentd pod (the one in same node as nginx) with:
 
 ```bash
 kubectl get pod -o=custom-columns=NODE:.spec.nodeName,NAME:.metadata.name --all-namespaces
@@ -402,52 +404,82 @@ kubectl logs <pod> -n nondynatrace -f
 or use the all-in-one command:
 
 ```bash
-kubectl logs $(kubectl get pods -A -l app=fluentd-pipeline -o wide --field-selector spec.nodeName=$(kubectl get pod -o=custom-columns=NODE:.spec.nodeName --selector=app=nginx-nginx-ingress --no-headers) -o=custom-columns=Name:.metadata.name --no-headers) -n nondynatrace
+kubectl logs $(kubectl get pods -A -l app=fluentd-pipeline -o wide --field-selector spec.nodeName=$(kubectl get pod -o=custom-columns=NODE:.spec.nodeName --selector=app=nginx-nginx-ingress --no-headers) -o=custom-columns=Name:.metadata.name --no-headers) -n nondynatrace -f
 ```
 
 If the logs have errors, check your yaml to make sure everything is lined up.  If you don't see traffic, confirm your traffic generator is running and start it again if needed with:
 
 ```bash
-/hotday_script/load/generateTraffic.sh
+~/hotday_script/load/generateTraffic.sh
 ```
 
 ### Create a service with dynatrace Prometheus annotation to ingest the generated metrics
 
-Similar to the previous exercice related to Prometheus metrics.
-Update the following file by updating the port of the fluentd exporter :
-`/home/$BASTION_USER/hotday_script/prometheusservice_fluentd_metric.yaml`
+We need to update the port of the fluentd exporter similar to the prometheus exercise before.
 
-once modified create the new service with the following command :
+The node exporter is deployed as a Daemonset by the Prometheus Operator.
+Run the kubectl command to get the daemonsets:
 
+```bash
+kubectl get ds
+ ```
+
+![Prometheus_1](../../assets/images/prom_1.png)
+
+If the result is prometheus-node-exporter, run the command below as-is.  Otherwise update the name before running.
+
+- This will get the container port for the Prometheus-node-exporter daemonset.
+
+```bash
+kubectl get ds prometheus-node-exporter -o jsonpath='{.spec.template.spec.containers[0].ports[].containerPort}{"\n"}'
 ```
-kubectl apply -f /home/$BASTION_USER/hotday_script/prometheusservice_fluentd_metric.yaml -n nondynatrace
+
+![Prometheus_2](../../assets/images/prom_2.png)
+
+Open the configuration file below and replace the port.
+
+```bash
+vi ~/hotday_script/prometheus/service_fluentd_metric.yaml
+```
+
+After the update, the port line should be similar to:
+
+```bash
+    metrics.dynatrace.com/port: "9100"
+```
+
+Then apply the config file with :
+
+```bash
+kubectl apply -f ~/hotday_script/prometheus/service_fluentd_metric.yaml -n nondynatrace
 ```  
 
 ### Create a graph utilizing the new nginx metrics
-#### generate traffic
-To be able to ingest metrics we need to generate traffic in the background.
-Use the script :
 
-```
-/hotday_script/load/generateTraffic.sh
+Check the terminal window where you are generating traffic to confirm it's still running.  If it stopped for some reason you can start it again with:
+
+```bash
+~/hotday_script/load/generateTraffic.sh
 ```
 
-#### Create a Graph showing the 90th percentile of the response time splitted by service
+### Create a Graph showing the 90th percentile of the response time splitted by service
 
 Go to the Data Explorer and search for the new metric: `hotday_response_time`
 
 Create a graph with :
-* aggregator : Percentile 90th
-* Split by : service
+
+- aggregator : Percentile 90th
+- Split by : service
   
 ![fluentd_1_1](../../assets/images/dt_fluentd_metrics.png)
 
-#### Create a Pie raph showing the status code per services
+### Create a Pie graph showing the status code per services
 
 Go to the Data Explorer and search for the new metric: `hotday_requests`
 
 Create a graph with :
-* aggregator : Count
-* Split by : status,service
+
+- aggregator : Count
+- Split by : status,service
   
 ![fluentd_1_2](../../assets/images/dtu_fluentd_metrics_status.png)
