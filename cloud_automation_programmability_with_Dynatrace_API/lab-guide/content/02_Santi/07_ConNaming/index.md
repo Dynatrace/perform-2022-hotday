@@ -4,10 +4,20 @@
 
 2. Go back to terminal and run dt api kit:
 
-    ```
+    ```bash
     node index.js
     ```
 
 3. Choose *Create conditional naming rules*
 
-5. Go to history.log and verify your deployment
+4. Go to the URL presented in the terminal and verify your deployment was successful
+
+This is an example of the desired outcome:
+
+Process Naming Rules
+
+![procNam](../../assets/images/procNam.png)
+
+Service Naming Rules
+
+![servNam](../../assets/images/servNam.png)

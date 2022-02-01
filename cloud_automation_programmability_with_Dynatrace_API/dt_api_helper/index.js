@@ -29,22 +29,22 @@ const start = () => {
         generateWebApp(ask);
         break;
       case 'Create a app detection rule':
-        generateAppDetectRule(headers, ask);
+        generateAppDetectRule(headers, start);
         break;
-      case 'Create tags':
-        generateTagRule(headers, ask);
+      case 'Create auto-tags':
+        generateTagRule(headers, start);
         break;
       case 'Deploy Dashboard':
-        deployDashboard(headers, ask);
+        deployDashboard(headers, start);
         break;
       case 'Deploy Synthetic Monitors':
-        deploySynthetics(headers, ask);
+        deploySynthetics(headers, start);
         break;
       case 'Create conditional naming rules':
-        generateConditionalNamingRule(headers, ask);
+        generateConditionalNamingRule(headers, start);
         break;
       case 'Create Management Zones':
-        mzRuleHelper(headers, ask)
+        mzRuleHelper(headers, start)
         break;
       case "I'm done":
         console.log('Good bye!! Check "history.log" for some activity history');
@@ -74,7 +74,28 @@ const ask = () => {
 const generateWebApp = (ask) => {
   inquirer
     .prompt(webAppQs)
-    .then((ans) => (appInfo = genWebApp(ans, headers, ask)));
+    .then((ans) => {
+      inquirer.prompt([
+        {
+        type: 'confirm',
+        message: `Please verify that the information below is correct:\n
+name: ${ans.name}\r
+RUM enabled: ${ans.realUserMonitoringEnabled}\n
+RUM %: ${ans.costControlUserSessionPercentage}\n
+SR enabled: ${ans.srEnabled}\n
+SR %: ${ans.costControlPercentage}\n`,
+        name: 'confirmApp',
+        default: true,
+        }
+      ]).then(a => {
+        if (a.confirmApp === true) {
+          genWebApp(ans, headers, start)
+        } else {
+          generateWebApp(start);
+        }
+      })
+
+    });
 };
 
 start();

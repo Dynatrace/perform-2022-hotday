@@ -1,5 +1,5 @@
-# Metric API v2
-## _Utilize v2 APIs to Level Up Your Data_
+## Metric API v2
+### _Utilize v2 APIs to Level Up Your Data_
 In this example we will explore the /metrics/query endpoint, and how it can be used to export data from Dynatrace. Please use the token generated earlier in  the session and follow along!
 ### Overview
 
