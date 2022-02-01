@@ -14,3 +14,5 @@ builtin:host.cpu.usage:filter(and(in("dt.entity.host",entitySelector("type(host)
 ![expressions4](../../../assets/images/expressions4.png)
 
 ### What is the output?
+
+![queryexplorer](../../../assets/images/queryexplorer.png)

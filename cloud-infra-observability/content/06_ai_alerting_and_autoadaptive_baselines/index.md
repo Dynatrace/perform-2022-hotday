@@ -1,4 +1,4 @@
-## Auto-Adaptive Baseline
+## AI Alerting and Auto-Adaptive Baselines
 
 ### One of our teams automates a lot of their infrastructure in AWS
 
