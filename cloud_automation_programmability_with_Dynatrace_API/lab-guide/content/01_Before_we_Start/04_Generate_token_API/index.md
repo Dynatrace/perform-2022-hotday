@@ -16,10 +16,8 @@ Using Dynatrace API, you will generate a Token with a wide-spread scope
 
     ![gitClone](../../assets/images/gitclone.png)
 
- browser 
 
-
-2. Go back to your SSH client or Environment terminal in your browser and clone perform repo by typing in the terminal
+3. Go back to your SSH client or Environment terminal in your browser and clone perform repo by typing in the terminal
 
     ```
     git clone https://github.com/Dynatrace/perform-2022-hotday.git
@@ -28,7 +26,7 @@ Using Dynatrace API, you will generate a Token with a wide-spread scope
 3. Access cloud_automation_programmability_with_Dynatrace_API/dt_api_helper directory
 
     ```
-    cd cloud_automation_programmability_with_Dynatrace_API/dt_api_helper/
+    cd perform-2022-hotday/cloud_automation_programmability_with_Dynatrace_API/dt_api_helper/
     ```
 
 5. Install npm packages:
@@ -49,7 +47,7 @@ Using Dynatrace API, you will generate a Token with a wide-spread scope
 
     ```
     Enter master token: (copied earlier)
-    tenantURL (note: keep the last / on the url): https://xxxx.sprint.dynatracelabs.com/
+    tenantURL: https://xxxx.sprint.dynatracelabs.com/
     token Name: hot2022
     Expiration days: 5
     ```
@@ -64,6 +62,6 @@ Using Dynatrace API, you will generate a Token with a wide-spread scope
     cat .env
     ```
 
-9. Verify that the token you generated via API is showing in your tenant (Settings >> Access Tokens)
+9. Verify that the token you generated via API is showing in your tenant (Access Tokens)
 
     ![tokenGenerated](../../assets/images/generatedToken.png)

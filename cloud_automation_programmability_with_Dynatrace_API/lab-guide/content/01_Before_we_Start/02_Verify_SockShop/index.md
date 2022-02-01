@@ -1,12 +1,31 @@
 ## Verify Sockshop Apps are running
 
-You might've notice that there are no services. We need to restart SockShop application.
+You might've notice that there was not much to see. We need to make sure Sockshop apps are deployed and running.
 
-For this, run the following commands on your terminal cli:
+Run the following command line in the terminal and verify that you have at least "loadgen", "dev", and "production" namespaces:
+
+        kubectl get namespaces
+
+![namespaces](../../assets/images/namespaces.png)
+
+If they don't show up, perform the following:
+
+        cd sockshop
+
+Run the following command:
+
+        ./deploy-sockshop.sh
+
+After it has been deployed, verify again that the namespaces show up with the following command:
+
+        kubectl get namespaces
+
+Once you have verified that the namespaces exist, run the following commands on your terminal cli:
 
         kubectl -n production rollout restart deploy
         
         kubectl -n dev rollout restart deploy
+
 
 1. Verify SockShop production app is running
 
@@ -22,11 +41,14 @@ For this, run the following commands on your terminal cli:
 
 2. Repeat step 1 for dev
 
-    CARTS VIEW:
 
-    ![cartsURL](../../assets/images/cartsURL.png)
+When you test your URls, the outcome should look like the following: 
+
+CARTS VIEW:
+
+   ![cartsURL](../../assets/images/cartsURL.png)
     <br>
 
-    SOCKSHOP APP VIEW:
+SOCKSHOP APP VIEW:
 
-    ![sockshopURL](../../assets/images/sockshop.png)
+   ![sockshopURL](../../assets/images/sockshop.png)

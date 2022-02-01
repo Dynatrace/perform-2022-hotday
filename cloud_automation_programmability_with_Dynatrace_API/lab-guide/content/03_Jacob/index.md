@@ -1,7 +1,8 @@
-## Metric API v2
-### _Utilize v2 APIs to Level Up Your Data_
+
+# Metric API v2
+## _Utilize v2 APIs to Level Up Your Data_
 In this example we will explore the /metrics/query endpoint, and how it can be used to export data from Dynatrace. Please use the token generated earlier in  the session and follow along!
-### Overview
+## Overview
 
 - Metric selectors
 - Resolution
@@ -9,7 +10,7 @@ In this example we will explore the /metrics/query endpoint, and how it can be u
 - Entity selector
 - Metric transformations
 
-### Step 1. Metric Selectors
+## Step 1. Metric Selectors
 1. We'll be using the `query` endpoint of the `metrics v2 API` to fetch our data.
 
    ```python
@@ -35,7 +36,7 @@ In this example we will explore the /metrics/query endpoint, and how it can be u
 
 ***The best place to build metric selectors is in the Data Explorer***
 
-### Step 2. Resolution
+## Step 2. Resolution
 1. How can I split my datapoints up?
 - The default number of data points is **120**
 - For a singular data point use **Inf**
@@ -51,7 +52,7 @@ In this example we will explore the /metrics/query endpoint, and how it can be u
 https://YOUR_ENVIRONMENT/api/v2/metrics/query?metricSelector=builtin%3Ahost.cpu.usage%3Aavg%3AsplitBy%28%22dt.entity.host%22%29%3Afilter%28and%28in%28%22dt.entity.host%22%2CentitySelector%28%22type%28host%29%2Ctag%28~%22TEST~%22%29%22%29%29%29%29&resolution=inf
 ```
 
-### Step 3. Timeframe
+## Step 3. Timeframe
 1. From what period of time do I want to pull my data?
 - Default is the current timeframe to two hours ago
 - The "From" field will represent the start of the timeframe
@@ -72,7 +73,7 @@ now
 https://YOUR_ENVIRONMENT/api/v2/metrics/query?metricSelector=builtin%3Ahost.cpu.usage%3Aavg%3AsplitBy%28%22dt.entity.host%22%29%3Afilter%28and%28in%28%22dt.entity.host%22%2CentitySelector%28%22type%28host%29%2Ctag%28~%22TEST~%22%29%22%29%29%29%29&resolution=inf&from=now-4h
 ```
 
-### Step. 4 Entity Selector
+## Step. 4 Entity Selector
 1. How can I filter the entities?
 - Entity selectors require the "type()" element
 - Example: type(SERVICE),mzName('DEV') 
@@ -82,7 +83,7 @@ https://YOUR_ENVIRONMENT/api/v2/metrics/query?metricSelector=builtin%3Ahost.cpu.
 https://YOUR_ENVIRONMENT/api/v2/metrics/query?metricSelector=builtin%3Ahost.cpu.usage%3Aavg%3AsplitBy%28%22dt.entity.host%22%29%3Afilter%28and%28in%28%22dt.entity.host%22%2CentitySelector%28%22type%28host%29%2Ctag%28~%22TEST~%22%29%22%29%29%29%29&resolution=inf&from=now-4h&entitySelector=type%28HOST%29%2CmzName%28%E2%80%98DEV%27%29
 ```
 
-### Step. 5 Metric Transformations
+## Step. 5 Metric Transformations
 1. How can I augment my data?
 - Delta: Take the difference between data points
 	```
