@@ -33,6 +33,10 @@ exports.webAppQs = [
       'How much (%) RUM wants to be captured (use integer between 0-100)?',
     name: 'costControlUserSessionPercentage',
     default: 100,
+    when: a => {
+      a.costControlUserSessionPercentage = 0;
+      return a.realUserMonitoringEnabled === true;
+    },
     validate(value) {
       if (!(value % 1 === 0)) {
         return 'Please enter a valid number (0-100)';
@@ -44,6 +48,10 @@ exports.webAppQs = [
     type: 'confirm',
     message: 'Do you want session replay enabled?',
     name: 'srEnabled',
+    when: a => {
+      a.srEnabled = false;
+      return a.realUserMonitoringEnabled === true;
+    },
     default: true
   },
   {
@@ -51,6 +59,10 @@ exports.webAppQs = [
     message:
       'How much (%) Session replay to be captured (use integer between 0-100)?',
     name: 'costControlPercentage',
+    when: a => {
+      a.costControlPercentage = 0;
+      return a.srEnabled === true;
+    },
     default: 100,
     validate(value) {
       if (!(value % 1 === 0)) {
