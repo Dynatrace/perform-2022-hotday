@@ -1,4 +1,4 @@
-# What is Fluentd?
+## What is Fluentd?
 
 An open-source log collector to unify logging layer.
 Key Features:
@@ -7,7 +7,7 @@ Key Features:
 - Pluggable Architecture allows for easily extending functionality
 - Built-in Reliability
 
-## Working with Fluentd
+### Working with Fluentd
 
 In this module we'll:
 
@@ -18,12 +18,12 @@ In this module we'll:
 
 Learning these concepts will help your teams transform terabytes of logs into AI-powered answers and additional context for apps and infrastructure at any scale.
 
-## The scenario
+### The scenario
 
 The metrics exposed by our Nginx ingress controller are not providing the right dimensions to understand precisely how the traffic is split between the several services of our cluster.
 We need to ingest the Nginx logs to see the full picture.
 
-### What we are going to do in the lab
+#### What we are going to do in the lab
 
 Nginx produces a standard logging format :
 
@@ -58,7 +58,7 @@ log-format:
 $remote_addr [$time_local] $request $status $body_bytes_sent $request_time $upstream_addr $upstream_response_time $proxy_host  $upstream_status $resource_name $resource_type $resource_namespace $service
  ```
 
-### Check out what is already in place
+#### Check out what is already in place
 
 Open the Fluentd config map:
 
@@ -99,7 +99,7 @@ Scroll a bit if necessary to find the starting `<source>` entries.  See below fo
 - `expression` formats the logs into a more readable format for fluentd.
 - `stdout` tells fluentd to send the logs to the container log to make it easy for us to read and see our changes as they occur.
 
-## LAB Step 1: Extract log data
+### LAB Step 1: Extract log data
 
 With the basic log collector in place we first want to extract the metadata into fluentd `keys`.  This lets us use only what we need and provide useful names for the data.
 
@@ -198,11 +198,11 @@ If you don't see hits coming in, confirm you are generating traffic in another t
 
 Most of the lines will have the same type of data.  But it's easy to confirm it worked if your *responsetime* fields now have decimals i.e. `"0.027"`.  That means fluentd extracted the responsetime value, changed it to a numeric (integer) format and exported it.
 
-## Lab Step 2: Improve the data quality
+### Lab Step 2: Improve the data quality
 
 Now that we have a nice data stream, we can improve it further.
 
-### Update the time key
+#### Update the time key
 
 fluentd parser plugin can also extract which key contains the date with `time_key`.
 Reopen the config map with:
@@ -221,7 +221,7 @@ Let's modify our current fluentd pipeline by adding a `time_key` and `time_forma
 
 As always, make sure the spacing is perfect and the new lines are directly under `types`.
 
-### Define a Prometheus output plugin
+#### Define a Prometheus output plugin
 
 Fluentd has a Prometheus plugin that is able to :
 
@@ -244,7 +244,7 @@ Add a new `source` entry directly under the ending of the previous `</source>`  
     </source>
 ```
 
-### About fluentd filters
+#### About fluentd filters
 
 We'll further improve the data quality by adding a filter to our log output.  This allows us to:
 
@@ -304,7 +304,7 @@ For example, the labels shown here (pulled from the keys we created earlier) wil
 </filter>
 ```
 
-## Lab Step 3: Adding a filter, labels, and metrics
+### Lab Step 3: Adding a filter, labels, and metrics
 
 Let's build out this framework.  Our goal is to have metrics for response time, bytes sent, status, and total requests.  We want to label them with method, request, status, namespace, service, and resourcename.
 
@@ -413,7 +413,7 @@ If the logs have errors, check your yaml to make sure everything is lined up.  I
 ~/hotday_script/load/generateTraffic.sh
 ```
 
-### Create a service with dynatrace Prometheus annotation to ingest the generated metrics
+#### Create a service with dynatrace Prometheus annotation to ingest the generated metrics
 
 We need to update the port of the fluentd exporter similar to the prometheus exercise before.
 
@@ -454,7 +454,7 @@ Then apply the config file with :
 kubectl apply -f ~/hotday_script/prometheus/service_fluentd_metric.yaml -n nondynatrace
 ```  
 
-### Create a graph utilizing the new nginx metrics
+#### Create a graph utilizing the new nginx metrics
 
 Check the terminal window where you are generating traffic to confirm it's still running.  If it stopped for some reason you can start it again with:
 
@@ -462,7 +462,7 @@ Check the terminal window where you are generating traffic to confirm it's still
 ~/hotday_script/load/generateTraffic.sh
 ```
 
-### Create a Graph showing the 90th percentile of the response time splitted by service
+#### Create a Graph showing the 90th percentile of the response time splitted by service
 
 Go to the Data Explorer and search for the new metric: `hotday_response_time`
 
@@ -473,7 +473,7 @@ Create a graph with :
   
 ![fluentd_1_1](../../assets/images/dt_fluentd_metrics.png)
 
-### Create a Pie graph showing the status code per services
+#### Create a Pie graph showing the status code per services
 
 Go to the Data Explorer and search for the new metric: `hotday_requests`
 

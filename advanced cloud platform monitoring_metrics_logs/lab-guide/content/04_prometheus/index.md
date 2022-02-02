@@ -1,6 +1,6 @@
-# Prometheus
+## Prometheus
 
-## Integrating Dynatrace With Prometheus
+### Integrating Dynatrace With Prometheus
 
 In this module we'll learn how to integrate Dynatrace with Prometheus in Kubernetes.
 
@@ -10,7 +10,7 @@ In this module we'll learn how to integrate Dynatrace with Prometheus in Kuberne
 - Setup Nginx Exporter for Metric Ingest
 - Visualize Metric in Dynatrace
 
-## Setup Prometheus Exporter For Metric Ingest
+### Setup Prometheus Exporter For Metric Ingest
 
 Let's explore how the promethues-node-exporter is exposing metrics.
 There are some things we need to gather from the exporter:
@@ -18,7 +18,7 @@ There are some things we need to gather from the exporter:
 - Port
 - Metric Url Endpoint
 
-### Step 1: Identifying Port - Node Exporter
+#### Step 1: Identifying Port - Node Exporter
 
 Let's identify the port exposed by the Node Exporter.
 The node exporter is deployed as a Daemonset by the Prometheus Operator.
@@ -39,7 +39,7 @@ kubectl get ds {DS NAME} -o jsonpath='{.spec.template.spec.containers[0].ports[]
 
 ![Prometheus_2](../../assets/images/prom_2.png)
 
-### Step 2: Validate the prometheus metrics by exposing exporter port to localhost.
+#### Step 2: Validate the prometheus metrics by exposing exporter port to localhost.
 
 Run the kubectl command:
 
@@ -59,7 +59,7 @@ kubectl port-forward {POD NAME} {PORT}:{PORT}
 
 ![Prometheus_4.1](../../assets/images/prom_4.1.png)
 
-### Step 3: Test and identifying prometheus metric url endpoint
+#### Step 3: Test and identifying prometheus metric url endpoint
 
 The Metric Url is typically /metrics. In our case it is /metrics.
 Duplicate the 'https://university.dynatrace.com/' tab, this should open another instance of the virtural classroom. Then terminal into the Bastion Host. Run the following curl command:
@@ -74,7 +74,7 @@ The result should be a large output of available node exporter metrics:
 
 ![Prometheus_3.3](../../assets/images/prom_3.3.png)
 
-### Setup ActiveGate to scrape Prometheus-node-exporter Metrics
+#### Setup ActiveGate to scrape Prometheus-node-exporter Metrics
 
 To be able to let the Active Gate scrape the prometheus metric from the node exporter, we need to :
 
@@ -89,7 +89,7 @@ vim hotday_script/prometheus/serice_nodexporter_template.yaml
 
 Update the annotation section replacing the value of 'metric.dynatrace.com/port' annotation with the correct port, current value is TO_DEFINE.
 
-#### Before
+##### Before
 
 ```bash
 metadata:
@@ -99,7 +99,7 @@ metadata:
     metrics.dynatrace.com/scrape: "true"
 ```
 
-#### After (replace TO_DEFINE with port identified)
+##### After (replace TO_DEFINE with port identified)
 
 ```bash
 metadata:
@@ -115,7 +115,7 @@ Deploy the new Service :
 kubectl apply -f hotday_script/prometheus/serice_nodexporter_template.yaml
 ```
 
-### Setup Kube-state Metric Exporter for Metric Ingest
+#### Setup Kube-state Metric Exporter for Metric Ingest
 
 Similar steps to 'Setup Node Exporter for Metric Ingest'
 
@@ -152,7 +152,7 @@ Deploy the new Service :
 kubectl apply -f hotday_script/prometheus/service_template.yaml
 ```
 
-### Setup Nginx Exporter for Metric Ingest
+#### Setup Nginx Exporter for Metric Ingest
 
 Similar to above, we want to ingest metrics from the nginx ingress controller.
 In the default namespace, nginx ingress controller has been deployed.
@@ -191,9 +191,9 @@ Deploy the new Service :
 kubectl apply -f hotday_script/prometheus/service__nginx_template.yaml
 ```
 
-## Visualize the metrics in Dynatrace
+### Visualize the metrics in Dynatrace
 
-### Metrics
+#### Metrics
 
 All the ingested metrics can be found in "Metrics".
 
@@ -205,7 +205,7 @@ kube_pod
 
 ![prom_metrics_screen](../../assets/images/prom_metrics_screen.png)
 
-### Data explorer
+#### Data explorer
 
 All available metrics can be dashboarded using the 'Data Explorer'
 
@@ -231,7 +231,7 @@ Select the visualization `single value`
 
 ![Prometheus 7](../../assets/images/prom_7.png)
 
-### Nginx ingress controller
+#### Nginx ingress controller
 
 The current environment use a Nginx Ingress controller to expose the following services out of the cluster:
 

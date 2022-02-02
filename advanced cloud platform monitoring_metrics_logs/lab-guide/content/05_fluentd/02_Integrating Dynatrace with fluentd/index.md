@@ -1,14 +1,14 @@
-# Logs: Integrating Fluentd and Dynatrace
+## Logs: Integrating Fluentd and Dynatrace
 
 In this module we'll learn how to integrate Dynatrace with Fluentd in Kubernetes.
 
-## What's in it for Me?
+### What's in it for Me?
 
 Learning these concepts will help your teams transform terabytes of logs into AI-powered answers and additional context for apps and infrastructure, at scale. 
 
 We will update our previous log stream pipeline to forward the generated log to dynatrace
 
-## Objective
+### Objective
 
 This exercise will :
 
@@ -16,7 +16,7 @@ This exercise will :
 - utilize the log v2 viewer
 - create a dynatrace metric out of logs
 
-### Restructuring the log stream
+#### Restructuring the log stream
 
 Fluentd has a output plugin dynatrace that will forward the generated log to the logs ingest API.
 The log ingest API requires a specific format :
@@ -45,7 +45,7 @@ The log ingest API requires a specific format :
 We can add as many extra properties to attach extra labels related to our log stream.
 Several labels will be used to index the log stream to a given Dynatrace entity.
   
-### how to restructure our logs
+#### how to restructure our logs
 
 Fluentd has a plugin that will helps us to restructure the produced log stream : `record_transformer`
 
@@ -91,7 +91,7 @@ dt.kubernetes.cluster.id "#{ENV['CLUSTER_ID']}"
 dt.kubernetes.node.system_uuid ${File.read("/sys/devices/virtual/dmi/id/product_uuid").strip}
  ```
 
-### remove log streams that are not related to http traffic going through the ingress
+#### remove log streams that are not related to http traffic going through the ingress
 
 Every request coming in our ingress are normally made to be routed to a specific service.
 Nginx could also log k8s health, live checks that won't mach any of our back-end rule.
@@ -126,11 +126,11 @@ The regexp excluding empty string is : `/^$/`
 
 Modify the logstream pipeline by adding the filter that will exclude log stream having an empty service
 
-### Add the record transformer to your logstream
+#### Add the record transformer to your logstream
 
 ![fluentd_2_1](../../assets/images/dt_fluentd_record_transformer.png)
 
-### Add the dynatrace output plugin
+#### Add the dynatrace output plugin
 
 The fluentd container deployed in the cluster has already the dynatrace plugin installed.
 The fluentd plugin is opensource and documented [here](https://github.com/dynatrace-oss/fluent-plugin-dynatrace)
@@ -157,23 +157,23 @@ If your load generator script stopped, start it up again in another terminal:
 ~/hotday_script/load/generateTraffic.sh
 ```
 
-## Log viewer
+### Log viewer
 
 All the ingested logs from the dynatrace Operator and from fluentd will be available in the Log viewer.
 Click on the left menu Observe and Explore/Logs
 ![fluentd_2_2](../../assets/images/dt_fluentd_logviewer.png)
 
-### Filter the logs to see our logs
+#### Filter the logs to see our logs
 
 To create a metric out of a log stream requires to create the right log filter.
 Look a the log properties of fluentd, and create the filter that will only show logs related to our application.
 ![fluentd_2_3](../../assets/images/dt_fluentd_log_detail.png)
 
-### Create a metric out of our logs
+#### Create a metric out of our logs
 Create a metric exposing the label `responsetime` time ingested by dynatrace
 ![fluentd_2_4](../../assets/images/dt_fluentd_log_create_metric.png)
 
-### Create traffic to generate new logs
+#### Create traffic to generate new logs
 
 THe metric only exists from the moment new log stream has been ingested by dynatrace.
 Let's run the load test script to have new logs ingested by dynatrace.
