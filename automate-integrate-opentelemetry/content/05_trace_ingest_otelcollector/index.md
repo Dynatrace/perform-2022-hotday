@@ -4,7 +4,7 @@ You will notice that an AWS Lambda function is called by shopizer. As we are not
 
 In this section, the AWS Lambda function has already been auto-instrumented with OpenTelemetry, so we will use the Dynatrace remote trace ingest API to ingest the Lambda traces into Dynatrace.
 
-If you had missed the eariler session, please submit a generated API token with the right access scope to us via [https://forms.office.com/r/b8We3K7Njk](https://forms.office.com/r/b8We3K7Njk)
+If you had missed the eariler session, please submit a generated API token with the right access scope to us via <a href="https://forms.office.com/r/b8We3K7Njk" target="_blank">https://forms.office.com/r/b8We3K7Njk</a>
 
 Without the token, you will not be able to view the remotely ingested traces.
 
@@ -79,7 +79,7 @@ Click on the `trace id` to view the full distributed trace across the caller and
 
 Your tenant is receving a lot of traces as the OpenTelemetry Collector was configured to send the trace data from a single Lambda function to multiple Dynatrace tenants. That is why you are receiving the same trace multiple times.
 
-Dynatrace provides a [sample exporter configuration](https://www.dynatrace.com/support/help/extend-dynatrace/opentelemetry/opentelemetry-ingest#expand--sample-collector-configuration) in our documentation.
+Dynatrace provides a <a href="https://www.dynatrace.com/support/help/extend-dynatrace/opentelemetry/opentelemetry-ingest#expand--sample-collector-configuration" target="_blank">sample exporter configuration</a> in our documentation.
 
 Below is small section of the configuration used by the instructor specific for this lab. The focus is on the `exporters` and `pipelines` within the `service` section.
 
@@ -109,4 +109,4 @@ This diagram will help you visualize the configuration of the OpenTelemetry Coll
 
 ![OpenTelemetry Collector](../../assets/images/05_trace_ingest_otelcollector.png)
 
-Exporters are used to configure multiple endpoints where the collector can send the traces to. By referring to the [OpenTelemetry Collector configuration documentation](https://opentelemetry.io/docs/collector/configuration/), you will be able to configure other exporters like Jeager or the likes. This means that you will be able to send trace data from a single source, to multiple destinations, including multiple Dynatrace instances.
+Exporters are used to configure multiple endpoints where the collector can send the traces to. By referring to the <a href="https://opentelemetry.io/docs/collector/configuration/" target="_blank">OpenTelemetry Collector configuration documentation</a>, you will be able to configure other exporters like Jeager or the likes. This means that you will be able to send trace data from a single source, to multiple destinations, including multiple Dynatrace instances.
