@@ -32,7 +32,7 @@ Around line 40 OpenTelemetry is getting configured. What's not correct yet is th
 ***Important***
 This API token will also be used in the next part of the hands on. The instructor will need this token to configure an OpenTelemetry Collector.
 
-Please submit your token to [https://forms.office.com/r/b8We3K7Njk](https://forms.office.com/r/b8We3K7Njk)
+Please submit your token to <a href="https://forms.office.com/r/b8We3K7Njk" target="_blank">https://forms.office.com/r/b8We3K7Njk</a>
 
 In an actual production environment, please treat your Access Tokens with utmost care and not distribute it indiscriminately. As your lab environment will be destroyed after this session, we are using this token as a means to demonstrate some capabilities within the scope of the lab.
 
