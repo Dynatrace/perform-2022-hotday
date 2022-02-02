@@ -21,7 +21,7 @@ OpenTelemetry and OpenTracing
 
 Make sure that the switch ``OpenTelemetry for Java`` is enabled.
 
-![Enable OpenTelemetry](../../assets/images/enable-opentelemetry.png)
+![Enable OpenTelemetry](../../../assets/images/enable-opentelemetry.png)
 
 ### Shut down the Vintage Handbag Shop
 
@@ -37,7 +37,7 @@ Now launch the Web Application again.
 mvn spring-boot:run
 ```
 
-![spring-boot:run](../../assets/images/spring-boot-run.png)
+![spring-boot:run](../../../assets/images/spring-boot-run.png)
 
 Like before the application will generate its own load. There's no real need to browse through the Shop again.
 
@@ -58,7 +58,7 @@ http://127.0.0.1:8080/shop/category/laptop-bags.html/ref=c:3
 
 Among the well known PurePath nodes (Database Calls, ...) you will now notice additional entries with the OpenTelemetry Icon.
 
-![Query-Category](../../assets/images/query-category.png)
+![Query-Category](../../../assets/images/query-category.png)
 
 The application we are working with is indeed already augmented with OpenTelemetry. The developer has chosen to signal to monitoring solutions which portions of the service flow are of importance.
 
@@ -84,7 +84,7 @@ Settings > Server-side service monitoring > Span capturing
 
 In our case it's sufficient enough to specify the span name that should be excluded. But you'll notice that the configuration allows for much more specific exclusion rules.
 
-![Span-Capturing](../../assets/images/span-capturing.png)
+![Span-Capturing](../../../assets/images/span-capturing.png)
 
 ### You have arrived!
 OneAgent automatically integrates OpenTelemetry Spans into ongoing PurePaths. Additional configuration is possible in order to tweak the results.

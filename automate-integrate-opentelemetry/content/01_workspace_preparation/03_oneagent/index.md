@@ -6,9 +6,9 @@ Now that we have access to the command line, let's install OneAgent now.
 
 In your Dynatrace Environment navigate to ``Deploy Dynatrace`` and choose ``Linux`` for the platform. Create a PaaS Token and follow the instructions for downloading the installer.
 
-![Deploy Dynatrace](../../assets/images/deploy-dynatrace.png)
+![Deploy Dynatrace](../../../assets/images/deploy-dynatrace.png)
 
-![Deploy Dynatrace](../../assets/images/deploy-dynatrace-2.png)
+![Deploy Dynatrace](../../../assets/images/deploy-dynatrace-2.png)
 
 ### Execute the OneAgent Installer
 
@@ -18,7 +18,7 @@ Don't forget to invoke the installer with root permissions. You may get asked fo
 sudo sh Dynatrace-OneAgent-Linux-1.231.186.sh
 ```
 
-![Deploy Dynatrace](../../assets/images/deploy-dynatrace-3.png)
+![Deploy Dynatrace](../../../assets/images/deploy-dynatrace-3.png)
 
 ### Cleanup - Remove OneAgent Installer from disk
 
@@ -32,4 +32,4 @@ on the command line.
 
 Let's verify that OneAgent is indeed reporting to your Dynatrace Environment.
 
-![Deploy Dynatrace](../../assets/images/hosts.png)
+![Deploy Dynatrace](../../../assets/images/hosts.png)
