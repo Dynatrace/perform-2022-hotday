@@ -79,7 +79,7 @@ Click on the `trace id` to view the full distributed trace across the caller and
 
 Your tenant is receving a lot of traces as the OpenTelemetry Collector was configured to send the trace data from a single Lambda function to multiple Dynatrace tenants. That is why you are receiving the same trace multiple times.
 
-Dynatrace provides a [sample exporter configuration](https://www.dynatrace.com/support/help/extend-dynatrace/opentelemetry/opentelemetry-ingest#expand--sample-collector-configuration) in our documentation. You can also reference the OpenTelemetry documentation for a full run-down of [OpenTelemetry Collector configuration](https://opentelemetry.io/docs/collector/configuration/).
+Dynatrace provides a [sample exporter configuration](https://www.dynatrace.com/support/help/extend-dynatrace/opentelemetry/opentelemetry-ingest#expand--sample-collector-configuration) in our documentation.
 
 Below is configuration used by the instructor, specific for this lab.
 
@@ -102,3 +102,9 @@ service:
       processors: [batch]
       exporters: [logging,otlphttp/stu1,otlphttp/stu2]
 ```
+
+The diagram below will help you visualize the configuration of the OpenTelemetry Collector.
+
+![OpenTelemetry Collector](../../assets/images/05_trace_ingest_otelcollector.png)
+
+Exporters are used to configure multiple endpoints where the collector can send the traces to. By referring to the [OpenTelemetry Collector configuration documentation](https://opentelemetry.io/docs/collector/configuration/), you will be able to configure other exporters like Jeager or the likes. This means that you will be able to send trace data from a single source, to multiple destinations, including multiple Dynatrace instances.
