@@ -39,7 +39,7 @@ This initial build will take a minute or two to complete.
 > - Relaunch the browser with the IP address.
 > - Login to codeserver.
 > - In the **Getting Started** screen, click on **Open a folder** to start,
-> - or use the hambuger menu -- File -- Open Folder
+> - or use the hamburger menu ![New Terminal](../../../assets/images/menu-button.png) -- File -- Open Folder
 > - Select **shopizer** folder 
 
 ### You have arrived!
