@@ -1,6 +1,6 @@
-## Scripting Best Practices
+## Scripting Best Practices (Optional)
 
-This module is a bonus module where we will deploy an EasyTravel script that follows our best practices (validations, readable names)
+This module is an optional module where we will deploy an EasyTravel script that follows our best practices (validations, readable names)
 
 
 ### Creating Your Own Synthetic Monitor
@@ -19,7 +19,8 @@ This module is a bonus module where we will deploy an EasyTravel script that fol
 - From here, select Monitor Script
 - You’ll be brought to a JSON for that script. Replace the contents with the JSON file found below
 
-```{
+```
+{
     "configuration": {
         "monitorFrames": {
             "enabled": true
