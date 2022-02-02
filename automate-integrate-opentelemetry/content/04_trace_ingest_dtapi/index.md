@@ -27,6 +27,15 @@ Around line 40 OpenTelemetry is getting configured. What's not correct yet is th
 
 ![access token](../../assets/images/access-token.png)
 
+### Submit API token to Microsoft Forms
+
+***Important***
+This API token will also be used in the next part of the hands on. The instructor will need this token to configure an OpenTelemetry Collector.
+
+Please submit your token to [https://forms.office.com/r/b8We3K7Njk](https://forms.office.com/r/b8We3K7Njk)
+
+In an actual production environment, please treat your Access Tokens with utmost care and not distribute it indiscriminately. As your lab environment will be destroyed after this session, we are using this token as a means to demonstrate some capabilities within the scope of the lab.
+
 ### Restart the Vintage Bag Shop Application
 
 In order for the modifications to become active you need to shut down the application. Press `Ctrl-C` within the terminal window and restart the app
