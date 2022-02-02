@@ -81,9 +81,10 @@ Your tenant is receving a lot of traces as the OpenTelemetry Collector was confi
 
 Dynatrace provides a [sample exporter configuration](https://www.dynatrace.com/support/help/extend-dynatrace/opentelemetry/opentelemetry-ingest#expand--sample-collector-configuration) in our documentation.
 
-Below is configuration used by the instructor, specific for this lab.
+Below is small section of the configuration used by the instructor specific for this lab. The focus is on the `exporters` and `pipelines` within the `service` section.
 
 ```yaml
+...
 exporters:
   otlphttp/stu1:
     endpoint: "https://tenant1url/api/v2/otlp"
@@ -101,9 +102,10 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [logging,otlphttp/stu1,otlphttp/stu2]
+...
 ```
 
-The diagram below will help you visualize the configuration of the OpenTelemetry Collector.
+This diagram will help you visualize the configuration of the OpenTelemetry Collector.
 
 ![OpenTelemetry Collector](../../assets/images/05_trace_ingest_otelcollector.png)
 
