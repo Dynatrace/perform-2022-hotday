@@ -13,13 +13,13 @@ Without the token, you will not be able to view the remotely ingested traces.
    ![Lambda services](../../assets/images/05_trace_ingest_otelcollector-before1.gif)
 1. View the purepaths 15 mins to 30 mins ago
    ![Lambda services](../../assets/images/05_trace_ingest_otelcollector-before2.gif)
-1. `call-lambda` service makes a call to the .NET Lambda function, but we are not aware of what the Lambda function does or which components in the Lambda function contribute to the 1 sec+ execution time.
+1. callLambda service makes a call to the .NET Lambda function, but we are not aware of what the Lambda function does or which components in the Lambda function contribute to the 1 sec+ execution time.
 
 We can shed more light using OpenTelemetry in the same way as the pervious labs.
 
 ### PurePaths after ingesting traces
 
-This time, pick a few more recent `call-lambda` traces (in the past 5 mins to 10 mins)
+This time, pick a few more recent `callLambda` traces (in the past 5 mins to 10 mins)
 
 ![Lambda services](../../assets/images/05_trace_ingest_otelcollector-after.png)
 
@@ -32,15 +32,15 @@ From here, we can tell that the Azure function contributes to the marjority of t
 
 ### Exploring the full distributed trace
 
-We could also understand which product in shopizer is making calls to `call-lambda` by analyzing the full distributed trace.
+We could also understand which product in shopizer is making calls to `callLambda` by analyzing the full distributed trace.
 
 1. Click on the button `Show full trace` at the top of the screen
 1. You will be presented with the full distributed trace
-1. You will then observe that the transaction making calls to `call-lambda` is from the `vintage-laptop-bag`
+1. You will then observe that the transaction making calls to `callLambda` is from the `vintage-laptop-bag`
 
 ![Lambda services](../../assets/images/05_trace_ingest_otelcollector-fulltrace.gif)
 
-One key meta data to take note of in the `request header` - it is the `Trace ID`.
+Please take note of the ***Trace ID*** meta data inside the `request header`.
 
 ![TraceID](../../assets/images/05_trace_ingest_otelcollector-traceid1.png)
 
@@ -58,7 +58,7 @@ Utilize the `Filter requests` bar. Filter traces that are related to the `Servic
 
 ![DistributedTraces](../../assets/images/05_trace_ingest_otelcollector-traces2.gif)
 
-Scoll down and expand any one of the ingested traces
+Scoll down and expand any one of the ingested traces.
 
 ![DistributedTraces](../../assets/images/05_trace_ingest_otelcollector-traces3.png)
    
