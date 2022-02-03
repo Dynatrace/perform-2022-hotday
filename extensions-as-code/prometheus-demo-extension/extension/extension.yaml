@@ -1,6 +1,6 @@
 name: custom:prometheus.demo
 version: 1.0.0
-minDynatraceVersion: "1.227"
+minDynatraceVersion: "1.229"
 author:
   name: "Dynatrace User"
 
@@ -21,18 +21,6 @@ prometheus:
             type: gauge
           - key: custom.prometheus.demo.host.logical.disk.size.bytes
             value: metric:windows_logical_disk_size_bytes
-            type: gauge
-          - key: custom.prometheus.demo.host.logical.disk.latency.read
-            value: metric:windows_logical_disk_read_latency_seconds_total
-            type: count
-          - key: custom.prometheus.demo.host.logical.disk.latency.write
-            value: metric:windows_logical_disk_read_write_latency_seconds_total
-            type: count
-      - subgroup: CPU
-        featureSet: Processor performance
-        metrics:
-          - key: custom.prometheus.demo.host.cpu.processor
-            value: metric:windows_cpu_processor_performance
             type: gauge
   - group: services
     interval: 1m
@@ -64,21 +52,6 @@ metrics:
       displayName: Logical disk size
       description: Total size of logical disk
       unit: Byte
-  - key: custom.prometheus.demo.host.logical.disk.latency.read
-    metadata:
-      displayName: Disk read latency
-      description: Average time of a read operation from the disk
-      unit: Second
-  - key: custom.prometheus.demo.host.logical.disk.latency.write
-    metadata:
-      displayName: Disk write latency
-      description: Average time of a write operation from the disk
-      unit: Second
-  - key: custom.prometheus.demo.host.cpu.processor
-    metadata:
-      displayName: Processor performance
-      description: Average performance of the processor while it is executing instructions
-      unit: Percent
   - key: custom.prometheus.demo.host.service
     metadata:
       displayName: Running service

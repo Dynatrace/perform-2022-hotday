@@ -1,0 +1,205 @@
+{
+    "configuration": {
+        "chromiumStartupFlags": {
+            "disable-web-security": false
+        },
+        "device": {
+            "orientation": "landscape",
+            "deviceName": "Desktop"
+        }
+    },
+    "type": "clickpath",
+    "version": "1.0",
+    "events": [{
+        "type": "navigate",
+        "wait": {
+            "waitFor": "page_complete"
+        },
+        "description": "Loading of \"http://www.amazon.com\"",
+        "url": "http://www.amazon.com"
+    }, {
+        "type": "click",
+        "wait": {
+            "waitFor": "network"
+        },
+        "target": {
+            "locators": [{
+                "type": "css",
+                "value": "#twotabsearchtextbox"
+            }, {
+                "type": "css",
+                "value": "input[type=\"text\"][name=\"field-keywords\"]"
+            }, {
+                "type": "css",
+                "value": ".nav-input:eq(0)"
+            }, {
+                "type": "css",
+                "value": "#nav-search-bar-form div:nth-child(2) div input"
+            }, {
+                "type": "css",
+                "value": "#twotabsearchtextbox"
+            }]
+        },
+        "button": 0,
+        "description": "click on \"twotabsearchtextbox\""
+    }, {
+        "type": "click",
+        "wait": {
+            "waitFor": "network"
+        },
+        "target": {
+            "locators": [{
+                "type": "css",
+                "value": "#twotabsearchtextbox"
+            }, {
+                "type": "css",
+                "value": "input[type=\"text\"][name=\"field-keywords\"]"
+            }, {
+                "type": "css",
+                "value": ".nav-input:eq(0)"
+            }, {
+                "type": "css",
+                "value": "#nav-search-bar-form div:nth-child(2) div input"
+            }, {
+                "type": "css",
+                "value": "#twotabsearchtextbox"
+            }]
+        },
+        "button": 0,
+        "description": "click on \"twotabsearchtextbox\""
+    }, {
+        "type": "click",
+        "wait": {
+            "waitFor": "network"
+        },
+        "target": {
+            "locators": [{
+                "type": "css",
+                "value": "#twotabsearchtextbox"
+            }, {
+                "type": "css",
+                "value": "input[type=\"text\"][name=\"field-keywords\"]"
+            }, {
+                "type": "css",
+                "value": ".nav-input:eq(0)"
+            }, {
+                "type": "css",
+                "value": "#nav-search-bar-form div:nth-child(2) div input"
+            }, {
+                "type": "css",
+                "value": "#twotabsearchtextbox"
+            }]
+        },
+        "button": 0,
+        "description": "click on \"twotabsearchtextbox\""
+    }, {
+        "type": "keystrokes",
+        "wait": {
+            "waitFor": "page_complete"
+        },
+        "target": {
+            "locators": [{
+                "type": "css",
+                "value": "#twotabsearchtextbox"
+            }, {
+                "type": "css",
+                "value": "input[type=\"text\"][name=\"field-keywords\"]"
+            }, {
+                "type": "css",
+                "value": ".nav-input:eq(0)"
+            }, {
+                "type": "css",
+                "value": "#nav-search-bar-form div:nth-child(2) div input"
+            }, {
+                "type": "css",
+                "value": "#twotabsearchtextbox"
+            }]
+        },
+        "masked": false,
+        "simulateBlurEvent": true,
+        "simulateReturnKey": true,
+        "description": "keystrokes on \"twotabsearchtextbox\"",
+        "textValue": "SRE"
+    }, {
+        "type": "click",
+        "wait": {
+            "waitFor": "page_complete"
+        },
+        "target": {
+            "locators": [{
+                "type": "css",
+                "value": "a[href$=\"/Site-Reliability-Workbook-Practical-Implement/dp/1492029505/ref=sr_1_2?crid=48WOBGF0F5MC&keywords=SRE&qid=1643665906&sprefix=sre%2Caps%2C82&sr=8-2\"]:eq(0)"
+            }, {
+                "type": "css",
+                "value": "img[alt=\"The Site Reliability Workbook: Practical Ways to Implement SRE\"]:eq(1)"
+            }, {
+                "type": "css",
+                "value": "img[src$=\"https://m.media-amazon.com/images/I/915+dyfxm0L._AC_UL320_.jpg\"]:eq(1)"
+            }, {
+                "type": "css",
+                "value": ".s-image:eq(1)"
+            }, {
+                "type": "css",
+                "value": "#search div:nth-child(12) div div span:nth-child(4) div:nth-child(2) div:nth-child(10) div div div div div span a div img"
+            }, {
+                "type": "css",
+                "value": "#search div.s-desktop-width-max div.s-matching-dir div.sg-col-inner span.rush-component div.s-main-slot div.sg-col-4-of-12 div.sg-col-inner div.s-widget-container div.s-card-container div.a-section div.s-product-image-container span.rush-component a.a-link-normal div.a-section img.s-image:eq(1)"
+            }]
+        },
+        "button": 0,
+        "description": "click on \"The Site Reliability Workbook: Practical Ways to Implement SRE\""
+    }, {
+        "type": "click",
+        "wait": {
+            "waitFor": "page_complete"
+        },
+        "target": {
+            "locators": [{
+                "type": "css",
+                "value": "#add-to-cart-button"
+            }, {
+                "type": "css",
+                "value": "input[type=\"submit\"][name=\"submit.add-to-cart\"]"
+            }, {
+                "type": "css",
+                "value": ".a-button-input:eq(2)"
+            }, {
+                "type": "css",
+                "value": "#submit\\.add-to-cart span input:nth-child(2)"
+            }, {
+                "type": "css",
+                "value": "#add-to-cart-button"
+            }]
+        },
+        "button": 0,
+        "description": "click on \"Add to Cart\""
+    }, {
+        "type": "click",
+        "wait": {
+            "waitFor": "page_complete"
+        },
+        "target": {
+            "locators": [{
+                "type": "css",
+                "value": "#nav-cart-text-container"
+            }, {
+                "type": "css",
+                "value": "a:contains(\"Cart\"):eq(0)"
+            }, {
+                "type": "css",
+                "value": "div:contains(\"Cart\"):eq(5)"
+            }, {
+                "type": "css",
+                "value": ".nav-progressive-attribute:eq(18)"
+            }, {
+                "type": "css",
+                "value": "#nav-cart div:nth-child(2)"
+            }, {
+                "type": "css",
+                "value": "#nav-cart-text-container"
+            }]
+        },
+        "button": 0,
+        "description": "click on \"nav-cart-text-container\""
+    }]
+}

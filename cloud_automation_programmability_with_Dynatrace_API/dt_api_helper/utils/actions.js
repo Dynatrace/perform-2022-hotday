@@ -17,6 +17,7 @@ dotenv.config();
 const autoTagRules = require('../jsonFiles/autoTagRules.json');
 const appOverview = require('../jsonFiles/dashboards/appOverview.json');
 const highLevelOverview = require('../jsonFiles/dashboards/highLevelOverview.json');
+const licensingOverview = require('../jsonFiles/dashboards/licensingOverview.json')
 const webAppConfig = require('../jsonFiles/webAppConfig.json');
 const appDetectionRule = require('../jsonFiles/appDetectionRule.json');
 const addToCart = require('../jsonFiles/synthetic/add-to-cart.json');
@@ -66,13 +67,10 @@ const genWebApp = async (ans, headers, ask) => {
       }" Application ID: ${data.id}` + os.EOL,
       (err) => (err ? console.log(err) : '')
     );
-    fs.appendFile(
-      historyPath,
-      `Visit ${process.env.TENANT}#settings/deployment to see your new app` +
-        os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
     console.log(`Application "${data.name}" created!!!! Its ID: is ${data.id}`);
+    console.log('\x1b[33m%s\x1b[0m', `Visit ${process.env.TENANT}#settings/deployment to view your tokens`)
+  } else {
+    console.log(`Something went wrong: code: ${data.error.code}, message: ${data.error.message}. Please check the information entered was correct`)
   }
   ask();
 };
@@ -129,15 +127,10 @@ const generateAppDetectRule = async (headers, ask) => {
               } created for Application "${data.name}" ` + os.EOL,
               (err) => (err ? console.log(err) : '')
             );
-            fs.appendFile(
-              historyPath,
-              `Visit ${process.env.TENANT}#settings/rum/webappmonitoring to see your new app detection rule` +
-                os.EOL,
-              (err) => (err ? console.log(err) : '')
-            );
             console.log(
               `Rule ID: "${data.id}" created for Application "${data.name}"`
             );
+            console.log('\x1b[33m%s\x1b[0m', `Visit ${process.env.TENANT}#settings/rum/webappmonitoring to see your new app detection rule`)
           } else {
             console.log(
               `Something went wrong: Status - ${response.status}, ${response.statusText}`
@@ -183,14 +176,12 @@ const generateTagRule = (headers, ask) => {
         }" ` + os.EOL,
         (err) => (err ? console.log(err) : '')
       );
-      fs.appendFile(
-        historyPath,
-        `Visit ${process.env.TENANT}#settings/taggingoverview/autotags to see your new tag rule` +
-          os.EOL,
-        (err) => (err ? console.log(err) : '')
-      );
-
       console.log(`Rule "${data.id}" created for "${data.name}"`);
+      console.log('\x1b[33m%s\x1b[0m', `Visit ${process.env.TENANT}#settings/taggingoverview/autotags to see your new tag rule`)
+    }  else {
+      console.log(
+        `Something went wrong: Status - ${response.status}, ${response.statusText}`
+      );
     }
     ask();
   });
@@ -227,14 +218,10 @@ const syntheticHelper = async (synthetic, headers, ask) => {
         }" created. Synthetic ID: ${data.entityId}` + os.EOL,
         (err) => (err ? console.log(err) : '')
       );
-      fs.appendFile(
-        historyPath,
-        `Visit ${process.env.TENANT}#monitors to see your monitors` + os.EOL,
-        (err) => (err ? console.log(err) : '')
-      );
       console.log(
         `Synthetic monitor: "${ans.name}" created!!!! Its ID: is ${data.entityId}`
       );
+      console.log('\x1b[33m%s\x1b[0m', `Visit ${process.env.TENANT}#monitors to see your monitors`)
     } else {
       console.log(
         `Something went wrong: Status - ${response.status}, ${response.statusText}`
@@ -267,7 +254,6 @@ const deploySynthetics = async (headers, ask) => {
  *  --------------------------------------------------------------------------------------  */
 
 const generateManagementZone = async (mzrule, environment, headers) => {
-  console.log('environment:', environment);
   if (environment === 'Production') {
     mzrule.name = 'Production';
     mzrule.rules[0].conditions[0].comparisonInfo.value.value = 'prod';
@@ -299,12 +285,7 @@ const generateManagementZone = async (mzrule, environment, headers) => {
       (err) => (err ? console.log(err) : '')
     );
     console.log(`MZ: "${data.name}" created. Rule ID: ${data.id}`);
-    fs.appendFile(
-      historyPath,
-      `Visit ${process.env.TENANT}#settings/#settings/preferences/mzoverview to see your new Management Zones` +
-        os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
+    console.log('\x1b[33m%s\x1b[0m', `Visit ${process.env.TENANT}#settings/#settings/preferences/mzoverview to see your new Management Zones`)
   } else {
     console.log(
       `Something went wrong: Status - ${response.status}, ${response.statusText}`
@@ -344,14 +325,9 @@ const dashHelper = async (dash, headers) => {
       }` + os.EOL,
       (err) => (err ? console.log(err) : '')
     );
-    fs.appendFile(
-      historyPath,
-      `Visit ${process.env.TENANT}ui/dashboards?filters=preset%3Dtrue to see your new dashboards` +
-        os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
     console.log('Dashboard created');
   } else {
+    console.log(response)
     console.log(
       `Something went wrong: Status - ${response.status}, ${response.statusText}`
     );
@@ -359,14 +335,17 @@ const dashHelper = async (dash, headers) => {
 };
 
 const deployDashboard = async (headers, ask) => {
+  
   //first dashboard
   await dashHelper(appOverview, headers);
-
+  
   //second dashboard
   await dashHelper(highLevelOverview, headers);
-
+  
+  //third dashboard
+  await dashHelper(licensingOverview, headers);
   //insert any dashboard you want to upload
-
+  console.log('\x1b[33m%s\x1b[0m', `Visit ${process.env.TENANT}ui/dashboards?filters=preset%3Dtrue&filters=owner%3DHOT%20session to see your new dashboards`)
   await ask();
 };
 
@@ -394,15 +373,10 @@ const generateConditionalNamingRule = async (headers, ask) => {
       }" created. Rule ID: ${dataPG.id}` + os.EOL,
       (err) => (err ? console.log(err) : '')
     );
-    fs.appendFile(
-      historyPath,
-      `Visit ${process.env.TENANT}#settings/pgnamingsettings to see your new PG naming rule` +
-        os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
     console.log(
       `PG naming rule: "${dataPG.name}" created. Rule ID: ${dataPG.id}`
     );
+    console.log('\x1b[33m%s\x1b[0m', `Visit ${process.env.TENANT}#settings/pgnamingsettings to see your new PG naming rule`)
   } else {
     console.log(
       `Something went wrong: Status - ${responsePG.status}, ${responsePG.statusText}`
@@ -426,15 +400,10 @@ const generateConditionalNamingRule = async (headers, ask) => {
       }" created. Rule ID: ${dataService.id}` + os.EOL,
       (err) => (err ? console.log(err) : '')
     );
-    fs.appendFile(
-      historyPath,
-      `Visit ${process.env.TENANT}#settings/servicenamingsettings to see your new Service naming rule` +
-        os.EOL,
-      (err) => (err ? console.log(err) : '')
-    );
     console.log(
       `Service naming rule: "${dataService.name}" created. Rule ID: ${dataService.id}`
     );
+    console.log('\x1b[33m%s\x1b[0m', `Visit ${process.env.TENANT}#settings/servicenamingsettings to see your new Service naming rule`)
   } else {
     console.log(
       `Something went wrong: Status - ${responseService.status}, ${responseService.statusText}`
