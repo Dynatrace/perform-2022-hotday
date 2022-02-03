@@ -62,14 +62,14 @@ We will not go into depth about these best practices, as they are covered in the
 
 ![JSON](../../assets/images/JSON.png)
 
-```{
+```
+{
   "metadata": {
     "configurationVersions": [
       28
     ],
     "clusterVersion": "1.234.0.20220107-110213"
   },
-  "identifier": "APPLICATION-C9141466E602FCD2",
   "name": "EasyTravel Demo Application",
   "type": "AUTO_INJECTED",
   "realUserMonitoringEnabled": true,
@@ -528,6 +528,11 @@ We will not go into depth about these best practices, as they are covered in the
   ]
 }
 ```
+
+- Once entered, we'll need one more modification. Modify the JSON in the Request Body to ensure that the ID in the identifier line is the same as the Application ID you entered in the ID section above it
+
+![API_Deployment2](../../assets/images/API_Deployment2.png)
+
 - Once done, click Execute. The API explorer should return a message like below with no error messages. If successful, the application you created via the detection rules earlier should now be called EasyTravel Demo Application
 
 ![API_Deployment](../../assets/images/API_Deployment.png)

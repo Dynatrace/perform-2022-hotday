@@ -3,7 +3,7 @@
 ### Step 1: Search for a metric by name
 1. Navigate to Observe and Explore > Metrics
 2. Search for metric by name
-`telegraf.mem.used.percent`
+`telegraf.mem.used_percent`
 3. Favorite the metric
 4. Which dimensions are available?
 

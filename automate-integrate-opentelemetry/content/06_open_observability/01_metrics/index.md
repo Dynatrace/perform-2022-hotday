@@ -3,7 +3,7 @@
 ### Step 1: Browser for the relevant metrics
 1. Go to Dynatrace menu -> metrics.
 1. Search for `span`.
-1. Select `Span Throughput`.
+1. Expand the `Span Throughput` metric.
 1. Click on `Create chart` button.
 
 ![Metrics browser](../../../assets/images/06_open_observability-01metrics1.gif)

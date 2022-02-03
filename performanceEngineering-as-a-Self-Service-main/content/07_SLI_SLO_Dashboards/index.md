@@ -2,6 +2,8 @@
 
 Based on user feedback we learned that defining custom SLIs via the sli.yaml and then defining SLOs via slo.yaml can be challenging as one has to be familiar with the Dynatrace Metrics v2 API to craft the necessary SLI queries. As dashboards are a prominent feature in Dynatrace to visualize metrics, it was a logical step to leverage dashboards as the basis for Keptn's SLI/SLO configuration.
 
+<hr>
+
 ## Use Cases
 
 <img src="../../assets/images/sli_use_cases.png" width="500"/>
@@ -51,9 +53,10 @@ Response time (P50);sli=svc_rt_p95;pass=<+10%,<500
 
 Good news, for the lab exercise, we have created a SLI dashboard template.
 
-First we need to tell keptn what Dashboard to use for the evaluation.
+We have also created the secret in keptn to allow the dashbaord integration.
 
-### Environment setup steps:
+<details><summary>Environment setup steps</summary>
+
 1. open ssh
 1. change to the root user
     1. execute
@@ -83,7 +86,7 @@ First we need to tell keptn what Dashboard to use for the evaluation.
 1. Next, navigate to this directory, ~/keptn-in-a-box/resources/dynatrace/scripts
     1. execute
         ```bash
-            #: cd ~/keptn-in-a-box/resources/dynatrace/scripts
+            #: cd /home/dtu_training/keptn-in-a-box/resources/dynatrace/scripts
         ```
 1. Run the script setdbenv.sh
     1. execute
@@ -91,6 +94,8 @@ First we need to tell keptn what Dashboard to use for the evaluation.
             #: ./setdbenv.sh <domain>
         ```
         You can find your domain by navigating to the lab home page.
+</details>
+
 <hr>
 
 ## Next
@@ -115,9 +120,9 @@ select the dashbaord.
 
 <img src="../../assets/images/sli_kqg_db.png" width="500"/>
 
-## Dynatrace Configuration 
+<details><summary>Dynatrace Configuration</summary>
 
-We need to create a rule on the management zone that keptn created.
+If not done previously, We need to create a rule on the management zone that keptn created.
 
 In the Dynatrace UI, navigate to "Settings>Preferences>Management zones"
 Now, locate the "Keptn: sockshop staging" management zone.
@@ -125,6 +130,10 @@ Now, locate the "Keptn: sockshop staging" management zone.
 Create this rule on the management zone.
 
 <img src="../../assets/images/mz_rule.png" width="500"/>
+
+</details>
+
+<hr>
 
 ### Next, create the SLO
 
