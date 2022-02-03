@@ -84,6 +84,6 @@ Dynatrace log monitoring 2.0 allows external log events through log ingest API. 
 2. Click on "Table options"
 3. Select "job.duration", "job.name", "job.status"
 4. Review result table
-5. Ping to dashboard
+5. Pin to dashboard
 
 ![RDP](../../assets/images/lab09_07.jpg)
