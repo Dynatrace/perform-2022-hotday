@@ -1,7 +1,7 @@
-## Dynatrace HOTS Session - AutoBackup
+## Automated configuration audit/backup
 Automatic Backups to git when changes are detected from Dynatrace environment
 
-### Pre-Requistites
+### Pre-Requisites
 Python 3.8 (Since 1.231)
 Enabled Audit Log in Environment
 
@@ -17,7 +17,7 @@ We will developing a Dynatrace ActiveGate Extension using the Dynatrace audit lo
 
 ### Setting Up GitHub
 1. Navigate to [GitHub Tokens Page](https://github.com/settings/tokens)
-2. On the right side, click "Genereate new token"
+2. On the right side, click "Generate new token"
 3. Give it permissions for all "repo" and "admin:repo_hook"
 4. Copy the new token and keep it safe!
 5. Navigate to [GitHub New Repo](https://github.com/new)
@@ -51,7 +51,7 @@ bash setup_configbackup.bash
 ```
 pipenv install REPLACE_WITH_FILENAME.whl
 ```
-6. Enter the project directory and enter virtual environement
+6. Enter the project directory and enter virtual environment
 ```
 cd dt-config-autobackup; pipenv shell
 ```
@@ -80,7 +80,7 @@ git checkout -t origin/Phase-0-Extension-Skeleton
 ```
 git checkout -t origin/Phase-1-Query-Audit-Log
 ```
-2. Open up Environement v2 Swagger and authenticate
+2. Open up Environment v2 Swagger and authenticate
 3. Run a command for the past two hours
 4. Look through the payload and then copy the URL to help build our function
 5. Run plugin_sdk simulate_plugin
@@ -94,7 +94,7 @@ git reset --hard HEAD
 ```
 git checkout -t origin/Phase-2-Getting-the-Config
 ```
-3. Add in the API endpoint and build the call to get configuration info. We need to parse the entityId into seperate variables
+3. Add in the API endpoint and build the call to get configuration info. We need to parse the entityId into separate variables
 4. Run plugin_sdk simulate_plugin
 
 
