@@ -31,10 +31,10 @@ kubectl get ds
 
 ![Prometheus_1](../../assets/images/prom_1.png)
 
-Copy and replace the name of the Node Exporter DS and run the kubectl command to get the container port:
+If the name matches prometheus-node-exporter run the command below as written.  If not, update the name to match before executing.
 
 ```bash
-kubectl get ds {DS NAME} -o jsonpath='{.spec.template.spec.containers[0].ports[].containerPort}{"\n"}'
+kubectl get ds prometheus-node-exporter -o jsonpath='{.spec.template.spec.containers[0].ports[].containerPort}{"\n"}'
 ```
 
 ![Prometheus_2](../../assets/images/prom_2.png)
@@ -74,6 +74,10 @@ The result should be a large output of available node exporter metrics:
 
 ![Prometheus_3.3](../../assets/images/prom_3.3.png)
 
+![Checkpoint!](../../assets/images/cp.png)
+
+Please take a moment to mark the spreadsheet *Prometheus - Test Metric Endpoint* column for your row with `done`.
+
 #### Setup ActiveGate to scrape Prometheus-node-exporter Metrics
 
 To be able to let the Active Gate scrape the prometheus metric from the node exporter, we need to :
@@ -84,7 +88,7 @@ To be able to let the Active Gate scrape the prometheus metric from the node exp
 Use `vim` to edit the following file - `hotday_script/prometheus/serice_nodexporter_template.yaml`:
 
 ```bash
-vim hotday_script/prometheus/serice_nodexporter_template.yaml
+vim ~/hotday_script/prometheus/serice_nodexporter_template.yaml
 ```
 
 Update the annotation section replacing the value of 'metric.dynatrace.com/port' annotation with the correct port, current value is TO_DEFINE.
@@ -112,7 +116,7 @@ metadata:
 Deploy the new Service :
 
 ```bash
-kubectl apply -f hotday_script/prometheus/serice_nodexporter_template.yaml
+kubectl apply -f ~/hotday_script/prometheus/serice_nodexporter_template.yaml
 ```
 
 #### Setup Kube-state Metric Exporter for Metric Ingest
@@ -141,7 +145,7 @@ curl http://localhost:PORT/metrics
 Use vim to update the `hotday_script/prometheus/service_template.yaml` file with the correct port:
 
 ```bash
-vim hotday_script/prometheus/service_template.yaml
+vim ~/hotday_script/prometheus/service_template.yaml
 ```
 
 replace TO_DEFINE with port identified in 1.
@@ -149,7 +153,7 @@ replace TO_DEFINE with port identified in 1.
 Deploy the new Service :
 
 ```bash
-kubectl apply -f hotday_script/prometheus/service_template.yaml
+kubectl apply -f ~/hotday_script/prometheus/service_template.yaml
 ```
 
 #### Setup Nginx Exporter for Metric Ingest
@@ -180,16 +184,20 @@ curl http://localhost:PORT/metrics
 Use vim to update the `hotday_script/prometheus/service__nginx_template.yaml` file with the correct port
 
 ```bash
-vim hotday_script/prometheus/service__nginx_template.yaml
-
-replace TO_DEFINE with port identified in 1.
+vim ~/hotday_script/prometheus/service__nginx_template.yaml
 ```
+
+Replace TO_DEFINE with port identified in 1.
 
 Deploy the new Service :
 
 ```bash
-kubectl apply -f hotday_script/prometheus/service__nginx_template.yaml
+kubectl apply -f ~/hotday_script/prometheus/service__nginx_template.yaml
 ```
+
+![Checkpoint!](../../assets/images/cp.png)
+
+Please take a moment to mark the spreadsheet *Prometheus - Setup 3 Exporters* column for your row with `done`.
 
 ### Visualize the metrics in Dynatrace
 
@@ -220,7 +228,7 @@ kube_pod_status_phase
 Select the `kube_pod_status_phase` metric, and add the following `filter by` dimensions:
 
 ```bash
-pod: frontend-
+pod: frontend-xyz...
 
 phase: Running
 ```
@@ -230,6 +238,10 @@ phase: Running
 Select the visualization `single value`
 
 ![Prometheus 7](../../assets/images/prom_7.png)
+
+![Checkpoint!](../../assets/images/cp.png)
+
+Please take a moment to mark the spreadsheet *Prometheus - Setup Data Explorer* column for your row with `done`.
 
 #### Nginx ingress controller
 
