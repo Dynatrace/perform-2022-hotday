@@ -2,13 +2,14 @@
 
 In this module, we'll cover how to create a synthetic script. In order to do this, you must be using Chrome and have the Dynatrace Synthetic Recorder extension installed. It can be found here:
 
-https://chrome.google.com/webstore/detail/dynatrace-synthetic-recor/pbnfcaobikkbealhienfilklacghhgoi
+https://chrome.google.com/webstore/detail/dynatrace-synthetic-recor/ambepdkaijjnednbbemlciandnhoanie
 
-Once installed, navigate to chrome://extensions in Chrome's browser URL. Select "Details" for Dynatrace Synthetic Recorder
-
+Once installed, navigate to chrome://extensions in Chrome's browser URL. Select "Details" for Dynatrace Synthetic Recorder. 
 In there, toggle on Allow Incognito. This ensures you are recording with a fresh cache and cookies, just like the public agents use when playing back the script
 
 ![Synthetic_Incognito](../../assets/images/Synthetic_Incognito.png)
+
+Unable to install the recorder? You can still follow the instructions below, but instead of selecting the Record clickpath button, you can select "Next" at the bottom right to deploy a single page script. The next exercise will also allow you to deploy a multi-page script that has already been recorded.
 
 
 ### Creating Your Own Synthetic Monitor

@@ -1,64 +1,76 @@
 ## Metrics
 
 In this module, we'll:
+
 - Ingest custom metrics via Metric API
 - Dashboard custom metrics
 - Create a custom metric event
 
-#### Dynatrace Metric API
-1. Create API Token
-> 1. Navigate to `Access Tokens` via Dynatrace Menu : `Managed > Access Tokens`
-> 2. Click on Create New Token
+## Dynatrace Metric API
+
+### Create API Token
+
+Navigate to `Access Tokens` via Dynatrace Menu : `Manage > Access Tokens`
+
+- Click on Generate New Token
 
 ![metric 1](../../assets/images/metric_1.png)
 
-> 3. Set token name `Perform 2022`
+ -Set token name `Perform 2022`
 
 ![metric 1_1](../../assets/images/metric_1_1.png)
 
-> 4. Search for `metric`
-> 5. Select `Ingest Metrics` & `Read Metrics` & `Write Metrics` API v2
+- Search for `metric`
+- Select `Ingest Metrics` & `Read Metrics` & `Write Metrics` API v2
 
 ![metric 2](../../assets/images/metric_2.png)
 
-> 6. Search for `logs`
-> 7. Select ` Ingest Logs` & `Read Logs` API v2
+- Search for `logs`
+- Select ` Ingest Logs` & `Read Logs` API v2
 
 ![metric 3](../../assets/images/metric_3.png)
 
-> 8. Click on `Generate Token`
-> 9. Copy and Save Token to Notepad
+- Click on `Generate Token`
+- Copy and Save Token to Notepad and click DONE.
+
+![Checkpoint!](../../assets/images/cp.png)
+
+Please take a moment to mark the spreadsheet *Metrics - Created Tokens* column for your row with `done`.
+
+### Send data to Dynatrace
 
 ![metric 4](../../assets/images/metric_4.png)
 
-2. POST Metric via API
-> 1. Navigate to `Environment API v2` via Account Icon
+- POST Metric via API
+- Navigate to `Environment API v2` via Account Icon
 
 ![metric 4.4](../../assets/images/metric_4.4.png)
 
-> 2. Search for `Metrics` then select `POST` /metrics/ingest
+- Search for `Metrics` then select `POST` /metrics/ingest
 
 ![metric 4.5](../../assets/images/metric_4.5.png)
 
-> 3. Copy and Paste API-TOKEN via lock icon and authorize token
+- Copy and Paste API-TOKEN via lock icon and authorize token
 
 ![metric 4.6](../../assets/images/metric_4.6.png)
 
-> 4. Click on `Try it out`
-> 5. Copy and Paste the metrics below :
-```
-perform2022.mycool.metric,state=Nevada,country=US 45
-perform2022.mycool.metric,state=Nevada,country=US 55
-perform2022.mycool.metric,state=Nevada,country=US 65
-perform2022.mycool.metric,state=Nevada,country=US 73
+- Click on `Try it out`
+- Copy and Paste the metrics below :
+
+```bash
+perform2022.mycool.metric,state=Wisconsin,country=US 22
+perform2022.mycool.metric,state=Georgia,country=US 67
+perform2022.mycool.metric,state=Maine,country=US 55
+perform2022.mycool.metric,state=Nevada,country=US 42
 ```
 
-> 6. Click on execute
+- Click on execute
 
 ![metric 4.7](../../assets/images/metric_4.7.png)
 
-> 7. Validate response
-```
+- Validate response
+
+```bash
 {
   "linesOk": 4,
   "linesInvalid": 0,
@@ -67,25 +79,32 @@ perform2022.mycool.metric,state=Nevada,country=US 73
 }
 ```
 
-> 8. Execute the command several more times over a couple minutes
+Execute the command several more times over a couple minutes.
 
-3. Validate Metric in Dynatrace
-> 1. Navigate to `Metrics` via Dynatrace menu : `Observe and explore > Metrics`
-> 2. Search for `perform2022`
+### Validate Metric in Dynatrace
+
+- Navigate to `Metrics` via Dynatrace menu : `Observe and explore > Metrics`
+- Search for `perform2022`
 
 ![metric 5](../../assets/images/metric_5.png)
 
-> - It may take a minute, refresh screen if metric doesn't appear
+- It may take a minute, refresh screen if metric doesn't appear
 
-### Dashboard
-1. Create a Dashboard
-> 1. Navigate to `Dashboards` via Dynatrace menu: `Observe and explore > Dashboards`
-> 2. Click on `Create Dashboard`
-> 3. Set name to `Perform 2022 Dashboard`
+![Checkpoint!](../../assets/images/cp.png)
+
+Please take a moment to mark the spreadsheet *Metrics - Called API* column for your row with `done`.
+
+### Dashboard Setup
+
+- Create a Dashboard
+- Navigate to `Dashboards` via Dynatrace menu: `Observe and explore > Dashboards`
+- Click on `Create Dashboard`
+- Set name to `Perform 2022 Dashboard`
 
 ![metric 6](../../assets/images/metric_6.png)
 
-2. Pin Metric to Dashboard
+Pin Metric to Dashboard
+
 > 1. Navigate to `Explore Data` via Dynatrace menu: `Observe and explore > Explore Data`
 > 2. Search for `Perform2022`
 > 3. Split by `Country` & `State`
@@ -100,13 +119,16 @@ perform2022.mycool.metric,state=Nevada,country=US 73
 
 ![metric 8](../../assets/images/metric_8.png)
 
-3. Review Dashboard
-> 1. Open `Perform 2022 Dashboard` and review `Perform 2022 Metric` tile
+### Review Dashboard
+
+Open `Perform 2022 Dashboard` and review `Perform 2022 Metric` tile
 
 ![metric 9](../../assets/images/metric_9.png)
 
 ### Analyze and Alert
-1. Create Custom Metric Event for Alerting
+
+Create Custom Metric Event for Alerting.
+
 > 1. Navigate to `Custom Events for alerting` via Dynatrace menu: `Manage > Settings > Anomaly Detection > Custom Events for Alerting`
 
 ![metric 10](../../assets/images/metric_10.png)
@@ -124,14 +146,16 @@ perform2022.mycool.metric,state=Nevada,country=US 73
 > 6. Set Event Description Title to `Perform2022 Custom Metric Event`
 > 7. Set Severity to `Error`
 > 8. Add the following to message
-```
+
+```bash
 Dynamic Country: {dims:country}
 Dynamic State: {dims:state}
-``` 
+```
 
 ![metric 12](../../assets/images/metric_12.png)
 
-2. Generate Problem
+Generate Problem
+
 > 1. Execute the command we used to ingest the `Perform2022.mycool.metric` several times over a couple minutes
 > 2. Navigate to `Problems` via Dynatrace menu: `Observe and explore > Problems`
 > 3. A new problem with the title `Perform2022 Custom Metric Event` will open
@@ -142,3 +166,7 @@ Dynamic State: {dims:state}
 > 5. Identify the dynamic `Country` and `Sate` value
 
 ![metric 14](../../assets/images/metric_14.png)
+
+![Checkpoint!](../../assets/images/cp.png)
+
+Please take a moment to mark the spreadsheet *Metrics - Created Dashboard & Alerts* column for your row with `done`.

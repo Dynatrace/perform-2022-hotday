@@ -8,6 +8,8 @@ Within Visual Studio Code navigate to `shopizer/gosrvc/main.go`.
 
 ![golang](../../assets/images/main.go.png)
 
+### Configure the OpenTelemetry Exporter
+
 Around line 40 OpenTelemetry is getting configured. What's not correct yet is the exact host name of your Dynatrace environment and the API Token.
 
 ```go
@@ -25,16 +27,38 @@ Around line 40 OpenTelemetry is getting configured. What's not correct yet is th
 
 ![access token](../../assets/images/access-token.png)
 
+### Submit API token to Microsoft Forms
+
+***Important***
+This API token will also be used in the next part of the hands on. The instructor will need this token to configure an OpenTelemetry Collector.
+
+Please submit your token to <a href="https://forms.office.com/r/b8We3K7Njk" target="_blank">https://forms.office.com/r/b8We3K7Njk</a>
+
+In an actual production environment, please treat your Access Tokens with utmost care and not distribute it indiscriminately. As your lab environment will be destroyed after this session, we are using this token as a means to demonstrate some capabilities within the scope of the lab.
+
+### Restart the Vintage Bag Shop Application
+
 In order for the modifications to become active you need to shut down the application. Press `Ctrl-C` within the terminal window and restart the app
+
 ```bash
 mvn spring-boot:run
 ```
 
-The new service calls named `http://127.0.0.1:8080/shop/product/vintage-courier-bag.html/ref=c:2` are now already showing what's going on for the `quote` calls.
+The new service calls named similar to
+
+```
+http://127.0.0.1:8080/shop/product/vintage-courier-bag.html/ref=c:2
+```
+
+are now already showing what's going on for the `quote` calls.
 
 ![quote](../../assets/images/quote.png)
 
-What's not covered yet are the `calc` calls. Take another look at the file `main.go` and scroll down to `line 65` where function `quote` starts.
+What's not covered yet are the `calc` calls.
+
+### Explore how OpenTelemetry in Golang works
+
+Take another look at the file `main.go` and scroll down to line `65` where function `quote` starts.
 
 ```go
 func quote(w http.ResponseWriter, req *http.Request) {
@@ -47,6 +71,7 @@ func quote(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(w, "done\n")
 }
 ```
+### Augment additional Golang Code with OpenTelemetry
 
 Now take a look at the function `calc`. It handles the incoming `calc` requests.
 
@@ -59,7 +84,11 @@ func calc(w http.ResponseWriter, req *http.Request) {
 
 We can use the function `quote` as a template in order to augment the function `calc` properly with OpenTelemetry code.
 
-In order for these modifications to become active the application needs to get restarted. Press `Ctrl-C` within the terminal and enter `mvn spring-boot:run` to relaunch it.
+### Restart the Vintage Bag Shop Application
+
+In order for these modifications to become active the application needs to get restarted.
+
+Press `Ctrl-C` within the terminal and enter `mvn spring-boot:run` to relaunch it.
 
 ### You have arrived!
 We have successfully traced across process boundaries - even if OneAgent is not of assistance.

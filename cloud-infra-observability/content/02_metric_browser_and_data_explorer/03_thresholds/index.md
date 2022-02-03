@@ -1,7 +1,12 @@
 ## Thresholds
 
-### K8s Memory Threshold
-1. Chart the memory used % metric in the Explorer
+
+### Scenario
+- You have different Kubernetes Nodes and want to verify their memory consumption
+- You want to identify easily which ones are trespassing the warning and severe thresholds
+
+### Visualize thresholds on charts
+1. Chart the "Memory used %" metric in the Explorer
 2. Split by: Host
 3. Filter by: Host: Software technologies: Kubernetes
 4. Aggregation: Average

@@ -10,15 +10,19 @@
 
 3. Choose *Create auto-tags*
 
-4. ```bash
-   Enter the name of the tag rule: production
-   Choose one of the following to be tagged: APPLICATION
-   Choose one of the following for the rule: CONTAINS
-   Enter the value that will be compared to: Production
-   ```   
+4. When you get prompted to enter the information, use the following:
+   
+    * Enter the name of the tag rule: production
+    * Choose one of the following to be tagged: APPLICATION
+    * Choose one of the following for the rule: CONTAINS
+    * Enter the value that will be compared to: Production   
 
     ![autotag](../../assets/images/autotag.png)
 
-5. Go to history.log and verify your deployment
+5. Go to the URL presented in the terminal and verify your deployment was successful
 
 6. Try and build another rule for Dev. 
+
+This is an example of the desired outcome:
+
+![appRule](../../assets/images/appdetrule.png)

@@ -1,7 +1,7 @@
 {
-    "name": "string",
+    "name": "the name of your new token",
     "expiresIn": {
-      "value": 7,
+      "value": "value in integer value (example: 5)",
       "unit": "DAYS"
     },
     "scopes": [

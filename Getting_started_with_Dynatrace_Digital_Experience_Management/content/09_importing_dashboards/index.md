@@ -10,7 +10,8 @@ This module will guide you through how to deploy a pre-configured dashboard for 
 
 ![notepad_json](../../assets/images/notepad_json.png)
 
-```{
+```
+{
   "metadata": {
     "configurationVersions": [
       5

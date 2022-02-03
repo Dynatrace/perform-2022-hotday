@@ -14,7 +14,7 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
   ![Install](../../assets/images/Install_AG.png)
 
 2. Select `Windows`
-3. Check `Route z/OS traffic to Dynatrace` (Step 1)
+3. Check `Route z/OS traffic to Dynatrace` (Step 1)!
 4. Click on `Download Installer` (Step 2) OR Click on `Copy` and paste the download command into a DOS prompt, press `Enter`
 
   ![Installer](../../assets/images/Installer.png)
@@ -22,6 +22,7 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
 5. Wait for the download to finish (can take a while depending on the bandwidth)
 6. Navigate to the folder containing the downloaded file in the DOS prompt (either your User directory or the Downloads folder)
 7. `Copy` installation command from the Dynatrace Tenant (Step 3) 
+7. Make sure, that the command contains parameter `ENABLE_ZREMOTE=true` after the exe! 
 8. Make sure that the name of the `exe`-File is correct, before you hit `Enter` 
 9. Install with the default settings
 10. Click on `Show Deployment Status` after the Installation has been successful
@@ -29,8 +30,18 @@ In this module you will learn how to deploy a Mainframe ActiveGate and zRemote a
   ![ActiveGate](../../assets/images/MF_AG_Details.png)
 
 ### Step 3: Prepare and start the zDC
+
+Useful hints when using the X3270-Session:
+* Right `<Control>` key submits a command
+* `<Enter>` key moves the cursor to the next input field
+* `<F3>` ... exit
+* `<F7>` ... scroll up
+* `<F8>` ... scroll down
+* `<F10>` ... scroll left
+* `<F11>` ... scroll right
+
 1. Double click on the X3270 Session called `Perform` on the Desktop
-2. Logon to ISPF with `logon <userid>` using the Userid and Password provided to you 
+2. Logon to ISPF with `logon <userid>` + `Right <Control>` (use the Userid and Password provided to you in the Cheat Sheet on the Desktop) 
 
   ![LogonISPF](../../assets/images/Logon_ISPF.png)
 

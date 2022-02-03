@@ -1,6 +1,7 @@
-## Enabling EasyTravel
+## Enabling EasyTravel (Optional)
 
-This module discusses the initial setup process needed to have the EasyTravel application generate RUM traffic within your environment
+This module is optional. The steps discussed within have already been completed by the instructors prior to this course. You do not need to log into the Virtual Machine, but these instructions are provided for reference or in case you need to restart the EasyTravel that generates RUM traffic within your environment
+
 
 - Log into your Dynatrace provided Virtual Machine. The address for the virtual machine and the credentials can be found in Dynatrace University
 - If you’re using Windows, you can hit the Windows key and type Remote Desktop Connection to find the RDP software

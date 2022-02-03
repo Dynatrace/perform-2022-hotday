@@ -1,9 +1,11 @@
 name: custom:wmi.demo
 version: 1.0.0
-minDynatraceVersion: "1.231"
+minDynatraceVersion: "1.227"
 author:
   name: "Dynatrace User"
 
+# Metric metadata.
+# Here we give human readable names to our metric key, as well as units to understand the metric values
 metrics:
   - key: custom.wmi.demo.host.cpu.time.processor
     metadata:
@@ -36,15 +38,20 @@ metrics:
       description: Network traffic sent bytes per second
       unit: BytePerSecond
 
+# Here we place our WMI data source
 wmi:
+  # Groups to organize our data collections
   - group: Host
     interval:
       minutes: 1
+    # This dimension will create a "host" key and give it the value of the hostname running the extension
     dimensions:
       - key: host
         value: this:device.host
+    # You may have a subgroup to organize more your data collection definitions
     subgroups:
       - subgroup: CPU
+        # The main way to collect data from WMI is using WQL
         query: SELECT Name, PercentProcessorTime, PercentIdleTime, PercentUserTime FROM Win32_PerfFormattedData_PerfOS_Processor WHERE Name LIKE '_Total'
         metrics:
           - key: custom.wmi.demo.host.cpu.time.processor
@@ -64,6 +71,7 @@ wmi:
         value: this:device.host
     subgroups:
       - subgroup: Adapters
+        featureset: Adapters
         query: SELECT Name, BytesTotalPersec, BytesReceivedPersec, BytesSentPersec FROM Win32_PerfFormattedData_Tcpip_NetworkAdapter
         metrics:
           - key: custom.wmi.demo.network.bytes.persec
@@ -78,6 +86,7 @@ wmi:
           - key: network.name
             value: column:Name
       - subgroup: Interfaces
+        featureset: Interfaces
         query: SELECT Name, BytesTotalPersec, BytesReceivedPersec, BytesSentPersec FROM Win32_PerfFormattedData_Tcpip_NetworkInterface
         metrics:
           - key: custom.wmi.demo.network.bytes.persec
@@ -101,7 +110,7 @@ topology:
         - idPattern: wmi_host_{dt.entity.host}
           sources:
             - sourceType: Metrics
-              condition: $prefix(custom.wmi.demo)
+              condition: $prefix(custom.wmi.demo.host)
           attributes: []
           requiredDimensions: []
           instanceNamePattern: Host - {host.name}
