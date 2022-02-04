@@ -26,10 +26,10 @@ easyTravel demo app has build-in problem patterns. In this lab, we will turn on 
 10. Wait 2-3 minutes, you should see a new problem is detected
 
 it looks like the these:
-![RDP](../resources/lab07_02.jpg)
+![RDP](../../assets/images/lab07_02.jpg)
 
-![RDP](../resources/lab07_03.jpg)
+![RDP](../../assets/images/lab07_03.jpg)
 
-[Next Lab](../09_log_ingest_api/README.md)
+
 
 
