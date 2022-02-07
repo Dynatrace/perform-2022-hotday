@@ -75,4 +75,5 @@
 1. In the tile filter, type "conversion"
 1. Find the "Conversion goal" tile
 1. Either drag and drop or double-click it
+1. Select application "My web application" and conversion goal "Travel bookings"
 1. At the top-right of the screen, click "Done"
