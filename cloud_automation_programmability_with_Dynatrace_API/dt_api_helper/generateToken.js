@@ -27,7 +27,7 @@ const generateToken = () => {
         if (ans.tenant.slice(-1) !== '/') {
           ans.tenant = ans.tenant.concat('/')
         }
-        const response = await fetch(`${ans.tenant}api/v1/tokens`, {
+        const response = await fetch(`${ans.tenant}api/v2/apiTokens`, {
           method: 'post',
           body: JSON.stringify(newRule),
           headers: {
