@@ -64,7 +64,7 @@
 1. Select either one of them ("Revenue" or "Loyalty Status")
 1. You might have to wait 2 or 3 minutes and refresh
 1. Click on "BookingService"
-1. Click on "Response time"
+1. Click on "View requests"
 1. Scroll down to the bottom of the page
 1. Click the tab "Request attributes"
 1. Expand the arrow at the right side of the row
