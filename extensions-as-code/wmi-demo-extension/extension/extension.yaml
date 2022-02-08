@@ -104,13 +104,13 @@ wmi:
 topology:
   types:
     - name: custom_wmi:host
-      displayName: Host
+      displayName: Custom Host
       enabled: true
       rules:
         - idPattern: wmi_host_{dt.entity.host}
           sources:
             - sourceType: Metrics
-              condition: $prefix(custom.wmi.demo.host)
+              condition: $prefix(custom.wmi.demo)
           attributes: []
           requiredDimensions: []
           instanceNamePattern: Host - {host.name}
