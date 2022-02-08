@@ -1,4 +1,4 @@
-## Create MASTER token (HOT exercise #1)
+## Create MASTER token 
 
 For this first exercise, we will be creating a MASTER token via Dynatrace UI that will be used for token management.
 

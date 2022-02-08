@@ -7,18 +7,17 @@
 ![Span events](../../../assets/images/06_open_observability-03events1.gif)
 
 1. Click on `Add item`.
-1. Paste the following in the `key` field `exception.type`.
+1. In the **key** field, copy and paste `exception.type`.
 1. Click on `Save changes`.
-1. Add another item called `exception.message` key. Rememer to click on `Save changes`.
+1. Add another item, this time copy and paste `exception.message` in the **key** field. Remember to click on `Save changes`.
 
 ![Span events](../../../assets/images/06_open_observability-03events2.gif)
 
 ### Step 2: Explore the distributed traces again
-1. Execute a few transactions.
 1. Go to Dynatrace menu -> Distributed traces
-1. Select one of the transctions to view the PurePath.
+1. Either filter by `Span name` > **blackbox**, or find the **vintage-laptop-bag** web request. Select one of the latest transctions to view the PurePath.
 1. Click on the `Errors` tab.
-1. More details about the errors are provided, instead of just "errors" or "exceptions"
+1. More details about the errors are now visible, instead of just "errors" or "exceptions"
 
 ![Span events](../../../assets/images/06_open_observability-03events3.png)
 

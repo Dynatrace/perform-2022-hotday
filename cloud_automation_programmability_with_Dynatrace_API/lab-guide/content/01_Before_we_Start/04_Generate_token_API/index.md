@@ -1,4 +1,4 @@
-## Generate Token via API (Token Management) (HOT exercise #2)
+## Generate Token via API (Token Management) (HOT exercise #1)
 
 Using Dynatrace API, you will generate a Token with a wide-spread scope
 <br>

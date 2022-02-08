@@ -63,7 +63,7 @@ $remote_addr [$time_local] $request $status $body_bytes_sent $request_time $upst
 Open the Fluentd config map:
 
 ``` bash
-kubectl edit cm fluentd -n nondynatrace
+kubectl edit cm fluentd-conf -n nondynatrace
 ```
 
 Scroll a bit if necessary to find the starting `<source>` entries.  See below for key details.
@@ -127,17 +127,14 @@ Looking at the expression line you can see the first value is `<ip>`.  Checking 
     types: ip:string,
 ```
 
----
-**NOTE**
+Important **NOTE**
 
-Make sure to space over so that `types` is directly under `expression`.
+Make sure to space over so that `types` is **directly** under `expression`.
 
 ``` bash
     expression /^ ......
     types: ip:string,
 ```
-
----
 
 Take a shot at adding the other types to the document.  Then check your work below:
 
@@ -177,17 +174,13 @@ Shows the logs from that pod:
 kubectl logs <pod> -n nondynatrace -f
 ```
 
----
-PSST.  Hey buddy.... you wanna buy an enormous command to impress your friends?  You can run this single command to find the fluentd pod running in your nginx node and output the logs.
+The `-f` command will follow the logs until you press *ctrl-c* to quit.
+
+PSST.  Hey buddy.... you wanna buy an enormous command to impress your friends?  You can skip the commands and matching up nodes above. This single command finds the fluentd pod running in your nginx node and output the logs.  If anybody asks, you didn't hear this from me, OK?
 
 ``` bash
-kubectl logs $(kubectl get pods -A -l app=fluentd-pipeline -o wide --field-selector spec.nodeName=$(kubectl get pod -o=custom-columns=NODE:.spec.nodeName --selector=app=nginx-nginx-ingress --no-headers) -o=custom-columns=Name:.metadata.name --no-headers) -n nondynatrace
+kubectl logs $(kubectl get pods -A -l app=fluentd-pipeline -o wide --field-selector spec.nodeName=$(kubectl get pod -o=custom-columns=NODE:.spec.nodeName --selector=app=nginx-nginx-ingress --no-headers) -o=custom-columns=Name:.metadata.name --no-headers) -n nondynatrace -f
 ```
-
-You didn't see *anything*...
----
-
-- the `-f` command will follow the logs until you press *ctrl-c* to quit.
 
 Check that you don't have any errors from fluentd.  If you do, there is usually something wrong with the yaml file.  Check your spacing.
 If you don't see hits coming in, confirm you are generating traffic in another terminal.  **If it stopped**, start it again with:
@@ -220,6 +213,10 @@ Let's modify our current fluentd pipeline by adding a `time_key` and `time_forma
 ```
 
 As always, make sure the spacing is perfect and the new lines are directly under `types`.
+
+![Checkpoint!](../../assets/images/cp.png)
+
+Please take a moment to mark the spreadsheet *fluentd - Extract & Improve Data* column for your row with `done`.
 
 #### Define a Prometheus output plugin
 
@@ -348,39 +345,39 @@ No peeking! :)  But check your work against the completed filter below:
 
 ``` bash
 <filter nginx>
-      @type prometheus
-       <labels>
-         method ${method}
-         request ${request}
-         status ${status}
-         namespace ${ressource_namespace}
-         service ${service}
-         ressourcename ${ressourcename}
-       </labels>
-       <metric>
-         name hotday_response_time
-         type gauge
-         desc responset time
-         key responsetime
-       </metric>
-       <metric>
-         name hotday_byte_sent
-         type gauge
-         desc byte sent
-         key bytes_sent
-       </metric>
-       <metric>
-         name hotday_requests
-         type counter
-         desc The total number of request
-       </metric>
-       <metric>
-         name hotday_status
-         type counter
-         desc status code
-         key status
-       </metric>
-     </filter>
+  @type prometheus
+    <labels>
+      method ${method}
+      request ${request}
+      status ${status}
+      namespace ${resource_namespace}
+      service ${service}
+      resourcename ${resourcename}
+    </labels>
+    <metric>
+      name hotday_response_time
+      type gauge
+      desc responset time
+      key responsetime
+    </metric>
+    <metric>
+      name hotday_byte_sent
+      type gauge
+      desc byte sent
+      key bytes_sent
+    </metric>
+    <metric>
+      name hotday_requests
+      type counter
+      desc The total number of request
+    </metric>
+    <metric>
+      name hotday_status
+      type counter
+      desc status code
+      key status
+    </metric>
+</filter>
 ```
 
 Just like before, we need to delete the old fluentd pods:
@@ -413,6 +410,10 @@ If the logs have errors, check your yaml to make sure everything is lined up.  I
 ~/hotday_script/load/generateTraffic.sh
 ```
 
+![Checkpoint!](../../assets/images/cp.png)
+
+Please take a moment to mark the spreadsheet *fluentd - Created Prometheus filter* column for your row with `done`.
+
 #### Create a service with dynatrace Prometheus annotation to ingest the generated metrics
 
 We need to update the port of the fluentd exporter similar to the prometheus exercise before.
@@ -421,20 +422,20 @@ The node exporter is deployed as a Daemonset by the Prometheus Operator.
 Run the kubectl command to get the daemonsets:
 
 ```bash
-kubectl get ds
+kubectl get ds -A
  ```
 
-![Prometheus_1](../../assets/images/prom_1.png)
+![FluentD_1](../../assets/images/fluentd_ds.png)
 
-If the result is prometheus-node-exporter, run the command below as-is.  Otherwise update the name before running.
+If the result is fluentd, run the command below as-is.  Otherwise update the name before running.
 
-- This will get the container port for the Prometheus-node-exporter daemonset.
+- This will get the container port for the fluentd daemonset.
 
 ```bash
-kubectl get ds prometheus-node-exporter -o jsonpath='{.spec.template.spec.containers[0].ports[].containerPort}{"\n"}'
+kubectl get ds fluentd -o jsonpath='{.spec.template.spec.containers[0].ports[].containerPort}{"\n"}' -n nondynatrace
 ```
 
-![Prometheus_2](../../assets/images/prom_2.png)
+![FluentD_2](../../assets/images/fluentd_port.png)
 
 Open the configuration file below and replace the port.
 
@@ -445,7 +446,7 @@ vi ~/hotday_script/prometheus/service_fluentd_metric.yaml
 After the update, the port line should be similar to:
 
 ```bash
-    metrics.dynatrace.com/port: "9100"
+    metrics.dynatrace.com/port: "9914"
 ```
 
 Then apply the config file with :
@@ -462,7 +463,7 @@ Check the terminal window where you are generating traffic to confirm it's still
 ~/hotday_script/load/generateTraffic.sh
 ```
 
-#### Create a Graph showing the 90th percentile of the response time splitted by service
+#### Create a Graph showing the 90th percentile of the response time split by service
 
 Go to the Data Explorer and search for the new metric: `hotday_response_time`
 
@@ -483,3 +484,7 @@ Create a graph with :
 - Split by : status,service
   
 ![fluentd_1_2](../../assets/images/dtu_fluentd_metrics_status.png)
+
+![Checkpoint!](../../assets/images/cp.png)
+
+Please take a moment to mark the spreadsheet *Fluentd - created Graphs* column for your row with `done`.

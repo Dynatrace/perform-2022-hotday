@@ -7,7 +7,7 @@
 1. Under `Metric` section, select `Span Failure Rate`.
    ![Settings](../../../assets/images/06_open_observability-04alerts2.png)
 1. Scroll down to the `Static threshold` section, configure the following parameters
-   - Alert anomalies with a static threshold of `5` percent (%)
+   - Alert anomalies with a static threshold of `5` percent (%), or any value that is below the average failure rate in the chart
    - Raise alert if ... the threshold for `1` minute slots
    - during any `3` minute period.
    ![Settings](../../../assets/images/06_open_observability-04alerts3.png)
@@ -21,8 +21,8 @@
 ![Settings](../../../assets/images/06_open_observability-04alerts5.png)
 
 ### Step 2: Problem detection
-1. Execute a few transactions.
 1. A problem card should appear after a few minutes.
+1. If no problem card appears, check the threshold settings and ensure that it is below the average failure rate in the chart
 
 ![Problem card](../../../assets/images/06_open_observability-04alerts6.png)
 
