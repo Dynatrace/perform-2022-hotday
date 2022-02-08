@@ -104,7 +104,7 @@ wmi:
 topology:
   types:
     - name: custom_wmi:host
-      displayName: Custom Host
+      displayName: Custom WMI Host
       enabled: true
       rules:
         - idPattern: wmi_host_{dt.entity.host}
