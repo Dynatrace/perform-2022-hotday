@@ -71,7 +71,7 @@ wmi:
         value: this:device.host
     subgroups:
       - subgroup: Adapters
-        featureset: Adapters
+        featureSet: Adapters
         query: SELECT Name, BytesTotalPersec, BytesReceivedPersec, BytesSentPersec FROM Win32_PerfFormattedData_Tcpip_NetworkAdapter
         metrics:
           - key: custom.wmi.demo.network.bytes.persec
@@ -86,7 +86,7 @@ wmi:
           - key: network.name
             value: column:Name
       - subgroup: Interfaces
-        featureset: Interfaces
+        featureSet: Interfaces
         query: SELECT Name, BytesTotalPersec, BytesReceivedPersec, BytesSentPersec FROM Win32_PerfFormattedData_Tcpip_NetworkInterface
         metrics:
           - key: custom.wmi.demo.network.bytes.persec
