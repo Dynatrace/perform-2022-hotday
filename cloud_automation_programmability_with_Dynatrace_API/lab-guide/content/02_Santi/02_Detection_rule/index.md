@@ -15,7 +15,7 @@
     * Choose an application for the detection rule: Sockshop (Production)
     * Do you want to match Domain or URL? URL
     * Choose one rule: CONTAINS
-    * What does the "URL" should match "CONTAINS"?: <your Sockshop front-end external IP saved earlier>:8080   
+    * What does the "URL" should match "CONTAINS"?:     your_Sockshop_front-end_external_IP_saved_earlier:8080   
 
    
    If you don't have the URL, go to the bastion terminal and run: 

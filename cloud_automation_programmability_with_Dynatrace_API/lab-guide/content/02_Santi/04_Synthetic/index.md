@@ -14,7 +14,7 @@
    
     * Choose one of the following to deploy: Homepage (browser)
     * Give your synthetic script a name: Homepage (Single Page)
-    * Enter URL (ex. http://xxxx.us-west-2.elb.amazonaws.com:8080/): HTTP://your external-ip:8080
+    * Enter URL (ex. http://xxxx.us-west-2.elb.amazonaws.com:8080/): HTTP://your-external-ip:8080
     * Enter the environment tag (ex. production, dev): production   
 
 

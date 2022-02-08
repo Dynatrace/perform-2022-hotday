@@ -9,8 +9,8 @@ For this first exercise, we will be creating a MASTER token via Dynatrace UI tha
 2. Enter the following information as shown in the screenshot: 
     * Token name: MASTER
     * Leave Expiration date and Template with their default values
-    * Search for TOKEN MANAGEMENT scope
-    * Check TOKEN MANAGEMENT checkbox
+    * Search for "TOKEN MANAGEMENT" and Write "API tokens" scopes
+    * Check "TOKEN MANAGEMENT" and "API tokens" checkboxes
     * Click on GENERATE TOKEN
 
 
