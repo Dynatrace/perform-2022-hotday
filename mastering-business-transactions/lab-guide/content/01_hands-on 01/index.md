@@ -70,8 +70,8 @@
 1. In the tile filter, type "key"
 1. Find the "Key user action" tile
 1. Either drag and drop or double-click it
-1. Select application and key user action names
-1. Repeat for the "book now" user action
+1. Select application "My web application" and user action "click on sign in"
+1. Add a second key user action tile for the "book now" user action
 1. In the tile filter, type "conversion"
 1. Find the "Conversion goal" tile
 1. Either drag and drop or double-click it
