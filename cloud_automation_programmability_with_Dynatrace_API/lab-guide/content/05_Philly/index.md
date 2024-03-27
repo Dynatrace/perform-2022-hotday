@@ -37,7 +37,7 @@ else
   export PATH=$HOME/.local/bin
 fi
 
-git clone https://github.com/dt-perform-hot-api/dt-config-autobackup.git
+git clone <repository-no-longer-available>
 cd dt-config-autobackup
 pipenv install --python 3.8 requests
 
